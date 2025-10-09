@@ -1,33 +1,4 @@
-/* Navigation */
-        nav {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-            letter-spacing: 0.01em;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Hero Section */
-        .page-hero {
-            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -228,7 +199,7 @@
         }
 
         .product-features li:before {
-            content: "✓";
+            content: "✔";
             position: absolute;
             left: 0;
             color: var(--accent-color);
@@ -400,7 +371,7 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="industries.html">Industries</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -421,9 +392,9 @@
         <!-- Product Grid -->
         <div class="product-grid">
             <!-- Pleated Filters -->
-            <div class="product-card">
+            <div class="product-card" id="pleated">
                 <div class="product-header">
-                    <div class="product-icon">📐</div>
+                    <div class="product-icon">🔍</div>
                     <h3>Pleated Filters</h3>
                     <p class="product-subtitle">Standard & Custom Configurations</p>
                 </div>
@@ -458,7 +429,7 @@
             <!-- Bag/Pocket Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-icon">👜</div>
+                    <div class="product-icon">💜</div>
                     <h3>Bag & Pocket Filters</h3>
                     <p class="product-subtitle">Extended Surface Area</p>
                 </div>
@@ -526,7 +497,7 @@
             </div>
 
             <!-- Rigid Box/Mini-Pleat/V-Bank -->
-            <div class="product-card">
+            <div class="product-card" id="merv">
                 <div class="product-header">
                     <div class="product-icon">📦</div>
                     <h3>Rigid Box / Mini-Pleat / V-Bank Filters</h3>
@@ -561,7 +532,7 @@
             </div>
 
             <!-- HEPA Filters -->
-            <div class="product-card">
+            <div class="product-card" id="hepa">
                 <div class="product-header">
                     <div class="product-icon">🔬</div>
                     <h3>HEPA Filters</h3>
@@ -666,7 +637,7 @@
             </div>
 
             <!-- Cartridge Filters -->
-            <div class="product-card">
+            <div class="product-card" id="industrial">
                 <div class="product-header">
                     <div class="product-icon">🔧</div>
                     <h3>Cartridge Filters</h3>
@@ -746,7 +717,7 @@
             </div>
 
             <!-- UVC Systems -->
-            <div class="product-card">
+            <div class="product-card" id="uvc">
                 <div class="product-header">
                     <div class="product-icon">💡</div>
                     <h3>UVC Disinfection Systems</h3>
@@ -814,22 +785,6 @@
                     </div>
                 </div>
             </div>
-        </div>>
-                        <div class="spec-item">
-                            <span class="spec-label">Belts:</span>
-                            <span class="spec-value">All Standard Sizes</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Frames:</span>
-                            <span class="spec-value">Standard & Custom</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Applications:</span>
-                            <span class="spec-value">Maintenance & Repair</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -841,7 +796,7 @@
             
             <div class="support-grid">
                 <div class="support-item">
-                    <div class="support-item-icon">📏</div>
+                    <div class="support-item-icon">🔍</div>
                     <h3>Custom Sized Air Filters</h3>
                     <p>Tech Valley Filtration specializes in custom sized pleated, polyester, and fiberglass filters to meet your exact specifications</p>
                 </div>
