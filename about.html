@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Tech Valley Filtration</title>
+    <meta name="description" content="Learn about Tech Valley Filtration's mission, expertise, and team dedicated to providing superior air filtration solutions across the Northeast.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e40af;
+            --accent-color: #059669;
+            --accent-light: #10b981;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --border: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: var(--light);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--light);
+            padding: 5rem 2rem;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--gray);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12);
+            border-color: var(--accent-color);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12);
+            border-color: var(--accent-color);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-info h3 {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-credentials {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #475569;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>About Tech Valley Filtration</h1>
+        <p>Your trusted partner for commercial air filtration solutions since 2019</p>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Our Company</h2>
+                <p>Tech Valley Filtration stands as the Northeast's trusted partner for commercial, industrial, and institutional air filtration solutions. Since our founding in May 2019, we have passionately served our community by offering comprehensive air quality solutions backed by technical expertise and superior customer service.</p>
+                
+                <p>Our inventory includes filters for various applications, from educational institutions to large-scale commercial ventures such as healthcare facilities, government buildings, manufacturing plants, and HVAC contractors. With over 1,700 SKUs available and partnerships with leading manufacturers, we provide access to virtually all HVAC air filtration product brands.</p>
+                
+                <p>Our commitment to educating clients about the significance of proper filtration, ASHRAE compliance, and Indoor Air Quality (IAQ) best practices has been unwavering. With expertise in MERV-rated systems, HEPA filtration, and UV-C disinfection technology, Tech Valley Filtration has become synonymous with clean air solutions for diverse filtration needs.</p>
+            </div>
+            <div class="about-image">
+                [Company Photo Placeholder - Warehouse/Office]
+            </div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-image">
+                [Warehouse/Inventory Photo Placeholder]
+            </div>
+            <div class="about-text">
+                <h2>Our Mission</h2>
+                <p>At the core of our operation is a dedication to providing the right filtration solution for every application. We firmly believe in supporting our customers through technical consultation, product education, and responsive service that addresses their specific needs.</p>
+                
+                <p>Located in the heart of the Tech Valley region, our operation serves as both our headquarters and a hub for technical expertise. Here, our knowledgeable staff is readily available to assist customers, addressing questions and providing guidance on specific filtration applications, MERV ratings, filter selection, and maintenance schedules.</p>
+                
+                <p>Thank you for choosing Tech Valley Filtration. We wish you a fantastic day and the joy of breathing clean, healthy air.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>What drives us every day to deliver exceptional air filtration solutions</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎓</div>
+                    <h3>Technical Expertise</h3>
+                    <p>We stay current with ASHRAE standards, industry regulations, and the latest filtration technologies to provide expert guidance on every project.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Customer Partnership</h3>
+                    <p>We build long-term relationships by understanding each client's unique needs and delivering solutions that exceed expectations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Responsive Service</h3>
+                    <p>Quick turnaround times, readily available inventory, and immediate technical support when you need it most.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🔬</div>
+                    <h3>Quality Products</h3>
+                    <p>Partnerships with leading manufacturers ensure access to the highest quality filtration products for every application.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="section-header">
+            <h2>Meet Our Team</h2>
+            <p>Experienced professionals dedicated to your air quality success</p>
+        </div>
+        
+        <div class="team-grid">
+            <!-- Team Member 1 - Owner -->
+            <div class="team-member">
+                <div class="team-photo">JF</div>
+                <div class="team-info">
+                    <h3>Justin Fiederlein</h3>
+                    <div class="team-credentials">ASHRAE Member</div>
+                    <div class="team-role">Owner & Founder</div>
+                    <p class="team-bio">Founded Tech Valley Filtration with a vision to provide superior air filtration solutions backed by technical expertise and industry knowledge.</p>
+                </div>
+            </div>
+
+            <!-- Team Member Template 2 -->
+            <div class="team-member">
+                <div class="team-photo">?</div>
+                <div class="team-info">
+                    <h3>[Team Member Name]</h3>
+                    <div class="team-credentials">[Certifications]</div>
+                    <div class="team-role">[Position Title]</div>
+                    <p class="team-bio">[Brief bio about experience and expertise in filtration industry]</p>
+                </div>
+            </div>
+
+            <!-- Team Member Template 3 -->
+            <div class="team-member">
+                <div class="team-photo">?</div>
+                <div class="team-info">
+                    <h3>[Team Member Name]</h3>
+                    <div class="team-credentials">[Certifications]</div>
+                    <div class="team-role">[Position Title]</div>
+                    <p class="team-bio">[Brief bio about role in customer service or technical sales]</p>
+                </div>
+            </div>
+
+            <!-- Team Member Template 4 -->
+            <div class="team-member">
+                <div class="team-photo">?</div>
+                <div class="team-info">
+                    <h3>[Team Member Name]</h3>
+                    <div class="team-credentials">[Certifications]</div>
+                    <div class="team-role">[Position Title]</div>
+                    <p class="team-bio">[Brief bio about warehouse operations or logistics expertise]</p>
+                </div>
+            </div>
+
+            <!-- Add more team members as needed -->
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Work With Us?</h2>
+        <p>Experience the Tech Valley Filtration difference - expert consultation and superior products</p>
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tech Valley Filtration</h3>
+                <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">HEPA Filters</a></li>
+                    <li><a href="#services">MERV-Rated Filters</a></li>
+                    <li><a href="#services">UV-C Systems</a></li>
+                    <li><a href="#services">Industrial Components</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>30 Kraft Ave, Suite 5</li>
+                    <li>Albany, NY 12205</li>
+                    <li><a href="tel:518-356-3943">(518) 356-3943</a></li>
+                    <li><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

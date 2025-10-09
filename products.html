@@ -1,0 +1,881 @@
+/* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Solutions | Tech Valley Filtration</title>
+    <meta name="description" content="Comprehensive air filtration solutions including HEPA filters, MERV-rated systems, UV-C disinfection, and industrial components.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e40af;
+            --accent-color: #059669;
+            --accent-light: #10b981;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --border: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-intro h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-intro p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Product Categories Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12);
+            border-color: var(--accent-color);
+        }
+
+        .product-header {
+            background: linear-gradient(135deg, #1e40af, #059669);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-header h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .product-subtitle {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .product-body {
+            padding: 2rem;
+        }
+
+        .product-body p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--dark);
+            border-bottom: 1px solid var(--light);
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .product-specs {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .product-specs h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .spec-label {
+            color: var(--gray);
+        }
+
+        .spec-value {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Technical Support Section */
+        .tech-support {
+            background: var(--light);
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-support-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tech-support h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tech-support p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .support-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .support-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12);
+            border-color: var(--accent-color);
+        }
+
+        .support-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .support-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-intro h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="industries.html">Industries</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Products & Solutions</h1>
+        <p>Comprehensive filtration systems for every application and industry</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="section-intro">
+            <h2>Air Filtration Solutions</h2>
+            <p>Comprehensive filter products from leading manufacturers including MANN+HUMMEL, Mikropor, and DMARK</p>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <!-- Pleated Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">📐</div>
+                    <h3>Pleated Filters</h3>
+                    <p class="product-subtitle">Standard & Custom Configurations</p>
+                </div>
+                <div class="product-body">
+                    <p>High-efficiency pleated filters offering superior dust-holding capacity and extended service life for commercial and residential HVAC systems.</p>
+                    
+                    <div class="product-features">
+                        <li>Standard and custom sizes available</li>
+                        <li>1", 2", and 4" depth options</li>
+                        <li>Synthetic and cotton/poly blend media</li>
+                        <li>Cardboard or beverage board frames</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Efficiency:</span>
+                            <span class="spec-value">MERV 8-13</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Depths Available:</span>
+                            <span class="spec-value">1", 2", 4"</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Commercial, Residential, Light Industrial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bag/Pocket Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">👜</div>
+                    <h3>Bag & Pocket Filters</h3>
+                    <p class="product-subtitle">Extended Surface Area</p>
+                </div>
+                <div class="product-body">
+                    <p>High-capacity bag filters with extended surface area for longer service life and superior dust-holding capacity in large commercial HVAC systems.</p>
+                    
+                    <div class="product-features">
+                        <li>3 to 12 pocket configurations</li>
+                        <li>Synthetic and microfiber media options</li>
+                        <li>Depths: 12", 21", 24", 36"</li>
+                        <li>Ring panel and header frame styles</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Efficiency:</span>
+                            <span class="spec-value">MERV 10-14</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Pocket Count:</span>
+                            <span class="spec-value">3-12 Pockets</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Large Commercial HVAC, Industrial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carbon Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">⚗️</div>
+                    <h3>Carbon Filters</h3>
+                    <p class="product-subtitle">Gas Phase & Odor Control</p>
+                </div>
+                <div class="product-body">
+                    <p>Activated carbon and CarbonWeb® media filters from DMARK for removing gases, odors, and volatile organic compounds from air streams.</p>
+                    
+                    <div class="product-features">
+                        <li>Activated carbon media</li>
+                        <li>DMARK CarbonWeb® technology</li>
+                        <li>Panel and pleated configurations</li>
+                        <li>Chemical impregnated options</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Media:</span>
+                            <span class="spec-value">Activated Carbon, CarbonWeb®</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Target:</span>
+                            <span class="spec-value">VOCs, Gases, Odors</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Cannabis, Labs, Industrial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rigid Box/Mini-Pleat/V-Bank -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">📦</div>
+                    <h3>Rigid Box / Mini-Pleat / V-Bank Filters</h3>
+                    <p class="product-subtitle">High-Efficiency Commercial Systems</p>
+                </div>
+                <div class="product-body">
+                    <p>Rigid construction filters with plastic or metal frames designed for high-efficiency applications requiring superior performance and durability.</p>
+                    
+                    <div class="product-features">
+                        <li>Plastic and metal frame options</li>
+                        <li>Mini-pleat and V-bank configurations</li>
+                        <li>High dust-holding capacity</li>
+                        <li>MANN+HUMMEL and Mikropor brands</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Efficiency:</span>
+                            <span class="spec-value">MERV 13-15</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Construction:</span>
+                            <span class="spec-value">Rigid Frame, Extended Surface</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Commercial HVAC, Healthcare</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEPA Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">🔬</div>
+                    <h3>HEPA Filters</h3>
+                    <p class="product-subtitle">Maximum Efficiency Particulate Removal</p>
+                </div>
+                <div class="product-body">
+                    <p>True HEPA filters providing the highest level of particulate removal for critical environments including healthcare, laboratories, and cleanrooms.</p>
+                    
+                    <div class="product-features">
+                        <li>V-Bank HEPA configurations</li>
+                        <li>Box and panel HEPA styles</li>
+                        <li>Factory tested and certified</li>
+                        <li>Standard and custom sizes</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Efficiency:</span>
+                            <span class="spec-value">99.97% - 99.99%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Particle Size:</span>
+                            <span class="spec-value">0.3 microns</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Healthcare, Labs, Cleanrooms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Link/Panel Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">🔗</div>
+                    <h3>Link & Panel Filters</h3>
+                    <p class="product-subtitle">Pre-Filtration & Basic Protection</p>
+                </div>
+                <div class="product-body">
+                    <p>Economy-grade fiberglass and synthetic panel filters for basic pre-filtration and equipment protection in commercial and industrial applications.</p>
+                    
+                    <div class="product-features">
+                        <li>Fiberglass and synthetic media</li>
+                        <li>Link-style and flat panel options</li>
+                        <li>Disposable construction</li>
+                        <li>Cost-effective pre-filtration</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Efficiency:</span>
+                            <span class="spec-value">MERV 4-6</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Construction:</span>
+                            <span class="spec-value">Fiberglass, Synthetic</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Pre-Filters, Equipment Protection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metal Washable Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">♻️</div>
+                    <h3>Metal Washable Filters</h3>
+                    <p class="product-subtitle">Reusable & Sustainable</p>
+                </div>
+                <div class="product-body">
+                    <p>Durable aluminum and stainless steel mesh filters designed for repeated washing and reuse, providing long-term cost savings and sustainability.</p>
+                    
+                    <div class="product-features">
+                        <li>Aluminum and stainless steel construction</li>
+                        <li>Washable and reusable design</li>
+                        <li>Multiple cleaning cycles</li>
+                        <li>Long service life</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Material:</span>
+                            <span class="spec-value">Aluminum, Stainless Steel</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Reusability:</span>
+                            <span class="spec-value">Washable, Multiple Cycles</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Commercial Kitchen, Industrial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cartridge Filters -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">🔧</div>
+                    <h3>Cartridge Filters</h3>
+                    <p class="product-subtitle">Industrial Dust Collection</p>
+                </div>
+                <div class="product-body">
+                    <p>Cylindrical cartridge filters for industrial dust collection systems, powder handling, and specialized process applications requiring high-efficiency removal.</p>
+                    
+                    <div class="product-features">
+                        <li>Pleated polyester and cellulose media</li>
+                        <li>Nanofiber and spunbond options</li>
+                        <li>Expanded metal support cages</li>
+                        <li>Custom sizes and micron ratings</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Technical Specifications</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Media:</span>
+                            <span class="spec-value">Polyester, Cellulose, Nanofiber</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Dust Collectors, Process</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Industries:</span>
+                            <span class="spec-value">Manufacturing, Woodworking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HVAC Related Products Section -->
+    <section class="products-section" style="background: var(--light); padding-top: 3rem;">
+        <div class="section-intro">
+            <h2>HVAC Related Products</h2>
+            <p>Complementary products and systems to complete your air quality solution</p>
+        </div>
+
+        <div class="product-grid">
+            <!-- V-Belts -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">⚙️</div>
+                    <h3>V-Belts & Power Transmission</h3>
+                    <p class="product-subtitle">Bestorq High-Performance Belts</p>
+                </div>
+                <div class="product-body">
+                    <p>High-quality power transmission belts from Bestorq, specializing in energy-saving and long-life V-belts with exceptional durability for air handling units.</p>
+                    
+                    <div class="product-features">
+                        <li>3L, 4L, 5L, and 3VX series</li>
+                        <li>Energy-saving designs</li>
+                        <li>Extended belt life</li>
+                        <li>Ideal for air handling units</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Product Details</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Manufacturer:</span>
+                            <span class="spec-value">Bestorq</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Belt Types:</span>
+                            <span class="spec-value">V-Belts, All Standard Sizes</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">HVAC Motors, Air Handlers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UVC Systems -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">💡</div>
+                    <h3>UVC Disinfection Systems</h3>
+                    <p class="product-subtitle">American Ultraviolet Technology</p>
+                </div>
+                <div class="product-body">
+                    <p>Leading UV technology from American Ultraviolet, offering germicidal UVC fixtures for disinfecting air, surfaces, and liquids with proven effectiveness.</p>
+                    
+                    <div class="product-features">
+                        <li>Germicidal UVC fixtures</li>
+                        <li>In-duct and upper-room systems</li>
+                        <li>Replacement lamps and ballasts</li>
+                        <li>120-277V configurations</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Product Details</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Manufacturer:</span>
+                            <span class="spec-value">American Ultraviolet</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Effectiveness:</span>
+                            <span class="spec-value">99.9% Pathogen Elimination</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Healthcare, Schools, Commercial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PreVent Screens -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">🛡️</div>
+                    <h3>PreVent Air Intake Screens</h3>
+                    <p class="product-subtitle">Permatron HVAC Protection</p>
+                </div>
+                <div class="product-body">
+                    <p>PreVent air intake filter screens protect HVAC systems from airborne debris like cottonwood, bugs, and leaves, extending equipment life and reducing maintenance.</p>
+                    
+                    <div class="product-features">
+                        <li>Protects A/C units, cooling towers, chillers</li>
+                        <li>MagnaMount® magnetic installation</li>
+                        <li>Easy to clean (brush or hose)</li>
+                        <li>Custom-made in USA</li>
+                    </div>
+
+                    <div class="product-specs">
+                        <h4>Product Details</h4>
+                        <div class="spec-item">
+                            <span class="spec-label">Manufacturer:</span>
+                            <span class="spec-value">Permatron</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Installation:</span>
+                            <span class="spec-value">Magnetic Mount System</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Benefits:</span>
+                            <span class="spec-value">Extends System Life, Reduces Maintenance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>>
+                        <div class="spec-item">
+                            <span class="spec-label">Belts:</span>
+                            <span class="spec-value">All Standard Sizes</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Frames:</span>
+                            <span class="spec-value">Standard & Custom</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Applications:</span>
+                            <span class="spec-value">Maintenance & Repair</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Services Section -->
+    <section class="tech-support">
+        <div class="tech-support-content">
+            <h2>Other Services</h2>
+            <p>Additional capabilities to support your complete air filtration needs</p>
+            
+            <div class="support-grid">
+                <div class="support-item">
+                    <div class="support-item-icon">📏</div>
+                    <h3>Custom Sized Air Filters</h3>
+                    <p>Tech Valley Filtration specializes in custom sized pleated, polyester, and fiberglass filters to meet your exact specifications</p>
+                </div>
+
+                <div class="support-item">
+                    <div class="support-item-icon">📦</div>
+                    <h3>Inventory Management</h3>
+                    <p>Air filters can be picked up and/or shipped directly from our warehouse in Albany, NY for convenient access</p>
+                </div>
+
+                <div class="support-item">
+                    <div class="support-item-icon">🎓</div>
+                    <h3>Technical Consultation</h3>
+                    <p>Expert guidance on MERV ratings, filter selection, and ASHRAE standards compliance for your application</p>
+                </div>
+
+                <div class="support-item">
+                    <div class="support-item-icon">🔧</div>
+                    <h3>System Analysis</h3>
+                    <p>Professional evaluation of your HVAC systems to optimize filtration performance and efficiency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Need Help Selecting the Right Filter?</h2>
+        <p>Our filtration experts are ready to assist with product selection and technical guidance</p>
+        <div style="margin-top: 2rem;">
+            <p style="font-size: 1.25rem; margin-bottom: 0.5rem;"><strong>Phone:</strong> <a href="tel:518-356-3943" style="color: white; text-decoration: underline;">(518) 356-3943</a></p>
+            <p style="font-size: 1.25rem; margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:Service@techvalleyfiltration.com" style="color: white; text-decoration: underline;">Service@techvalleyfiltration.com</a></p>
+            <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.9;">30 Kraft Ave, Suite 5, Albany, NY 12205</p>
+        </div>
+    </section>
+</body>
+</html>
