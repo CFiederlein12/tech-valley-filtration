@@ -75,12 +75,14 @@
             color: var(--secondary-color);
         }
 
-        /* Hero Section */
+        /* Hero Section with Background Image */
         .page-hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%),
+                        url('images/industries-hero-hvac-systems.jpg') center/cover;
             color: white;
             padding: 4rem 2rem;
             text-align: center;
+            position: relative;
         }
 
         .page-hero h1 {
@@ -94,11 +96,72 @@
             margin: 0 auto;
         }
 
+        /* Industries Grid with Images */
+        .industries-preview {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .industries-preview h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .industries-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .industry-preview-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .industry-preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.15);
+        }
+
+        .industry-preview-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .industry-preview-content {
+            padding: 1.5rem;
+        }
+
+        .industry-preview-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .industry-preview-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
         /* Tabs Section */
         .industries-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 2rem;
+            padding: 2rem 2rem 5rem;
         }
 
         .tabs {
@@ -145,7 +208,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Industry Content */
+        /* Industry Content with Images */
         .industry-header {
             display: flex;
             align-items: center;
@@ -155,12 +218,17 @@
             border-bottom: 2px solid var(--light);
         }
 
-        .industry-icon {
-            font-size: 5rem;
-            background: linear-gradient(135deg, #1e40af, #059669);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .industry-header-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 3rem;
         }
 
         .industry-title h2 {
@@ -179,6 +247,72 @@
             grid-template-columns: 2fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
+        }
+
+        /* Image Gallery Section */
+        .industry-images {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 12px;
+        }
+
+        .industry-images h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: white;
+            border: 1px solid var(--border);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: var(--gray);
+            font-size: 0.875rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.9);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-caption {
+            transform: translateY(0);
         }
 
         .main-content h3 {
@@ -278,25 +412,6 @@
             margin-bottom: 2rem;
         }
 
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .page-hero h1 {
@@ -324,6 +439,10 @@
             .industry-title h2 {
                 font-size: 2rem;
             }
+
+            .industries-cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -344,10 +463,82 @@
         </div>
     </nav>
 
-    <!-- Page Hero -->
+    <!-- Page Hero with Background Image -->
     <section class="page-hero">
         <h1>Industries We Serve</h1>
         <p>Specialized filtration solutions tailored to your industry's unique air quality requirements</p>
+    </section>
+
+    <!-- Industries Preview Cards -->
+    <section class="industries-preview">
+        <h2>Select Your Industry</h2>
+        <div class="industries-cards">
+            <div class="industry-preview-card" onclick="openTab(event, 'education')">
+                <div class="industry-preview-image">
+                    <!-- Replace with actual image: images/industries/education-classroom.jpg -->
+                    <span>Image: Modern University Classroom</span>
+                </div>
+                <div class="industry-preview-content">
+                    <h3>Higher Education</h3>
+                    <p>Universities and colleges requiring MERV 13+ filtration for classrooms, labs, and dormitories</p>
+                </div>
+            </div>
+
+            <div class="industry-preview-card" onclick="openTab(event, 'schools')">
+                <div class="industry-preview-image">
+                    <!-- Replace with actual image: images/industries/k12-school-hallway.jpg -->
+                    <span>Image: K-12 School Hallway</span>
+                </div>
+                <div class="industry-preview-content">
+                    <h3>K-12 Schools</h3>
+                    <p>Elementary through high schools needing superior air quality for student health and performance</p>
+                </div>
+            </div>
+
+            <div class="industry-preview-card" onclick="openTab(event, 'healthcare')">
+                <div class="industry-preview-image">
+                    <!-- Replace with actual image: images/industries/hospital-corridor.jpg -->
+                    <span>Image: Hospital Corridor</span>
+                </div>
+                <div class="industry-preview-content">
+                    <h3>Healthcare & Senior Living</h3>
+                    <p>Hospitals and care facilities requiring HEPA and MERV 14+ for infection control</p>
+                </div>
+            </div>
+
+            <div class="industry-preview-card" onclick="openTab(event, 'government')">
+                <div class="industry-preview-image">
+                    <!-- Replace with actual image: images/industries/office-building.jpg -->
+                    <span>Image: Government Office Building</span>
+                </div>
+                <div class="industry-preview-content">
+                    <h3>Government & Commercial</h3>
+                    <p>Office buildings and public facilities meeting ASHRAE standards for occupant health</p>
+                </div>
+            </div>
+
+            <div class="industry-preview-card" onclick="openTab(event, 'libraries')">
+                <div class="industry-preview-image">
+                    <!-- Replace with actual image: images/industries/library-interior.jpg -->
+                    <span>Image: Library Interior</span>
+                </div>
+                <div class="industry-preview-content">
+                    <h3>Libraries & Museums</h3>
+                    <p>Cultural institutions protecting collections with specialized filtration systems</p>
+                </div>
+            </div>
+
+            <div class="industry-preview-card" onclick="openTab(event, 'manufacturing')">
+                <div class="industry-preview-image">
+                    <!-- Replace with actual image: images/industries/manufacturing-floor.jpg -->
+                    <span>Image: Manufacturing Floor</span>
+                </div>
+                <div class="industry-preview-content">
+                    <h3>Manufacturing</h3>
+                    <p>Industrial facilities requiring process filtration and worker protection</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Industries Tabs Section -->
@@ -386,7 +577,7 @@
         <!-- Education Tab -->
         <div id="education" class="tab-content active">
             <div class="industry-header">
-                <div class="industry-icon">🎓</div>
+                <img src="images/industries/education-icon.jpg" alt="Higher Education Facilities" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Higher Education Facilities</h2>
                     <p>Creating optimal learning environments through superior air quality</p>
@@ -408,9 +599,6 @@
                         <li><strong>Kitchen & Food Service:</strong> Grease filtration and odor control for dining facilities</li>
                         <li><strong>Science Buildings:</strong> Enhanced filtration with fume hood exhaust considerations</li>
                     </ul>
-
-                    <h3>Key Applications</h3>
-                    <p>We provide specialized solutions for classrooms, lecture halls, science buildings with laboratories, libraries and study areas, student housing and dormitories, athletic complexes and gyms, administration buildings, and food service facilities.</p>
                 </div>
 
                 <div class="highlights-box">
@@ -441,12 +629,47 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Image Gallery for Education -->
+            <div class="industry-images">
+                <h3>Application Examples</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>📚</span>
+                            <span>Classroom HVAC System</span>
+                        </div>
+                        <div class="gallery-item-caption">Modern classroom with MERV 13 filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>🔬</span>
+                            <span>Science Lab Filtration</span>
+                        </div>
+                        <div class="gallery-item-caption">Laboratory with fume hood exhaust systems</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>🏫</span>
+                            <span>Library Air Quality</span>
+                        </div>
+                        <div class="gallery-item-caption">University library with enhanced IAQ</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>🏢</span>
+                            <span>Dormitory Systems</span>
+                        </div>
+                        <div class="gallery-item-caption">Student housing ventilation upgrade</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Healthcare Tab -->
         <div id="healthcare" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🏥</div>
+                <img src="images/industries/healthcare-icon.jpg" alt="Healthcare Facilities" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Healthcare & Senior Living</h2>
                     <p>Critical infection control and patient comfort through advanced filtration</p>
@@ -468,9 +691,6 @@
                         <li><strong>Molecular Filtration:</strong> Odor and VOC removal for patient comfort</li>
                         <li><strong>Senior Living Solutions:</strong> Graduated filtration from independent to skilled nursing</li>
                     </ul>
-
-                    <h3>Facility Types We Serve</h3>
-                    <p>Hospitals and medical centers, surgical centers and operating rooms, nursing homes and skilled nursing facilities, assisted living communities, independent living apartments, rehabilitation centers, and medical office buildings.</p>
                 </div>
 
                 <div class="highlights-box">
@@ -501,12 +721,49 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Image Gallery for Healthcare -->
+            <div class="industry-images">
+                <h3>Healthcare Applications</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>🏥</span>
+                            <span>Hospital HVAC</span>
+                        </div>
+                        <div class="gallery-item-caption">Hospital corridor with MERV 14 filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>💊</span>
+                            <span>Operating Room</span>
+                        </div>
+                        <div class="gallery-item-caption">Surgical suite with HEPA filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>🛏️</span>
+                            <span>Patient Room</span>
+                        </div>
+                        <div class="gallery-item-caption">Isolation room with negative pressure</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span>👥</span>
+                            <span>Senior Living</span>
+                        </div>
+                        <div class="gallery-item-caption">Assisted living common area</div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- Other tabs would follow the same pattern... -->
 
         <!-- Government/Commercial Tab -->
         <div id="government" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🏛️</div>
+                <div class="industry-header-image">🏛️</div>
                 <div class="industry-title">
                     <h2>Government & Commercial Buildings</h2>
                     <p>Protecting occupants and equipment in office and public spaces</p>
@@ -566,7 +823,7 @@
         <!-- Manufacturing Tab -->
         <div id="manufacturing" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🏭</div>
+                <div class="industry-header-image">🏭</div>
                 <div class="industry-title">
                     <h2>Manufacturing & Industrial</h2>
                     <p>Specialized filtration for process control and worker protection</p>
@@ -627,7 +884,7 @@
         <!-- K-12 Schools Tab -->
         <div id="schools" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🏫</div>
+                <div class="industry-header-image">🏫</div>
                 <div class="industry-title">
                     <h2>K-12 Schools & Districts</h2>
                     <p>Protecting young learners through superior classroom air quality</p>
@@ -687,7 +944,7 @@
         <!-- Libraries & Museums Tab -->
         <div id="libraries" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">📚</div>
+                <div class="industry-header-image">📚</div>
                 <div class="industry-title">
                     <h2>Libraries, Archives & Museums</h2>
                     <p>Preserving collections and protecting visitors through controlled environments</p>
@@ -747,7 +1004,7 @@
         <!-- Indoor Firing Ranges Tab -->
         <div id="firing-ranges" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🎯</div>
+                <div class="industry-header-image">🎯</div>
                 <div class="industry-title">
                     <h2>Indoor Firing Ranges</h2>
                     <p>Critical lead containment and worker protection systems</p>
@@ -807,7 +1064,7 @@
         <!-- Airborne Infection Control Tab -->
         <div id="infection-control" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🦠</div>
+                <div class="industry-header-image">🦠</div>
                 <div class="industry-title">
                     <h2>Airborne Infection Control</h2>
                     <p>Enhanced filtration for pandemic preparedness and disease prevention</p>
@@ -867,7 +1124,7 @@
         <!-- Cannabis Cultivation Tab -->
         <div id="cannabis" class="tab-content">
             <div class="industry-header">
-                <div class="industry-icon">🌿</div>
+                <div class="industry-header-image">🌿</div>
                 <div class="industry-title">
                     <h2>Cannabis Cultivation Facilities</h2>
                     <p>Specialized climate control and odor management systems</p>
@@ -951,7 +1208,21 @@
 
             // Show the selected tab and mark button as active
             document.getElementById(tabName).classList.add('active');
-            evt.currentTarget.classList.add('active');
+            if (evt.currentTarget.classList) {
+                evt.currentTarget.classList.add('active');
+            }
+
+            // Scroll to tabs if clicking from preview card
+            if (evt.currentTarget.classList && evt.currentTarget.classList.contains('industry-preview-card')) {
+                document.querySelector('.industries-section').scrollIntoView({ behavior: 'smooth' });
+                // Find and activate the corresponding tab button
+                const tabs = document.querySelectorAll('.tab-button');
+                tabs.forEach(tab => {
+                    if (tab.textContent.includes(tabName.charAt(0).toUpperCase())) {
+                        tab.classList.add('active');
+                    }
+                });
+            }
         }
     </script>
 </body>
