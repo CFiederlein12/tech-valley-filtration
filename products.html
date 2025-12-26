@@ -152,6 +152,28 @@
             color: white;
             padding: 2rem;
             text-align: center;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Product Image Styling */
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+        }
+
+        .product-header-content {
+            position: relative;
+            z-index: 1;
         }
 
         .product-icon {
@@ -394,11 +416,12 @@
             <!-- Pleated Filters -->
             <div class="product-card" id="pleated">
                 <div class="product-header">
-                    <div class="about-image">
-    <img src="ImageAssets/pleaed filter.jpg" alt="Tech Valley Filtration" style="max-width: 100%; height: auto;">
-</div>
-                    <h3>Pleated Filters</h3>
-                    <p class="product-subtitle">Standard & Custom Configurations</p>
+                    <img src="ImageAssets/pleated-filter.jpg" alt="Pleated Filter" class="product-image" onerror="this.style.display='none'">
+                    <div class="product-header-content">
+                        <div class="product-icon">🔍</div>
+                        <h3>Pleated Filters</h3>
+                        <p class="product-subtitle">Standard & Custom Configurations</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>High-efficiency pleated filters offering superior dust-holding capacity and extended service life for commercial and residential HVAC systems.</p>
@@ -431,9 +454,11 @@
             <!-- Bag/Pocket Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-icon">💜</div>
-                    <h3>Bag & Pocket Filters</h3>
-                    <p class="product-subtitle">Extended Surface Area</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">💜</div>
+                        <h3>Bag & Pocket Filters</h3>
+                        <p class="product-subtitle">Extended Surface Area</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>High-capacity bag filters with extended surface area for longer service life and superior dust-holding capacity in large commercial HVAC systems.</p>
@@ -465,12 +490,13 @@
 
             <!-- Carbon Filters -->
             <div class="product-card">
-                <div class="product-header"
-                    <div class="about-image">
-    <img src="ImageAssets/carbon .jpg" alt="Tech Valley Filtration" style="max-width: 100%; height: auto;">
-</div>
-                    <h3>Carbon Filters</h3>
-                    <p class="product-subtitle">Gas Phase & Odor Control</p>
+                <div class="product-header">
+                    <img src="ImageAssets/carbon.jpg" alt="Carbon Filter" class="product-image" onerror="this.style.display='none'">
+                    <div class="product-header-content">
+                        <div class="product-icon">⚗️</div>
+                        <h3>Carbon Filters</h3>
+                        <p class="product-subtitle">Gas Phase & Odor Control</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>Activated carbon and CarbonWeb® media filters from DMARK for removing gases, odors, and volatile organic compounds from air streams.</p>
@@ -503,9 +529,11 @@
             <!-- Rigid Box/Mini-Pleat/V-Bank -->
             <div class="product-card" id="merv">
                 <div class="product-header">
-                    <div class="product-icon">📦</div>
-                    <h3>Rigid Box / Mini-Pleat / V-Bank Filters</h3>
-                    <p class="product-subtitle">High-Efficiency Commercial Systems</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">📦</div>
+                        <h3>Rigid Box / Mini-Pleat / V-Bank Filters</h3>
+                        <p class="product-subtitle">High-Efficiency Commercial Systems</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>Rigid construction filters with plastic or metal frames designed for high-efficiency applications requiring superior performance and durability.</p>
@@ -538,9 +566,11 @@
             <!-- HEPA Filters -->
             <div class="product-card" id="hepa">
                 <div class="product-header">
-                    <div class="product-icon">🔬</div>
-                    <h3>HEPA Filters</h3>
-                    <p class="product-subtitle">Maximum Efficiency Particulate Removal</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">🔬</div>
+                        <h3>HEPA Filters</h3>
+                        <p class="product-subtitle">Maximum Efficiency Particulate Removal</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>True HEPA filters providing the highest level of particulate removal for critical environments including healthcare, laboratories, and cleanrooms.</p>
@@ -573,9 +603,11 @@
             <!-- Link/Panel Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-icon">🔗</div>
-                    <h3>Link & Panel Filters</h3>
-                    <p class="product-subtitle">Pre-Filtration & Basic Protection</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">🔗</div>
+                        <h3>Link & Panel Filters</h3>
+                        <p class="product-subtitle">Pre-Filtration & Basic Protection</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>Economy-grade fiberglass and synthetic panel filters for basic pre-filtration and equipment protection in commercial and industrial applications.</p>
@@ -608,9 +640,11 @@
             <!-- Metal Washable Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-icon">♻️</div>
-                    <h3>Metal Washable Filters</h3>
-                    <p class="product-subtitle">Reusable & Sustainable</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">♻️</div>
+                        <h3>Metal Washable Filters</h3>
+                        <p class="product-subtitle">Reusable & Sustainable</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>Durable aluminum and stainless steel mesh filters designed for repeated washing and reuse, providing long-term cost savings and sustainability.</p>
@@ -643,9 +677,11 @@
             <!-- Cartridge Filters -->
             <div class="product-card" id="industrial">
                 <div class="product-header">
-                    <div class="product-icon">🔧</div>
-                    <h3>Cartridge Filters</h3>
-                    <p class="product-subtitle">Industrial Dust Collection</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">🔧</div>
+                        <h3>Cartridge Filters</h3>
+                        <p class="product-subtitle">Industrial Dust Collection</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>Cylindrical cartridge filters for industrial dust collection systems, powder handling, and specialized process applications requiring high-efficiency removal.</p>
@@ -688,9 +724,11 @@
             <!-- V-Belts -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-icon">⚙️</div>
-                    <h3>V-Belts & Power Transmission</h3>
-                    <p class="product-subtitle">Bestorq High-Performance Belts</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">⚙️</div>
+                        <h3>V-Belts & Power Transmission</h3>
+                        <p class="product-subtitle">Bestorq High-Performance Belts</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>High-quality power transmission belts from Bestorq, specializing in energy-saving and long-life V-belts with exceptional durability for air handling units.</p>
@@ -723,9 +761,11 @@
             <!-- UVC Systems -->
             <div class="product-card" id="uvc">
                 <div class="product-header">
-                    <div class="product-icon">💡</div>
-                    <h3>UVC Disinfection Systems</h3>
-                    <p class="product-subtitle">American Ultraviolet Technology</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">💡</div>
+                        <h3>UVC Disinfection Systems</h3>
+                        <p class="product-subtitle">American Ultraviolet Technology</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>Leading UV technology from American Ultraviolet, offering germicidal UVC fixtures for disinfecting air, surfaces, and liquids with proven effectiveness.</p>
@@ -758,9 +798,11 @@
             <!-- PreVent Screens -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-icon">🛡️</div>
-                    <h3>PreVent Air Intake Screens</h3>
-                    <p class="product-subtitle">Permatron HVAC Protection</p>
+                    <div class="product-header-content">
+                        <div class="product-icon">🛡️</div>
+                        <h3>PreVent Air Intake Screens</h3>
+                        <p class="product-subtitle">Permatron HVAC Protection</p>
+                    </div>
                 </div>
                 <div class="product-body">
                     <p>PreVent air intake filter screens protect HVAC systems from airborne debris like cottonwood, bugs, and leaves, extending equipment life and reducing maintenance.</p>
