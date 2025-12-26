@@ -150,30 +150,22 @@
         .product-header {
             background: linear-gradient(135deg, #1e40af, #059669);
             color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-            position: relative;
-            min-height: 200px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
         }
 
-        /* Product Image Styling */
-        .product-image {
+        .product-header img {
             width: 100%;
-            height: 200px;
+            max-width: 150px;
+            height: 120px;
             object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0.3;
-        }
-
-        .product-header-content {
-            position: relative;
-            z-index: 1;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: white;
+            padding: 4px;
         }
 
         .product-icon {
@@ -416,7 +408,7 @@
             <!-- Pleated Filters -->
             <div class="product-card" id="pleated">
                 <div class="product-header">
-                    <img src="ImageAssets/pleaed%20filter.jpg" alt="Pleated Filter" style="width: 100%; max-width: 200px; height: auto; margin-bottom: 1rem;">
+                    <img src="ImageAssets/pleaed%20filter.jpg" alt="Pleated Filter">
                     <h3>Pleated Filters</h3>
                     <p class="product-subtitle">Standard & Custom Configurations</p>
                 </div>
@@ -451,11 +443,9 @@
             <!-- Bag/Pocket Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <div class="product-header-content">
-                        <div class="product-icon">💜</div>
-                        <h3>Bag & Pocket Filters</h3>
-                        <p class="product-subtitle">Extended Surface Area</p>
-                    </div>
+                    <div class="product-icon">💜</div>
+                    <h3>Bag & Pocket Filters</h3>
+                    <p class="product-subtitle">Extended Surface Area</p>
                 </div>
                 <div class="product-body">
                     <p>High-capacity bag filters with extended surface area for longer service life and superior dust-holding capacity in large commercial HVAC systems.</p>
@@ -488,7 +478,7 @@
             <!-- Carbon Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <img src="ImageAssets/carbon%20.jpg" alt="Carbon Filter" style="width: 100%; max-width: 200px; height: auto; margin-bottom: 1rem;">
+                    <img src="ImageAssets/carbon%20.jpg" alt="Carbon Filter">
                     <h3>Carbon Filters</h3>
                     <p class="product-subtitle">Gas Phase & Odor Control</p>
                 </div>
@@ -597,10 +587,9 @@
             <!-- Link/Panel Filters -->
             <div class="product-card">
                 <div class="product-header">
-                    <img src="ImageAssets/link filter.jpg" alt="Product Name" style="width: 100%; max-width: 200px; height: auto; margin-bottom: 1rem;">
-                        <h3>Link & Panel Filters</h3>
-                        <p class="product-subtitle">Pre-Filtration & Basic Protection</p>
-                    </div>
+                    <img src="ImageAssets/link-filter.jpg" alt="Link Filter">
+                    <h3>Link & Panel Filters</h3>
+                    <p class="product-subtitle">Pre-Filtration & Basic Protection</p>
                 </div>
                 <div class="product-body">
                     <p>Economy-grade fiberglass and synthetic panel filters for basic pre-filtration and equipment protection in commercial and industrial applications.</p>
