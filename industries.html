@@ -78,7 +78,7 @@
         /* Hero Section with Background Image */
         .page-hero {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%),
-                        url('images/industries-hero-hvac-systems.jpg') center/cover;
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80&fit=crop') center/cover;
             color: white;
             padding: 4rem 2rem;
             text-align: center;
@@ -141,6 +141,14 @@
             justify-content: center;
             color: var(--gray);
             font-size: 0.875rem;
+            overflow: hidden;
+        }
+
+        .industry-preview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .industry-preview-content {
@@ -223,12 +231,7 @@
             height: 120px;
             border-radius: 12px;
             object-fit: cover;
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-size: 3rem;
+            flex-shrink: 0;
         }
 
         .industry-title h2 {
@@ -282,20 +285,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .gallery-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            color: var(--gray);
-            font-size: 0.875rem;
-            padding: 1rem;
-            text-align: center;
         }
 
         .gallery-item-caption {
@@ -473,19 +462,22 @@
     <section class="industries-preview">
         <h2>Select Your Industry</h2>
         <div class="industries-cards">
-<div class="industry-preview-card" onclick="openTab(event, 'education')">
-    <div class="industry-preview-image" style="padding: 0;">
-    <img src="ImageAssets/College-Univeristy-classroom.jpg" alt="Tech Valley Filtration" style="max-width: 100%; height: auto;">
-    </div>
-    <div class="industry-preview-content">
-        <h3>Higher Education</h3>
-        <p>Universities and colleges requiring MERV 13+ filtration for classrooms, labs, and dormitories</p>
-    </div>
-</div>
 
+            <!-- Higher Education -->
+            <div class="industry-preview-card" onclick="openTab(event, 'education')">
+                <div class="industry-preview-image">
+                    <img src="ImageAssets/College-Univeristy-classroom.jpg" alt="Higher Education Facilities">
+                </div>
+                <div class="industry-preview-content">
+                    <h3>Higher Education</h3>
+                    <p>Universities and colleges requiring MERV 13+ filtration for classrooms, labs, and dormitories</p>
+                </div>
+            </div>
+
+            <!-- K-12 Schools -->
             <div class="industry-preview-card" onclick="openTab(event, 'schools')">
                 <div class="industry-preview-image">
- <img src="ImageAssets/elementaryhall.jpg" alt="Tech Valley Filtration" style="max-width: 100%; height: auto;">
+                    <img src="ImageAssets/elementaryhall.jpg" alt="K-12 Schools">
                 </div>
                 <div class="industry-preview-content">
                     <h3>K-12 Schools</h3>
@@ -493,10 +485,10 @@
                 </div>
             </div>
 
+            <!-- Healthcare -->
             <div class="industry-preview-card" onclick="openTab(event, 'healthcare')">
                 <div class="industry-preview-image">
-                    <!-- Replace with actual image: images/industries/hospital-corridor.jpg -->
-                    <span>Image: Hospital Corridor</span>
+                    <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80&fit=crop" alt="Healthcare & Senior Living">
                 </div>
                 <div class="industry-preview-content">
                     <h3>Healthcare & Senior Living</h3>
@@ -504,10 +496,10 @@
                 </div>
             </div>
 
+            <!-- Government & Commercial -->
             <div class="industry-preview-card" onclick="openTab(event, 'government')">
                 <div class="industry-preview-image">
-                    <!-- Replace with actual image: images/industries/office-building.jpg -->
-                    <span>Image: Government Office Building</span>
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&fit=crop" alt="Government & Commercial Buildings">
                 </div>
                 <div class="industry-preview-content">
                     <h3>Government & Commercial</h3>
@@ -515,10 +507,10 @@
                 </div>
             </div>
 
+            <!-- Libraries & Museums -->
             <div class="industry-preview-card" onclick="openTab(event, 'libraries')">
                 <div class="industry-preview-image">
-                    <!-- Replace with actual image: images/industries/library-interior.jpg -->
-                    <span>Image: Library Interior</span>
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80&fit=crop" alt="Libraries & Museums">
                 </div>
                 <div class="industry-preview-content">
                     <h3>Libraries & Museums</h3>
@@ -526,16 +518,17 @@
                 </div>
             </div>
 
+            <!-- Manufacturing -->
             <div class="industry-preview-card" onclick="openTab(event, 'manufacturing')">
                 <div class="industry-preview-image">
-                    <!-- Replace with actual image: images/industries/manufacturing-floor.jpg -->
-                    <span>Image: Manufacturing Floor</span>
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&fit=crop" alt="Manufacturing & Industrial">
                 </div>
                 <div class="industry-preview-content">
                     <h3>Manufacturing</h3>
                     <p>Industrial facilities requiring process filtration and worker protection</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -543,39 +536,21 @@
     <section class="industries-section">
         <!-- Tabs Navigation -->
         <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'education')">
-                Higher Education
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'schools')">
-                K-12 Schools
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'healthcare')">
-                Healthcare & Senior Living
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'government')">
-                Government & Commercial
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'libraries')">
-                Libraries & Museums
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'manufacturing')">
-                Manufacturing
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'firing-ranges')">
-                Indoor Firing Ranges
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'infection-control')">
-                Infection Control
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'cannabis')">
-                Cannabis Cultivation
-            </button>
+            <button class="tab-button active" onclick="openTab(event, 'education')">Higher Education</button>
+            <button class="tab-button" onclick="openTab(event, 'schools')">K-12 Schools</button>
+            <button class="tab-button" onclick="openTab(event, 'healthcare')">Healthcare & Senior Living</button>
+            <button class="tab-button" onclick="openTab(event, 'government')">Government & Commercial</button>
+            <button class="tab-button" onclick="openTab(event, 'libraries')">Libraries & Museums</button>
+            <button class="tab-button" onclick="openTab(event, 'manufacturing')">Manufacturing</button>
+            <button class="tab-button" onclick="openTab(event, 'firing-ranges')">Indoor Firing Ranges</button>
+            <button class="tab-button" onclick="openTab(event, 'infection-control')">Infection Control</button>
+            <button class="tab-button" onclick="openTab(event, 'cannabis')">Cannabis Cultivation</button>
         </div>
 
         <!-- Education Tab -->
         <div id="education" class="tab-content active">
             <div class="industry-header">
-                <img src="images/industries/education-icon.jpg" alt="Higher Education Facilities" class="industry-header-image">
+                <img src="ImageAssets/College-Univeristy-classroom.jpg" alt="Higher Education Facilities" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Higher Education Facilities</h2>
                     <p>Creating optimal learning environments through superior air quality</p>
@@ -586,9 +561,7 @@
                 <div class="main-content">
                     <h3>Why Clean Air Matters in Education</h3>
                     <p>Research shows that cleaner air directly improves student learning and performance. Educational facilities face unique challenges with diverse building types, high occupancy, and varying air quality needs across classrooms, science labs, libraries, dormitories, and athletic facilities.</p>
-
                     <p>Without proper filtration and maintenance, HVAC systems deteriorate, leading to costly repairs and increased operating costs. Proper air filtration is an investment in both student health and long-term facility sustainability.</p>
-
                     <h3>Our Recommended Filtration Standards</h3>
                     <ul>
                         <li><strong>MERV 13 or Higher:</strong> Removes 90% or greater of particles in the 3-10 micron range, including allergens, dust, and common airborne contaminants</li>
@@ -598,28 +571,23 @@
                         <li><strong>Science Buildings:</strong> Enhanced filtration with fume hood exhaust considerations</li>
                     </ul>
                 </div>
-
                 <div class="highlights-box">
                     <h4>Key Standards</h4>
-                    
                     <div class="highlight-item">
                         <div class="highlight-label">Recommended Filter Rating</div>
                         <div class="highlight-value">MERV 13+</div>
                         <div class="highlight-desc">For general classrooms and occupied spaces</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Special Areas</div>
                         <div class="highlight-value">MERV 14</div>
                         <div class="highlight-desc">Science labs, data centers, server rooms</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Benefits</div>
                         <div class="highlight-value">Better Learning</div>
                         <div class="highlight-desc">Improved student performance and attendance</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Standards Based On</div>
                         <div class="highlight-value">NAFA Guidelines</div>
@@ -628,252 +596,24 @@
                 </div>
             </div>
 
-            <!-- Image Gallery for Education -->
             <div class="industry-images">
                 <h3>Application Examples</h3>
                 <div class="image-gallery">
                     <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>📚</span>
-                            <span>Classroom HVAC System</span>
-                        </div>
+                        <img src="ImageAssets/College-Univeristy-classroom.jpg" alt="University Classroom">
                         <div class="gallery-item-caption">Modern classroom with MERV 13 filtration</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>🔬</span>
-                            <span>Science Lab Filtration</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600&q=80&fit=crop" alt="Science Lab">
                         <div class="gallery-item-caption">Laboratory with fume hood exhaust systems</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>🏫</span>
-                            <span>Library Air Quality</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80&fit=crop" alt="University Library">
                         <div class="gallery-item-caption">University library with enhanced IAQ</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>🏢</span>
-                            <span>Dormitory Systems</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80&fit=crop" alt="Dormitory">
                         <div class="gallery-item-caption">Student housing ventilation upgrade</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Healthcare Tab -->
-        <div id="healthcare" class="tab-content">
-            <div class="industry-header">
-                <img src="images/industries/healthcare-icon.jpg" alt="Healthcare Facilities" class="industry-header-image">
-                <div class="industry-title">
-                    <h2>Healthcare & Senior Living</h2>
-                    <p>Critical infection control and patient comfort through advanced filtration</p>
-                </div>
-            </div>
-
-            <div class="content-grid">
-                <div class="main-content">
-                    <h3>Why Healthcare Needs Superior Filtration</h3>
-                    <p>Healthcare facilities, hospitals, surgical centers, and senior living communities require the highest standards of air quality. Infection control is paramount, and proper filtration plays a critical role in preventing the spread of airborne pathogens, protecting immunocompromised patients, and maintaining regulatory compliance.</p>
-
-                    <p>Elderly residents and patients with compromised immune systems are particularly vulnerable to airborne contaminants. As we age, the body's ability to cope with harmful air pollutants decreases, making superior air quality essential for health and recovery.</p>
-
-                    <h3>Our Healthcare Filtration Solutions</h3>
-                    <ul>
-                        <li><strong>MERV 14 Filtration:</strong> Removes 90% of particles in the 1.0-3.0 micron range, critical for infection control</li>
-                        <li><strong>HEPA Systems:</strong> 99.97% efficiency at 0.3 microns for isolation rooms and surgical areas</li>
-                        <li><strong>UV-C Disinfection:</strong> Additional pathogen elimination for enhanced patient protection</li>
-                        <li><strong>Molecular Filtration:</strong> Odor and VOC removal for patient comfort</li>
-                        <li><strong>Senior Living Solutions:</strong> Graduated filtration from independent to skilled nursing</li>
-                    </ul>
-                </div>
-
-                <div class="highlights-box">
-                    <h4>Key Standards</h4>
-                    
-                    <div class="highlight-item">
-                        <div class="highlight-label">Independent Living</div>
-                        <div class="highlight-value">MERV 13</div>
-                        <div class="highlight-desc">For active senior apartments</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Assisted Living</div>
-                        <div class="highlight-value">MERV 14</div>
-                        <div class="highlight-desc">Enhanced protection for vulnerable residents</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Skilled Nursing</div>
-                        <div class="highlight-value">MERV 14+</div>
-                        <div class="highlight-desc">Hospital-grade infection control</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Critical Areas</div>
-                        <div class="highlight-value">HEPA</div>
-                        <div class="highlight-desc">99.97% efficiency for isolation and surgical areas</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image Gallery for Healthcare -->
-            <div class="industry-images">
-                <h3>Healthcare Applications</h3>
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>🏥</span>
-                            <span>Hospital HVAC</span>
-                        </div>
-                        <div class="gallery-item-caption">Hospital corridor with MERV 14 filtration</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>💊</span>
-                            <span>Operating Room</span>
-                        </div>
-                        <div class="gallery-item-caption">Surgical suite with HEPA filtration</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>🛏️</span>
-                            <span>Patient Room</span>
-                        </div>
-                        <div class="gallery-item-caption">Isolation room with negative pressure</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <span>👥</span>
-                            <span>Senior Living</span>
-                        </div>
-                        <div class="gallery-item-caption">Assisted living common area</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Other tabs would follow the same pattern... -->
-
-        <!-- Government/Commercial Tab -->
-        <div id="government" class="tab-content">
-            <div class="industry-header">
-                <div class="industry-header-image">🏛️</div>
-                <div class="industry-title">
-                    <h2>Government & Commercial Buildings</h2>
-                    <p>Protecting occupants and equipment in office and public spaces</p>
-                </div>
-            </div>
-
-            <div class="content-grid">
-                <div class="main-content">
-                    <h3>Indoor Air Quality for Productivity</h3>
-                    <p>The quality of air in commercial buildings has a significant impact on human health, comfort, and productivity. Poor indoor air quality leads to discomfort, illness, absenteeism, and reduced productivity, making it an important occupational and environmental health issue.</p>
-
-                    <p>Modern office buildings face increasing IAQ challenges from tighter sealing for energy conservation, synthetic materials, office equipment (printers, copiers, computers), cleaning products, and outdoor air pollution. Common contaminants include allergens, gases, bioaerosols (viruses, bacteria), and fine particles under 2.5 microns (PM2.5).</p>
-
-                    <h3>Commercial Filtration Best Practices</h3>
-                    <ul>
-                        <li><strong>MERV 8 Minimum Standard:</strong> Required by ASHRAE 62.1 for acceptable indoor air quality</li>
-                        <li><strong>MERV 13 Recommended:</strong> Best practice for superior occupant health and comfort</li>
-                        <li><strong>Equipment Rooms:</strong> Enhanced filtration for data centers and server rooms</li>
-                        <li><strong>Renovation Protection:</strong> Temporary filtration during construction activities</li>
-                        <li><strong>Energy Efficiency:</strong> Balanced approach to clean air and operating costs</li>
-                    </ul>
-
-                    <h3>Facilities We Support</h3>
-                    <p>Government office buildings, municipal facilities, courthouses and legal buildings, transportation hubs (airports, transit stations), commercial office towers, retail spaces, restaurants and hospitality, and places of public assembly.</p>
-                </div>
-
-                <div class="highlights-box">
-                    <h4>Key Standards</h4>
-                    
-                    <div class="highlight-item">
-                        <div class="highlight-label">ASHRAE Minimum</div>
-                        <div class="highlight-value">MERV 8</div>
-                        <div class="highlight-desc">Required by Standard 62.1</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Best Practice</div>
-                        <div class="highlight-value">MERV 13</div>
-                        <div class="highlight-desc">NAFA recommended for commercial spaces</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Benefits</div>
-                        <div class="highlight-value">20% More</div>
-                        <div class="highlight-desc">Potential productivity gains from better IAQ</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Compliance</div>
-                        <div class="highlight-value">ASHRAE 62.1</div>
-                        <div class="highlight-desc">Ventilation for Acceptable Indoor Air Quality</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Manufacturing Tab -->
-        <div id="manufacturing" class="tab-content">
-            <div class="industry-header">
-                <div class="industry-header-image">🏭</div>
-                <div class="industry-title">
-                    <h2>Manufacturing & Industrial</h2>
-                    <p>Specialized filtration for process control and worker protection</p>
-                </div>
-            </div>
-
-            <div class="content-grid">
-                <div class="main-content">
-                    <h3>Industrial Air Quality Challenges</h3>
-                    <p>Manufacturing facilities face unique air quality challenges including process-generated particulates, chemical vapors, temperature and humidity control requirements, and regulatory compliance. Proper filtration protects both workers and sensitive manufacturing processes while maintaining equipment efficiency.</p>
-
-                    <p>Different industrial applications require specialized filtration approaches. From food processing requiring sanitary conditions to aerospace requiring stringent overspray control, we provide solutions tailored to your specific manufacturing environment.</p>
-
-                    <h3>Industrial Filtration Solutions</h3>
-                    <ul>
-                        <li><strong>Process Filtration:</strong> Custom solutions for manufacturing-specific contaminants</li>
-                        <li><strong>Paint Booth Overspray:</strong> EPA Method 319 compliant systems for aerospace and automotive</li>
-                        <li><strong>Food Manufacturing:</strong> Sanitary design meeting FDA requirements</li>
-                        <li><strong>HEPA Filtration:</strong> Critical for semiconductor, pharmaceutical, and cleanroom applications</li>
-                        <li><strong>Dust Collection:</strong> Particulate control for woodworking, metalworking, and powder handling</li>
-                        <li><strong>Molecular Filtration:</strong> Chemical vapor and odor removal</li>
-                    </ul>
-
-                    <h3>Industries We Serve</h3>
-                    <p>Food and beverage processing, pharmaceutical manufacturing, automotive and aerospace, semiconductor and electronics, chemical processing, metalworking and fabrication, woodworking, and general manufacturing.</p>
-                </div>
-
-                <div class="highlights-box">
-                    <h4>Key Standards</h4>
-                    
-                    <div class="highlight-item">
-                        <div class="highlight-label">General Manufacturing</div>
-                        <div class="highlight-value">MERV 11-14</div>
-                        <div class="highlight-desc">Based on process requirements</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Paint Booths</div>
-                        <div class="highlight-value">EPA 319</div>
-                        <div class="highlight-desc">Aerospace overspray compliance</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Cleanrooms</div>
-                        <div class="highlight-value">HEPA</div>
-                        <div class="highlight-desc">99.97% at 0.3 microns</div>
-                    </div>
-
-                    <div class="highlight-item">
-                        <div class="highlight-label">Compliance</div>
-                        <div class="highlight-value">OSHA/EPA</div>
-                        <div class="highlight-desc">Worker safety and environmental standards</div>
                     </div>
                 </div>
             </div>
@@ -882,7 +622,7 @@
         <!-- K-12 Schools Tab -->
         <div id="schools" class="tab-content">
             <div class="industry-header">
-                <div class="industry-header-image">🏫</div>
+                <img src="ImageAssets/elementaryhall.jpg" alt="K-12 Schools" class="industry-header-image">
                 <div class="industry-title">
                     <h2>K-12 Schools & Districts</h2>
                     <p>Protecting young learners through superior classroom air quality</p>
@@ -893,9 +633,7 @@
                 <div class="main-content">
                     <h3>Why Schools Need Clean Air</h3>
                     <p>Children are more vulnerable to poor air quality than adults, with developing respiratory systems and higher breathing rates. Research consistently shows that better air quality in classrooms leads to improved student performance, better attendance, and enhanced learning outcomes.</p>
-
                     <p>K-12 facilities face unique challenges with high occupancy density, diverse building types (classrooms, gyms, cafeterias, science labs), and varying ages of HVAC systems. Proper filtration protects both students and staff while reducing absenteeism and improving concentration.</p>
-
                     <h3>School Filtration Best Practices</h3>
                     <ul>
                         <li><strong>MERV 13 Minimum:</strong> Recommended for all classrooms and occupied learning spaces</li>
@@ -904,36 +642,198 @@
                         <li><strong>Gymnasiums & Cafeterias:</strong> Higher air change rates with appropriate filtration</li>
                         <li><strong>Renovation Protection:</strong> Temporary HEPA filtration during construction projects</li>
                     </ul>
-
                     <h3>Applications</h3>
                     <p>Elementary schools, middle schools, high schools, vocational tech centers, district administration buildings, gymnasiums and athletic facilities, performing arts centers, and school libraries.</p>
                 </div>
-
                 <div class="highlights-box">
                     <h4>Key Standards</h4>
-                    
                     <div class="highlight-item">
                         <div class="highlight-label">Classrooms</div>
                         <div class="highlight-value">MERV 13</div>
                         <div class="highlight-desc">For optimal learning environment</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Special Spaces</div>
                         <div class="highlight-value">MERV 14</div>
                         <div class="highlight-desc">Science labs and mechanical rooms</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Benefits</div>
                         <div class="highlight-value">Improved Learning</div>
                         <div class="highlight-desc">Better test scores and attendance</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Protection</div>
                         <div class="highlight-value">Vulnerable Youth</div>
                         <div class="highlight-desc">Children breathe faster than adults</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-images">
+                <h3>K-12 Application Examples</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="ImageAssets/elementaryhall.jpg" alt="Elementary School Hallway">
+                        <div class="gallery-item-caption">Elementary school with improved air quality</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80&fit=crop" alt="Classroom">
+                        <div class="gallery-item-caption">Classroom MERV 13 filtration system</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600&q=80&fit=crop" alt="Science Lab">
+                        <div class="gallery-item-caption">School science lab with enhanced filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80&fit=crop" alt="School Gymnasium">
+                        <div class="gallery-item-caption">Gymnasium ventilation and filtration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Healthcare Tab -->
+        <div id="healthcare" class="tab-content">
+            <div class="industry-header">
+                <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=300&q=80&fit=crop" alt="Healthcare Facilities" class="industry-header-image">
+                <div class="industry-title">
+                    <h2>Healthcare & Senior Living</h2>
+                    <p>Critical infection control and patient comfort through advanced filtration</p>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <h3>Why Healthcare Needs Superior Filtration</h3>
+                    <p>Healthcare facilities, hospitals, surgical centers, and senior living communities require the highest standards of air quality. Infection control is paramount, and proper filtration plays a critical role in preventing the spread of airborne pathogens, protecting immunocompromised patients, and maintaining regulatory compliance.</p>
+                    <p>Elderly residents and patients with compromised immune systems are particularly vulnerable to airborne contaminants. As we age, the body's ability to cope with harmful air pollutants decreases, making superior air quality essential for health and recovery.</p>
+                    <h3>Our Healthcare Filtration Solutions</h3>
+                    <ul>
+                        <li><strong>MERV 14 Filtration:</strong> Removes 90% of particles in the 1.0-3.0 micron range, critical for infection control</li>
+                        <li><strong>HEPA Systems:</strong> 99.97% efficiency at 0.3 microns for isolation rooms and surgical areas</li>
+                        <li><strong>UV-C Disinfection:</strong> Additional pathogen elimination for enhanced patient protection</li>
+                        <li><strong>Molecular Filtration:</strong> Odor and VOC removal for patient comfort</li>
+                        <li><strong>Senior Living Solutions:</strong> Graduated filtration from independent to skilled nursing</li>
+                    </ul>
+                </div>
+                <div class="highlights-box">
+                    <h4>Key Standards</h4>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Independent Living</div>
+                        <div class="highlight-value">MERV 13</div>
+                        <div class="highlight-desc">For active senior apartments</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Assisted Living</div>
+                        <div class="highlight-value">MERV 14</div>
+                        <div class="highlight-desc">Enhanced protection for vulnerable residents</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Skilled Nursing</div>
+                        <div class="highlight-value">MERV 14+</div>
+                        <div class="highlight-desc">Hospital-grade infection control</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Critical Areas</div>
+                        <div class="highlight-value">HEPA</div>
+                        <div class="highlight-desc">99.97% efficiency for isolation and surgical areas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-images">
+                <h3>Healthcare Applications</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80&fit=crop" alt="Hospital Corridor">
+                        <div class="gallery-item-caption">Hospital corridor with MERV 14 filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600&q=80&fit=crop" alt="Operating Room">
+                        <div class="gallery-item-caption">Surgical suite with HEPA filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80&fit=crop" alt="Patient Room">
+                        <div class="gallery-item-caption">Isolation room with negative pressure</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&fit=crop" alt="Senior Living">
+                        <div class="gallery-item-caption">Assisted living common area</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Government/Commercial Tab -->
+        <div id="government" class="tab-content">
+            <div class="industry-header">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80&fit=crop" alt="Government & Commercial Buildings" class="industry-header-image">
+                <div class="industry-title">
+                    <h2>Government & Commercial Buildings</h2>
+                    <p>Protecting occupants and equipment in office and public spaces</p>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <h3>Indoor Air Quality for Productivity</h3>
+                    <p>The quality of air in commercial buildings has a significant impact on human health, comfort, and productivity. Poor indoor air quality leads to discomfort, illness, absenteeism, and reduced productivity, making it an important occupational and environmental health issue.</p>
+                    <p>Modern office buildings face increasing IAQ challenges from tighter sealing for energy conservation, synthetic materials, office equipment (printers, copiers, computers), cleaning products, and outdoor air pollution. Common contaminants include allergens, gases, bioaerosols (viruses, bacteria), and fine particles under 2.5 microns (PM2.5).</p>
+                    <h3>Commercial Filtration Best Practices</h3>
+                    <ul>
+                        <li><strong>MERV 8 Minimum Standard:</strong> Required by ASHRAE 62.1 for acceptable indoor air quality</li>
+                        <li><strong>MERV 13 Recommended:</strong> Best practice for superior occupant health and comfort</li>
+                        <li><strong>Equipment Rooms:</strong> Enhanced filtration for data centers and server rooms</li>
+                        <li><strong>Renovation Protection:</strong> Temporary filtration during construction activities</li>
+                        <li><strong>Energy Efficiency:</strong> Balanced approach to clean air and operating costs</li>
+                    </ul>
+                    <h3>Facilities We Support</h3>
+                    <p>Government office buildings, municipal facilities, courthouses and legal buildings, transportation hubs (airports, transit stations), commercial office towers, retail spaces, restaurants and hospitality, and places of public assembly.</p>
+                </div>
+                <div class="highlights-box">
+                    <h4>Key Standards</h4>
+                    <div class="highlight-item">
+                        <div class="highlight-label">ASHRAE Minimum</div>
+                        <div class="highlight-value">MERV 8</div>
+                        <div class="highlight-desc">Required by Standard 62.1</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Best Practice</div>
+                        <div class="highlight-value">MERV 13</div>
+                        <div class="highlight-desc">NAFA recommended for commercial spaces</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Benefits</div>
+                        <div class="highlight-value">20% More</div>
+                        <div class="highlight-desc">Potential productivity gains from better IAQ</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Compliance</div>
+                        <div class="highlight-value">ASHRAE 62.1</div>
+                        <div class="highlight-desc">Ventilation for Acceptable Indoor Air Quality</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-images">
+                <h3>Commercial Application Examples</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&fit=crop" alt="Modern Office">
+                        <div class="gallery-item-caption">Open office with MERV 13 filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&fit=crop" alt="Government Building">
+                        <div class="gallery-item-caption">Government building air quality systems</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80&fit=crop" alt="Conference Room">
+                        <div class="gallery-item-caption">Conference room ventilation upgrade</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80&fit=crop" alt="Server Room">
+                        <div class="gallery-item-caption">Data center enhanced filtration</div>
                     </div>
                 </div>
             </div>
@@ -942,7 +842,7 @@
         <!-- Libraries & Museums Tab -->
         <div id="libraries" class="tab-content">
             <div class="industry-header">
-                <div class="industry-header-image">📚</div>
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&q=80&fit=crop" alt="Libraries & Museums" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Libraries, Archives & Museums</h2>
                     <p>Preserving collections and protecting visitors through controlled environments</p>
@@ -953,9 +853,7 @@
                 <div class="main-content">
                     <h3>Special Requirements for Cultural Institutions</h3>
                     <p>Libraries, archives, and museums require specialized filtration to protect irreplaceable collections from particulate damage while maintaining comfortable environments for visitors and staff. Proper air quality is essential for document preservation, artifact protection, and visitor health.</p>
-
                     <p>These facilities face unique challenges including paper degradation from particulates, temperature and humidity control for collection preservation, high public traffic areas, and the need to balance conservation requirements with visitor comfort.</p>
-
                     <h3>Filtration Solutions for Collections</h3>
                     <ul>
                         <li><strong>MERV 13-14 Standard:</strong> Removes particulates that can damage paper, textiles, and artifacts</li>
@@ -964,36 +862,127 @@
                         <li><strong>Storage Areas:</strong> Enhanced filtration to protect collections during storage</li>
                         <li><strong>Special Collections:</strong> HEPA filtration for rare books and sensitive materials</li>
                     </ul>
-
                     <h3>Facility Types</h3>
                     <p>Public libraries, university libraries, special collections, archives, museums, art galleries, historical societies, and rare book collections.</p>
                 </div>
-
                 <div class="highlights-box">
                     <h4>Key Standards</h4>
-                    
                     <div class="highlight-item">
                         <div class="highlight-label">Public Areas</div>
                         <div class="highlight-value">MERV 13</div>
                         <div class="highlight-desc">Reading rooms and galleries</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Collections Storage</div>
                         <div class="highlight-value">MERV 14</div>
                         <div class="highlight-desc">Archives and rare materials</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Molecular</div>
                         <div class="highlight-value">Gas Phase</div>
                         <div class="highlight-desc">Prevents paper degradation</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Goal</div>
                         <div class="highlight-value">Preservation</div>
                         <div class="highlight-desc">Protecting irreplaceable collections</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-images">
+                <h3>Library & Museum Applications</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80&fit=crop" alt="Library Interior">
+                        <div class="gallery-item-caption">Library reading room filtration system</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80&fit=crop" alt="Museum Gallery">
+                        <div class="gallery-item-caption">Museum gallery with humidity-controlled air</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1568667256531-f4da83b82b74?w=600&q=80&fit=crop" alt="Archive Storage">
+                        <div class="gallery-item-caption">Archive storage with MERV 14 protection</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&q=80&fit=crop" alt="Rare Books">
+                        <div class="gallery-item-caption">Rare book collection with HEPA filtration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manufacturing Tab -->
+        <div id="manufacturing" class="tab-content">
+            <div class="industry-header">
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=300&q=80&fit=crop" alt="Manufacturing & Industrial" class="industry-header-image">
+                <div class="industry-title">
+                    <h2>Manufacturing & Industrial</h2>
+                    <p>Specialized filtration for process control and worker protection</p>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <h3>Industrial Air Quality Challenges</h3>
+                    <p>Manufacturing facilities face unique air quality challenges including process-generated particulates, chemical vapors, temperature and humidity control requirements, and regulatory compliance. Proper filtration protects both workers and sensitive manufacturing processes while maintaining equipment efficiency.</p>
+                    <p>Different industrial applications require specialized filtration approaches. From food processing requiring sanitary conditions to aerospace requiring stringent overspray control, we provide solutions tailored to your specific manufacturing environment.</p>
+                    <h3>Industrial Filtration Solutions</h3>
+                    <ul>
+                        <li><strong>Process Filtration:</strong> Custom solutions for manufacturing-specific contaminants</li>
+                        <li><strong>Paint Booth Overspray:</strong> EPA Method 319 compliant systems for aerospace and automotive</li>
+                        <li><strong>Food Manufacturing:</strong> Sanitary design meeting FDA requirements</li>
+                        <li><strong>HEPA Filtration:</strong> Critical for semiconductor, pharmaceutical, and cleanroom applications</li>
+                        <li><strong>Dust Collection:</strong> Particulate control for woodworking, metalworking, and powder handling</li>
+                        <li><strong>Molecular Filtration:</strong> Chemical vapor and odor removal</li>
+                    </ul>
+                    <h3>Industries We Serve</h3>
+                    <p>Food and beverage processing, pharmaceutical manufacturing, automotive and aerospace, semiconductor and electronics, chemical processing, metalworking and fabrication, woodworking, and general manufacturing.</p>
+                </div>
+                <div class="highlights-box">
+                    <h4>Key Standards</h4>
+                    <div class="highlight-item">
+                        <div class="highlight-label">General Manufacturing</div>
+                        <div class="highlight-value">MERV 11-14</div>
+                        <div class="highlight-desc">Based on process requirements</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Paint Booths</div>
+                        <div class="highlight-value">EPA 319</div>
+                        <div class="highlight-desc">Aerospace overspray compliance</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Cleanrooms</div>
+                        <div class="highlight-value">HEPA</div>
+                        <div class="highlight-desc">99.97% at 0.3 microns</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Compliance</div>
+                        <div class="highlight-value">OSHA/EPA</div>
+                        <div class="highlight-desc">Worker safety and environmental standards</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-images">
+                <h3>Manufacturing Application Examples</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&fit=crop" alt="Factory Floor">
+                        <div class="gallery-item-caption">Factory floor with process filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=600&q=80&fit=crop" alt="Industrial Worker">
+                        <div class="gallery-item-caption">Worker protection with industrial filtration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=600&q=80&fit=crop" alt="Cleanroom">
+                        <div class="gallery-item-caption">Pharmaceutical cleanroom HEPA system</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1487537708693-4e52f3e57e62?w=600&q=80&fit=crop" alt="Industrial Equipment">
+                        <div class="gallery-item-caption">Paint booth overspray filtration</div>
                     </div>
                 </div>
             </div>
@@ -1002,7 +991,7 @@
         <!-- Indoor Firing Ranges Tab -->
         <div id="firing-ranges" class="tab-content">
             <div class="industry-header">
-                <div class="industry-header-image">🎯</div>
+                <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=300&q=80&fit=crop" alt="Indoor Firing Ranges" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Indoor Firing Ranges</h2>
                     <p>Critical lead containment and worker protection systems</p>
@@ -1013,9 +1002,7 @@
                 <div class="main-content">
                     <h3>Why Filtration is Critical</h3>
                     <p>Indoor firing ranges generate significant lead dust and toxic fumes from bullet discharge. OSHA mandates strict exposure limits (50 micrograms per cubic meter over 8 hours) to protect shooters and employees. Proper filtration is not optional - it's essential for regulatory compliance and occupant safety.</p>
-
                     <p>Lead exposure can cause serious health issues including fatigue, headaches, nervous system damage, and reproductive problems. Without proper filtration, lead particles accumulate in shooting stations, downrange areas, and target zones, creating hazardous conditions.</p>
-
                     <h3>Mandatory Filtration Requirements</h3>
                     <ul>
                         <li><strong>HEPA Filtration Required:</strong> 99.97% efficiency at 0.3 microns for exhaust air</li>
@@ -1024,32 +1011,26 @@
                         <li><strong>Molecular Filtration:</strong> Removes carbon monoxide and nitrogen oxides when recirculating</li>
                         <li><strong>Specialized Framing:</strong> HEPA-rated housings to prevent bypass leakage</li>
                     </ul>
-
                     <h3>Compliance & Safety</h3>
                     <p>All systems must meet OSHA standards, EPA regulations, and NIOSH guidelines. Regular filter monitoring, proper disposal procedures (RCRA hazardous waste), and certified installation testing are mandatory.</p>
                 </div>
-
                 <div class="highlights-box">
                     <h4>Key Standards</h4>
-                    
                     <div class="highlight-item">
                         <div class="highlight-label">Exhaust Air</div>
                         <div class="highlight-value">HEPA Required</div>
                         <div class="highlight-desc">99.97% at 0.3 microns mandatory</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Make-Up Air</div>
                         <div class="highlight-value">MERV 14</div>
                         <div class="highlight-desc">Clean breathing zone air</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">OSHA Limit</div>
                         <div class="highlight-value">50 μg/m³</div>
                         <div class="highlight-desc">Lead exposure limit (8-hour)</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Compliance</div>
                         <div class="highlight-value">Mandatory</div>
@@ -1062,7 +1043,7 @@
         <!-- Airborne Infection Control Tab -->
         <div id="infection-control" class="tab-content">
             <div class="industry-header">
-                <div class="industry-header-image">🦠</div>
+                <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300&q=80&fit=crop" alt="Airborne Infection Control" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Airborne Infection Control</h2>
                     <p>Enhanced filtration for pandemic preparedness and disease prevention</p>
@@ -1073,9 +1054,7 @@
                 <div class="main-content">
                     <h3>Post-COVID Air Quality Requirements</h3>
                     <p>The COVID-19 pandemic heightened awareness that indoor air quality is a critical health and safety concern. Airborne disease transmission occurs through aerosols and droplets that can remain suspended in air for extended periods. Proper filtration is now recognized as essential infrastructure for any occupied building.</p>
-
                     <p>Facilities requiring enhanced infection control include healthcare settings, schools, offices, transportation hubs, places of assembly, and any high-occupancy space. The combination of filtration, ventilation rates, and air changes per hour (ACH) determines infection risk reduction.</p>
-
                     <h3>Infection Control Solutions</h3>
                     <ul>
                         <li><strong>MERV 13+ Minimum:</strong> Captures most virus-laden particles in the 1-3 micron range</li>
@@ -1084,32 +1063,26 @@
                         <li><strong>UV-C Integration:</strong> Additional pathogen inactivation layer</li>
                         <li><strong>Increased ACH:</strong> Higher air change rates with proper filtration</li>
                     </ul>
-
                     <h3>Applications</h3>
                     <p>Healthcare waiting rooms, schools and universities, office buildings, airports and transit, restaurants and hospitality, elderly care facilities, and public assembly spaces.</p>
                 </div>
-
                 <div class="highlights-box">
                     <h4>Key Standards</h4>
-                    
                     <div class="highlight-item">
                         <div class="highlight-label">Minimum Recommended</div>
                         <div class="highlight-value">MERV 13</div>
                         <div class="highlight-desc">Post-COVID best practice</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Enhanced Protection</div>
                         <div class="highlight-value">MERV 14</div>
                         <div class="highlight-desc">Healthcare and high-risk areas</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Maximum Protection</div>
                         <div class="highlight-value">HEPA + UV-C</div>
                         <div class="highlight-desc">Isolation and critical care</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Goal</div>
                         <div class="highlight-value">Risk Reduction</div>
@@ -1122,7 +1095,7 @@
         <!-- Cannabis Cultivation Tab -->
         <div id="cannabis" class="tab-content">
             <div class="industry-header">
-                <div class="industry-header-image">🌿</div>
+                <img src="https://images.unsplash.com/photo-1536819114556-1e10f967fb61?w=300&q=80&fit=crop" alt="Cannabis Cultivation Facilities" class="industry-header-image">
                 <div class="industry-title">
                     <h2>Cannabis Cultivation Facilities</h2>
                     <p>Specialized climate control and odor management systems</p>
@@ -1133,9 +1106,7 @@
                 <div class="main-content">
                     <h3>Unique Cultivation Requirements</h3>
                     <p>Cannabis growing facilities require precise environmental control including temperature, humidity, and air quality management. These facilities face challenges with strong odors, high humidity, mold and mildew risks, and strict regulatory compliance for both air quality and odor containment.</p>
-
                     <p>Proper HVAC and filtration systems are essential for healthy plant growth, worker safety, regulatory compliance, and preventing neighborhood odor complaints. The combination of particulate filtration and molecular (carbon) filtration is typically required.</p>
-
                     <h3>Cultivation Filtration Systems</h3>
                     <ul>
                         <li><strong>MERV 11-13 Particulate:</strong> Removes mold spores, pollen, and plant matter</li>
@@ -1144,32 +1115,26 @@
                         <li><strong>Negative Pressure:</strong> Keeps odors contained within facility</li>
                         <li><strong>Grow Room Isolation:</strong> Separate ventilation for different cultivation stages</li>
                     </ul>
-
                     <h3>Regulatory Compliance</h3>
                     <p>Most jurisdictions require odor control systems that prevent off-site detection. State and local regulations often mandate carbon filtration, negative building pressure, and regular air quality monitoring.</p>
                 </div>
-
                 <div class="highlights-box">
                     <h4>Key Standards</h4>
-                    
                     <div class="highlight-item">
                         <div class="highlight-label">Particulate</div>
                         <div class="highlight-value">MERV 11-13</div>
                         <div class="highlight-desc">Mold and plant matter control</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Odor Control</div>
                         <div class="highlight-value">Carbon Required</div>
                         <div class="highlight-desc">Molecular filtration mandatory</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Pressure</div>
                         <div class="highlight-value">Negative</div>
                         <div class="highlight-desc">Contains odors within facility</div>
                     </div>
-
                     <div class="highlight-item">
                         <div class="highlight-label">Challenge</div>
                         <div class="highlight-value">High Humidity</div>
@@ -1178,6 +1143,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 
     <!-- CTA Section -->
@@ -1192,28 +1158,23 @@
 
     <script>
         function openTab(evt, tabName) {
-            // Hide all tab contents
             const tabContents = document.getElementsByClassName('tab-content');
             for (let i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove('active');
             }
 
-            // Remove active class from all tab buttons
             const tabButtons = document.getElementsByClassName('tab-button');
             for (let i = 0; i < tabButtons.length; i++) {
                 tabButtons[i].classList.remove('active');
             }
 
-            // Show the selected tab and mark button as active
             document.getElementById(tabName).classList.add('active');
             if (evt.currentTarget.classList) {
                 evt.currentTarget.classList.add('active');
             }
 
-            // Scroll to tabs if clicking from preview card
             if (evt.currentTarget.classList && evt.currentTarget.classList.contains('industry-preview-card')) {
                 document.querySelector('.industries-section').scrollIntoView({ behavior: 'smooth' });
-                // Find and activate the corresponding tab button
                 const tabs = document.querySelectorAll('.tab-button');
                 tabs.forEach(tab => {
                     if (tab.textContent.includes(tabName.charAt(0).toUpperCase())) {
@@ -1225,4 +1186,3 @@
     </script>
 </body>
 </html>
-
