@@ -5,41 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Valley Filtration | Commercial HVAC & Air Filtration Solutions</title>
     <meta name="description" content="Expert commercial HVAC filtration, UV-C disinfection, and indoor air quality solutions. Serving educational, healthcare, and industrial sectors across the Northeast.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary-color: #0f172a;
-            --secondary-color: #1e40af;
-            --accent-color: #059669;
-            --accent-light: #10b981;
-            --dark: #0f172a;
-            --light: #f8fafc;
+            --primary: #0f172a;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --blue: #1e40af;
             --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --border: #cbd5e1;
+            --light-gray: #f1f5f9;
+            --border: #e2e8f0;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--primary);
+            background: var(--white);
             line-height: 1.7;
-            color: var(--dark);
-            background: #ffffff;
         }
 
-        /* Navigation */
+        /* ── Navigation ── */
         nav {
             background: white;
-            border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 0 var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
         }
 
         .nav-container {
@@ -51,34 +46,24 @@
             align-items: center;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-img {
-            height: 60px;
-            width: auto;
-        }
+        .logo-img { height: 56px; width: auto; }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--gray);
+            color: var(--primary);
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.2s;
             letter-spacing: 0.01em;
+            transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
+        .nav-links a:hover { color: var(--accent); }
 
         .mobile-menu-btn {
             display: none;
@@ -86,37 +71,34 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--primary);
         }
 
-        /* Hero Section */
+        /* ── Hero ── */
         .hero {
-            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
             color: white;
             padding: 8rem 2rem;
             text-align: center;
         }
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .hero-content { max-width: 900px; margin: 0 auto; }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.15;
-            font-weight: 700;
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.75rem;
+            font-weight: 400;
             letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.85;
-            font-weight: 400;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.2rem;
+            opacity: 0.75;
+            font-weight: 300;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
         }
 
         .cta-buttons {
@@ -127,421 +109,502 @@
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 6px;
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
             letter-spacing: 0.01em;
+            display: inline-block;
         }
 
         .btn-primary {
             background: white;
-            color: var(--primary-color);
-            border: 1px solid transparent;
+            color: var(--primary);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
 
-        .btn-secondary {
+        .btn-outline {
             background: transparent;
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.4);
         }
 
-        .btn-secondary:hover {
+        .btn-outline:hover {
             background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.5);
+            border-color: rgba(255,255,255,0.7);
         }
 
-        /* Trust Indicators */
-        .trust-section {
+        /* ── Stats Bar ── */
+        .stats-bar {
             background: white;
-            padding: 4rem 2rem;
             border-bottom: 1px solid var(--border);
         }
 
-        .trust-stats {
+        .stats-inner {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 3.5rem 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
         }
 
-        .stat {
-            padding: 1rem;
-            text-align: center;
-        }
+        .stat { text-align: center; }
 
         .stat-number {
+            font-family: 'DM Serif Display', serif;
             font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
+            font-weight: 400;
+            color: var(--accent);
             letter-spacing: -0.02em;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
             color: var(--gray);
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 400;
         }
 
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
+        /* ── Section layout ── */
+        .section {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 5rem 2rem;
         }
 
+        .section-alt { background: var(--light-gray); }
+
         .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--primary);
+            letter-spacing: -0.01em;
         }
 
         .section-header p {
-            font-size: 1.125rem;
             color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.7;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
         }
 
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header-center h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--primary);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header-center p {
+            color: var(--gray);
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ── Services grid ── */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
         .service-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 8px;
             border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2.5rem;
             transition: all 0.2s;
         }
 
         .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(5,150,105,0.1);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12);
-            border-color: var(--accent-color);
         }
 
         .service-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            background: var(--accent-light);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: white;
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            letter-spacing: -0.01em;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
         }
 
         .service-card p {
             color: var(--gray);
+            font-size: 0.95rem;
+            font-weight: 300;
             margin-bottom: 1rem;
         }
 
-        .service-card ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
+        .service-card ul { list-style: none; }
 
         .service-card li {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             color: var(--gray);
-            padding-left: 1.5rem;
+            font-size: 0.9rem;
+            padding-left: 1.25rem;
             position: relative;
         }
 
-        .service-card li:before {
-            content: "✔";
+        .service-card li::before {
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--secondary-color);
-            font-weight: bold;
+            top: 0.85rem;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
         }
 
-        /* Industries Section */
-        .industries {
-            background: #f8fafc;
-            padding: 5rem 2rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .industries-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        /* ── Industries grid ── */
         .industries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .industry-card {
             background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
             padding: 2rem;
-            border-radius: 8px;
             text-align: center;
             transition: all 0.2s;
-            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .industry-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 16px rgba(5,150,105,0.1);
             transform: translateY(-2px);
-            border-color: var(--accent-color);
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.12);
         }
 
         .industry-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            filter: grayscale(20%);
+            font-size: 2.25rem;
+            margin-bottom: 0.75rem;
+            display: block;
         }
 
         .industry-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: -0.01em;
+            margin-bottom: 0.4rem;
+            color: var(--primary);
         }
 
         .industry-card p {
             color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.875rem;
+            font-weight: 300;
+            line-height: 1.5;
         }
 
-        /* CTA Section */
+        /* ── Contact / CTA ── */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--primary);
             color: white;
             padding: 5rem 2rem;
-            text-align: center;
         }
 
-        .cta-content {
-            max-width: 800px;
+        .cta-inner {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
         }
 
-        .cta-section h2 {
+        .cta-text h2 {
+            font-family: 'DM Serif Display', serif;
             font-size: 2.5rem;
+            font-weight: 400;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .cta-section p {
-            font-size: 1.25rem;
+        .cta-text p {
+            opacity: 0.7;
+            font-weight: 300;
+            font-size: 1rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
         }
+
+        .cta-details { display: flex; flex-direction: column; gap: 1rem; }
+
+        .cta-detail-item { display: flex; flex-direction: column; gap: 0.2rem; }
+
+        .cta-detail-item span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.5;
+        }
+
+        .cta-detail-item a, .cta-detail-item p {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            opacity: 1;
+            transition: color 0.2s;
+        }
+
+        .cta-detail-item a:hover { color: #6ee7b7; }
 
         /* Contact Form */
         .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 600px;
-            margin: 2rem auto 0;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 2.5rem;
         }
 
-        .form-group {
+        .contact-form h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
             margin-bottom: 1.5rem;
+            color: white;
         }
+
+        .form-group { margin-bottom: 1.25rem; }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
             font-weight: 500;
+            opacity: 0.7;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
+            padding: 0.7rem 1rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { opacity: 0.4; }
+
+        .form-group select option { background: var(--primary); }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--secondary-color);
+            border-color: var(--accent);
         }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
+        .form-group textarea { resize: vertical; min-height: 110px; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--accent);
             color: white;
-            padding: 3rem 2rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        .footer-content {
+        .btn-submit:hover { background: #047857; }
+
+        /* ── Footer ── */
+        footer {
+            background: #080f1e;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-color);
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-top: 1rem;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .footer-col h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
         }
 
-        .footer-section li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-col ul { list-style: none; }
 
-        .footer-section a {
-            color: #cbd5e1;
+        .footer-col li { margin-bottom: 0.6rem; }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.55);
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 0.9rem;
+            font-weight: 300;
+            transition: color 0.2s;
         }
 
-        .footer-section a:hover {
-            color: white;
+        .footer-col a:hover { color: white; }
+
+        .footer-col p {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.8;
         }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #475569;
-            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
         }
 
-        /* Responsive */
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .industries-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
+            .mobile-menu-btn { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+            .nav-links.open { display: flex; }
+            .hero h1 { font-size: 2.25rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .industries-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
 
-            .nav-links {
-                display: none;
-            }
-
-            .logo-img {
-                height: 45px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
+        @media (max-width: 480px) {
+            .industries-grid { grid-template-columns: 1fr; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
-                <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
-            </div>
-            <ul class="nav-links">
+            <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="industries.html">Industries</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Hero -->
+    <section class="hero">
         <div class="hero-content">
             <h1>Expert Commercial Air Filtration & Indoor Air Quality Solutions</h1>
-            <p>Serving educational institutions, healthcare facilities, and industrial clients across the Northeast.</p>
+            <p>Serving educational institutions, healthcare facilities, and industrial clients across the Northeast since 2019.</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Request a Quote</a>
-                <a href="#services" class="btn btn-secondary">Our Expertise</a>
+                <a href="products.html" class="btn btn-outline">Our Products</a>
             </div>
         </div>
     </section>
 
-    <!-- Trust Indicators -->
-    <section class="trust-section">
-        <div class="trust-stats">
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-inner">
             <div class="stat">
-                <div class="stat-number">1,700+</div>
-                <div class="stat-label">Product SKUs Available</div>
+                <span class="stat-number">1,700+</span>
+                <span class="stat-label">Product SKUs Available</span>
             </div>
             <div class="stat">
-                <div class="stat-number">109+</div>
-                <div class="stat-label">Active B2B Clients</div>
+                <span class="stat-number">109+</span>
+                <span class="stat-label">Active B2B Clients</span>
             </div>
             <div class="stat">
-                <div class="stat-number">1,159+</div>
-                <div class="stat-label">Successful Projects</div>
+                <span class="stat-number">1,159+</span>
+                <span class="stat-label">Successful Projects</span>
             </div>
             <div class="stat">
-                <div class="stat-number">30+</div>
-                <div class="stat-label">Years of Expertise</div>
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Years of Expertise</span>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Services -->
+    <div class="section" id="services">
         <div class="section-header">
             <h2>Our Filtration Solutions</h2>
             <p>Technical expertise and comprehensive product offerings for superior indoor air quality</p>
@@ -558,11 +621,10 @@
                     <li>Multiple size options</li>
                 </ul>
             </div>
-
             <div class="service-card">
                 <div class="service-icon">📊</div>
                 <h3>MERV-Rated Box Filters</h3>
-                <p>Commercial-grade filtration solutions with MERV 11-16 ratings for diverse HVAC requirements.</p>
+                <p>Commercial-grade filtration solutions with MERV 8–16 ratings for diverse HVAC requirements.</p>
                 <ul>
                     <li>ASHRAE standards compliant</li>
                     <li>Synthetic & rigid options</li>
@@ -570,7 +632,6 @@
                     <li>Volume pricing available</li>
                 </ul>
             </div>
-
             <div class="service-card">
                 <div class="service-icon">💡</div>
                 <h3>UV-C Disinfection Systems</h3>
@@ -582,7 +643,6 @@
                     <li>Upper-air applications</li>
                 </ul>
             </div>
-
             <div class="service-card">
                 <div class="service-icon">⚙️</div>
                 <h3>Industrial Components</h3>
@@ -595,155 +655,159 @@
                 </ul>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Industries Section -->
-    <section class="industries" id="industries">
-        <div class="industries-container">
-            <div class="section-header">
+    <!-- Industries -->
+    <div class="section-alt">
+        <div class="section" id="industries">
+            <div class="section-header-center">
                 <h2>Industries We Serve</h2>
                 <p>Specialized filtration solutions tailored to your sector's unique requirements</p>
             </div>
             <div class="industries-grid">
-                <div class="industry-card">
-                    <div class="industry-icon">🎓</div>
-                    <h3>Education</h3>
-                    <p>Universities, colleges, and K-12 school districts requiring reliable IAQ systems</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🏥</div>
-                    <h3>Healthcare</h3>
-                    <p>Hospitals, surgical centers, and medical facilities with infection control needs</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🏛️</div>
-                    <h3>Government</h3>
-                    <p>State agencies, municipal facilities, and public transportation systems</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🏭</div>
+                <a class="industry-card" href="industries.html">
+                    <span class="industry-icon">🎓</span>
+                    <h3>Higher Education</h3>
+                    <p>Universities and colleges requiring MERV 13+ systems for classrooms and labs</p>
+                </a>
+                <a class="industry-card" href="industries.html">
+                    <span class="industry-icon">📚</span>
+                    <h3>K-12 Schools</h3>
+                    <p>Superior air quality for student health and learning performance</p>
+                </a>
+                <a class="industry-card" href="industries.html">
+                    <span class="industry-icon">🏥</span>
+                    <h3>Healthcare & Senior Living</h3>
+                    <p>HEPA and MERV 14+ systems for infection control and patient safety</p>
+                </a>
+                <a class="industry-card" href="industries.html">
+                    <span class="industry-icon">🏛️</span>
+                    <h3>Government & Commercial</h3>
+                    <p>ASHRAE-compliant solutions for office buildings and public facilities</p>
+                </a>
+                <a class="industry-card" href="industries.html">
+                    <span class="industry-icon">🏭</span>
                     <h3>Manufacturing</h3>
-                    <p>Industrial facilities requiring specialized filtration and air quality solutions</p>
-                </div>
+                    <p>Specialized process filtration and worker protection systems</p>
+                </a>
+                <a class="industry-card" href="industries.html">
+                    <span class="industry-icon">📖</span>
+                    <h3>Libraries & Museums</h3>
+                    <p>Collection preservation with molecular and particulate filtration</p>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section with Contact Form -->
+    <!-- Contact CTA -->
     <section class="cta-section" id="contact">
-        <div class="cta-content">
-            <h2>Ready to Improve Your Indoor Air Quality?</h2>
-            <p>Get expert consultation and a customized filtration solution for your facility</p>
-            
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" id="name" name="name" required>
+        <div class="cta-inner">
+            <div class="cta-text">
+                <h2>Ready to Improve Your Indoor Air Quality?</h2>
+                <p>Get expert consultation and a customized filtration solution for your facility.</p>
+                <div class="cta-details">
+                    <div class="cta-detail-item">
+                        <span>Phone</span>
+                        <a href="tel:518-356-3943">(518) 356-3943</a>
+                    </div>
+                    <div class="cta-detail-item">
+                        <span>Email</span>
+                        <a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a>
+                    </div>
+                    <div class="cta-detail-item">
+                        <span>Address</span>
+                        <p>30 Kraft Ave, Suite 5 · Albany, NY 12205</p>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                
-                <div class="form-group">
-                    <label for="company">Company/Organization *</label>
-                    <input type="text" id="company" name="company" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="industry">Industry *</label>
-                    <select id="industry" name="industry" required>
-                        <option value="">Select Industry</option>
-                        <option value="education">Education</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="government">Government</option>
-                        <option value="manufacturing">Manufacturing</option>
-                        <option value="hvac">HVAC Contractor</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Project Details *</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about your filtration needs..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Request Quote</button>
-            </form>
+            </div>
+            <div class="contact-form">
+                <h3>Request a Quote</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Company / Organization *</label>
+                        <input type="text" name="company" required placeholder="Organization name">
+                    </div>
+                    <div class="form-group">
+                        <label>Industry *</label>
+                        <select name="industry" required>
+                            <option value="">Select Industry</option>
+                            <option>Education</option>
+                            <option>Healthcare</option>
+                            <option>Government</option>
+                            <option>Manufacturing</option>
+                            <option>HVAC Contractor</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Details *</label>
+                        <textarea name="message" required placeholder="Tell us about your filtration needs..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Request</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Tech Valley Filtration</h3>
-                <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration" style="height:48px;filter:brightness(0) invert(1);opacity:0.8;">
+                    <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#hepa">HEPA Filters</a></li>
+                        <li><a href="products.html#merv">MERV-Rated Filters</a></li>
+                        <li><a href="products.html#uvc">UV-C Systems</a></li>
+                        <li><a href="products.html#industrial">Industrial Components</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><br>
+                    <p><a href="tel:518-356-3943">(518) 356-3943</a></p>
+                    <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
+                </div>
             </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="industries.html">Industries</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</span>
+                <span>Albany, NY · Serving the Northeast</span>
             </div>
-            
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="products.html#hepa">HEPA Filters</a></li>
-                    <li><a href="products.html#merv">MERV-Rated Filters</a></li>
-                    <li><a href="products.html#uvc">UV-C Systems</a></li>
-                    <li><a href="products.html#industrial">Industrial Components</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <ul>
-                    <li>30 Kraft Ave, Suite 5</li>
-                    <li>Albany, NY 12205</li>
-                    <li><a href="tel:518-356-3943">(518) 356-3943</a></li>
-                    <li><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // In production, this would send to your email service
-            console.log('Form submitted:', data);
-            
-            alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your filtration needs.');
-            event.target.reset();
-        }
-
-        // Mobile menu toggle (basic functionality)
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
         });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your filtration needs.');
+            e.target.reset();
+        }
     </script>
 </body>
 </html>
-
