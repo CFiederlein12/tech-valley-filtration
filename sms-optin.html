@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Text Updates | Tech Valley Filtration</title>
+    <meta name="description" content="Opt in to receive order updates, quotes, and product information from Tech Valley Filtration via text message.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0f172a; --accent: #059669; --blue: #1e40af;
+            --gray: #64748b; --light-gray: #f1f5f9; --border: #e2e8f0; --white: #ffffff;
+        }
+        body { font-family: 'DM Sans', sans-serif; color: var(--primary); background: var(--white); line-height: 1.7; }
+        nav { background: white; box-shadow: 0 1px 0 var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 56px; width: auto; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+        .page-hero { background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%); color: white; padding: 5rem 2rem; text-align: center; }
+        .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+        .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.15rem; opacity: 0.75; font-weight: 300; max-width: 560px; margin: 0 auto; }
+        .main-wrap { max-width: 800px; margin: 0 auto; padding: 5rem 2rem; }
+        .optin-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+        .optin-card h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; }
+        .optin-card .subtitle { color: var(--gray); font-weight: 300; margin-bottom: 2rem; }
+        .phone-display { display: flex; align-items: center; gap: 1.25rem; background: var(--light-gray); border: 2px solid var(--accent); border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; }
+        .phone-icon { font-size: 2.5rem; flex-shrink: 0; }
+        .phone-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 0.25rem; }
+        .phone-number { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--primary); }
+        .phone-sub { color: var(--gray); font-size: 0.875rem; font-weight: 300; margin-top: 0.2rem; }
+        .how-to-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+        .step { display: flex; align-items: flex-start; gap: 1.25rem; }
+        .step-num { width: 32px; height: 32px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+        .step-text strong { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
+        .step-text span { color: var(--gray); font-size: 0.9rem; font-weight: 300; }
+        .sms-cta-btn { display: block; width: 100%; background: var(--accent); color: white; text-align: center; padding: 1.1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: background 0.2s, transform 0.1s; }
+        .sms-cta-btn:hover { background: #047857; transform: translateY(-1px); }
+        .examples-section { margin-bottom: 3rem; }
+        .examples-section h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+        .example-bubbles { display: flex; flex-direction: column; gap: 0.75rem; }
+        .bubble { background: var(--light-gray); border: 1px solid var(--border); border-radius: 18px 18px 18px 4px; padding: 0.85rem 1.25rem; font-size: 0.95rem; max-width: 85%; }
+        .bubble::before { content: attr(data-label); display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; margin-bottom: 0.25rem; }
+        .compliance-card { background: var(--light-gray); border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; margin-bottom: 3rem; }
+        .compliance-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--accent); display: inline-block; }
+        .compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .ci-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
+        .compliance-item p { font-size: 0.9rem; color: var(--gray); font-weight: 300; line-height: 1.6; }
+        .compliance-disclaimer { font-size: 0.825rem; color: var(--gray); font-weight: 300; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+        .compliance-disclaimer a { color: var(--accent); text-decoration: none; }
+        .privacy-section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+        .privacy-section p { color: var(--gray); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
+        .privacy-section a { color: var(--accent); }
+        .cta-section { background: var(--primary); color: white; padding: 4rem 2rem; text-align: center; }
+        .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
+        .cta-section p { font-size: 1rem; opacity: 0.7; font-weight: 300; margin-bottom: 2rem; }
+        .cta-contact { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .cta-contact-item { display: flex; flex-direction: column; gap: 0.25rem; }
+        .cta-contact-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.5; }
+        .cta-contact-item a { color: white; text-decoration: none; font-weight: 500; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+        .cta-contact-item a:hover { color: #6ee7b7; }
+        footer { background: #080f1e; color: white; padding: 4rem 2rem 2rem; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.6rem; }
+        .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem; font-weight: 300; transition: color 0.2s; }
+        .footer-col a:hover { color: white; }
+        .footer-col p { color: rgba(255,255,255,0.55); font-size: 0.9rem; font-weight: 300; line-height: 1.8; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+            .nav-links.open { display: flex; }
+            .page-hero h1 { font-size: 2.25rem; }
+            .optin-card { padding: 2rem 1.5rem; }
+            .phone-number { font-size: 1.6rem; }
+            .compliance-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <span class="hero-icon">💬</span>
+    <h1>Text Us to Order</h1>
+    <p>The fastest way to place orders, request quotes, and get support from Tech Valley Filtration</p>
+</section>
+
+<div class="main-wrap">
+
+    <div class="optin-card">
+        <h2>Get Started in Seconds</h2>
+        <p class="subtitle">Text us directly from your phone — no account or app needed.</p>
+        <div class="phone-display">
+            <div class="phone-icon">📱</div>
+            <div>
+                <div class="phone-label">Our SMS Number</div>
+                <div class="phone-number">(844) 523-3240</div>
+                <div class="phone-sub">Toll-free · Business hours responses</div>
+            </div>
+        </div>
+        <div class="how-to-steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    <strong>Open your messaging app</strong>
+                    <span>Use any standard SMS texting app on your phone</span>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    <strong>Text START to opt in</strong>
+                    <span>Send the word START to (844) 523-3240 to confirm you'd like to receive messages from us</span>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    <strong>Place your order or ask a question</strong>
+                    <span>Tell us what you need — filters, quantities, part numbers, or quotes</span>
+                </div>
+            </div>
+        </div>
+        <a href="sms:+18445233240?body=START" class="sms-cta-btn">💬 &nbsp; Tap to Text Us Now</a>
+    </div>
+
+    <div class="examples-section">
+        <h3>What Can I Text?</h3>
+        <div class="example-bubbles">
+            <div class="bubble" data-label="Place an Order">I need 24 MERV-13 filters, 20x20x2, for Albany Middle School</div>
+            <div class="bubble" data-label="Request a Quote">Can I get a quote on UV-C systems for a 40,000 sq ft facility?</div>
+            <div class="bubble" data-label="Check on an Order">What's the status of my order from last Tuesday?</div>
+            <div class="bubble" data-label="Product Question">Do you carry PreVent intake screens for rooftop units?</div>
+        </div>
+    </div>
+
+    <div class="compliance-card">
+        <h3>Program Details &amp; Terms</h3>
+        <div class="compliance-grid">
+            <div class="compliance-item">
+                <div class="ci-label">Who Operates This Program</div>
+                <p>Tech Valley Filtration, LLC<br>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p>
+            </div>
+            <div class="compliance-item">
+                <div class="ci-label">Types of Messages</div>
+                <p>Order confirmations, shipping updates, quotes, product availability, and responses to your inquiries.</p>
+            </div>
+            <div class="compliance-item">
+                <div class="ci-label">Message Frequency</div>
+                <p>Message frequency varies. You will only receive messages in response to your texts or when there is an update related to your order.</p>
+            </div>
+            <div class="compliance-item">
+                <div class="ci-label">Message &amp; Data Rates</div>
+                <p>Message and data rates may apply depending on your mobile carrier plan.</p>
+            </div>
+            <div class="compliance-item">
+                <div class="ci-label">How to Opt Out</div>
+                <p>Text <strong>STOP</strong> at any time to unsubscribe. You will receive one final confirmation, then no further messages.</p>
+            </div>
+            <div class="compliance-item">
+                <div class="ci-label">How to Get Help</div>
+                <p>Text <strong>HELP</strong> for assistance, or call <a href="tel:518-356-3943">(518) 356-3943</a> or email <a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a>.</p>
+            </div>
+        </div>
+        <p class="compliance-disclaimer">
+            By texting START to our number, you consent to receive text messages from Tech Valley Filtration, LLC related to orders, quotes, and customer service. Consent is not a condition of purchase. You may opt out at any time by texting STOP. See our <a href="#privacy">Privacy Policy</a> below. Carriers are not liable for delayed or undelivered messages.
+        </p>
+    </div>
+
+    <div class="privacy-section" id="privacy">
+        <h3>Privacy Policy — SMS Program</h3>
+        <p>Tech Valley Filtration, LLC ("we," "us," or "our") collects your mobile phone number solely for the purpose of providing order updates, quotes, and customer support via SMS text message.</p>
+        <p>We will not sell, share, or rent your mobile phone number to any third party for marketing purposes. Your number will only be used to communicate with you directly regarding your inquiries and orders with Tech Valley Filtration.</p>
+        <p>We retain your phone number as long as you remain an active customer or until you opt out by texting STOP. Upon opting out, your number will be removed from our messaging system within 30 days.</p>
+        <p>For questions, contact us at <a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a> or call <a href="tel:518-356-3943">(518) 356-3943</a>.</p>
+    </div>
+
+</div>
+
+<section class="cta-section">
+    <h2>Prefer to Call or Email?</h2>
+    <p>We're available by phone, email, or text</p>
+    <div class="cta-contact">
+        <div class="cta-contact-item"><span>Phone</span><a href="tel:518-356-3943">(518) 356-3943</a></div>
+        <div class="cta-contact-item"><span>Email</span><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></div>
+        <div class="cta-contact-item"><span>Text</span><a href="sms:+18445233240">(844) 523-3240</a></div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration" style="height:48px;filter:brightness(0) invert(1);opacity:0.8;">
+                <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="sms-optin.html">Text Us to Order</a></li>
+                    <li><a href="sms-optin.html#privacy">SMS Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><br>
+                <p><a href="tel:518-356-3943">(518) 356-3943</a></p>
+                <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</span>
+            <span>Albany, NY · Serving the Northeast</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('menuBtn').addEventListener('click', function() {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
