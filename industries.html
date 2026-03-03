@@ -572,6 +572,13 @@
                     <p>Industrial facilities requiring process filtration and worker protection</p>
                 </div>
             </div>
+            <div class="preview-card" onclick="openTab('data-centers')">
+                <img class="preview-card-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&fit=crop" alt="Computer Data Centers">
+                <div class="preview-card-body">
+                    <h3>Computer Data Centers</h3>
+                    <p>Mission-critical IT infrastructure requiring precision filtration and molecular contamination control</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -589,6 +596,7 @@
                     <button class="tab-btn" onclick="openTab('firing-ranges')">Indoor Firing Ranges</button>
                     <button class="tab-btn" onclick="openTab('infection-control')">Infection Control</button>
                     <button class="tab-btn" onclick="openTab('cannabis')">Cannabis Cultivation</button>
+                    <button class="tab-btn" onclick="openTab('data-centers')">Computer Data Centers</button>
                 </div>
             </div>
 
@@ -1145,5 +1153,23 @@
         }
     </script>
 
+<!-- Floating SMS Button -->
+<a href="sms-optin.html" class="sms-float-btn" title="Text us to order">💬 <span>Text to Order</span></a>
+<style>
+.sms-float-btn {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: #059669; color: white; text-decoration: none;
+    padding: 0.85rem 1.4rem; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.sms-float-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(5,150,105,0.55); }
+@media (max-width: 768px) {
+    .sms-float-btn span { display: none; }
+    .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
+}
+</style>
 </body>
 </html>
