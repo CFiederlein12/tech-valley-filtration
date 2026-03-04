@@ -168,6 +168,69 @@
 
         .switcher-btn .btn-icon { font-size: 1.1rem; }
 
+
+        /* ── Filter Line Items ── */
+        .filter-line-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .filter-col-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-line-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .filter-line-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-line-item select,
+        .filter-line-item input {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .remove-filter-line {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            height: 36px;
+            width: 36px;
+            min-width: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .remove-filter-line:hover { border-color: #ef4444; color: #ef4444; }
+
+        @media (max-width: 640px) {
+            .filter-line-header { display: none; }
+            .filter-line-item { flex-wrap: wrap; }
+            .filter-line-item select,
+            .filter-line-item input[type="number"] { flex: 1 1 calc(50% - 0.25rem) !important; }
+            .remove-filter-line { margin-left: auto; }
+        }
+
         /* ── Form Panels ── */
         .form-panel { display: none; }
         .form-panel.active { display: block; }
@@ -611,40 +674,63 @@
                         <hr class="form-divider">
                         <p class="form-section-label">Filtration Needs</p>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Filter Type</label>
-                                <select name="filter_type">
-                                    <option value="">Select a type</option>
-                                    <option>MERV 8</option>
+                        <div class="filter-line-header">
+                            <span class="filter-col-label" style="flex:1.8">Filter Type</span>
+                            <span class="filter-col-label" style="flex:1">Length</span>
+                            <span class="filter-col-label" style="flex:1">Width</span>
+                            <span class="filter-col-label" style="flex:1">Depth</span>
+                            <span class="filter-col-label" style="flex:0.7">Qty</span>
+                            <span style="width:36px"></span>
+                        </div>
+                        <div class="filter-line-items" id="quoteLineItems">
+                            <div class="filter-line-item">
+                                <select name="filter_type[]" style="flex:1.8">
+                                    <option value="">Select type</option>
+                                    <option>MERV 8/10</option>
                                     <option>MERV 11</option>
                                     <option>MERV 13</option>
-                                    <option>MERV 14</option>
-                                    <option>HEPA</option>
-                                    <option>UV-C System</option>
-                                    <option>Activated Carbon / Gas Phase</option>
-                                    <option>Not sure — need guidance</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Estimated Quantity</label>
-                                <select name="quantity">
-                                    <option value="">Select a range</option>
-                                    <option>1–10 units</option>
-                                    <option>11–50 units</option>
-                                    <option>51–100 units</option>
-                                    <option>100–500 units</option>
-                                    <option>500+ units</option>
+                                <select name="length[]" style="flex:1">
+                                    <option value="">Length</option>
+                                    <option>10&quot;</option>
+                                    <option>12&quot;</option>
+                                    <option>14&quot;</option>
+                                    <option>16&quot;</option>
+                                    <option>18&quot;</option>
+                                    <option>20&quot;</option>
+                                    <option>24&quot;</option>
+                                    <option>25&quot;</option>
+                                    <option>30&quot;</option>
+                                    <option>36&quot;</option>
                                 </select>
+                                <select name="width[]" style="flex:1">
+                                    <option value="">Width</option>
+                                    <option>10&quot;</option>
+                                    <option>12&quot;</option>
+                                    <option>14&quot;</option>
+                                    <option>16&quot;</option>
+                                    <option>18&quot;</option>
+                                    <option>20&quot;</option>
+                                    <option>24&quot;</option>
+                                    <option>25&quot;</option>
+                                    <option>30&quot;</option>
+                                    <option>36&quot;</option>
+                                </select>
+                                <select name="depth[]" style="flex:1">
+                                    <option value="">Depth</option>
+                                    <option>1&quot;</option>
+                                    <option>2&quot;</option>
+                                    <option>4&quot;</option>
+                                    <option>6&quot;</option>
+                                    <option>12&quot;</option>
+                                </select>
+                                <input type="number" name="qty[]" placeholder="Qty" min="1" style="flex:0.7">
+                                <button type="button" class="remove-filter-line" onclick="removeFilterLine(this)" title="Remove">&#215;</button>
                             </div>
                         </div>
+                        <button type="button" class="add-line-btn" onclick="addFilterLine()">+ Add Another Filter</button>
 
-                        <div class="form-group">
-                            <label>Filter Dimensions / Part Number (if known)</label>
-                            <input type="text" name="dimensions" placeholder='e.g. 20"x20"x2" or part #12345'>
-                        </div>
-
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top:1.25rem">
                             <label>Additional Details</label>
                             <textarea name="notes" placeholder="Tell us about your facility, HVAC system, any special requirements, or questions you have..."></textarea>
                         </div>
@@ -917,6 +1003,43 @@
             document.querySelectorAll('.switcher-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('panel-' + tab).classList.add('active');
             document.getElementById('btn-' + tab).classList.add('active');
+        }
+
+
+        // Quote form: add / remove filter line items
+        function addFilterLine() {
+            const container = document.getElementById('quoteLineItems');
+            const div = document.createElement('div');
+            div.className = 'filter-line-item';
+            const lengths = [10,12,14,16,18,20,24,25,30,36].map(n => `<option>${n}"</option>`).join('');
+            const depths  = [1,2,4,6,12].map(n => `<option>${n}"</option>`).join('');
+            div.innerHTML = `
+                <select name="filter_type[]" style="flex:1.8">
+                    <option value="">Select type</option>
+                    <option>MERV 8/10</option>
+                    <option>MERV 11</option>
+                    <option>MERV 13</option>
+                </select>
+                <select name="length[]" style="flex:1">
+                    <option value="">Length</option>${lengths}
+                </select>
+                <select name="width[]" style="flex:1">
+                    <option value="">Width</option>${lengths}
+                </select>
+                <select name="depth[]" style="flex:1">
+                    <option value="">Depth</option>${depths}
+                </select>
+                <input type="number" name="qty[]" placeholder="Qty" min="1" style="flex:0.7">
+                <button type="button" class="remove-filter-line" onclick="removeFilterLine(this)" title="Remove">&#215;</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeFilterLine(btn) {
+            const container = document.getElementById('quoteLineItems');
+            if (container.children.length > 1) {
+                btn.closest('.filter-line-item').remove();
+            }
         }
 
         // Add line item
