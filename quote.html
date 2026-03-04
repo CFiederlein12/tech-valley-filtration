@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Quote & Order | Tech Valley Filtration</title>
+    <meta name="description" content="Get a fast quote or place an order for commercial air filtration products. Tech Valley Filtration serves the Northeast.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0f172a;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --blue: #1e40af;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--primary);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            background: white;
+            box-shadow: 0 1px 0 var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img { height: 56px; width: auto; }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--accent); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* ── Hero ── */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
+            color: white;
+            padding: 5.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(5,150,105,0.18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.75;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ── Tab Switcher ── */
+        .form-switcher-wrap {
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 73px;
+            z-index: 100;
+        }
+
+        .form-switcher {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0;
+        }
+
+        .switcher-btn {
+            padding: 1.1rem 2rem;
+            border: none;
+            background: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -1px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .switcher-btn:hover { color: var(--primary); }
+
+        .switcher-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .switcher-btn .btn-icon { font-size: 1.1rem; }
+
+        /* ── Form Panels ── */
+        .form-panel { display: none; }
+        .form-panel.active { display: block; }
+
+        .form-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+        }
+
+        .form-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* ── Form Card ── */
+        .form-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(15,23,42,0.06);
+        }
+
+        .form-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-card .form-subtitle {
+            color: var(--gray);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group.full { grid-column: 1 / -1; }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        label .required { color: var(--accent); margin-left: 2px; }
+
+        input, select, textarea {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--primary);
+            background: var(--light-gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.65rem 0.85rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(5,150,105,0.1);
+            background: white;
+        }
+
+        textarea { resize: vertical; min-height: 100px; }
+
+        select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.5rem; }
+
+        .form-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 1.75rem 0;
+        }
+
+        .form-section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Product line items */
+        .line-items { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+
+        .line-item {
+            display: grid;
+            grid-template-columns: 1fr 80px 36px;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .line-item input, .line-item select { margin: 0; }
+
+        .remove-line {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            height: 36px;
+            width: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .remove-line:hover { border-color: #ef4444; color: #ef4444; }
+
+        .add-line-btn {
+            background: none;
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+            color: var(--accent);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .add-line-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.9rem 2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background 0.2s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover { background: #047857; transform: translateY(-1px); }
+        .submit-btn:active { transform: translateY(0); }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 300;
+            text-align: center;
+            margin-top: 0.75rem;
+        }
+
+        /* ── Success State ── */
+        .success-msg {
+            display: none;
+            background: var(--accent-light);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .success-msg h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .success-msg p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* ── Sidebar ── */
+        .form-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .sidebar-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .sidebar-card h3 { display: block; border-bottom: none; padding-bottom: 0; }
+        .sidebar-card h3::after { content: ''; display: block; width: 2rem; height: 2px; background: var(--accent); margin-top: 0.4rem; }
+
+        .why-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .why-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .why-list li .check {
+            color: var(--accent);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .contact-lines { display: flex; flex-direction: column; gap: 1rem; }
+
+        .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-line-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-light);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-line-text { font-size: 0.85rem; }
+        .contact-line-text span { display: block; color: var(--gray); font-size: 0.75rem; font-weight: 300; }
+        .contact-line-text a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .contact-line-text a:hover { color: var(--accent); }
+
+        .turnaround-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 1.75rem;
+            text-align: center;
+        }
+
+        .turnaround-box .big-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: #6ee7b7;
+            line-height: 1;
+        }
+
+        .turnaround-box .big-label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+            font-weight: 300;
+        }
+
+        .turnaround-box p {
+            font-size: 0.85rem;
+            opacity: 0.65;
+            margin-top: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        footer { background: #080f1e; color: white; padding: 4rem 2rem 2rem; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
+
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.6rem; }
+        .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem; font-weight: 300; transition: color 0.2s; }
+        .footer-col a:hover { color: white; }
+        .footer-col p { color: rgba(255,255,255,0.55); font-size: 0.9rem; font-weight: 300; line-height: 1.8; }
+
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .form-layout { grid-template-columns: 1fr; }
+            .form-sidebar { display: grid; grid-template-columns: 1fr 1fr; }
+            .turnaround-box { grid-column: 1 / -1; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+            .nav-links.open { display: flex; }
+            .page-hero h1 { font-size: 2.25rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-sidebar { grid-template-columns: 1fr; }
+            .switcher-btn { padding: 1rem; font-size: 0.875rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .line-item { grid-template-columns: 1fr 70px 36px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="industries.html">Industries</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="quote.html" class="active">Quote &amp; Order</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <h1>Quote &amp; Order</h1>
+        <p>Get a fast quote or place an order — we'll get back to you within one business day</p>
+        <div class="hero-badges">
+            <span class="hero-badge">&#10003; 1,700+ Products in Stock</span>
+            <span class="hero-badge">&#10003; Northeast Delivery</span>
+            <span class="hero-badge">&#10003; B2B Pricing Available</span>
+        </div>
+    </section>
+
+    <!-- Tab Switcher -->
+    <div class="form-switcher-wrap">
+        <div class="form-switcher">
+            <button class="switcher-btn active" onclick="switchForm('quote')" id="btn-quote">
+                <span class="btn-icon">📋</span> Quick Quote
+            </button>
+            <button class="switcher-btn" onclick="switchForm('order')" id="btn-order">
+                <span class="btn-icon">📦</span> Place an Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Quote Form Panel -->
+    <div id="panel-quote" class="form-panel active">
+        <div class="form-section">
+            <div class="form-layout">
+
+                <div class="form-card">
+                    <h2>Request a Quote</h2>
+                    <p class="form-subtitle">Tell us what you need and we'll send a detailed quote within one business day.</p>
+
+                    <form id="quoteForm">
+                        <p class="form-section-label">Your Information</p>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name <span class="required">*</span></label>
+                                <input type="text" name="first_name" placeholder="Jane" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name <span class="required">*</span></label>
+                                <input type="text" name="last_name" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input type="email" name="email" placeholder="jane@yourorg.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" name="phone" placeholder="(518) 555-0100">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Organization <span class="required">*</span></label>
+                                <input type="text" name="organization" placeholder="Albany School District" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Industry</label>
+                                <select name="industry">
+                                    <option value="">Select your industry</option>
+                                    <option>Higher Education</option>
+                                    <option>K-12 Schools</option>
+                                    <option>Healthcare &amp; Senior Living</option>
+                                    <option>Government &amp; Commercial</option>
+                                    <option>Libraries &amp; Museums</option>
+                                    <option>Manufacturing</option>
+                                    <option>Indoor Firing Ranges</option>
+                                    <option>Cannabis Cultivation</option>
+                                    <option>Computer Data Centers</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr class="form-divider">
+                        <p class="form-section-label">Filtration Needs</p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Filter Type</label>
+                                <select name="filter_type">
+                                    <option value="">Select a type</option>
+                                    <option>MERV 8</option>
+                                    <option>MERV 11</option>
+                                    <option>MERV 13</option>
+                                    <option>MERV 14</option>
+                                    <option>HEPA</option>
+                                    <option>UV-C System</option>
+                                    <option>Activated Carbon / Gas Phase</option>
+                                    <option>Not sure — need guidance</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Estimated Quantity</label>
+                                <select name="quantity">
+                                    <option value="">Select a range</option>
+                                    <option>1–10 units</option>
+                                    <option>11–50 units</option>
+                                    <option>51–100 units</option>
+                                    <option>100–500 units</option>
+                                    <option>500+ units</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Filter Dimensions / Part Number (if known)</label>
+                            <input type="text" name="dimensions" placeholder='e.g. 20"x20"x2" or part #12345'>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Additional Details</label>
+                            <textarea name="notes" placeholder="Tell us about your facility, HVAC system, any special requirements, or questions you have..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            &#8594; Submit Quote Request
+                        </button>
+                        <p class="form-note">We typically respond within one business day. No obligation.</p>
+                    </form>
+
+                    <div class="success-msg" id="quoteSuccess">
+                        <h3>&#10003; Quote Request Received!</h3>
+                        <p>Thanks — we'll review your request and send a detailed quote to your email within one business day.</p>
+                    </div>
+                </div>
+
+                <div class="form-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Why Quote With Us</h3>
+                        <ul class="why-list">
+                            <li><span class="check">&#10003;</span> 1,700+ filter SKUs across all major brands and ratings</li>
+                            <li><span class="check">&#10003;</span> Competitive B2B pricing for facilities and institutions</li>
+                            <li><span class="check">&#10003;</span> Expert guidance — we match the right filter to your system</li>
+                            <li><span class="check">&#10003;</span> NAFA best practice recommendations included</li>
+                            <li><span class="check">&#10003;</span> Same-day quotes available by phone for urgent needs</li>
+                        </ul>
+                    </div>
+
+                    <div class="turnaround-box">
+                        <div class="big-num">1</div>
+                        <div class="big-label">Business Day Response</div>
+                        <p>Our team reviews every quote personally to make sure you get the right product at the right price.</p>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Prefer to Call?</h3>
+                        <div class="contact-lines">
+                            <div class="contact-line">
+                                <div class="contact-line-icon">📞</div>
+                                <div class="contact-line-text">
+                                    <span>Phone</span>
+                                    <a href="tel:518-356-3943">(518) 356-3943</a>
+                                </div>
+                            </div>
+                            <div class="contact-line">
+                                <div class="contact-line-icon">✉️</div>
+                                <div class="contact-line-text">
+                                    <span>Email</span>
+                                    <a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-line">
+                                <div class="contact-line-icon">💬</div>
+                                <div class="contact-line-text">
+                                    <span>Text to Order</span>
+                                    <a href="sms-optin.html">(844) 523-3240</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Form Panel -->
+    <div id="panel-order" class="form-panel">
+        <div class="form-section">
+            <div class="form-layout">
+
+                <div class="form-card">
+                    <h2>Place an Order</h2>
+                    <p class="form-subtitle">Know what you need? Submit your order directly and we'll confirm availability and pricing.</p>
+
+                    <form id="orderForm">
+                        <p class="form-section-label">Your Information</p>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name <span class="required">*</span></label>
+                                <input type="text" name="first_name" placeholder="Jane" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name <span class="required">*</span></label>
+                                <input type="text" name="last_name" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input type="email" name="email" placeholder="jane@yourorg.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone <span class="required">*</span></label>
+                                <input type="tel" name="phone" placeholder="(518) 555-0100" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Organization <span class="required">*</span></label>
+                                <input type="text" name="organization" placeholder="Albany School District" required>
+                            </div>
+                            <div class="form-group">
+                                <label>PO Number (if applicable)</label>
+                                <input type="text" name="po_number" placeholder="PO-2025-0042">
+                            </div>
+                        </div>
+
+                        <hr class="form-divider">
+                        <p class="form-section-label">Shipping Address</p>
+
+                        <div class="form-group">
+                            <label>Street Address <span class="required">*</span></label>
+                            <input type="text" name="address" placeholder="123 Main Street" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City <span class="required">*</span></label>
+                                <input type="text" name="city" placeholder="Albany" required>
+                            </div>
+                            <div class="form-group">
+                                <label>State / ZIP <span class="required">*</span></label>
+                                <input type="text" name="state_zip" placeholder="NY 12205" required>
+                            </div>
+                        </div>
+
+                        <hr class="form-divider">
+                        <p class="form-section-label">Order Items</p>
+
+                        <div class="line-items" id="lineItems">
+                            <div class="line-item">
+                                <input type="text" name="item[]" placeholder='Part # or description (e.g. 20"x20"x2" MERV 13)'>
+                                <input type="number" name="qty[]" placeholder="Qty" min="1">
+                                <button type="button" class="remove-line" onclick="removeLine(this)" title="Remove">&#215;</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-line-btn" onclick="addLine()">+ Add Another Item</button>
+
+                        <hr class="form-divider">
+
+                        <div class="form-group">
+                            <label>Special Instructions</label>
+                            <textarea name="notes" placeholder="Delivery instructions, urgency, account number, or anything else we should know..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            &#8594; Submit Order
+                        </button>
+                        <p class="form-note">Order submission does not guarantee stock or pricing. We'll confirm by email before processing.</p>
+                    </form>
+
+                    <div class="success-msg" id="orderSuccess">
+                        <h3>&#10003; Order Received!</h3>
+                        <p>Thanks — we'll confirm availability and pricing and follow up within one business day.</p>
+                    </div>
+                </div>
+
+                <div class="form-sidebar">
+                    <div class="sidebar-card">
+                        <h3>How It Works</h3>
+                        <ul class="why-list">
+                            <li><span class="check">1</span> Submit your order with part numbers or descriptions</li>
+                            <li><span class="check">2</span> We confirm availability and send a price confirmation</li>
+                            <li><span class="check">3</span> Approve the order and we ship to your facility</li>
+                            <li><span class="check">4</span> Invoice issued through your preferred billing method</li>
+                        </ul>
+                    </div>
+
+                    <div class="turnaround-box">
+                        <div class="big-num">1K+</div>
+                        <div class="big-label">SKUs Available to Ship</div>
+                        <p>Most standard filter sizes ship within 1–3 business days. Specialty and custom orders may vary.</p>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Need Help Fast?</h3>
+                        <div class="contact-lines">
+                            <div class="contact-line">
+                                <div class="contact-line-icon">📞</div>
+                                <div class="contact-line-text">
+                                    <span>Call Us</span>
+                                    <a href="tel:518-356-3943">(518) 356-3943</a>
+                                </div>
+                            </div>
+                            <div class="contact-line">
+                                <div class="contact-line-icon">💬</div>
+                                <div class="contact-line-text">
+                                    <span>Text to Order</span>
+                                    <a href="sms-optin.html">(844) 523-3240</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="ImageAssets/Tech%20Valley%20Filtration_logo.jpg" alt="Tech Valley Filtration" style="height:48px;border-radius:4px;">
+                    <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="quote.html">Quote &amp; Order</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#hepa">HEPA Filters</a></li>
+                        <li><a href="products.html#merv">MERV-Rated Filters</a></li>
+                        <li><a href="products.html#uvc">UV-C Systems</a></li>
+                        <li><a href="products.html#industrial">Industrial Components</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><br>
+                    <p><a href="tel:518-356-3943">(518) 356-3943</a></p>
+                    <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</span>
+                <span>Albany, NY · Serving the Northeast</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating SMS Button -->
+    <a href="sms-optin.html" class="sms-float-btn" title="Text us to order">💬 <span>Text to Order</span></a>
+    <style>
+    .sms-float-btn {
+        position: fixed; bottom: 1.5rem; right: 1.5rem;
+        background: #059669; color: white; text-decoration: none;
+        padding: 0.85rem 1.4rem; border-radius: 50px;
+        font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
+        display: flex; align-items: center; gap: 0.5rem;
+        box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .sms-float-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(5,150,105,0.55); }
+    @media (max-width: 768px) {
+        .sms-float-btn span { display: none; }
+        .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
+    }
+    </style>
+
+    <script>
+        // Mobile nav
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Tab switcher
+        function switchForm(tab) {
+            document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.switcher-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('panel-' + tab).classList.add('active');
+            document.getElementById('btn-' + tab).classList.add('active');
+        }
+
+        // Add line item
+        function addLine() {
+            const container = document.getElementById('lineItems');
+            const div = document.createElement('div');
+            div.className = 'line-item';
+            div.innerHTML = `
+                <input type="text" name="item[]" placeholder='Part # or description (e.g. 20"x20"x2" MERV 13)'>
+                <input type="number" name="qty[]" placeholder="Qty" min="1">
+                <button type="button" class="remove-line" onclick="removeLine(this)" title="Remove">&#215;</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Remove line item
+        function removeLine(btn) {
+            const container = document.getElementById('lineItems');
+            if (container.children.length > 1) {
+                btn.closest('.line-item').remove();
+            }
+        }
+
+        // Form submissions — placeholder Zapier webhook endpoints
+        // TODO: Replace these URLs with your real Zapier webhook URLs
+        const QUOTE_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/REPLACE_WITH_QUOTE_WEBHOOK';
+        const ORDER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/REPLACE_WITH_ORDER_WEBHOOK';
+
+        async function submitForm(formId, successId, webhookUrl) {
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('.submit-btn');
+            const success = document.getElementById(successId);
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            const data = Object.fromEntries(new FormData(form).entries());
+
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    mode: 'no-cors'
+                });
+                form.style.display = 'none';
+                success.style.display = 'block';
+            } catch (e) {
+                btn.textContent = 'Submit Quote Request';
+                btn.disabled = false;
+                alert('Something went wrong. Please call us at (518) 356-3943 or email Service@techvalleyfiltration.com.');
+            }
+        }
+
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitForm('quoteForm', 'quoteSuccess', QUOTE_WEBHOOK);
+        });
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitForm('orderForm', 'orderSuccess', ORDER_WEBHOOK);
+        });
+    </script>
+
+</body>
+</html>
