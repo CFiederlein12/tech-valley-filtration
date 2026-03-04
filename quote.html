@@ -651,7 +651,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Organization <span class="required">*</span></label>
-                                <input type="text" name="organization" placeholder="Albany School District" required>
+                                <input type="text" name="organization" placeholder="Your Organization" required>
                             </div>
                             <div class="form-group">
                                 <label>Industry</label>
@@ -674,90 +674,16 @@
                         <hr class="form-divider">
                         <p class="form-section-label">Filtration Needs</p>
 
-                        <div id="filter-lines-header" style="display:grid;grid-template-columns:2fr 2fr 80px 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
+                        <div id="filter-lines-header" style="display:grid;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
                             <span>Filter Type</span>
-                            <span>Standard Size</span>
+                            <span>Size</span>
                             <span>Qty</span>
+                            <span style="font-size:0.72rem;">Tag?</span>
                             <span></span>
                         </div>
                         <div id="quoteLineItems"></div>
-                        <button type="button" class="add-line-btn" onclick="addFilterLine()">+ Add Another Filter</button>
-
-                        <div style="margin-top:14px;padding:12px 14px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
-                            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.93rem;font-weight:500;color:#374151;">
-                                <input type="checkbox" id="custom-size-toggle" onchange="toggleCustomSize(this.checked)" style="width:16px;height:16px;accent-color:#059669;">
-                                Need a custom size not listed above?
-                            </label>
-                            <div id="custom-size-fields" style="display:none;margin-top:12px;">
-                                <p style="font-size:0.85rem;color:#64748b;margin:0 0 10px 0;">Enter your custom dimensions (depth options: 1&quot;, 2&quot;, or 4&quot; only):</p>
-                                <div style="margin-bottom:10px;">
-                                    <p style="font-size:0.8rem;font-weight:600;color:#374151;margin:0 0 6px 0;">Length</p>
-                                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                                        <div>
-                                            <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Whole inches</label>
-                                            <input type="number" id="custom-length" name="custom_length" placeholder="e.g. 17" min="1" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                        </div>
-                                        <div>
-                                            <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Fraction</label>
-                                            <select id="custom-length-frac" name="custom_length_frac" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                                <option value="">None</option>
-                                                <option value="1/8">1/8&quot;</option>
-                                                <option value="1/4">1/4&quot;</option>
-                                                <option value="3/8">3/8&quot;</option>
-                                                <option value="1/2">1/2&quot;</option>
-                                                <option value="5/8">5/8&quot;</option>
-                                                <option value="3/4">3/4&quot;</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="margin-bottom:10px;">
-                                    <p style="font-size:0.8rem;font-weight:600;color:#374151;margin:0 0 6px 0;">Width</p>
-                                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                                        <div>
-                                            <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Whole inches</label>
-                                            <input type="number" id="custom-width" name="custom_width" placeholder="e.g. 23" min="1" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                        </div>
-                                        <div>
-                                            <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Fraction</label>
-                                            <select id="custom-width-frac" name="custom_width_frac" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                                <option value="">None</option>
-                                                <option value="1/8">1/8&quot;</option>
-                                                <option value="1/4">1/4&quot;</option>
-                                                <option value="3/8">3/8&quot;</option>
-                                                <option value="1/2">1/2&quot;</option>
-                                                <option value="5/8">5/8&quot;</option>
-                                                <option value="3/4">3/4&quot;</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-                                    <div>
-                                        <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Depth (in)</label>
-                                        <select id="custom-depth" name="custom_depth" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                            <option value="">Select</option>
-                                            <option value="1">1&quot;</option>
-                                            <option value="2">2&quot;</option>
-                                            <option value="4">4&quot;</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Filter Type</label>
-                                        <select id="custom-type" name="custom_type" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                            <option value="">MERV rating</option>
-                                            <option value="MERV 8/10">MERV 8/10</option>
-                                            <option value="MERV 11">MERV 11</option>
-                                            <option value="MERV 13">MERV 13</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label style="font-size:0.78rem;color:#64748b;display:block;margin-bottom:4px;">Quantity</label>
-                                        <input type="number" id="custom-qty" name="custom_qty" placeholder="Qty" min="1" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="margin-bottom:4px;">+ Add Standard Size</button>
+                        <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="margin-left:8px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
 
                         <div class="form-group" style="margin-top:1.25rem">
                             <label>Additional Details</label>
@@ -860,7 +786,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Organization <span class="required">*</span></label>
-                                <input type="text" name="organization" placeholder="Albany School District" required>
+                                <input type="text" name="organization" placeholder="Your Organization" required>
                             </div>
                             <div class="form-group">
                                 <label>PO Number (if applicable)</label>
@@ -1241,38 +1167,112 @@
           'MERV 13':   SIZES_MERV13,
         };
 
+        const FRACTIONS_HTML = `
+            <option value="">—</option>
+            <option value="1/8">1/8"</option>
+            <option value="1/4">1/4"</option>
+            <option value="3/8">3/8"</option>
+            <option value="1/2">1/2"</option>
+            <option value="5/8">5/8"</option>
+            <option value="3/4">3/4"</option>
+        `;
+
         let filterLineCount = 0;
 
-        // Quote form: add / remove filter line items
-        function addFilterLine() {
+        function addFilterLine(isCustom) {
             filterLineCount++;
             const id = filterLineCount;
             const container = document.getElementById('quoteLineItems');
-            const div = document.createElement('div');
-            div.id = 'filter-line-' + id;
-            div.style.cssText = 'display:grid;grid-template-columns:2fr 2fr 80px 36px;gap:8px;align-items:start;margin-bottom:10px;';
-            div.innerHTML = `
-                <select onchange="updateSizes(${id}, this.value)" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.93rem;background:#fff;width:100%;" name="filter_type_${id}">
-                    <option value="">MERV Rating</option>
-                    <option value="MERV 8/10">MERV 8/10</option>
-                    <option value="MERV 11">MERV 11</option>
-                    <option value="MERV 13">MERV 13</option>
-                </select>
-                <div id="size-wrap-${id}" style="position:relative;">
-                    <input type="text" id="size-input-${id}" name="filter_size_${id}"
-                        placeholder="Select type first"
-                        disabled
-                        autocomplete="off"
-                        oninput="filterSizes(${id}, this.value)"
-                        onfocus="showSizeList(${id})"
-                        onblur="hideSizeList(${id})"
-                        style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.93rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
-                    <div id="size-list-${id}" style="display:none;position:absolute;z-index:999;top:100%;left:0;right:0;background:#fff;border:1.5px solid #d1d5db;border-top:none;border-radius:0 0 8px 8px;max-height:220px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1);"></div>
+            const wrapper = document.createElement('div');
+            wrapper.id = 'filter-wrap-' + id;
+            wrapper.style.cssText = 'margin-bottom:10px;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;';
+
+            if (isCustom) {
+                wrapper.innerHTML = `
+                <div style="background:#faf5ff;padding:6px 10px 4px 10px;font-size:0.72rem;font-weight:700;color:#7c3aed;letter-spacing:0.05em;text-transform:uppercase;">Custom Size</div>
+                <div id="filter-line-${id}" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 10px 4px 10px;">
+                    <div>
+                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">MERV Rating</label>
+                        <select name="filter_type_${id}" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">
+                            <option value="">Select</option>
+                            <option value="MERV 8/10">MERV 8/10</option>
+                            <option value="MERV 11">MERV 11</option>
+                            <option value="MERV 13">MERV 13</option>
+                        </select>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr auto;gap:6px;align-items:end;">
+                        <div>
+                            <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Qty</label>
+                            <input type="number" min="1" placeholder="Qty" name="filter_qty_${id}" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;">
+                        </div>
+                        <button type="button" onclick="removeFilterLine(${id})" style="background:none;border:none;color:#ef4444;font-size:1.3rem;cursor:pointer;padding:4px 6px;line-height:1;" title="Remove">&times;</button>
+                    </div>
+                    <div>
+                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Length</label>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                            <input type="number" min="1" placeholder="Inches" name="custom_length_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;width:100%;">
+                            <select name="custom_length_frac_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">${FRACTIONS_HTML}</select>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Width</label>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                            <input type="number" min="1" placeholder="Inches" name="custom_width_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;width:100%;">
+                            <select name="custom_width_frac_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">${FRACTIONS_HTML}</select>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Depth</label>
+                        <select name="custom_depth_${id}" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">
+                            <option value="">Select</option>
+                            <option value="1">1"</option>
+                            <option value="2">2"</option>
+                            <option value="4">4"</option>
+                        </select>
+                    </div>
+                    <div style="display:flex;align-items:flex-end;">
+                        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.85rem;color:#374151;padding-bottom:10px;">
+                            <input type="checkbox" name="filter_tag_toggle_${id}" onchange="toggleTag(${id}, this.checked)" style="width:15px;height:15px;accent-color:#059669;">
+                            Add tag / unit label
+                        </label>
+                    </div>
                 </div>
-                <input type="number" min="1" placeholder="Qty" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.93rem;text-align:center;width:100%;box-sizing:border-box;" name="filter_qty_${id}">
-                ${id > 1 ? '<button type="button" onclick="removeFilterLine(' + id + ')" style="background:none;border:none;color:#ef4444;font-size:1.4rem;cursor:pointer;padding:0;line-height:1;margin-top:8px;" title="Remove">×</button>' : '<span></span>'}
-            `;
-            container.appendChild(div);
+                <div id="tag-row-${id}" style="display:none;padding:0 10px 10px 10px;">
+                    <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Unit / Building / Location Tag</label>
+                    <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;">
+                </div>`;
+            } else {
+                wrapper.innerHTML = `
+                <div id="filter-line-${id}" style="display:grid;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:start;padding:10px 10px 4px 10px;">
+                    <select onchange="updateSizes(${id}, this.value)" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.9rem;background:#fff;width:100%;" name="filter_type_${id}">
+                        <option value="">MERV Rating</option>
+                        <option value="MERV 8/10">MERV 8/10</option>
+                        <option value="MERV 11">MERV 11</option>
+                        <option value="MERV 13">MERV 13</option>
+                    </select>
+                    <div id="size-wrap-${id}" style="position:relative;">
+                        <input type="text" id="size-input-${id}" name="filter_size_${id}"
+                            placeholder="Select type first"
+                            disabled autocomplete="off"
+                            oninput="filterSizes(${id}, this.value)"
+                            onfocus="showSizeList(${id})"
+                            onblur="hideSizeList(${id})"
+                            style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.9rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
+                        <div id="size-list-${id}" style="display:none;position:absolute;z-index:999;top:100%;left:0;right:0;background:#fff;border:1.5px solid #d1d5db;border-top:none;border-radius:0 0 8px 8px;max-height:220px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1);"></div>
+                    </div>
+                    <input type="number" min="1" placeholder="Qty" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.9rem;text-align:center;width:100%;box-sizing:border-box;" name="filter_qty_${id}">
+                    <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:0.8rem;color:#374151;white-space:nowrap;padding-top:10px;">
+                        <input type="checkbox" name="filter_tag_toggle_${id}" onchange="toggleTag(${id}, this.checked)" style="width:14px;height:14px;accent-color:#059669;">
+                        Tag
+                    </label>
+                    <button type="button" onclick="removeFilterLine(${id})" style="background:none;border:none;color:#ef4444;font-size:1.3rem;cursor:pointer;padding:0;line-height:1;padding-top:9px;" title="Remove">&times;</button>
+                </div>
+                <div id="tag-row-${id}" style="display:none;padding:0 10px 10px 10px;">
+                    <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Unit / Building / Location Tag</label>
+                    <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;">
+                </div>`;
+            }
+            container.appendChild(wrapper);
         }
 
         function updateSizes(id, merv) {
@@ -1350,17 +1350,18 @@
             }, 150);
         }
 
+        function toggleTag(id, checked) {
+            const row = document.getElementById('tag-row-' + id);
+            if (row) row.style.display = checked ? 'block' : 'none';
+        }
+
         function removeFilterLine(id) {
-            const el = document.getElementById('filter-line-' + id);
+            const el = document.getElementById('filter-wrap-' + id);
             if (el) el.remove();
         }
 
-        function toggleCustomSize(checked) {
-            document.getElementById('custom-size-fields').style.display = checked ? 'block' : 'none';
-        }
-
-        // Init first line on load
-        document.addEventListener('DOMContentLoaded', function() { addFilterLine(); });
+        // Init first standard line on load
+        document.addEventListener('DOMContentLoaded', function() { addFilterLine(false); });
 
         // Add line item
         function addLine() {
