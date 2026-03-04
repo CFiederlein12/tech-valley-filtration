@@ -76,68 +76,237 @@
 
         /* ── Hero ── */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
-            color: white;
-            padding: 8rem 2rem;
-            text-align: center;
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--primary);
         }
 
-        .hero-content { max-width: 900px; margin: 0 auto; }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 60% 40%, rgba(5,150,105,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 10% 80%, rgba(30,64,175,0.22) 0%, transparent 60%),
+                linear-gradient(135deg, #0f172a 0%, #0d1f3c 60%, #0f172a 100%);
+        }
+
+        /* Subtle grid texture overlay */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text { color: white; }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6ee7b7;
+            margin-bottom: 1.5rem;
+            padding: 0.4rem 1rem 0.4rem 0.6rem;
+            background: rgba(5,150,105,0.15);
+            border: 1px solid rgba(110,231,183,0.25);
+            border-radius: 100px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: #6ee7b7;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
 
         .hero h1 {
             font-family: 'DM Serif Display', serif;
             font-size: 3.75rem;
             font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: white;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.75;
+        .hero h1 em {
+            font-style: normal;
+            color: #6ee7b7;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.65);
             font-weight: 300;
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
         }
 
-        .cta-buttons {
+        .hero-cta {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 0.85rem 2rem;
-            border-radius: 4px;
+        .btn-hero-primary {
+            padding: 0.95rem 2.25rem;
+            background: var(--accent);
+            color: white;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
+            border-radius: 6px;
             transition: all 0.2s;
-            letter-spacing: 0.01em;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .btn-primary {
-            background: white;
-            color: var(--primary);
+        .btn-hero-primary:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(5,150,105,0.4);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-        }
-
-        .btn-outline {
+        .btn-hero-secondary {
+            padding: 0.95rem 2.25rem;
             background: transparent;
             color: white;
-            border: 1px solid rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.25);
+            transition: all 0.2s;
         }
 
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.7);
+        .btn-hero-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-trust {
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-trust-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-trust-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.9rem;
+            color: white;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .hero-trust-label {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        /* Hero right: featured image card */
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-img-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+        }
+
+        .hero-img-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-img-card-badge {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(15,23,42,0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            color: white;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .hero-img-card-badge strong { color: #6ee7b7; }
+
+        .hero-mini-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .hero-mini-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-mini-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(5,150,105,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .hero-mini-card span {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            line-height: 1.35;
         }
 
         /* ── Stats Bar ── */
@@ -149,7 +318,7 @@
         .stats-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3.5rem 2rem;
+            padding: 3rem 2rem;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
@@ -159,7 +328,7 @@
 
         .stat-number {
             font-family: 'DM Serif Display', serif;
-            font-size: 3rem;
+            font-size: 2.75rem;
             font-weight: 400;
             color: var(--accent);
             letter-spacing: -0.02em;
@@ -169,7 +338,7 @@
 
         .stat-label {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 400;
         }
 
@@ -224,6 +393,180 @@
             font-weight: 300;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* ── Product Carousel ── */
+        .carousel-section {
+            padding: 5rem 0;
+            background: white;
+            overflow: hidden;
+        }
+
+        .carousel-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+        }
+
+        .carousel-header-left {}
+
+        .carousel-header-left h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--primary);
+            letter-spacing: -0.01em;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .carousel-header-left p {
+            color: var(--gray);
+            margin-top: 0.5rem;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        .carousel-nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+            padding-bottom: 0.25rem;
+        }
+
+        .carousel-btn {
+            width: 42px; height: 42px;
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--primary);
+        }
+
+        .carousel-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .carousel-track-wrap {
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 2rem 1.5rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            /* On wider screens, center starting point via max-width */
+            max-width: calc(1200px + 4rem);
+            margin: 0 auto;
+        }
+
+        .carousel-track::-webkit-scrollbar { display: none; }
+
+        .product-card {
+            flex: 0 0 300px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.25s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(5,150,105,0.12);
+            transform: translateY(-4px);
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background: var(--light-gray);
+        }
+
+        .product-card-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        .product-card-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            border-radius: 4px;
+            padding: 0.2rem 0.6rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.45rem;
+            line-height: 1.35;
+        }
+
+        .product-card p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            font-weight: 300;
+            line-height: 1.55;
+        }
+
+        .product-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
         }
 
         /* ── Services grid ── */
@@ -294,34 +637,134 @@
             border-radius: 50%;
         }
 
-        /* ── Industries grid ── */
+        /* ── Mid-page CTA Banner ── */
+        .mid-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, #047857 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mid-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .mid-cta-inner {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .mid-cta-text {}
+
+        .mid-cta-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: white;
+            letter-spacing: -0.015em;
+            margin-bottom: 0.6rem;
+        }
+
+        .mid-cta-text p {
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        .mid-cta-actions {
+            display: flex;
+            gap: 1rem;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-white {
+            padding: 0.9rem 2rem;
+            background: white;
+            color: var(--accent);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-cta-white:hover {
+            background: #f0fdf4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .btn-cta-outline {
+            padding: 0.9rem 2rem;
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-cta-outline:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: white;
+        }
+
+        /* ── Industries grid (visual) ── */
         .industries-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         .industry-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
             background: white;
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.2s;
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: all 0.25s;
+            display: flex;
+            flex-direction: column;
         }
 
         .industry-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 4px 16px rgba(5,150,105,0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(5,150,105,0.13);
+            transform: translateY(-3px);
+        }
+
+        .industry-card-top {
+            height: 7px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .industry-card-body {
+            padding: 1.75rem 1.75rem 2rem;
+            flex: 1;
         }
 
         .industry-icon {
-            font-size: 2.25rem;
-            margin-bottom: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 0.85rem;
             display: block;
         }
 
@@ -336,7 +779,63 @@
             color: var(--gray);
             font-size: 0.875rem;
             font-weight: 300;
-            line-height: 1.5;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+
+        .industry-card-arrow {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Feature strip below industries */
+        .feature-strip {
+            background: var(--primary);
+            padding: 3rem 2rem;
+        }
+
+        .feature-strip-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 40px; height: 40px;
+            background: rgba(5,150,105,0.2);
+            border: 1px solid rgba(5,150,105,0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text strong {
+            display: block;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-text span {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.82rem;
+            font-weight: 300;
         }
 
         /* ── Contact / CTA ── */
@@ -468,10 +967,7 @@
             padding: 4rem 2rem 2rem;
         }
 
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
 
         .footer-grid {
             display: grid;
@@ -499,7 +995,6 @@
         }
 
         .footer-col ul { list-style: none; }
-
         .footer-col li { margin-bottom: 0.6rem; }
 
         .footer-col a {
@@ -527,30 +1022,6 @@
             font-size: 0.85rem;
         }
 
-        /* ── Responsive ── */
-        @media (max-width: 1024px) {
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
-            .industries-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-            .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
-            .nav-links.open { display: flex; }
-            .hero h1 { font-size: 2.25rem; }
-            .services-grid { grid-template-columns: 1fr; }
-            .industries-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-        }
-
-        @media (max-width: 480px) {
-            .industries-grid { grid-template-columns: 1fr; }
-            .stats-inner { grid-template-columns: 1fr 1fr; }
-        }
-
         /* ── Testimonials ── */
         .testimonials-section {
             background: var(--light-gray);
@@ -563,10 +1034,7 @@
         }
 
         .testimonials-header {
-            margin-bottom: 3rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
+            margin-bottom: 2.5rem;
         }
 
         .testimonials-header h2 {
@@ -574,101 +1042,125 @@
             font-size: 2.25rem;
             font-weight: 400;
             color: var(--primary);
-            letter-spacing: -0.01em;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         .testimonials-header p {
             color: var(--gray);
-            font-size: 1rem;
-            margin-top: 0.5rem;
             font-weight: 300;
         }
 
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .testimonial-placeholder {
             background: white;
-            border: 2px dashed var(--border);
-            border-radius: 6px;
-            padding: 2rem;
+            border: 1.5px dashed var(--border);
+            border-radius: 10px;
+            padding: 1.75rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 180px;
             gap: 0.75rem;
-            color: var(--gray);
         }
 
-        .testimonial-placeholder .stars {
-            font-size: 1.25rem;
-            letter-spacing: 0.1em;
-            color: #f59e0b;
-        }
+        .testimonial-placeholder .stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; }
 
         .testimonial-placeholder p {
-            font-size: 0.9rem;
-            font-weight: 300;
             color: var(--gray);
+            font-size: 0.9rem;
             font-style: italic;
+            font-weight: 300;
+            line-height: 1.65;
+            flex: 1;
         }
 
         .testimonial-placeholder .placeholder-label {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--border);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-style: normal;
         }
 
         .review-cta-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 2rem;
             background: white;
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1.75rem 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
         }
 
         .review-cta-text h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
         }
 
         .review-cta-text p {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 300;
         }
 
         .review-btn {
-            background: var(--accent);
+            flex-shrink: 0;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
             color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.75rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 0.95rem;
-            white-space: nowrap;
+            font-size: 0.88rem;
+            text-decoration: none;
             transition: background 0.2s;
+            white-space: nowrap;
         }
 
-        .review-btn:hover { background: #047857; }
+        .review-btn:hover { background: #1e293b; }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-visual { display: none; }
+            .hero { min-height: auto; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .industries-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .mid-cta-inner { flex-direction: column; text-align: center; }
+            .feature-strip-inner { grid-template-columns: repeat(2, 1fr); }
+        }
 
         @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+            .nav-links.open { display: flex; }
+            .hero h1 { font-size: 2.4rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .industries-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .mid-cta-actions { width: 100%; justify-content: center; }
             .testimonials-grid { grid-template-columns: 1fr; }
-            .review-cta-row { flex-direction: column; align-items: flex-start; }
+            .review-cta-row { flex-direction: column; text-align: center; }
+            .feature-strip-inner { grid-template-columns: 1fr 1fr; }
+            .carousel-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .industries-grid { grid-template-columns: 1fr; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
+            .hero-trust { gap: 1.25rem; }
+            .feature-strip-inner { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -692,36 +1184,154 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Expert Commercial Air Filtration & Indoor Air Quality Solutions</h1>
-            <p>Serving educational institutions, healthcare facilities, and industrial clients across the Northeast since 2019.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Request a Quote</a>
-                <a href="products.html" class="btn btn-outline">Our Products</a>
+        <div class="hero-bg"></div>
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-eyebrow">Northeast's Commercial Filtration Specialists</div>
+                <h1>Cleaner Air.<br>Healthier <em>Facilities.</em></h1>
+                <p class="hero-desc">Expert HVAC filtration, UV-C disinfection, and indoor air quality solutions — from standard pleat filters to custom HEPA systems. Serving schools, healthcare, government, and industry since 2019.</p>
+                <div class="hero-cta">
+                    <a href="quote.html" class="btn-hero-primary">Get a Quote →</a>
+                    <a href="products.html" class="btn-hero-secondary">View Products</a>
+                </div>
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-num">1,700+</span>
+                        <span class="hero-trust-label">Product SKUs</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-num">109+</span>
+                        <span class="hero-trust-label">B2B Clients</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-num">1,159+</span>
+                        <span class="hero-trust-label">Projects Completed</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-num">30+</span>
+                        <span class="hero-trust-label">Years Expertise</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-img-card">
+                    <img src="ImageAssets/warehouse1.jpeg" alt="Tech Valley Filtration warehouse">
+                    <div class="hero-img-card-badge">
+                        <strong>Albany, NY</strong> · Serving the Northeast
+                    </div>
+                </div>
+                <div class="hero-mini-cards">
+                    <div class="hero-mini-card">
+                        <div class="hero-mini-icon">⚡</div>
+                        <span>Same-day will-call pickup available</span>
+                    </div>
+                    <div class="hero-mini-card">
+                        <div class="hero-mini-icon">📦</div>
+                        <span>Direct ship from our Albany warehouse</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-        <div class="stats-inner">
-            <div class="stat">
-                <span class="stat-number">1,700+</span>
-                <span class="stat-label">Product SKUs Available</span>
+    <!-- Product Carousel -->
+    <section class="carousel-section" id="products-preview">
+        <div class="carousel-header">
+            <div class="carousel-header-left">
+                <h2>Our Product Lines</h2>
+                <p>Commercial-grade filtration for every application and HVAC system</p>
             </div>
-            <div class="stat">
-                <span class="stat-number">109+</span>
-                <span class="stat-label">Active B2B Clients</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">1,159+</span>
-                <span class="stat-label">Successful Projects</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">30+</span>
-                <span class="stat-label">Years of Expertise</span>
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
             </div>
         </div>
+        <div class="carousel-track-wrap">
+            <div class="carousel-track" id="carouselTrack">
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/pleaed filter.jpg" alt="Pleated MERV Filters">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">Most Popular</span>
+                        <h3>Pleated MERV Filters</h3>
+                        <p>MERV 8, 10, 11, and 13 options in 60+ standard sizes. High-capacity synthetic media for commercial HVAC.</p>
+                        <span class="product-card-link">View filters →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/minipleat.png" alt="Mini-Pleat High Efficiency Filters" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">High Efficiency</span>
+                        <h3>Mini-Pleat Filters</h3>
+                        <p>Deep-pleat designs with extended surface area for high-airflow environments demanding MERV 13–16.</p>
+                        <span class="product-card-link">View filters →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/uv system.png" alt="UV-C Disinfection Systems" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">Infection Control</span>
+                        <h3>UV-C Disinfection</h3>
+                        <p>In-duct and upper-air UV-C systems for 99.9% pathogen reduction. HVAC coil and air-stream configurations.</p>
+                        <span class="product-card-link">View systems →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/carbon .jpg" alt="Carbon Odor Control Filters" style="object-fit:cover;">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">Odor Control</span>
+                        <h3>Carbon &amp; Molecular Filters</h3>
+                        <p>Activated carbon media for VOC, odor, and chemical contaminant removal. Ideal for labs, firing ranges, and cannabis facilities.</p>
+                        <span class="product-card-link">View filters →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/v-cell robot.jpg" alt="V-Cell and Box Filters">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">HEPA &amp; V-Bank</span>
+                        <h3>Rigid Box &amp; V-Bank</h3>
+                        <p>V-bank HEPA and rigid box filters for critical environments — healthcare, cleanrooms, and data centers.</p>
+                        <span class="product-card-link">View filters →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/AMFCO-HE-Series-FPO.png" alt="Washable Metal Filters" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">Reusable</span>
+                        <h3>Washable Metal Filters</h3>
+                        <p>AMFCO HE-Series permanent aluminum mesh filters. Long-service pre-filtration for industrial and commercial units.</p>
+                        <span class="product-card-link">View filters →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/belt.png" alt="HVAC Belts and Components" style="object-fit:contain;padding:1.5rem;background:#f8fafc;">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">Components</span>
+                        <h3>HVAC Belts &amp; Drive Parts</h3>
+                        <p>V-belts, cogged belts, and motor drive components for AHU and fan maintenance. Large in-stock inventory.</p>
+                        <span class="product-card-link">View components →</span>
+                    </div>
+                </a>
+
+                <a class="product-card" href="products.html">
+                    <img class="product-card-img" src="ImageAssets/prevert on unit.png" alt="Prevent-It Pre-Filter System" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <div class="product-card-body">
+                        <span class="product-card-tag">Pre-Filtration</span>
+                        <h3>Prevent-It Pre-Filter Systems</h3>
+                        <p>External pre-filter wraps and frames that extend primary filter life by capturing large debris at the unit inlet.</p>
+                        <span class="product-card-link">View systems →</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
     <!-- Services -->
@@ -733,7 +1343,7 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🔬</div>
-                <h3>HEPA & High-Efficiency Filters</h3>
+                <h3>HEPA &amp; High-Efficiency Filters</h3>
                 <p>Premium filtration systems achieving 99.97% to 99.99% efficiency ratings for critical environments.</p>
                 <ul>
                     <li>V-Bank HEPA configurations</li>
@@ -744,13 +1354,13 @@
             </div>
             <div class="service-card">
                 <div class="service-icon">📊</div>
-                <h3>MERV-Rated Box Filters</h3>
+                <h3>MERV-Rated Pleated Filters</h3>
                 <p>Commercial-grade filtration solutions with MERV 8–16 ratings for diverse HVAC requirements.</p>
                 <ul>
                     <li>ASHRAE standards compliant</li>
-                    <li>Synthetic & rigid options</li>
-                    <li>Standard configurations</li>
-                    <li>Volume pricing available</li>
+                    <li>Synthetic &amp; rigid options</li>
+                    <li>60+ standard configurations</li>
+                    <li>Custom sizes available</li>
                 </ul>
             </div>
             <div class="service-card">
@@ -778,6 +1388,20 @@
         </div>
     </div>
 
+    <!-- Mid-page CTA Banner -->
+    <div class="mid-cta">
+        <div class="mid-cta-inner">
+            <div class="mid-cta-text">
+                <h2>Need filters fast? We stock 1,700+ SKUs.</h2>
+                <p>Same-day will-call pickup from our Albany warehouse. Or submit a quote for delivery pricing and volume discounts.</p>
+            </div>
+            <div class="mid-cta-actions">
+                <a href="quote.html" class="btn-cta-white">Get a Quote</a>
+                <a href="tel:518-356-3943" class="btn-cta-outline">📞 Call Us Now</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Industries -->
     <div class="section-alt">
         <div class="section" id="industries">
@@ -787,35 +1411,93 @@
             </div>
             <div class="industries-grid">
                 <a class="industry-card" href="industries.html">
-                    <span class="industry-icon">🎓</span>
-                    <h3>Higher Education</h3>
-                    <p>Universities and colleges requiring MERV 13+ systems for classrooms and labs</p>
+                    <div class="industry-card-top"></div>
+                    <div class="industry-card-body">
+                        <span class="industry-icon">🎓</span>
+                        <h3>Higher Education</h3>
+                        <p>Universities and colleges requiring MERV 13+ systems for classrooms, labs, and dormitories.</p>
+                        <span class="industry-card-arrow">Learn more →</span>
+                    </div>
                 </a>
                 <a class="industry-card" href="industries.html">
-                    <span class="industry-icon">📚</span>
-                    <h3>K-12 Schools</h3>
-                    <p>Superior air quality for student health and learning performance</p>
+                    <div class="industry-card-top"></div>
+                    <div class="industry-card-body">
+                        <span class="industry-icon">📚</span>
+                        <h3>K-12 Schools</h3>
+                        <p>Superior air quality solutions for student health, learning performance, and ASHRAE compliance.</p>
+                        <span class="industry-card-arrow">Learn more →</span>
+                    </div>
                 </a>
                 <a class="industry-card" href="industries.html">
-                    <span class="industry-icon">🏥</span>
-                    <h3>Healthcare & Senior Living</h3>
-                    <p>HEPA and MERV 14+ systems for infection control and patient safety</p>
+                    <div class="industry-card-top"></div>
+                    <div class="industry-card-body">
+                        <span class="industry-icon">🏥</span>
+                        <h3>Healthcare &amp; Senior Living</h3>
+                        <p>HEPA and MERV 14+ systems for infection control, patient safety, and regulatory compliance.</p>
+                        <span class="industry-card-arrow">Learn more →</span>
+                    </div>
                 </a>
                 <a class="industry-card" href="industries.html">
-                    <span class="industry-icon">🏛️</span>
-                    <h3>Government & Commercial</h3>
-                    <p>ASHRAE-compliant solutions for office buildings and public facilities</p>
+                    <div class="industry-card-top"></div>
+                    <div class="industry-card-body">
+                        <span class="industry-icon">🏛️</span>
+                        <h3>Government &amp; Commercial</h3>
+                        <p>ASHRAE-compliant solutions for office buildings, courthouses, and public facilities.</p>
+                        <span class="industry-card-arrow">Learn more →</span>
+                    </div>
                 </a>
                 <a class="industry-card" href="industries.html">
-                    <span class="industry-icon">🏭</span>
-                    <h3>Manufacturing</h3>
-                    <p>Specialized process filtration and worker protection systems</p>
+                    <div class="industry-card-top"></div>
+                    <div class="industry-card-body">
+                        <span class="industry-icon">🏭</span>
+                        <h3>Manufacturing</h3>
+                        <p>Specialized process filtration, weld fume capture, and worker protection systems.</p>
+                        <span class="industry-card-arrow">Learn more →</span>
+                    </div>
                 </a>
                 <a class="industry-card" href="industries.html">
-                    <span class="industry-icon">📖</span>
-                    <h3>Libraries & Museums</h3>
-                    <p>Collection preservation with molecular and particulate filtration</p>
+                    <div class="industry-card-top"></div>
+                    <div class="industry-card-body">
+                        <span class="industry-icon">📖</span>
+                        <h3>Libraries &amp; Museums</h3>
+                        <p>Collection preservation with molecular and particulate filtration to NAFA best practices.</p>
+                        <span class="industry-card-arrow">Learn more →</span>
+                    </div>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Strip -->
+    <div class="feature-strip">
+        <div class="feature-strip-inner">
+            <div class="feature-item">
+                <div class="feature-icon">📦</div>
+                <div class="feature-text">
+                    <strong>In-Stock &amp; Ready to Ship</strong>
+                    <span>1,700+ SKUs available from our Albany warehouse</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✂️</div>
+                <div class="feature-text">
+                    <strong>Custom Sizes Available</strong>
+                    <span>Non-standard dimensions and OEM replacements</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-text">
+                    <strong>NAFA &amp; ASHRAE Compliant</strong>
+                    <span>Products and guidance that meet industry standards</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🤝</div>
+                <div class="feature-text">
+                    <strong>Volume Pricing</strong>
+                    <span>Competitive B2B pricing for facilities teams and contractors</span>
+                </div>
             </div>
         </div>
     </div>
@@ -871,7 +1553,7 @@
                     </div>
                     <div class="cta-detail-item">
                         <span>Address</span>
-                        <p>30 Kraft Ave, Suite 5 · Albany, NY 12205</p>
+                        <p>30 Kraft Ave, Suite 5 &middot; Albany, NY 12205</p>
                     </div>
                 </div>
             </div>
@@ -948,7 +1630,7 @@
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</span>
-                <span>Albany, NY · Serving the Northeast</span>
+                <span>Albany, NY &middot; Serving the Northeast</span>
             </div>
         </div>
     </footer>
@@ -963,7 +1645,49 @@
             alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your filtration needs.');
             e.target.reset();
         }
+
+        // ── Product Carousel ──────────────────────────────────────────────────
+        (function() {
+            const track = document.getElementById('carouselTrack');
+            const dotsContainer = document.getElementById('carouselDots');
+            const CARD_WIDTH = 300 + 24; // card width + gap
+            const CARDS_PER_VIEW = Math.floor((window.innerWidth > 1200 ? 1200 : window.innerWidth - 64) / CARD_WIDTH);
+            const totalCards = track.querySelectorAll('.product-card').length;
+            const totalDots = Math.max(1, totalCards - CARDS_PER_VIEW + 1);
+
+            // Build dots
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', function() { scrollToIndex(i); });
+                dotsContainer.appendChild(dot);
+            }
+
+            function updateDots() {
+                const scrollLeft = track.scrollLeft;
+                const idx = Math.round(scrollLeft / CARD_WIDTH);
+                dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+                    d.classList.toggle('active', i === idx);
+                });
+            }
+
+            function scrollToIndex(i) {
+                track.scrollTo({ left: i * CARD_WIDTH, behavior: 'smooth' });
+            }
+
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                track.scrollBy({ left: CARD_WIDTH * 2, behavior: 'smooth' });
+            });
+
+            document.getElementById('prevBtn').addEventListener('click', function() {
+                track.scrollBy({ left: -CARD_WIDTH * 2, behavior: 'smooth' });
+            });
+
+            track.addEventListener('scroll', updateDots);
+        })();
     </script>
+
 <!-- Floating SMS Button -->
 <a href="sms-optin.html" class="sms-float-btn" title="Text us to order">💬 <span>Text to Order</span></a>
 <style>
