@@ -674,61 +674,58 @@
                         <hr class="form-divider">
                         <p class="form-section-label">Filtration Needs</p>
 
-                        <div class="filter-line-header">
-                            <span class="filter-col-label" style="flex:1.8">Filter Type</span>
-                            <span class="filter-col-label" style="flex:1">Length</span>
-                            <span class="filter-col-label" style="flex:1">Width</span>
-                            <span class="filter-col-label" style="flex:1">Depth</span>
-                            <span class="filter-col-label" style="flex:0.7">Qty</span>
-                            <span style="width:36px"></span>
+                        <div id="filter-lines-header" style="display:grid;grid-template-columns:2fr 2fr 80px 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
+                            <span>Filter Type</span>
+                            <span>Standard Size</span>
+                            <span>Qty</span>
+                            <span></span>
                         </div>
-                        <div class="filter-line-items" id="quoteLineItems">
-                            <div class="filter-line-item">
-                                <select name="filter_type[]" style="flex:1.8">
-                                    <option value="">Select type</option>
-                                    <option>MERV 8/10</option>
-                                    <option>MERV 11</option>
-                                    <option>MERV 13</option>
-                                </select>
-                                <select name="length[]" style="flex:1">
-                                    <option value="">Length</option>
-                                    <option>10&quot;</option>
-                                    <option>12&quot;</option>
-                                    <option>14&quot;</option>
-                                    <option>16&quot;</option>
-                                    <option>18&quot;</option>
-                                    <option>20&quot;</option>
-                                    <option>24&quot;</option>
-                                    <option>25&quot;</option>
-                                    <option>30&quot;</option>
-                                    <option>36&quot;</option>
-                                </select>
-                                <select name="width[]" style="flex:1">
-                                    <option value="">Width</option>
-                                    <option>10&quot;</option>
-                                    <option>12&quot;</option>
-                                    <option>14&quot;</option>
-                                    <option>16&quot;</option>
-                                    <option>18&quot;</option>
-                                    <option>20&quot;</option>
-                                    <option>24&quot;</option>
-                                    <option>25&quot;</option>
-                                    <option>30&quot;</option>
-                                    <option>36&quot;</option>
-                                </select>
-                                <select name="depth[]" style="flex:1">
-                                    <option value="">Depth</option>
-                                    <option>1&quot;</option>
-                                    <option>2&quot;</option>
-                                    <option>4&quot;</option>
-                                    <option>6&quot;</option>
-                                    <option>12&quot;</option>
-                                </select>
-                                <input type="number" name="qty[]" placeholder="Qty" min="1" style="flex:0.7">
-                                <button type="button" class="remove-filter-line" onclick="removeFilterLine(this)" title="Remove">&#215;</button>
+                        <div id="quoteLineItems"></div>
+                        <button type="button" class="add-line-btn" onclick="addFilterLine()">+ Add Another Filter</button>
+
+                        <div style="margin-top:14px;padding:12px 14px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+                            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.93rem;font-weight:500;color:#374151;">
+                                <input type="checkbox" id="custom-size-toggle" onchange="toggleCustomSize(this.checked)" style="width:16px;height:16px;accent-color:#059669;">
+                                Need a custom size not listed above?
+                            </label>
+                            <div id="custom-size-fields" style="display:none;margin-top:12px;">
+                                <p style="font-size:0.85rem;color:#64748b;margin:0 0 10px 0;">Enter your custom dimensions (depth options: 1&quot;, 2&quot;, or 4&quot; only):</p>
+                                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px;">
+                                    <div>
+                                        <label style="font-size:0.8rem;color:#64748b;display:block;margin-bottom:4px;">Length (in)</label>
+                                        <input type="number" id="custom-length" name="custom_length" placeholder="e.g. 17" min="1" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
+                                    </div>
+                                    <div>
+                                        <label style="font-size:0.8rem;color:#64748b;display:block;margin-bottom:4px;">Width (in)</label>
+                                        <input type="number" id="custom-width" name="custom_width" placeholder="e.g. 23" min="1" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
+                                    </div>
+                                    <div>
+                                        <label style="font-size:0.8rem;color:#64748b;display:block;margin-bottom:4px;">Depth (in)</label>
+                                        <select id="custom-depth" name="custom_depth" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
+                                            <option value="">Select</option>
+                                            <option value="1">1&quot;</option>
+                                            <option value="2">2&quot;</option>
+                                            <option value="4">4&quot;</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                                    <div>
+                                        <label style="font-size:0.8rem;color:#64748b;display:block;margin-bottom:4px;">Filter Type</label>
+                                        <select id="custom-type" name="custom_type" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
+                                            <option value="">Select MERV rating</option>
+                                            <option value="MERV 8/10">MERV 8/10</option>
+                                            <option value="MERV 11">MERV 11</option>
+                                            <option value="MERV 13">MERV 13</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="font-size:0.8rem;color:#64748b;display:block;margin-bottom:4px;">Quantity</label>
+                                        <input type="number" id="custom-qty" name="custom_qty" placeholder="Qty" min="1" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.93rem;box-sizing:border-box;">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <button type="button" class="add-line-btn" onclick="addFilterLine()">+ Add Another Filter</button>
 
                         <div class="form-group" style="margin-top:1.25rem">
                             <label>Additional Details</label>
@@ -1006,41 +1003,271 @@
         }
 
 
+        // ── Filter size data ──────────────────────────────────────────
+        const SIZES_MERV8 = [
+          { label: '10" x 10" x 1"', sku: 'TVF-PF-10101' },
+          { label: '10" x 20" x 1"', sku: 'TVF-PF-10201' },
+          { label: '10" x 20" x 2"', sku: 'TVF-PF-10202' },
+          { label: '10" x 24" x 1"', sku: 'TVF-PF-10241' },
+          { label: '10" x 25" x 1"', sku: 'TVF-PF-10251' },
+          { label: '10" x 30" x 1"', sku: 'TVF-PF-10301' },
+          { label: '10" x 36" x 1"', sku: 'TVF-PF-10361' },
+          { label: '12" x 12" x 1"', sku: 'TVF-PF-12121' },
+          { label: '12" x 20" x 1"', sku: 'TVF-PF-12201' },
+          { label: '12" x 20" x 2"', sku: 'TVF-PF-12202' },
+          { label: '12" x 24" x 1"', sku: 'TVF-PF-12241' },
+          { label: '12" x 24" x 2"', sku: 'TVF-PF-12242' },
+          { label: '12" x 24" x 4"', sku: 'TVF-PF-12244' },
+          { label: '12" x 25" x 1"', sku: 'TVF-PF-12251' },
+          { label: '12" x 30" x 1"', sku: 'TVF-PF-12301' },
+          { label: '12" x 36" x 1"', sku: 'TVF-PF-12361' },
+          { label: '14" x 14" x 1"', sku: 'TVF-PF-14141' },
+          { label: '14" x 18" x 1"', sku: 'TVF-PF-14181' },
+          { label: '14" x 20" x 1"', sku: 'TVF-PF-14201' },
+          { label: '14" x 20" x 2"', sku: 'TVF-PF-14202' },
+          { label: '14" x 24" x 1"', sku: 'TVF-PF-14241' },
+          { label: '14" x 25" x 1"', sku: 'TVF-PF-14251' },
+          { label: '14" x 25" x 2"', sku: 'TVF-PF-14252' },
+          { label: '14" x 30" x 1"', sku: 'TVF-PF-14301' },
+          { label: '15" x 20" x 1"', sku: 'TVF-PF-15201' },
+          { label: '15" x 20" x 2"', sku: 'TVF-PF-15202' },
+          { label: '15" x 25" x 1"', sku: 'TVF-PF-15251' },
+          { label: '16" x 16" x 1"', sku: 'TVF-PF-16161' },
+          { label: '16" x 16" x 2"', sku: 'TVF-PF-16162' },
+          { label: '16" x 20" x 1"', sku: 'TVF-PF-16201' },
+          { label: '16" x 20" x 2"', sku: 'TVF-PF-16202' },
+          { label: '16" x 20" x 4"', sku: 'TVF-PF-16204' },
+          { label: '16" x 24" x 1"', sku: 'TVF-PF-16241' },
+          { label: '16" x 24" x 2"', sku: 'TVF-PF-16242' },
+          { label: '16" x 24" x 4"', sku: 'TVF-PF-16244' },
+          { label: '16" x 25" x 1"', sku: 'TVF-PF-16251' },
+          { label: '16" x 25" x 2"', sku: 'TVF-PF-16252' },
+          { label: '16" x 25" x 4"', sku: 'TVF-PF-16254' },
+          { label: '16" x 30" x 1"', sku: 'TVF-PF-16301' },
+          { label: '16" x 30" x 2"', sku: 'TVF-PF-16302' },
+          { label: '18" x 18" x 1"', sku: 'TVF-PF-18181' },
+          { label: '18" x 18" x 2"', sku: 'TVF-PF-18182' },
+          { label: '18" x 20" x 1"', sku: 'TVF-PF-18201' },
+          { label: '18" x 20" x 2"', sku: 'TVF-PF-18202' },
+          { label: '18" x 24" x 1"', sku: 'TVF-PF-18241' },
+          { label: '18" x 24" x 2"', sku: 'TVF-PF-18242' },
+          { label: '18" x 24" x 4"', sku: 'TVF-PF-18244' },
+          { label: '18" x 25" x 1"', sku: 'TVF-PF-18251' },
+          { label: '18" x 25" x 2"', sku: 'TVF-PF-18252' },
+          { label: '18" x 30" x 1"', sku: 'TVF-PF-18301' },
+          { label: '20" x 20" x 1"', sku: 'TVF-PF-20201' },
+          { label: '20" x 20" x 2"', sku: 'TVF-PF-20202' },
+          { label: '20" x 20" x 4"', sku: 'TVF-PF-20204' },
+          { label: '20" x 22" x 1"', sku: 'TVF-PF-20221' },
+          { label: '20" x 24" x 1"', sku: 'TVF-PF-20241' },
+          { label: '20" x 24" x 2"', sku: 'TVF-PF-20242' },
+          { label: '20" x 24" x 4"', sku: 'TVF-PF-20244' },
+          { label: '20" x 25" x 1"', sku: 'TVF-PF-20251' },
+          { label: '20" x 25" x 2"', sku: 'TVF-PF-20252' },
+          { label: '24" x 24" x 4"', sku: 'TVF-M10HC-24244' },
+        ];
+        const SIZES_MERV11 = [
+          { label: '10" x 10" x 1"', sku: 'TVF-M11-10101' },
+          { label: '10" x 20" x 1"', sku: 'TVF-M11-10201' },
+          { label: '10" x 24" x 1"', sku: 'TVF-M11-10241' },
+          { label: '12" x 12" x 1"', sku: 'TVF-M11-12121' },
+          { label: '12" x 12" x 2"', sku: 'TVF-M11-12122' },
+          { label: '12" x 20" x 1"', sku: 'TVF-M11-12201' },
+          { label: '12" x 20" x 2"', sku: 'TVF-M11-12202' },
+          { label: '12" x 24" x 1"', sku: 'TVF-M11-12241' },
+          { label: '12" x 24" x 2"', sku: 'TVF-M11-12242' },
+          { label: '12" x 24" x 4"', sku: 'TVF-M11-12244' },
+          { label: '12" x 25" x 1"', sku: 'TVF-M11-12251' },
+          { label: '12" x 30" x 1"', sku: 'TVF-M11-12301' },
+          { label: '12" x 36" x 1"', sku: 'TVF-M11-12361' },
+          { label: '14" x 14" x 1"', sku: 'TVF-M11-14141' },
+          { label: '14" x 18" x 1"', sku: 'TVF-M11-14181' },
+          { label: '14" x 20" x 1"', sku: 'TVF-M11-14201' },
+          { label: '14" x 20" x 2"', sku: 'TVF-M11-14202' },
+          { label: '14" x 24" x 1"', sku: 'TVF-M11-14241' },
+          { label: '14" x 25" x 1"', sku: 'TVF-M11-14251' },
+          { label: '14" x 25" x 2"', sku: 'TVF-M11-14252' },
+          { label: '14" x 30" x 1"', sku: 'TVF-M11-14301' },
+          { label: '14" x 30" x 2"', sku: 'TVF-M11-14302' },
+          { label: '15" x 20" x 1"', sku: 'TVF-M11-15201' },
+          { label: '15" x 20" x 2"', sku: 'TVF-M11-15202' },
+          { label: '16" x 16" x 1"', sku: 'TVF-M11-16161' },
+          { label: '16" x 16" x 2"', sku: 'TVF-M11-16162' },
+          { label: '16" x 20" x 1"', sku: 'TVF-M11-16201' },
+          { label: '16" x 20" x 2"', sku: 'TVF-M11-16202' },
+          { label: '16" x 20" x 4"', sku: 'TVF-M11-16204' },
+          { label: '16" x 24" x 1"', sku: 'TVF-M11-16241' },
+          { label: '16" x 24" x 2"', sku: 'TVF-M11-16242' },
+          { label: '16" x 24" x 4"', sku: 'TVF-M11-16244' },
+          { label: '16" x 25" x 1"', sku: 'TVF-M11-16251' },
+          { label: '16" x 25" x 2"', sku: 'TVF-M11-16252' },
+          { label: '16" x 25" x 4"', sku: 'TVF-M11-16254' },
+          { label: '16" x 30" x 2"', sku: 'TVF-M11-16302' },
+          { label: '18" x 18" x 1"', sku: 'TVF-M11-18181' },
+          { label: '18" x 18" x 2"', sku: 'TVF-M11-18182' },
+          { label: '18" x 20" x 1"', sku: 'TVF-M11-18201' },
+          { label: '18" x 20" x 2"', sku: 'TVF-M11-18202' },
+          { label: '18" x 24" x 1"', sku: 'TVF-M11-18241' },
+          { label: '18" x 24" x 2"', sku: 'TVF-M11-18242' },
+          { label: '18" x 24" x 4"', sku: 'TVF-M11-18244' },
+          { label: '18" x 25" x 2"', sku: 'TVF-M11-18252' },
+          { label: '18" x 30" x 1"', sku: 'TVF-M11-18301' },
+          { label: '20" x 20" x 1"', sku: 'TVF-M11-20201' },
+          { label: '20" x 20" x 2"', sku: 'TVF-M11-20202' },
+          { label: '20" x 20" x 4"', sku: 'TVF-M11-20204' },
+          { label: '20" x 24" x 1"', sku: 'TVF-M11-20241' },
+          { label: '20" x 24" x 2"', sku: 'TVF-M11-20242' },
+          { label: '20" x 24" x 4"', sku: 'TVF-M11-20244' },
+          { label: '20" x 25" x 1"', sku: 'TVF-M11-20251' },
+          { label: '20" x 25" x 2"', sku: 'TVF-M11-20252' },
+          { label: '20" x 25" x 4"', sku: 'TVF-M11-20254' },
+          { label: '20" x 30" x 1"', sku: 'TVF-M11-20301' },
+          { label: '20" x 30" x 2"', sku: 'TVF-M11-20302' },
+          { label: '20" x 36" x 1"', sku: 'TVF-M11-20361' },
+          { label: '22" x 22" x 1"', sku: 'TVF-M11-22221' },
+          { label: '24" x 24" x 1"', sku: 'TVF-M11-24241' },
+          { label: '24" x 24" x 2"', sku: 'TVF-M11-24242' },
+          { label: '24" x 24" x 4"', sku: 'TVF-M11-24244' },
+          { label: '24" x 30" x 1"', sku: 'TVF-M11-24301' },
+          { label: '24" x 30" x 2"', sku: 'TVF-M11-24302' },
+          { label: '24" x 36" x 1"', sku: 'TVF-M11-24361' },
+          { label: '25" x 25" x 1"', sku: 'TVF-M11-25251' },
+        ];
+        const SIZES_MERV13 = [
+          { label: '10" x 10" x 1"', sku: 'TVF-M13-10101' },
+          { label: '10" x 20" x 1"', sku: 'TVF-M13-10201' },
+          { label: '10" x 24" x 1"', sku: 'TVF-M13-10241' },
+          { label: '10" x 25" x 1"', sku: 'TVF-M13-10251' },
+          { label: '10" x 36" x 1"', sku: 'TVF-M13-10361' },
+          { label: '12" x 12" x 1"', sku: 'TVF-M13-12121' },
+          { label: '12" x 12" x 2"', sku: 'TVF-M13-12122' },
+          { label: '12" x 20" x 1"', sku: 'TVF-M13-12201' },
+          { label: '12" x 20" x 2"', sku: 'TVF-M13-12202' },
+          { label: '12" x 24" x 1"', sku: 'TVF-M13-12241' },
+          { label: '12" x 24" x 2"', sku: 'TVF-M13-12242' },
+          { label: '12" x 24" x 4"', sku: 'TVF-M13-12244' },
+          { label: '12" x 25" x 1"', sku: 'TVF-M13-12251' },
+          { label: '12" x 30" x 1"', sku: 'TVF-M13-12301' },
+          { label: '14" x 14" x 1"', sku: 'TVF-M13-14141' },
+          { label: '14" x 14" x 2"', sku: 'TVF-M13-14142' },
+          { label: '14" x 18" x 1"', sku: 'TVF-M13-14181' },
+          { label: '14" x 20" x 1"', sku: 'TVF-M13-14201' },
+          { label: '14" x 20" x 2"', sku: 'TVF-M13-14202' },
+          { label: '14" x 24" x 1"', sku: 'TVF-M13-14241' },
+          { label: '14" x 25" x 1"', sku: 'TVF-M13-14251' },
+          { label: '14" x 25" x 2"', sku: 'TVF-M13-14252' },
+          { label: '14" x 30" x 1"', sku: 'TVF-M13-14301' },
+          { label: '14" x 30" x 2"', sku: 'TVF-M13-14302' },
+          { label: '15" x 20" x 1"', sku: 'TVF-M13-15201' },
+          { label: '15" x 20" x 2"', sku: 'TVF-M13-15202' },
+          { label: '16" x 16" x 1"', sku: 'TVF-M13-16161' },
+          { label: '16" x 16" x 2"', sku: 'TVF-M13-16162' },
+          { label: '16" x 20" x 1"', sku: 'TVF-M13-16201' },
+          { label: '16" x 20" x 2"', sku: 'TVF-M13-16202' },
+          { label: '16" x 20" x 4"', sku: 'TVF-M13-16204' },
+          { label: '16" x 24" x 1"', sku: 'TVF-M13-16241' },
+          { label: '16" x 24" x 2"', sku: 'TVF-M13-16242' },
+          { label: '16" x 24" x 4"', sku: 'TVF-M13-16244' },
+          { label: '16" x 25" x 1"', sku: 'TVF-M13-16251' },
+          { label: '16" x 25" x 2"', sku: 'TVF-M13-16252' },
+          { label: '16" x 25" x 4"', sku: 'TVF-M13-16254' },
+          { label: '16" x 30" x 1"', sku: 'TVF-M13-16301' },
+          { label: '16" x 30" x 2"', sku: 'TVF-M13-16302' },
+          { label: '18" x 18" x 1"', sku: 'TVF-M13-18181' },
+          { label: '18" x 18" x 2"', sku: 'TVF-M13-18182' },
+          { label: '18" x 20" x 1"', sku: 'TVF-M13-18201' },
+          { label: '18" x 20" x 2"', sku: 'TVF-M13-18202' },
+          { label: '18" x 24" x 1"', sku: 'TVF-M13-18241' },
+          { label: '18" x 24" x 2"', sku: 'TVF-M13-18242' },
+          { label: '18" x 24" x 4"', sku: 'TVF-M13-18244' },
+          { label: '18" x 25" x 1"', sku: 'TVF-M13-18251' },
+          { label: '18" x 25" x 2"', sku: 'TVF-M13-18252' },
+          { label: '18" x 30" x 1"', sku: 'TVF-M13-18301' },
+          { label: '20" x 20" x 1"', sku: 'TVF-M13-20201' },
+          { label: '20" x 20" x 2"', sku: 'TVF-M13-20202' },
+          { label: '20" x 20" x 4"', sku: 'TVF-M13-20204' },
+          { label: '20" x 24" x 1"', sku: 'TVF-M13-20241' },
+          { label: '20" x 24" x 2"', sku: 'TVF-M13-20242' },
+          { label: '20" x 24" x 4"', sku: 'TVF-M13-20244' },
+          { label: '20" x 25" x 1"', sku: 'TVF-M13-20251' },
+          { label: '20" x 25" x 2"', sku: 'TVF-M13-20252' },
+          { label: '20" x 25" x 4"', sku: 'TVF-M13-20254' },
+          { label: '20" x 30" x 1"', sku: 'TVF-M13-20301' },
+          { label: '20" x 30" x 2"', sku: 'TVF-M13-20302' },
+          { label: '20" x 35" x 2"', sku: 'TVF-M13-20352' },
+          { label: '22" x 22" x 1"', sku: 'TVF-M13-22221' },
+          { label: '24" x 24" x 1"', sku: 'TVF-M13-24241' },
+          { label: '24" x 24" x 2"', sku: 'TVF-M13-24242' },
+          { label: '24" x 24" x 4"', sku: 'TVF-M13-24244' },
+          { label: '24" x 30" x 1"', sku: 'TVF-M13-24301' },
+          { label: '24" x 30" x 2"', sku: 'TVF-M13-24302' },
+          { label: '24" x 36" x 1"', sku: 'TVF-M13-24361' },
+          { label: '25" x 25" x 1"', sku: 'TVF-M13-25251' },
+          { label: '25" x 25" x 2"', sku: 'TVF-M13-25252' },
+        ];
+        const SIZE_MAP = {
+          'MERV 8/10': SIZES_MERV8,
+          'MERV 11':   SIZES_MERV11,
+          'MERV 13':   SIZES_MERV13,
+        };
+
+        let filterLineCount = 0;
+
         // Quote form: add / remove filter line items
         function addFilterLine() {
+            filterLineCount++;
+            const id = filterLineCount;
             const container = document.getElementById('quoteLineItems');
             const div = document.createElement('div');
-            div.className = 'filter-line-item';
-            const lengths = [10,12,14,16,18,20,24,25,30,36].map(n => `<option>${n}"</option>`).join('');
-            const depths  = [1,2,4,6,12].map(n => `<option>${n}"</option>`).join('');
+            div.id = 'filter-line-' + id;
+            div.style.cssText = 'display:grid;grid-template-columns:2fr 2fr 80px 36px;gap:8px;align-items:center;margin-bottom:8px;';
             div.innerHTML = `
-                <select name="filter_type[]" style="flex:1.8">
-                    <option value="">Select type</option>
-                    <option>MERV 8/10</option>
-                    <option>MERV 11</option>
-                    <option>MERV 13</option>
+                <select onchange="updateSizes(${id}, this.value)" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.93rem;background:#fff;" name="filter_type_${id}">
+                    <option value="">MERV Rating</option>
+                    <option value="MERV 8/10">MERV 8/10</option>
+                    <option value="MERV 11">MERV 11</option>
+                    <option value="MERV 13">MERV 13</option>
                 </select>
-                <select name="length[]" style="flex:1">
-                    <option value="">Length</option>${lengths}
+                <select id="size-select-${id}" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.93rem;background:#f9fafb;color:#9ca3af;" name="filter_size_${id}" disabled>
+                    <option value="">Select type first</option>
                 </select>
-                <select name="width[]" style="flex:1">
-                    <option value="">Width</option>${lengths}
-                </select>
-                <select name="depth[]" style="flex:1">
-                    <option value="">Depth</option>${depths}
-                </select>
-                <input type="number" name="qty[]" placeholder="Qty" min="1" style="flex:0.7">
-                <button type="button" class="remove-filter-line" onclick="removeFilterLine(this)" title="Remove">&#215;</button>
+                <input type="number" min="1" placeholder="Qty" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.93rem;text-align:center;" name="filter_qty_${id}">
+                ${id > 1 ? '<button type="button" onclick="removeFilterLine(' + id + ')" style="background:none;border:none;color:#ef4444;font-size:1.4rem;cursor:pointer;padding:0;line-height:1;" title="Remove">×</button>' : '<span></span>'}
             `;
             container.appendChild(div);
         }
 
-        function removeFilterLine(btn) {
-            const container = document.getElementById('quoteLineItems');
-            if (container.children.length > 1) {
-                btn.closest('.filter-line-item').remove();
+        function updateSizes(id, merv) {
+            const sel = document.getElementById('size-select-' + id);
+            sel.innerHTML = '<option value="">Select size</option>';
+            if (!merv || !SIZE_MAP[merv]) {
+                sel.disabled = true;
+                sel.style.color = '#9ca3af';
+                sel.style.background = '#f9fafb';
+                return;
             }
+            SIZE_MAP[merv].forEach(function(item) {
+                const opt = document.createElement('option');
+                opt.value = item.sku;
+                opt.textContent = item.label + ' – ' + item.sku;
+                sel.appendChild(opt);
+            });
+            sel.disabled = false;
+            sel.style.color = '#111827';
+            sel.style.background = '#fff';
         }
+
+        function removeFilterLine(id) {
+            const el = document.getElementById('filter-line-' + id);
+            if (el) el.remove();
+        }
+
+        function toggleCustomSize(checked) {
+            document.getElementById('custom-size-fields').style.display = checked ? 'block' : 'none';
+        }
+
+        // Init first line on load
+        document.addEventListener('DOMContentLoaded', function() { addFilterLine(); });
 
         // Add line item
         function addLine() {
