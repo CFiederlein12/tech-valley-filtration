@@ -674,7 +674,7 @@
                         <hr class="form-divider">
                         <p class="form-section-label">Filtration Needs</p>
 
-                        <div id="filter-lines-header" style="display:grid;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
+                        <div id="filter-lines-header" style="display:none;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
                             <span>Filter Type</span>
                             <span>Size</span>
                             <span>Qty</span>
@@ -682,8 +682,10 @@
                             <span></span>
                         </div>
                         <div id="quoteLineItems"></div>
-                        <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="margin-bottom:4px;">+ Add Standard Size</button>
-                        <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="margin-left:8px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+                            <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:140px;">+ Add Standard Size</button>
+                            <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:140px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
+                        </div>
 
                         <div class="form-group" style="margin-top:1.25rem">
                             <label>Additional Details</label>
@@ -1243,33 +1245,46 @@
                 </div>`;
             } else {
                 wrapper.innerHTML = `
-                <div id="filter-line-${id}" style="display:grid;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:start;padding:10px 10px 4px 10px;">
-                    <select onchange="updateSizes(${id}, this.value)" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.9rem;background:#fff;width:100%;" name="filter_type_${id}">
-                        <option value="">MERV Rating</option>
-                        <option value="MERV 8/10">MERV 8/10</option>
-                        <option value="MERV 11">MERV 11</option>
-                        <option value="MERV 13">MERV 13</option>
-                    </select>
-                    <div id="size-wrap-${id}" style="position:relative;">
-                        <input type="text" id="size-input-${id}" name="filter_size_${id}"
-                            placeholder="Select type first"
-                            disabled autocomplete="off"
-                            oninput="filterSizes(${id}, this.value)"
-                            onfocus="showSizeList(${id})"
-                            onblur="hideSizeList(${id})"
-                            style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.9rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
-                        <div id="size-list-${id}" style="display:none;position:absolute;z-index:999;top:100%;left:0;right:0;background:#fff;border:1.5px solid #d1d5db;border-top:none;border-radius:0 0 8px 8px;max-height:220px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1);"></div>
+                <div id="filter-line-${id}" style="padding:10px 10px 6px 10px;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+                        <div>
+                            <label style="font-size:0.72rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;">Filter Type</label>
+                            <select onchange="updateSizes(${id}, this.value)" style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;background:#fff;width:100%;-webkit-appearance:auto;" name="filter_type_${id}">
+                                <option value="">Select MERV</option>
+                                <option value="MERV 8/10">MERV 8/10</option>
+                                <option value="MERV 11">MERV 11</option>
+                                <option value="MERV 13">MERV 13</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:0.72rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;">Quantity</label>
+                            <input type="number" min="1" placeholder="Qty" style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;width:100%;box-sizing:border-box;" name="filter_qty_${id}">
+                        </div>
                     </div>
-                    <input type="number" min="1" placeholder="Qty" style="padding:9px 10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.9rem;text-align:center;width:100%;box-sizing:border-box;" name="filter_qty_${id}">
-                    <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:0.8rem;color:#374151;white-space:nowrap;padding-top:10px;">
-                        <input type="checkbox" name="filter_tag_toggle_${id}" onchange="toggleTag(${id}, this.checked)" style="width:14px;height:14px;accent-color:#059669;">
-                        Tag
-                    </label>
-                    <button type="button" onclick="removeFilterLine(${id})" style="background:none;border:none;color:#ef4444;font-size:1.3rem;cursor:pointer;padding:0;line-height:1;padding-top:9px;" title="Remove">&times;</button>
+                    <div style="margin-bottom:6px;">
+                        <label style="font-size:0.72rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;">Size</label>
+                        <div id="size-wrap-${id}" style="position:relative;">
+                            <input type="text" id="size-input-${id}" name="filter_size_${id}"
+                                placeholder="Select filter type first"
+                                disabled autocomplete="off"
+                                oninput="filterSizes(${id}, this.value)"
+                                onfocus="showSizeList(${id})"
+                                onblur="hideSizeList(${id})"
+                                style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
+                            <div id="size-list-${id}" style="display:none;position:absolute;z-index:999;top:100%;left:0;right:0;background:#fff;border:1.5px solid #d1d5db;border-top:none;border-radius:0 0 8px 8px;max-height:260px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1);"></div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:4px;">
+                        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.88rem;color:#374151;">
+                            <input type="checkbox" name="filter_tag_toggle_${id}" onchange="toggleTag(${id}, this.checked)" style="width:16px;height:16px;accent-color:#059669;">
+                            Add location tag
+                        </label>
+                        <button type="button" onclick="removeFilterLine(${id})" style="background:none;border:1px solid #fca5a5;border-radius:6px;color:#ef4444;font-size:0.82rem;font-weight:600;cursor:pointer;padding:4px 10px;line-height:1.4;" title="Remove">Remove</button>
+                    </div>
                 </div>
                 <div id="tag-row-${id}" style="display:none;padding:0 10px 10px 10px;">
                     <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Unit / Building / Location Tag</label>
-                    <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;">
+                    <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:1rem;box-sizing:border-box;">
                 </div>`;
             }
             container.appendChild(wrapper);
