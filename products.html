@@ -219,8 +219,16 @@
         display: flex; flex-direction: column;
     }
     .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); border-color: var(--accent); }
-    .product-img-wrap { overflow: hidden; height: 200px; position: relative; background: var(--off-white); }
-    .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+    .product-img-wrap {
+        overflow: hidden; height: 200px; position: relative;
+        background: var(--off-white);
+        display: flex; align-items: center; justify-content: center;
+    }
+    .product-img-wrap img {
+        width: 100%; height: 100%; object-fit: contain;
+        padding: 1rem;
+        transition: transform 0.4s; display: block;
+    }
     .product-card:hover .product-img-wrap img { transform: scale(1.04); }
     .product-category-tag {
         display: inline-block; margin: 1.25rem 1.25rem 0;
@@ -299,6 +307,22 @@
 
     @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .component-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; } .component-grid { grid-template-columns: 1fr; } .order-strip { flex-direction: column; text-align: center; } .order-strip-actions { justify-content: center; } }
+
+    /* SMS float button */
+    .sms-float-btn {
+        position: fixed; bottom: 1.5rem; right: 1.5rem;
+        background: var(--accent); color: white; text-decoration: none;
+        padding: 0.85rem 1.4rem; border-radius: 50px;
+        font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.9rem;
+        display: flex; align-items: center; gap: 0.5rem;
+        box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .sms-float-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(5,150,105,0.55); background: var(--accent-bright); }
+    @media (max-width: 768px) {
+        .sms-float-btn span { display: none; }
+        .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
+    }
 </style>
 </head>
 <body>
@@ -665,22 +689,7 @@
     </section>
 <!-- Floating SMS Button -->
 <a href="sms-optin.html" class="sms-float-btn" title="Text us to order">💬 <span>Text to Order</span></a>
-<style>
-.sms-float-btn {
-    position: fixed; bottom: 1.5rem; right: 1.5rem;
-    background: #059669; color: white; text-decoration: none;
-    padding: 0.85rem 1.4rem; border-radius: 50px;
-    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
-    display: flex; align-items: center; gap: 0.5rem;
-    box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.sms-float-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(5,150,105,0.55); }
-@media (max-width: 768px) {
-    .sms-float-btn span { display: none; }
-    .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
-}
-</style>
+
     <script>
         document.getElementById('menuBtn').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('open');
