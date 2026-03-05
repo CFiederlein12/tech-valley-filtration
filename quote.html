@@ -1271,7 +1271,7 @@
                                 onfocus="showSizeList(${id})"
                                 onblur="hideSizeList(${id})"
                                 style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
-                            <div id="size-list-${id}" style="display:none;position:absolute;z-index:999;top:100%;left:0;right:0;background:#fff;border:1.5px solid #d1d5db;border-top:none;border-radius:0 0 8px 8px;max-height:260px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1);"></div>
+                            <div id="size-list-${id}" style="display:none;position:fixed;z-index:9999;background:#fff;border:1.5px solid #d1d5db;border-radius:8px;max-height:260px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);"></div>
                         </div>
                     </div>
                     <div style="display:flex;align-items:center;justify-content:space-between;padding-top:4px;">
@@ -1348,6 +1348,7 @@
                 return item.label.toLowerCase().includes(q);
             });
             renderSizeList(id, filtered);
+            positionSizeList(id);
             document.getElementById('size-list-' + id).style.display = 'block';
         }
 
@@ -1355,7 +1356,22 @@
             const input = document.getElementById('size-input-' + id);
             if (input.disabled) return;
             filterSizes(id, input.value);
+            positionSizeList(id);
             document.getElementById('size-list-' + id).style.display = 'block';
+        }
+
+        function positionSizeList(id) {
+            const input = document.getElementById('size-input-' + id);
+            const list  = document.getElementById('size-list-' + id);
+            const rect  = input.getBoundingClientRect();
+            const vw    = window.innerWidth;
+            // Width: use card width (parent of size-wrap) or at least 260px
+            const card  = input.closest('[id^="filter-wrap-"]') || input.parentElement.parentElement;
+            const cardRect = card.getBoundingClientRect();
+            const dropW = Math.max(cardRect.width - 20, 260);
+            list.style.top   = (rect.bottom + window.scrollY) + 'px';
+            list.style.left  = Math.max(10, cardRect.left + 10) + 'px';
+            list.style.width = Math.min(dropW, vw - 20) + 'px';
         }
 
         function hideSizeList(id) {
@@ -1377,6 +1393,18 @@
 
         // Init first standard line on load
         document.addEventListener('DOMContentLoaded', function() { addFilterLine(false); });
+
+        // Reposition any open size dropdown on scroll or resize
+        function repositionOpenLists() {
+            document.querySelectorAll('[id^="size-list-"]').forEach(function(list) {
+                if (list.style.display !== 'none') {
+                    var id = list.id.replace('size-list-', '');
+                    positionSizeList(id);
+                }
+            });
+        }
+        window.addEventListener('scroll', repositionOpenLists, true);
+        window.addEventListener('resize', repositionOpenLists);
 
         // Add line item
         function addLine() {
