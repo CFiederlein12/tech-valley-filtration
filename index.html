@@ -1162,7 +1162,318 @@
             .hero-trust { gap: 1.25rem; }
             .feature-strip-inner { grid-template-columns: 1fr; }
         }
-    </style>
+    
+        /* ══════════════════════════════════════
+           IAQ AWARENESS SECTION
+        ══════════════════════════════════════ */
+        .iaq-section {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* ── Dark opener ── */
+        .iaq-opener {
+            background: #0a1628;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .iaq-opener::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(5,150,105,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .iaq-opener-inner {
+            max-width: 780px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .iaq-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #34d399;
+            background: rgba(52,211,153,0.1);
+            border: 1px solid rgba(52,211,153,0.25);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            margin-bottom: 1.75rem;
+        }
+        .iaq-headline {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+        .iaq-subhead {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ── Stat bar ── */
+        .iaq-stats-bar {
+            background: #059669;
+            padding: 2.5rem 2rem;
+        }
+        .iaq-stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .iaq-stat {
+            text-align: center;
+            padding: 1rem 2.5rem;
+            flex: 1;
+            min-width: 160px;
+        }
+        .iaq-stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.75rem;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .iaq-stat-unit {
+            font-size: 1.5rem;
+        }
+        .iaq-stat-label {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+            line-height: 1.4;
+            max-width: 140px;
+            margin: 0 auto;
+        }
+        .iaq-stat-divider {
+            width: 1px;
+            height: 60px;
+            background: rgba(255,255,255,0.25);
+            flex-shrink: 0;
+        }
+
+        /* ── Consequence cards ── */
+        .iaq-cards-wrap {
+            background: #f8fafc;
+            padding: 5rem 2rem;
+        }
+        .iaq-cards-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .iaq-section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #059669;
+            margin-bottom: 2.5rem;
+        }
+        .iaq-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .iaq-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .iaq-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: #059669;
+            border-radius: 10px 10px 0 0;
+        }
+        .iaq-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+        }
+        .iaq-card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .iaq-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+            line-height: 1.35;
+        }
+        .iaq-card p {
+            font-size: 0.88rem;
+            color: #64748b;
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+        }
+        .iaq-card-source {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        /* ── Who's breathing ── */
+        .iaq-who-wrap {
+            background: #0f172a;
+            padding: 5rem 2rem;
+        }
+        .iaq-who-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .iaq-who-text .iaq-section-label { color: #34d399; }
+        .iaq-who-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+        }
+        .iaq-who-text p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .iaq-learn-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #059669;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .iaq-learn-btn:hover { background: #047857; }
+        .iaq-who-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .iaq-who-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+        .iaq-who-card:hover { background: rgba(255,255,255,0.08); }
+        .iaq-who-icon { font-size: 1.5rem; }
+        .iaq-who-card strong {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.3;
+        }
+        .iaq-who-card span {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        /* ── Bottom CTA band ── */
+        .iaq-cta-band {
+            background: #111827;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding: 3rem 2rem;
+        }
+        .iaq-cta-band-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .iaq-cta-band-text h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+        .iaq-cta-band-text p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+        }
+        .iaq-cta-band-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .iaq-btn-primary {
+            padding: 0.75rem 1.5rem;
+            background: #059669;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .iaq-btn-primary:hover { background: #047857; }
+        .iaq-btn-secondary {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .iaq-btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+        /* ── IAQ Responsive ── */
+        @media (max-width: 1024px) {
+            .iaq-cards { grid-template-columns: repeat(2, 1fr); }
+            .iaq-who-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .iaq-cards { grid-template-columns: 1fr; }
+            .iaq-stat-divider { display: none; }
+            .iaq-stat { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+            .iaq-stat:last-child { border-bottom: none; }
+            .iaq-stats-inner { flex-direction: column; }
+            .iaq-who-visual { grid-template-columns: 1fr; }
+            .iaq-cta-band-inner { flex-direction: column; text-align: center; }
+            .iaq-cta-band-actions { justify-content: center; }
+            .iaq-opener { padding: 3.5rem 1.5rem 3rem; }
+        }
+</style>
 </head>
 <body>
 
@@ -1501,6 +1812,135 @@
             </div>
         </div>
     </div>
+
+
+    <!-- IAQ Awareness Section -->
+    <section class="iaq-section">
+
+        <!-- Dark opener: the problem statement -->
+        <div class="iaq-opener">
+            <div class="iaq-opener-inner">
+                <div class="iaq-eyebrow">The Indoor Air Quality Crisis</div>
+                <h2 class="iaq-headline">The air inside your building<br>may be more dangerous than the air outside.</h2>
+                <p class="iaq-subhead">Most facility managers never think about what their occupants are breathing. The research says they should.</p>
+            </div>
+        </div>
+
+        <!-- Stat bar -->
+        <div class="iaq-stats-bar">
+            <div class="iaq-stats-inner">
+                <div class="iaq-stat">
+                    <div class="iaq-stat-number">90<span class="iaq-stat-unit">%</span></div>
+                    <div class="iaq-stat-label">of our time is spent indoors</div>
+                </div>
+                <div class="iaq-stat-divider"></div>
+                <div class="iaq-stat">
+                    <div class="iaq-stat-number">2–5<span class="iaq-stat-unit">×</span></div>
+                    <div class="iaq-stat-label">more polluted than outdoor air, on average</div>
+                </div>
+                <div class="iaq-stat-divider"></div>
+                <div class="iaq-stat">
+                    <div class="iaq-stat-number">7<span class="iaq-stat-unit">M+</span></div>
+                    <div class="iaq-stat-label">deaths per year linked to poor air quality (WHO)</div>
+                </div>
+                <div class="iaq-stat-divider"></div>
+                <div class="iaq-stat">
+                    <div class="iaq-stat-number">91<span class="iaq-stat-unit">%</span></div>
+                    <div class="iaq-stat-label">of the world's population breathes unsafe air (WHO)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consequence cards -->
+        <div class="iaq-cards-wrap">
+            <div class="iaq-cards-inner">
+                <div class="iaq-section-label">What Poor Filtration Costs Your Facility</div>
+                <div class="iaq-cards">
+
+                    <div class="iaq-card">
+                        <div class="iaq-card-icon">🏥</div>
+                        <h3>Increased Illness &amp; Absenteeism</h3>
+                        <p>Poor indoor air quality drives higher rates of respiratory illness, allergies, and infection. In schools, this means lost attendance funding. In offices and facilities, it means lost productivity — every single day.</p>
+                        <div class="iaq-card-source">Source: NAFA Best Practice Guidelines</div>
+                    </div>
+
+                    <div class="iaq-card">
+                        <div class="iaq-card-icon">⚙️</div>
+                        <h3>HVAC Damage &amp; Costly Repairs</h3>
+                        <p>Dirty, clogged, or under-spec filters allow particulates to coat coils, fans, and drain pans. A 30% increase in static pressure across a fouled coil adds $200+ per 10,000 CFM in annual energy costs alone — before repair bills.</p>
+                        <div class="iaq-card-source">Source: NAFA Schools Best Practice Guide</div>
+                    </div>
+
+                    <div class="iaq-card">
+                        <div class="iaq-card-icon">🧪</div>
+                        <h3>Hidden Contaminants You Can't See</h3>
+                        <p>Bacteria, viruses, VOCs, mold spores, and fine particulate matter (PM2.5) are invisible to the naked eye. Without MERV 13+ filtration, these contaminants circulate freely through every occupied space in your building.</p>
+                        <div class="iaq-card-source">Source: NAFA / ASHRAE Standard 62.1</div>
+                    </div>
+
+                    <div class="iaq-card">
+                        <div class="iaq-card-icon">⚖️</div>
+                        <h3>Compliance &amp; Liability Risk</h3>
+                        <p>ASHRAE Standard 62.1 requires minimum MERV 8 filtration for commercial buildings. NAFA best practices call for MERV 13. Facilities that fall short face regulatory exposure — and in healthcare and education, the stakes are especially high.</p>
+                        <div class="iaq-card-source">Source: ANSI/ASHRAE Standard 62.1-2019</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Who's breathing your air -->
+        <div class="iaq-who-wrap">
+            <div class="iaq-who-inner">
+                <div class="iaq-who-text">
+                    <div class="iaq-section-label">Vulnerable Populations at Risk</div>
+                    <h2>Some of your occupants can't afford bad air.</h2>
+                    <p>Children breathe faster than adults — pound for pound, they inhale more air, and more of whatever's in it. The elderly often have compromised respiratory systems. Healthcare patients may be immunocompromised. These are the people inside your building every day.</p>
+                    <p>Research from the EU-funded GERIE project confirmed that poor indoor air quality causes measurable negative health outcomes in retirement communities. Studies consistently show that MERV 13 filtration in classrooms improves student performance, attendance, and long-term health outcomes.</p>
+                    <p>Clean air is not a luxury. It is a baseline expectation for anyone who walks through your doors.</p>
+                    <a href="industries.html" class="iaq-learn-btn">See Filtration Standards by Industry &rarr;</a>
+                </div>
+                <div class="iaq-who-visual">
+                    <div class="iaq-who-card">
+                        <div class="iaq-who-icon">🎓</div>
+                        <strong>K–12 &amp; Higher Education</strong>
+                        <span>MERV 13 minimum recommended by NAFA for all classrooms and occupied learning spaces</span>
+                    </div>
+                    <div class="iaq-who-card">
+                        <div class="iaq-who-icon">🏥</div>
+                        <strong>Healthcare &amp; Senior Living</strong>
+                        <span>MERV 14 for assisted living; HEPA filtration required for infection containment rooms</span>
+                    </div>
+                    <div class="iaq-who-card">
+                        <div class="iaq-who-icon">🏛️</div>
+                        <strong>Government &amp; Office Buildings</strong>
+                        <span>MERV 13 per ASHRAE best practices for public-facing and densely occupied spaces</span>
+                    </div>
+                    <div class="iaq-who-card">
+                        <div class="iaq-who-icon">🏭</div>
+                        <strong>Manufacturing &amp; Industrial</strong>
+                        <span>Application-specific filtration to protect workers from fumes, dust, and process contaminants</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom CTA band -->
+        <div class="iaq-cta-band">
+            <div class="iaq-cta-band-inner">
+                <div class="iaq-cta-band-text">
+                    <h3>Your filters are the last line of defense.</h3>
+                    <p>We make it easy to get the right ones — in stock, on time, at the right price.</p>
+                </div>
+                <div class="iaq-cta-band-actions">
+                    <a href="quote.html" class="iaq-btn-primary">Get a Quote</a>
+                    <a href="products.html" class="iaq-btn-secondary">Browse Products</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /IAQ Awareness Section -->
 
     <!-- Testimonials -->
     <section class="testimonials-section">
