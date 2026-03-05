@@ -73,6 +73,35 @@
             color: var(--accent);
         }
 
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1rem;
+                z-index: 999;
+            }
+            .nav-links.open { display: flex; }
+            .page-hero h1 { font-size: 2.25rem; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+
         /* ── Hero ── */
         .page-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
@@ -400,7 +429,7 @@
     <nav>
         <div class="nav-container">
             <img src="ImageAssets/Tech%20Valley%20Filtration_logo.jpg" alt="Tech Valley Filtration" style="height:48px;border-radius:4px;">
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="industries.html">Industries</a></li>
@@ -408,6 +437,7 @@
                 <li><a href="quote.html">Quote &amp; Order</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
         </div>
     </nav>
 
@@ -756,5 +786,10 @@
     .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
 }
 </style>
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
