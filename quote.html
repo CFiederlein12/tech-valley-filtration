@@ -1365,13 +1365,13 @@
             const list  = document.getElementById('size-list-' + id);
             const rect  = input.getBoundingClientRect();
             const vw    = window.innerWidth;
-            // Width: use card width (parent of size-wrap) or at least 260px
-            const card  = input.closest('[id^="filter-wrap-"]') || input.parentElement.parentElement;
-            const cardRect = card.getBoundingClientRect();
-            const dropW = Math.max(cardRect.width - 20, 260);
-            list.style.top   = (rect.bottom + window.scrollY) + 'px';
-            list.style.left  = Math.max(10, cardRect.left + 10) + 'px';
-            list.style.width = Math.min(dropW, vw - 20) + 'px';
+            const padding = 10;
+            // Use the full width of the form card, constrained to viewport
+            const availW = Math.min(vw - padding * 2, 480);
+            const leftPos = Math.max(padding, Math.min(rect.left, vw - availW - padding));
+            list.style.top    = rect.bottom + 'px';
+            list.style.left   = leftPos + 'px';
+            list.style.width  = availW + 'px';
         }
 
         function hideSizeList(id) {
@@ -1457,13 +1457,44 @@
             }
         }
 
+        function validateFilterLines() {
+            var wrappers = document.querySelectorAll('[id^="filter-wrap-"]');
+            if (wrappers.length === 0) { alert('Please add at least one filter.'); return false; }
+            for (var i = 0; i < wrappers.length; i++) {
+                var wrap = wrappers[i];
+                var id = wrap.id.replace('filter-wrap-', '');
+                var customLen = wrap.querySelector('[name="custom_length_' + id + '"]');
+                if (customLen) {
+                    var merv  = wrap.querySelector('[name="filter_type_'  + id + '"]');
+                    var width = wrap.querySelector('[name="custom_width_' + id + '"]');
+                    var depth = wrap.querySelector('[name="custom_depth_' + id + '"]');
+                    var qty   = wrap.querySelector('[name="filter_qty_'   + id + '"]');
+                    if (!merv  || !merv.value)  { if (merv)  merv.focus();  alert('Select a MERV rating for each custom filter.'); return false; }
+                    if (!customLen.value)       { customLen.focus(); alert('Enter a length for each custom filter.'); return false; }
+                    if (!width || !width.value) { if (width) width.focus(); alert('Enter a width for each custom filter.'); return false; }
+                    if (!depth || !depth.value) { if (depth) depth.focus(); alert('Select a depth for each custom filter.'); return false; }
+                    if (!qty   || !qty.value || parseInt(qty.value) < 1) { if (qty) qty.focus(); alert('Enter a quantity for each custom filter.'); return false; }
+                } else {
+                    var merv2 = wrap.querySelector('[name="filter_type_' + id + '"]');
+                    var size  = wrap.querySelector('[name="filter_size_' + id + '"]');
+                    var qty2  = wrap.querySelector('[name="filter_qty_'  + id + '"]');
+                    if (!merv2 || !merv2.value)       { if (merv2) merv2.focus(); alert('Select a MERV rating for each filter.'); return false; }
+                    if (!size  || !size.value.trim()) { if (size)  size.focus();  alert('Select a size for each filter.'); return false; }
+                    if (!qty2  || !qty2.value || parseInt(qty2.value) < 1) { if (qty2) qty2.focus(); alert('Enter a quantity for each filter.'); return false; }
+                }
+            }
+            return true;
+        }
+
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            if (!validateFilterLines()) return;
             submitForm('quoteForm', 'quoteSuccess', QUOTE_WEBHOOK);
         });
 
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            if (!validateFilterLines()) return;
             submitForm('orderForm', 'orderSuccess', ORDER_WEBHOOK);
         });
     </script>
