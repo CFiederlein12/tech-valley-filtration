@@ -260,7 +260,7 @@
     .value-card p { color: var(--gray); font-size: 0.85rem; font-weight: 300; line-height: 1.7; }
 
     /* Team grid */
-    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
     .team-card {
         background: white; border: 1px solid var(--border); border-radius: 14px;
         overflow: hidden; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
@@ -303,7 +303,7 @@
     }
     .stat-lbl { font-size: 0.82rem; color: rgba(255,255,255,0.8); font-weight: 400; }
 
-    @media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(2, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
         .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
         .values-grid { grid-template-columns: 1fr 1fr; }
@@ -353,8 +353,8 @@
                 <div class="stat-lbl">Year Founded</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">1,700+</div>
-                <div class="stat-lbl">Product SKUs</div>
+                <div class="stat-num">1,800+</div>
+                <div class="stat-lbl">Parts Stocked</div>
             </div>
             <div class="stat-item">
                 <div class="stat-num">100+</div>
@@ -373,7 +373,7 @@
             <div class="about-text">
                 <h2>Not Just a Distributor</h2>
                 <p>Tech Valley Filtration was built to fill a gap in the Northeast market: a filtration partner with real technical depth. Not a catalog you order from — a team you can call when you're not sure what your building needs.</p>
-                <p>Since opening our doors in Albany in May 2019, we've grown to serve over 100 commercial, institutional, and industrial clients across the region. Our inventory covers 1,700+ SKUs from the manufacturers that matter — MANN+HUMMEL, Mikropor, DMARK, American Ultraviolet, Bestorq, Permatron, and AMFCO — with same-day will-call available from our Albany warehouse.</p>
+                <p>Since opening our doors in Albany in May 2019, we've grown to serve over 100 commercial, institutional, and industrial clients across the region. Our inventory covers 1,800+ parts — every standard size, every MERV rating, plus custom-built options — from the manufacturers that matter — MANN+HUMMEL, Mikropor, DMARK, American Ultraviolet, Bestorq, Permatron, and AMFCO — with same-day will-call available from our Albany warehouse.</p>
                 <p>What sets us apart isn't the inventory. It's how we use it. We start with your application — the building type, occupancy, HVAC configuration, compliance requirements — and work backwards to the right product. We spec to NAFA best practice standards, not just whatever meets minimum code.</p>
             </div>
             <div class="about-image-wrap">
@@ -437,36 +437,18 @@
                 <div class="team-photo">JF</div>
                 <div class="team-info">
                     <h3>Justin Fiederlein</h3>
-                    <div class="team-credential">ASHRAE Member</div>
+                    <div class="team-credential">NATE Certified Technician &middot; Clean Air Filtration Specialist</div>
                     <div class="team-role">Owner &amp; Founder</div>
-                    <p class="team-bio">Justin founded Tech Valley Filtration in 2019 with a focus on bringing real filtration expertise to the Northeast commercial market. An ASHRAE member with deep knowledge of MERV ratings, HEPA systems, UV-C technology, and NAFA best practices, he leads every client relationship with a consultative approach — spec first, sell second.</p>
+                    <p class="team-bio">Justin founded Tech Valley Filtration in 2019, bringing 25+ years of hands-on filtration expertise to the Northeast commercial market. A NATE Certified Technician and Clean Air Filtration Specialist, he approaches every client relationship the same way — spec first, sell second. His depth of knowledge across MERV ratings, HEPA systems, UV-C technology, and NAFA best practices is what sets TVF apart from catalog distributors.</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="team-photo">?</div>
+                <div class="team-photo">CF</div>
                 <div class="team-info">
-                    <h3>[Team Member Name]</h3>
-                    <div class="team-credential">[Certifications]</div>
-                    <div class="team-role">[Position Title]</div>
-                    <p class="team-bio">[Brief bio about experience and expertise in filtration industry]</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-photo">?</div>
-                <div class="team-info">
-                    <h3>[Team Member Name]</h3>
-                    <div class="team-credential">[Certifications]</div>
-                    <div class="team-role">[Position Title]</div>
-                    <p class="team-bio">[Brief bio about role in customer service or technical sales]</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-photo">?</div>
-                <div class="team-info">
-                    <h3>[Team Member Name]</h3>
-                    <div class="team-credential">[Certifications]</div>
-                    <div class="team-role">[Position Title]</div>
-                    <p class="team-bio">[Brief bio about warehouse operations or logistics expertise]</p>
+                    <h3>Connor Fiederlein</h3>
+                    <div class="team-credential">Owner</div>
+                    <div class="team-role">Sales &amp; Operations Manager</div>
+                    <p class="team-bio">Connor grew up in the filtration industry and has been working in it since he was 18. He keeps the operation running smoothly — managing sales pipelines, coordinating deliveries and pickups, and making sure every customer's order is right the first time. If you've placed an order with Tech Valley Filtration, Connor's the reason it showed up correctly and on time.</p>
                 </div>
             </div>
         </div>

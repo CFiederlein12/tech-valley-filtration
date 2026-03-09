@@ -248,6 +248,16 @@
        INDUSTRIES — TABS (preserved)
     ═══════════════════════════════════════════════ */
 
+    .tabs-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        border-bottom: 2px solid var(--border);
+        margin-bottom: 2rem;
+    }
+    .tabs-wrap::-webkit-scrollbar { display: none; }
+
     .tabs {
         display: flex;
         gap: 0;
@@ -645,6 +655,27 @@
                 <div class="preview-card-body">
                     <h3>Manufacturing</h3>
                     <p>Industrial facilities requiring process filtration and worker protection</p>
+                </div>
+            </div>
+            <div class="preview-card" onclick="openTab('firing-ranges')">
+                <img class="preview-card-img" src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800&q=80&fit=crop" alt="Indoor Firing Ranges">
+                <div class="preview-card-body">
+                    <h3>Indoor Firing Ranges</h3>
+                    <p>HEPA exhaust filtration and lead containment — OSHA compliance isn't optional here</p>
+                </div>
+            </div>
+            <div class="preview-card" onclick="openTab('infection-control')">
+                <img class="preview-card-img" src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80&fit=crop" alt="Infection Control">
+                <div class="preview-card-body">
+                    <h3>Infection Control</h3>
+                    <p>MERV 13+ and UV-C layered systems for airborne transmission risk reduction</p>
+                </div>
+            </div>
+            <div class="preview-card" onclick="openTab('cannabis')">
+                <img class="preview-card-img" src="https://images.unsplash.com/photo-1536819114556-1e10f967fb61?w=800&q=80&fit=crop" alt="Cannabis Cultivation">
+                <div class="preview-card-body">
+                    <h3>Cannabis Cultivation</h3>
+                    <p>Carbon filtration and negative pressure systems for odor control and licensing compliance</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('data-centers')">

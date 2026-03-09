@@ -776,17 +776,34 @@
                         <hr class="form-divider">
                         <p class="form-section-label">Filtration Needs</p>
 
-                        <div id="filter-lines-header" style="display:none;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
-                            <span>Filter Type</span>
-                            <span>Size</span>
-                            <span>Qty</span>
-                            <span style="font-size:0.72rem;">Tag?</span>
-                            <span></span>
+                        <!-- Toggle: enter one-by-one vs paste a list -->
+                        <div style="margin-bottom:1.25rem; padding:0.85rem 1rem; background:var(--off-white); border:1px solid var(--border); border-radius:6px; display:flex; align-items:flex-start; gap:0.75rem;">
+                            <input type="checkbox" id="pasteListToggle" name="use_paste_list" style="margin-top:3px; accent-color:var(--accent); width:16px; height:16px; flex-shrink:0; cursor:pointer;" onchange="togglePasteList(this.checked)">
+                            <label for="pasteListToggle" style="font-size:0.9rem; color:var(--primary); font-weight:500; cursor:pointer; line-height:1.5;">I already have my filter list saved — let me paste it instead of entering items one by one.</label>
                         </div>
-                        <div id="quoteLineItems"></div>
-                        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
-                            <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:140px;">+ Add Standard Size</button>
-                            <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:140px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
+
+                        <!-- One-by-one entry (default) -->
+                        <div id="lineItemsSection">
+                            <div id="filter-lines-header" style="display:none;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
+                                <span>Filter Type</span>
+                                <span>Size</span>
+                                <span>Qty</span>
+                                <span style="font-size:0.72rem;">Tag?</span>
+                                <span></span>
+                            </div>
+                            <div id="quoteLineItems"></div>
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+                                <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:140px;">+ Add Standard Size</button>
+                                <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:140px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
+                            </div>
+                        </div>
+
+                        <!-- Paste list (shown when checkbox checked) -->
+                        <div id="pasteListSection" style="display:none;">
+                            <div class="form-group">
+                                <label>Paste Your Filter List <span class="required">*</span></label>
+                                <textarea id="pasteListText" name="paste_list" rows="8" placeholder="Paste your filter list here — any format works. For example:&#10;&#10;20x20x2 MERV 13 — qty 24&#10;16x25x4 MERV 8 — qty 12&#10;Custom 17.5x21x1 MERV 11 — qty 6&#10;&#10;We'll sort out the details from there."></textarea>
+                            </div>
                         </div>
 
                         <div class="form-group" style="margin-top:1.25rem">
@@ -859,132 +876,16 @@
     <!-- Order Form Panel -->
     <div id="panel-order" class="form-panel">
         <div class="form-section">
-            <div class="form-layout">
-
-                <div class="form-card">
-                    <h2>Place an Order</h2>
-                    <p class="form-subtitle">Know what you need? Submit your order directly and we'll confirm availability and pricing.</p>
-
-                    <form id="orderForm">
-                        <p class="form-section-label">Your Information</p>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>First Name <span class="required">*</span></label>
-                                <input type="text" name="first_name" placeholder="Jane" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Last Name <span class="required">*</span></label>
-                                <input type="text" name="last_name" placeholder="Smith" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Email <span class="required">*</span></label>
-                                <input type="email" name="email" placeholder="jane@yourorg.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone <span class="required">*</span></label>
-                                <input type="tel" name="phone" placeholder="(518) 555-0100" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Organization <span class="required">*</span></label>
-                                <input type="text" name="organization" placeholder="Your Organization" required>
-                            </div>
-                            <div class="form-group">
-                                <label>PO Number (if applicable)</label>
-                                <input type="text" name="po_number" placeholder="PO-2025-0042">
-                            </div>
-                        </div>
-
-                        <hr class="form-divider">
-                        <p class="form-section-label">Shipping Address</p>
-
-                        <div class="form-group">
-                            <label>Street Address <span class="required">*</span></label>
-                            <input type="text" name="address" placeholder="123 Main Street" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>City <span class="required">*</span></label>
-                                <input type="text" name="city" placeholder="Albany" required>
-                            </div>
-                            <div class="form-group">
-                                <label>State / ZIP <span class="required">*</span></label>
-                                <input type="text" name="state_zip" placeholder="NY 12205" required>
-                            </div>
-                        </div>
-
-                        <hr class="form-divider">
-                        <p class="form-section-label">Order Items</p>
-
-                        <div class="line-items" id="lineItems">
-                            <div class="line-item">
-                                <input type="text" name="item[]" placeholder='Part # or description (e.g. 20"x20"x2" MERV 13)'>
-                                <input type="number" name="qty[]" placeholder="Qty" min="1">
-                                <button type="button" class="remove-line" onclick="removeLine(this)" title="Remove">&#215;</button>
-                            </div>
-                        </div>
-                        <button type="button" class="add-line-btn" onclick="addLine()">+ Add Another Item</button>
-
-                        <hr class="form-divider">
-
-                        <div class="form-group">
-                            <label>Special Instructions</label>
-                            <textarea name="notes" placeholder="Delivery instructions, urgency, account number, or anything else we should know..."></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn">
-                            &#8594; Submit Order
-                        </button>
-                        <p class="form-note">Order submission does not guarantee stock or pricing. We'll confirm by email before processing.</p>
-                    </form>
-
-                    <div class="success-msg" id="orderSuccess">
-                        <h3>&#10003; Order Received!</h3>
-                        <p>Thanks — we'll confirm availability and pricing and follow up within one business day.</p>
-                    </div>
+            <div style="max-width: 600px; margin: 3rem auto; text-align: center; padding: 3rem 2rem; background: white; border: 1px solid var(--border); border-radius: 12px;">
+                <div style="font-size: 3rem; margin-bottom: 1.25rem;">🔧</div>
+                <h2 style="font-family: 'DM Serif Display', serif; font-size: 1.75rem; font-weight: 400; margin-bottom: 1rem; color: var(--primary);">Online Ordering Coming Soon</h2>
+                <p style="color: var(--gray); font-size: 0.95rem; font-weight: 300; line-height: 1.7; margin-bottom: 2rem;">We're building out our online ordering system. In the meantime, the fastest way to place an order is by phone, email, or text — we typically confirm same day.</p>
+                <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                    <a href="tel:518-356-3943" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: white; text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;">📞 Call (518) 356-3943</a>
+                    <a href="mailto:Service@techvalleyfiltration.com" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); color: var(--primary); text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;">✉️ Email Us</a>
+                    <a href="sms-optin.html" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); color: var(--primary); text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;">💬 Text to Order</a>
                 </div>
-
-                <div class="form-sidebar">
-                    <div class="sidebar-card">
-                        <h3>How It Works</h3>
-                        <ul class="why-list">
-                            <li><span class="check">1</span> Submit your order with part numbers or descriptions</li>
-                            <li><span class="check">2</span> We confirm availability and send a price confirmation</li>
-                            <li><span class="check">3</span> Approve the order and we ship to your facility</li>
-                            <li><span class="check">4</span> Invoice issued through your preferred billing method</li>
-                        </ul>
-                    </div>
-
-                    <div class="turnaround-box">
-                        <div class="big-num">1K+</div>
-                        <div class="big-label">SKUs Available to Ship</div>
-                        <p>Most standard filter sizes ship within 1–3 business days. Specialty and custom orders may vary.</p>
-                    </div>
-
-                    <div class="sidebar-card">
-                        <h3>Need Help Fast?</h3>
-                        <div class="contact-lines">
-                            <div class="contact-line">
-                                <div class="contact-line-icon">📞</div>
-                                <div class="contact-line-text">
-                                    <span>Call Us</span>
-                                    <a href="tel:518-356-3943">(518) 356-3943</a>
-                                </div>
-                            </div>
-                            <div class="contact-line">
-                                <div class="contact-line-icon">💬</div>
-                                <div class="contact-line-text">
-                                    <span>Text to Order</span>
-                                    <a href="sms-optin.html">(844) 523-3240</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <p style="color: var(--gray); font-size: 0.8rem; margin-top: 1.5rem; font-weight: 300;">Or use the <strong>Quick Quote</strong> tab — we'll respond with pricing and confirm your order from there.</p>
             </div>
         </div>
     </div>
@@ -1025,7 +926,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2025 Tech Valley Filtration, LLC. All rights reserved.</span>
+                <span>&copy; 2026 Tech Valley Filtration, LLC. All rights reserved.</span>
                 <span>Albany, NY · Serving the Northeast</span>
             </div>
         </div>
@@ -1594,11 +1495,11 @@
             submitForm('quoteForm', 'quoteSuccess', QUOTE_WEBHOOK);
         });
 
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (!validateFilterLines()) return;
-            submitForm('orderForm', 'orderSuccess', ORDER_WEBHOOK);
-        });
+        function togglePasteList(checked) {
+            document.getElementById('lineItemsSection').style.display = checked ? 'none' : 'block';
+            document.getElementById('pasteListSection').style.display = checked ? 'block' : 'none';
+            document.getElementById('pasteListText').required = checked;
+        }
     </script>
 
 </body>
