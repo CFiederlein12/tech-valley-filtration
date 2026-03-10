@@ -1699,10 +1699,36 @@
             document.getElementById('navLinks').classList.toggle('open');
         });
 
-        function handleSubmit(e) {
+        async function handleSubmit(e) {
             e.preventDefault();
-            alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your filtration needs.');
-            e.target.reset();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            const data = {};
+            new FormData(form).forEach(function(val, key) { data[key] = val; });
+            data.source = 'Homepage Contact Form';
+            data.submitted_at = new Date().toISOString();
+            try {
+                await fetch('https://hook.us2.make.com/5i3jd19einckk3dd3pndm6x6qe1pj90s', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                btn.textContent = 'Request Sent!';
+                btn.style.background = '#059669';
+                form.reset();
+                setTimeout(function() {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            } catch(err) {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('Something went wrong. Please call or email us directly.');
+            }
         }
 
         // ── Product Carousel ──────────────────────────────────────────────────
