@@ -1441,9 +1441,44 @@
             btn.textContent = 'Sending...';
             btn.disabled = true;
 
-            const data = Object.fromEntries(new FormData(form).entries());
-            data.source = 'Quick Quote Form';
-            data.submitted_at = new Date().toISOString();
+            const raw = Object.fromEntries(new FormData(form).entries());
+
+            // Build clean payload with contact fields
+            const data = {
+                source: 'Quick Quote Form',
+                submitted_at: new Date().toISOString(),
+                name: raw.name || '',
+                company: raw.company || '',
+                email: raw.email || '',
+                phone: raw.phone || '',
+                notes: raw.notes || ''
+            };
+
+            // Compile filter lines into a single readable block
+            const pasteList = raw.paste_list || '';
+            if (pasteList.trim()) {
+                data.filter_details = pasteList.trim();
+                data.entry_method = 'Pasted List';
+            } else {
+                const wrappers = document.querySelectorAll('[id^="filter-wrap-"]');
+                const lines = [];
+                wrappers.forEach(function(wrap, i) {
+                    const id = wrap.id.replace('filter-wrap-', '');
+                    const type = (raw['filter_type_' + id] || '').trim();
+                    const size = (raw['filter_size_' + id] || '').trim();
+                    const qty  = (raw['filter_qty_'  + id] || '').trim();
+                    const cLen = (raw['custom_length_' + id] || '').trim();
+                    const cWid = (raw['custom_width_'  + id] || '').trim();
+                    const cDep = (raw['custom_depth_'  + id] || '').trim();
+                    if (cLen) {
+                        lines.push('Line ' + (i+1) + ': ' + type + ' | Custom ' + cLen + '" x ' + cWid + '" x ' + cDep + '" | Qty: ' + qty);
+                    } else if (type || size) {
+                        lines.push('Line ' + (i+1) + ': ' + type + ' | ' + size + ' | Qty: ' + qty);
+                    }
+                });
+                data.filter_details = lines.join('\n');
+                data.entry_method = 'Line-by-Line';
+            }
 
             try {
                 await fetch(webhookUrl, {
