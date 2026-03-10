@@ -1442,12 +1442,14 @@
             btn.disabled = true;
 
             const data = Object.fromEntries(new FormData(form).entries());
+            data.source = 'Quick Quote Form';
+            data.submitted_at = new Date().toISOString();
 
             try {
                 await fetch(webhookUrl, {
                     method: 'POST',
-                    body: JSON.stringify(data),
-                    mode: 'no-cors'
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
                 });
                 form.style.display = 'none';
                 success.style.display = 'block';
