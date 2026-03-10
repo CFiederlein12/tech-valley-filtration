@@ -1526,7 +1526,8 @@
 
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            if (!validateFilterLines()) return;
+            var usingPasteList = document.getElementById('pasteListToggle').checked;
+            if (!usingPasteList && !validateFilterLines()) return;
             submitForm('quoteForm', 'quoteSuccess', QUOTE_WEBHOOK);
         });
 
