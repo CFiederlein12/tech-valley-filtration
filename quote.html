@@ -1503,7 +1503,7 @@
                     ? ' <span style="background:#e0f2fe;color:#0369a1;border-radius:4px;padding:1px 6px;font-size:0.72rem;font-weight:600;">📌 ' + e.tag + '</span>'
                     : '';
                 const editBtn = e.complete
-                    ? ' <button type="button" onclick="editFilterLine('' + e.id + '')" style="background:none;border:1px solid #bbf7d0;border-radius:4px;color:#059669;font-size:0.72rem;font-weight:600;cursor:pointer;padding:2px 8px;flex-shrink:0;">Edit</button>'
+                    ? ' <button type="button" onclick="editFilterLine(' + e.id + ')" style="background:none;border:1px solid #bbf7d0;border-radius:4px;color:#059669;font-size:0.72rem;font-weight:600;cursor:pointer;padding:2px 8px;flex-shrink:0;">Edit</button>'
                     : '';
                 return '<div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;flex-wrap:wrap;">'
                      + '<span style="background:#059669;color:#fff;border-radius:4px;padding:1px 7px;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
@@ -1749,3 +1749,4 @@
 
 </body>
 </html>
+  
