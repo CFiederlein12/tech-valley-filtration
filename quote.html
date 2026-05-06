@@ -1290,7 +1290,7 @@
             }
             container.appendChild(wrapper);
             // Wire up change events so summary updates as user fills in fields
-            wrapper.querySelectorAll('input[type="number"], select').forEach(function(el) {
+            wrapper.querySelectorAll('input, select, textarea').forEach(function(el) {
                 el.addEventListener('input', updateFilterSummary);
                 el.addEventListener('change', updateFilterSummary);
             });
@@ -1404,7 +1404,46 @@
             updateFilterSummary();
         }
 
-        // ── Filter Summary ──────────────────────────────
+        // ── Filter Summary + collapse completed lines ──────────────────
+        function isLineComplete(wrap, id) {
+            const cLenEl = wrap.querySelector('[name="custom_length_' + id + '"]');
+            const typeEl = wrap.querySelector('[name="filter_type_' + id + '"]');
+            const qtyEl  = wrap.querySelector('[name="filter_qty_'  + id + '"]');
+            const type = typeEl ? typeEl.value.trim() : '';
+            const qty  = qtyEl  ? qtyEl.value.trim()  : '';
+            if (!type || !qty || parseInt(qty) < 1) return false;
+            if (cLenEl) {
+                // custom line: need length + width + depth
+                const cWid = wrap.querySelector('[name="custom_width_' + id + '"]');
+                const cDep = wrap.querySelector('[name="custom_depth_' + id + '"]');
+                return cLenEl.value.trim() && (cWid && cWid.value.trim()) && (cDep && cDep.value.trim());
+            } else {
+                // standard line: need size
+                const sizeEl = wrap.querySelector('[name="filter_size_' + id + '"]');
+                return sizeEl && sizeEl.value.trim();
+            }
+        }
+
+        function collapseFilterLine(id) {
+            const wrap = document.getElementById('filter-wrap-' + id);
+            if (!wrap) return;
+            const inner = document.getElementById('filter-line-' + id);
+            const tagRow = document.getElementById('tag-row-' + id);
+            if (inner) inner.style.display = 'none';
+            if (tagRow) tagRow.style.display = 'none';
+        }
+
+        function expandFilterLine(id) {
+            const wrap = document.getElementById('filter-wrap-' + id);
+            if (!wrap) return;
+            const inner = document.getElementById('filter-line-' + id);
+            const tagRow = document.getElementById('tag-row-' + id);
+            if (inner) inner.style.display = '';
+            // show tag row only if checkbox was checked
+            const tagToggle = wrap.querySelector('[name="filter_tag_toggle_' + id + '"]');
+            if (tagRow && tagToggle && tagToggle.checked) tagRow.style.display = 'block';
+        }
+
         function updateFilterSummary() {
             const summaryBox  = document.getElementById('filterSummary');
             const summaryList = document.getElementById('filterSummaryList');
@@ -1417,17 +1456,25 @@
                 const sizeEl = wrap.querySelector('[name="filter_size_' + id + '"]');
                 const qtyEl  = wrap.querySelector('[name="filter_qty_'  + id + '"]');
                 const cLenEl = wrap.querySelector('[name="custom_length_' + id + '"]');
+                const cLenFracEl = wrap.querySelector('[name="custom_length_frac_' + id + '"]');
                 const cWidEl = wrap.querySelector('[name="custom_width_'  + id + '"]');
+                const cWidFracEl = wrap.querySelector('[name="custom_width_frac_' + id + '"]');
                 const cDepEl = wrap.querySelector('[name="custom_depth_'  + id + '"]');
+                const tagEl  = wrap.querySelector('[name="filter_tag_' + id + '"]');
                 const type = typeEl ? typeEl.value.trim() : '';
                 const size = sizeEl ? sizeEl.value.trim() : '';
                 const qty  = qtyEl  ? qtyEl.value.trim()  : '';
                 const cLen = cLenEl ? cLenEl.value.trim() : '';
+                const cLenFrac = cLenFracEl ? cLenFracEl.value.trim() : '';
                 const cWid = cWidEl ? cWidEl.value.trim() : '';
+                const cWidFrac = cWidFracEl ? cWidFracEl.value.trim() : '';
                 const cDep = cDepEl ? cDepEl.value.trim() : '';
+                const tag  = tagEl  ? tagEl.value.trim()  : '';
                 let label = '';
                 if (cLen) {
-                    label = (type || '?') + ' — Custom ' + cLen + '\u2033 × ' + (cWid || '?') + '\u2033 × ' + (cDep || '?') + '\u2033';
+                    const lenStr = cLen + (cLenFrac ? ' ' + cLenFrac : '') + '"';
+                    const widStr = (cWid || '?') + (cWidFrac ? ' ' + cWidFrac : '') + '"';
+                    label = (type || '?') + ' — Custom ' + lenStr + ' × ' + widStr + ' × ' + (cDep || '?') + '"';
                 } else if (type && size) {
                     label = type + ' — ' + size;
                 } else if (type) {
@@ -1436,7 +1483,14 @@
                     label = size;
                 }
                 if (label) {
-                    entries.push({ num: i + 1, label: label, qty: qty });
+                    const complete = isLineComplete(wrap, id);
+                    entries.push({ id: id, num: i + 1, label: label, qty: qty, tag: tag, complete: complete });
+                    // Collapse the input row if complete
+                    if (complete) {
+                        collapseFilterLine(id);
+                    } else {
+                        expandFilterLine(id);
+                    }
                 }
             });
             if (entries.length === 0) {
@@ -1445,12 +1499,26 @@
             }
             summaryBox.style.display = 'block';
             summaryList.innerHTML = entries.map(function(e) {
-                return '<div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;">'
+                const tagChip = e.tag
+                    ? ' <span style="background:#e0f2fe;color:#0369a1;border-radius:4px;padding:1px 6px;font-size:0.72rem;font-weight:600;">📌 ' + e.tag + '</span>'
+                    : '';
+                const editBtn = e.complete
+                    ? ' <button type="button" onclick="editFilterLine('' + e.id + '')" style="background:none;border:1px solid #bbf7d0;border-radius:4px;color:#059669;font-size:0.72rem;font-weight:600;cursor:pointer;padding:2px 8px;flex-shrink:0;">Edit</button>'
+                    : '';
+                return '<div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;flex-wrap:wrap;">'
                      + '<span style="background:#059669;color:#fff;border-radius:4px;padding:1px 7px;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
-                     + '<span style="color:#065f46;flex:1;">' + e.label + '</span>'
+                     + '<span style="color:#065f46;flex:1;">' + e.label + tagChip + '</span>'
                      + (e.qty ? '<span style="color:#059669;font-weight:700;font-size:0.82rem;">× ' + e.qty + '</span>' : '')
+                     + editBtn
                      + '</div>';
             }).join('');
+        }
+
+        function editFilterLine(id) {
+            expandFilterLine(id);
+            // Scroll the input into view
+            const wrap = document.getElementById('filter-wrap-' + id);
+            if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         // Init first standard line on load
