@@ -784,17 +784,15 @@
 
                         <!-- One-by-one entry (default) -->
                         <div id="lineItemsSection">
-                            <div id="filter-lines-header" style="display:none;grid-template-columns:2fr 2fr 80px auto 36px;gap:8px;align-items:center;font-size:0.78rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
-                                <span>Filter Type</span>
-                                <span>Size</span>
-                                <span>Qty</span>
-                                <span style="font-size:0.72rem;">Tag?</span>
-                                <span></span>
-                            </div>
                             <div id="quoteLineItems"></div>
-                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
                                 <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:140px;">+ Add Standard Size</button>
                                 <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:140px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
+                            </div>
+                            <!-- Running filter summary -->
+                            <div id="filterSummary" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 14px;margin-bottom:4px;">
+                                <p style="margin:0 0 8px;font-size:0.72rem;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.08em;">&#10003; Filters Added</p>
+                                <div id="filterSummaryList" style="display:flex;flex-direction:column;gap:6px;"></div>
                             </div>
                         </div>
 
@@ -1291,6 +1289,12 @@
                 </div>`;
             }
             container.appendChild(wrapper);
+            // Wire up change events so summary updates as user fills in fields
+            wrapper.querySelectorAll('input[type="number"], select').forEach(function(el) {
+                el.addEventListener('input', updateFilterSummary);
+                el.addEventListener('change', updateFilterSummary);
+            });
+            updateFilterSummary();
         }
 
         function updateSizes(id, merv) {
@@ -1334,6 +1338,7 @@
                     input.value = item.label;
                     input.dataset.sku = item.sku;
                     list.style.display = 'none';
+                    updateFilterSummary();
                 };
                 div.onmouseover = function() { this.style.background = '#f0fdf4'; };
                 div.onmouseout  = function() { this.style.background = '#fff'; };
@@ -1346,9 +1351,13 @@
             const merv  = input.dataset.merv;
             if (!merv || !SIZE_MAP[merv]) return;
             input.dataset.sku = '';
-            const q = query.trim().toLowerCase();
+            // Normalize: strip " chars and spaces around x so "20x20" matches '20" x 20" x 1"'
+            function norm(s) {
+                return s.toLowerCase().replace(/[\u201c\u201d\"]/g, '').replace(/\s*x\s*/g, 'x').replace(/\s+/g, ' ').trim();
+            }
+            const q = norm(query);
             const filtered = q === '' ? SIZE_MAP[merv] : SIZE_MAP[merv].filter(function(item) {
-                return item.label.toLowerCase().includes(q);
+                return norm(item.label).includes(q);
             });
             renderSizeList(id, filtered);
             positionSizeList(id);
@@ -1392,6 +1401,56 @@
         function removeFilterLine(id) {
             const el = document.getElementById('filter-wrap-' + id);
             if (el) el.remove();
+            updateFilterSummary();
+        }
+
+        // ── Filter Summary ──────────────────────────────
+        function updateFilterSummary() {
+            const summaryBox  = document.getElementById('filterSummary');
+            const summaryList = document.getElementById('filterSummaryList');
+            if (!summaryBox || !summaryList) return;
+            const wrappers = document.querySelectorAll('[id^="filter-wrap-"]');
+            const entries = [];
+            wrappers.forEach(function(wrap, i) {
+                const id     = wrap.id.replace('filter-wrap-', '');
+                const typeEl = wrap.querySelector('[name="filter_type_' + id + '"]');
+                const sizeEl = wrap.querySelector('[name="filter_size_' + id + '"]');
+                const qtyEl  = wrap.querySelector('[name="filter_qty_'  + id + '"]');
+                const cLenEl = wrap.querySelector('[name="custom_length_' + id + '"]');
+                const cWidEl = wrap.querySelector('[name="custom_width_'  + id + '"]');
+                const cDepEl = wrap.querySelector('[name="custom_depth_'  + id + '"]');
+                const type = typeEl ? typeEl.value.trim() : '';
+                const size = sizeEl ? sizeEl.value.trim() : '';
+                const qty  = qtyEl  ? qtyEl.value.trim()  : '';
+                const cLen = cLenEl ? cLenEl.value.trim() : '';
+                const cWid = cWidEl ? cWidEl.value.trim() : '';
+                const cDep = cDepEl ? cDepEl.value.trim() : '';
+                let label = '';
+                if (cLen) {
+                    label = (type || '?') + ' — Custom ' + cLen + '\u2033 × ' + (cWid || '?') + '\u2033 × ' + (cDep || '?') + '\u2033';
+                } else if (type && size) {
+                    label = type + ' — ' + size;
+                } else if (type) {
+                    label = type + ' — (size not selected)';
+                } else if (size) {
+                    label = size;
+                }
+                if (label) {
+                    entries.push({ num: i + 1, label: label, qty: qty });
+                }
+            });
+            if (entries.length === 0) {
+                summaryBox.style.display = 'none';
+                return;
+            }
+            summaryBox.style.display = 'block';
+            summaryList.innerHTML = entries.map(function(e) {
+                return '<div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;">'
+                     + '<span style="background:#059669;color:#fff;border-radius:4px;padding:1px 7px;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
+                     + '<span style="color:#065f46;flex:1;">' + e.label + '</span>'
+                     + (e.qty ? '<span style="color:#059669;font-weight:700;font-size:0.82rem;">× ' + e.qty + '</span>' : '')
+                     + '</div>';
+            }).join('');
         }
 
         // Init first standard line on load
@@ -1443,42 +1502,124 @@
 
             const raw = Object.fromEntries(new FormData(form).entries());
 
-            // Build clean payload with contact fields
+            // Build clean payload — fix field names (first_name+last_name, organization, industry)
+            const fullName = ((raw.first_name || '') + ' ' + (raw.last_name || '')).trim();
             const data = {
                 source: 'Quick Quote Form',
                 submitted_at: new Date().toISOString(),
-                name: raw.name || '',
-                company: raw.company || '',
+                name: fullName,
+                first_name: raw.first_name || '',
+                last_name: raw.last_name || '',
+                company: raw.organization || '',
+                industry: raw.industry || '',
                 email: raw.email || '',
                 phone: raw.phone || '',
                 notes: raw.notes || ''
             };
 
-            // Compile filter lines into a single readable block
+            // Compile filter lines
             const pasteList = raw.paste_list || '';
+            const filterLines = [];
             if (pasteList.trim()) {
                 data.filter_details = pasteList.trim();
                 data.entry_method = 'Pasted List';
             } else {
                 const wrappers = document.querySelectorAll('[id^="filter-wrap-"]');
-                const lines = [];
                 wrappers.forEach(function(wrap, i) {
-                    const id = wrap.id.replace('filter-wrap-', '');
-                    const type = (raw['filter_type_' + id] || '').trim();
-                    const size = (raw['filter_size_' + id] || '').trim();
-                    const qty  = (raw['filter_qty_'  + id] || '').trim();
-                    const cLen = (raw['custom_length_' + id] || '').trim();
-                    const cWid = (raw['custom_width_'  + id] || '').trim();
-                    const cDep = (raw['custom_depth_'  + id] || '').trim();
+                    const id       = wrap.id.replace('filter-wrap-', '');
+                    const type     = (raw['filter_type_'        + id] || '').trim();
+                    const size     = (raw['filter_size_'        + id] || '').trim();
+                    const qty      = (raw['filter_qty_'         + id] || '').trim();
+                    const cLen     = (raw['custom_length_'      + id] || '').trim();
+                    const cLenFrac = (raw['custom_length_frac_' + id] || '').trim();
+                    const cWid     = (raw['custom_width_'       + id] || '').trim();
+                    const cWidFrac = (raw['custom_width_frac_'  + id] || '').trim();
+                    const cDep     = (raw['custom_depth_'       + id] || '').trim();
+                    const tag      = (raw['filter_tag_'         + id] || '').trim();
+                    let lineDesc = '';
                     if (cLen) {
-                        lines.push('Line ' + (i+1) + ': ' + type + ' | Custom ' + cLen + '" x ' + cWid + '" x ' + cDep + '" | Qty: ' + qty);
+                        const lenStr = cLen + (cLenFrac ? ' ' + cLenFrac : '') + '"';
+                        const widStr = cWid + (cWidFrac ? ' ' + cWidFrac : '') + '"';
+                        lineDesc = type + ' | Custom ' + lenStr + ' x ' + widStr + ' x ' + cDep + '" | Qty: ' + qty;
                     } else if (type || size) {
-                        lines.push('Line ' + (i+1) + ': ' + type + ' | ' + size + ' | Qty: ' + qty);
+                        lineDesc = type + ' | ' + size + ' | Qty: ' + qty;
                     }
+                    if (lineDesc) filterLines.push({ line: i + 1, desc: lineDesc, tag: tag });
                 });
-                data.filter_details = lines.join('\n');
+                data.filter_details = filterLines.map(function(l) {
+                    return 'Line ' + l.line + ': ' + l.desc + (l.tag ? ' [Tag: ' + l.tag + ']' : '');
+                }).join('\n');
                 data.entry_method = 'Line-by-Line';
             }
+
+            // Build HTML email for Make.com
+            const submittedDate = new Date().toLocaleString('en-US', {
+                timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short'
+            });
+            const esc = function(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+            const filterRowsHtml = filterLines.map(function(l) {
+                const parts = l.desc.split(' | ');
+                const qtyMatch = l.desc.match(/Qty:\s*(\S+)/);
+                return '<tr>'
+                    + '<td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-size:13px;">' + l.line + '</td>'
+                    + '<td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-size:13px;">' + esc(parts[0]||'') + '</td>'
+                    + '<td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-size:13px;">' + esc(parts[1]||'') + '</td>'
+                    + '<td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-size:13px;text-align:center;">' + esc(qtyMatch ? qtyMatch[1] : '') + '</td>'
+                    + '<td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-size:13px;color:#64748b;">' + esc(l.tag||'—') + '</td>'
+                    + '</tr>';
+            }).join('');
+
+            const notesHtml = data.notes
+                ? '<tr><td style="padding:24px 32px 0;">'
+                  + '<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#059669;">Additional Notes</p>'
+                  + '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 16px;font-size:14px;color:#374151;line-height:1.6;">' + esc(data.notes).replace(/\n/g,'<br>') + '</div>'
+                  + '</td></tr>'
+                : '';
+
+            const filterBodyHtml = filterLines.length > 0
+                ? '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;">'
+                  + '<tr style="background:#f8fafc;">'
+                  + '<th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;border-bottom:1px solid #e2e8f0;">#</th>'
+                  + '<th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;border-bottom:1px solid #e2e8f0;">Type</th>'
+                  + '<th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;border-bottom:1px solid #e2e8f0;">Size</th>'
+                  + '<th style="padding:8px 12px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;border-bottom:1px solid #e2e8f0;">Qty</th>'
+                  + '<th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;border-bottom:1px solid #e2e8f0;">Tag</th>'
+                  + '</tr>' + filterRowsHtml + '</table>'
+                : '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 16px;font-size:13px;color:#374151;white-space:pre-line;">' + esc(data.filter_details||'(none provided)') + '</div>';
+
+            data.email_html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>'
+              + '<body style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f1f5f9;">'
+              + '<table width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:32px 0;">'
+              + '<tr><td align="center">'
+              + '<table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">'
+              // Header
+              + '<tr><td style="background:#0a1628;padding:28px 32px;">'
+              + '<p style="margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#10b981;">Tech Valley Filtration</p>'
+              + '<h1 style="margin:6px 0 0;font-size:22px;font-weight:600;color:#fff;">New Quote Request</h1>'
+              + '<p style="margin:4px 0 0;font-size:13px;color:rgba(255,255,255,.5);">' + submittedDate + '</p>'
+              + '</td></tr>'
+              // Contact info
+              + '<tr><td style="padding:28px 32px 0;">'
+              + '<p style="margin:0 0 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#059669;">Contact Information</p>'
+              + '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;">'
+              + '<tr style="background:#f8fafc;"><td style="padding:10px 14px;font-size:12px;font-weight:600;color:#64748b;width:140px;">Name</td><td style="padding:10px 14px;font-size:14px;color:#0a1628;font-weight:500;">' + esc(fullName||'—') + '</td></tr>'
+              + '<tr><td style="padding:10px 14px;font-size:12px;font-weight:600;color:#64748b;border-top:1px solid #e2e8f0;">Organization</td><td style="padding:10px 14px;font-size:14px;color:#0a1628;border-top:1px solid #e2e8f0;">' + esc(raw.organization||'—') + '</td></tr>'
+              + '<tr style="background:#f8fafc;"><td style="padding:10px 14px;font-size:12px;font-weight:600;color:#64748b;border-top:1px solid #e2e8f0;">Industry</td><td style="padding:10px 14px;font-size:14px;color:#0a1628;border-top:1px solid #e2e8f0;">' + esc(raw.industry||'—') + '</td></tr>'
+              + '<tr><td style="padding:10px 14px;font-size:12px;font-weight:600;color:#64748b;border-top:1px solid #e2e8f0;">Email</td><td style="padding:10px 14px;font-size:14px;border-top:1px solid #e2e8f0;"><a href="mailto:' + esc(data.email) + '" style="color:#059669;text-decoration:none;">' + esc(data.email||'—') + '</a></td></tr>'
+              + '<tr style="background:#f8fafc;"><td style="padding:10px 14px;font-size:12px;font-weight:600;color:#64748b;border-top:1px solid #e2e8f0;">Phone</td><td style="padding:10px 14px;font-size:14px;color:#0a1628;border-top:1px solid #e2e8f0;">' + esc(data.phone||'—') + '</td></tr>'
+              + '</table></td></tr>'
+              // Filter details
+              + '<tr><td style="padding:24px 32px 0;">'
+              + '<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#059669;">Filter Request</p>'
+              + '<p style="margin:0 0 12px;font-size:12px;color:#64748b;">Entry method: <strong style="color:#0a1628;">' + esc(data.entry_method) + '</strong></p>'
+              + filterBodyHtml
+              + '</td></tr>'
+              + notesHtml
+              // Footer
+              + '<tr><td style="padding:24px 32px 28px;border-top:1px solid #e2e8f0;margin-top:24px;">'
+              + '<p style="margin:0;font-size:12px;color:#94a3b8;text-align:center;">Submitted via techvalleyfiltration.com &mdash; Quick Quote Form</p>'
+              + '</td></tr>'
+              + '</table></td></tr></table></body></html>';
 
             try {
                 await fetch(webhookUrl, {
