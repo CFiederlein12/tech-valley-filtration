@@ -11,7 +11,7 @@
     /* ═══════════════════════════════════════════════
        DESIGN TOKENS
     ═══════════════════════════════════════════════ */
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Space+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Space+Mono:wght@400;700&display=swap&font-display=swap');
 
     :root {
         --primary:      #0a1628;
@@ -284,7 +284,7 @@
     }
     .hero-trust-label {
         font-size: 0.72rem;
-        color: rgba(255,255,255,0.4);
+        color: rgba(255,255,255,0.55);
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.07em;
@@ -987,9 +987,9 @@
     .footer-col h4 { font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-bright); margin-bottom: 1.25rem; }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
-    .footer-col a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.88rem; font-weight: 300; transition: color 0.2s; }
+    .footer-col a { color: rgba(255,255,255,0.56); text-decoration: none; font-size: 0.88rem; font-weight: 300; transition: color 0.2s; }
     .footer-col a:hover { color: white; }
-    .footer-col p { color: rgba(255,255,255,0.45); font-size: 0.88rem; font-weight: 300; line-height: 1.8; }
+    .footer-col p { color: rgba(255,255,255,0.56); font-size: 0.88rem; font-weight: 300; line-height: 1.8; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.8rem; }
 
     /* ═══════════════════════════════════════════════
@@ -1092,7 +1092,7 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="quote.html">Quote &amp; Order</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open navigation menu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         </div>
     </nav>
 
@@ -1268,7 +1268,7 @@
             <div class="carousel-track" id="carouselTrack">
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/pleaed filter.jpg" alt="Pleated MERV Filters">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/pleaed filter.jpg" alt="Pleated MERV Filters">
                     <div class="product-card-body">
                         <span class="product-card-tag">Most Popular</span>
                         <h3>Pleated MERV Filters</h3>
@@ -1278,7 +1278,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/minipleat.png" alt="Mini-Pleat High Efficiency Filters" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/minipleat.png" alt="Mini-Pleat High Efficiency Filters" style="object-fit:contain;padding:1rem;background:#f8fafc;">
                     <div class="product-card-body">
                         <span class="product-card-tag">High Efficiency</span>
                         <h3>Mini-Pleat Filters</h3>
@@ -1288,7 +1288,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/uv system.png" alt="UV-C Disinfection Systems" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/uv system.png" alt="UV-C Disinfection Systems" style="object-fit:contain;padding:1rem;background:#f8fafc;">
                     <div class="product-card-body">
                         <span class="product-card-tag">Infection Control</span>
                         <h3>UV-C Disinfection</h3>
@@ -1298,7 +1298,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/carbon .jpg" alt="Carbon Odor Control Filters" style="object-fit:cover;">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/carbon .jpg" alt="Carbon Odor Control Filters" style="object-fit:cover;">
                     <div class="product-card-body">
                         <span class="product-card-tag">Odor Control</span>
                         <h3>Carbon &amp; Molecular Filters</h3>
@@ -1308,7 +1308,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/v-cell robot.jpg" alt="V-Cell and Box Filters">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/v-cell robot.jpg" alt="V-Cell and Box Filters">
                     <div class="product-card-body">
                         <span class="product-card-tag">HEPA &amp; V-Bank</span>
                         <h3>Rigid Box &amp; V-Bank</h3>
@@ -1318,7 +1318,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/AMFCO-HE-Series-FPO.png" alt="Washable Metal Filters" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/AMFCO-HE-Series-FPO.png" alt="Washable Metal Filters" style="object-fit:contain;padding:1rem;background:#f8fafc;">
                     <div class="product-card-body">
                         <span class="product-card-tag">Reusable</span>
                         <h3>Washable Metal Filters</h3>
@@ -1328,7 +1328,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/belt.png" alt="HVAC Belts and Components" style="object-fit:contain;padding:1.5rem;background:#f8fafc;">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/belt.png" alt="HVAC Belts and Components" style="object-fit:contain;padding:1.5rem;background:#f8fafc;">
                     <div class="product-card-body">
                         <span class="product-card-tag">Components</span>
                         <h3>HVAC Belts &amp; Drive Parts</h3>
@@ -1338,7 +1338,7 @@
                 </a>
 
                 <a class="product-card" href="products.html">
-                    <img class="product-card-img" src="ImageAssets/prevert on unit.png" alt="Prevent-It Pre-Filter System" style="object-fit:contain;padding:1rem;background:#f8fafc;">
+                    <img class="product-card-img" loading="lazy" src="ImageAssets/prevert on unit.png" alt="Prevent-It Pre-Filter System" style="object-fit:contain;padding:1rem;background:#f8fafc;">
                     <div class="product-card-body">
                         <span class="product-card-tag">Pre-Filtration</span>
                         <h3>Prevent-It Pre-Filter Systems</h3>
@@ -1360,7 +1360,7 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">🔬</div>
+                <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 21l6 -6"/><path d="M12 15l7 -7"/><path d="M15 12l-3 -3"/><path d="M9 6l3 3"/><path d="M6 21h12"/><path d="M12 9l2 -2"/><circle cx="16" cy="5" r="2"/></svg></div>
                 <h3>HEPA &amp; High-Efficiency Filters</h3>
                 <p>99.97–99.99% efficiency for environments where air quality isn't optional — healthcare, cleanrooms, isolation rooms, and data centers.</p>
                 <ul>
@@ -1371,7 +1371,7 @@
                 </ul>
             </div>
             <div class="service-card">
-                <div class="service-icon">📊</div>
+                <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4l-8 4l-8 -4z"/><path d="M4 10l8 4l8 -4"/><path d="M4 14l8 4l8 -4"/></svg></div>
                 <h3>MERV-Rated Pleated Filters</h3>
                 <p>MERV 8 through 16 for commercial and institutional HVAC. We'll help you select the right rating for your system, occupancy, and compliance requirements — not just the cheapest option that fits.</p>
                 <ul>
@@ -1382,7 +1382,7 @@
                 </ul>
             </div>
             <div class="service-card">
-                <div class="service-icon">💡</div>
+                <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg></div>
                 <h3>UV-C Disinfection Systems</h3>
                 <p>American Ultraviolet technology for 99.9% pathogen elimination. Effective for schools, healthcare facilities, and any high-occupancy space where infection control matters.</p>
                 <ul>
@@ -1393,7 +1393,7 @@
                 </ul>
             </div>
             <div class="service-card">
-                <div class="service-icon">⚙️</div>
+                <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><circle cx="12" cy="12" r="3"/></svg></div>
                 <h3>Custom &amp; Industrial Solutions</h3>
                 <p>Custom-sized filters, industrial cartridge systems, V-belts, and specialized components for applications that don't fit the standard catalog.</p>
                 <ul>
@@ -1415,7 +1415,7 @@
             </div>
             <div class="mid-cta-actions">
                 <a href="quote.html" class="btn-cta-white">Get a Quote</a>
-                <a href="tel:518-356-3943" class="btn-cta-outline">📞 Call Us Now</a>
+                <a href="tel:518-356-3943" class="btn-cta-outline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg>Call Us Now</a>
             </div>
         </div>
     </div>
@@ -1431,7 +1431,7 @@
                 <a class="industry-card" href="industries.html">
                     <div class="industry-card-top"></div>
                     <div class="industry-card-body">
-                        <span class="industry-icon">🎓</span>
+                        <span class="industry-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9l-10 -4l-10 4l10 4l10 -4"/><path d="M6 10.6v4.4a6 6 0 0 0 12 0v-4.4"/><path d="M22 9v4"/></svg></span>
                         <h3>Higher Education</h3>
                         <p>Universities and colleges requiring MERV 13+ systems for classrooms, labs, and dormitories.</p>
                         <span class="industry-card-arrow">Learn more →</span>
@@ -1440,7 +1440,7 @@
                 <a class="industry-card" href="industries.html">
                     <div class="industry-card-top"></div>
                     <div class="industry-card-body">
-                        <span class="industry-icon">📚</span>
+                        <span class="industry-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><line x1="3" y1="6" x2="3" y2="19"/><line x1="12" y1="6" x2="12" y2="19"/><line x1="21" y1="6" x2="21" y2="19"/></svg></span>
                         <h3>K-12 Schools</h3>
                         <p>Superior air quality solutions for student health, learning performance, and ASHRAE compliance.</p>
                         <span class="industry-card-arrow">Learn more →</span>
@@ -1449,7 +1449,7 @@
                 <a class="industry-card" href="industries.html">
                     <div class="industry-card-top"></div>
                     <div class="industry-card-body">
-                        <span class="industry-icon">🏥</span>
+                        <span class="industry-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/></svg></span>
                         <h3>Healthcare &amp; Senior Living</h3>
                         <p>HEPA and MERV 14+ systems for infection control, patient safety, and regulatory compliance.</p>
                         <span class="industry-card-arrow">Learn more →</span>
@@ -1458,7 +1458,7 @@
                 <a class="industry-card" href="industries.html">
                     <div class="industry-card-top"></div>
                     <div class="industry-card-body">
-                        <span class="industry-icon">🏛️</span>
+                        <span class="industry-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="5 10 5 21"/><polyline points="19 10 19 21"/><polyline points="9 10 9 21"/><polyline points="15 10 15 21"/><polygon points="12 3 2 10 22 10"/></svg></span>
                         <h3>Government &amp; Commercial</h3>
                         <p>ASHRAE-compliant solutions for office buildings, courthouses, and public facilities.</p>
                         <span class="industry-card-arrow">Learn more →</span>
@@ -1467,7 +1467,7 @@
                 <a class="industry-card" href="industries.html">
                     <div class="industry-card-top"></div>
                     <div class="industry-card-body">
-                        <span class="industry-icon">🏭</span>
+                        <span class="industry-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"/><path d="M5 21l0 -10.15"/><path d="M19 21l0 -10.15"/><path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"/></svg></span>
                         <h3>Manufacturing</h3>
                         <p>Specialized process filtration, weld fume capture, and worker protection systems.</p>
                         <span class="industry-card-arrow">Learn more →</span>
@@ -1476,7 +1476,7 @@
                 <a class="industry-card" href="industries.html">
                     <div class="industry-card-top"></div>
                     <div class="industry-card-body">
-                        <span class="industry-icon">📖</span>
+                        <span class="industry-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/><path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/><path d="M15 4l3.5 14"/><path d="M18.5 4l3.5 14"/></svg></span>
                         <h3>Libraries &amp; Museums</h3>
                         <p>Collection preservation with molecular and particulate filtration to NAFA best practices.</p>
                         <span class="industry-card-arrow">Learn more →</span>
@@ -1490,28 +1490,28 @@
     <div class="feature-strip">
         <div class="feature-strip-inner">
             <div class="feature-item">
-                <div class="feature-icon">📦</div>
+                <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"/><line x1="12" y1="12" x2="20" y2="7.5"/><line x1="12" y1="12" x2="12" y2="21"/><line x1="12" y1="12" x2="4" y2="7.5"/></svg></div>
                 <div class="feature-text">
                     <strong>In-Stock &amp; Ready to Ship</strong>
                     <span>Every standard size and MERV rating in stock — custom sizes available</span>
                 </div>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">✂️</div>
+                <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="3"/><circle cx="6" cy="17" r="3"/><line x1="8.12" y1="8.12" x2="22" y2="22"/><line x1="22" y1="2" x2="8.12" y2="15.88"/></svg></div>
                 <div class="feature-text">
                     <strong>Custom Sizes Available</strong>
                     <span>Non-standard dimensions and OEM replacements</span>
                 </div>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🏆</div>
+                <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10l1 7a5 5 0 0 1 -10 0l1 -7"/><path d="M5 9h-2a2 2 0 0 0 0 4h2"/><path d="M19 9h2a2 2 0 0 0 0 4h-2"/></svg></div>
                 <div class="feature-text">
                     <strong>NAFA &amp; ASHRAE Compliant</strong>
                     <span>Products and guidance that meet industry standards</span>
                 </div>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🤝</div>
+                <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11v8a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4"/><path d="M20 11v8a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-4"/><path d="M8 11c0 1.1 1.79 2 4 2s4-.9 4-2"/><path d="M8 11l1.5-4.5a1 1 0 0 1 .94-.67h3.12a1 1 0 0 1 .94.67l1.5 4.5"/></svg></div>
                 <div class="feature-text">
                     <strong>Volume Pricing</strong>
                     <span>Competitive B2B pricing for facilities teams and contractors</span>
@@ -1709,20 +1709,20 @@
                 <p style="font-size:0.88rem;color:#64748b;font-weight:300;margin-bottom:1.25rem;line-height:1.7;">Tell us a little about your facility and what you're looking for. We'll get back to you with real answers, not a sales pitch.</p>
                 <form onsubmit="handleSubmit(event)">
                     <div class="form-group">
-                        <label>Name *</label>
-                        <input type="text" name="name" required placeholder="Your full name">
+                        <label for="contact-name">Name *</label>
+                        <input id="contact-name" type="text" name="name" required placeholder="Your full name">
                     </div>
                     <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" name="email" required placeholder="your@email.com">
+                        <label for="contact-email">Email *</label>
+                        <input id="contact-email" type="email" name="email" required placeholder="your@email.com">
                     </div>
                     <div class="form-group">
-                        <label>Company / Organization *</label>
-                        <input type="text" name="company" required placeholder="Organization name">
+                        <label for="contact-company">Company / Organization *</label>
+                        <input id="contact-company" type="text" name="company" required placeholder="Organization name">
                     </div>
                     <div class="form-group">
-                        <label>Industry *</label>
-                        <select name="industry" required>
+                        <label for="contact-industry">Industry *</label>
+                        <select id="contact-industry" name="industry" required>
                             <option value="">Select Industry</option>
                             <option>Education</option>
                             <option>Healthcare</option>
@@ -1733,10 +1733,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Project Details *</label>
-                        <textarea name="message" required placeholder="Tell us about your filtration needs..."></textarea>
+                        <label for="contact-message">Project Details *</label>
+                        <textarea id="contact-message" name="message" required placeholder="Tell us about your filtration needs..."></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Send Request</button>
+                    <p id="form-error" role="alert" style="display:none;margin-top:0.75rem;font-size:0.85rem;color:#dc2626;font-weight:500;">Something went wrong — please call us at (518) 356-3943 or email Service@techvalleyfiltration.com.</p>
                 </form>
             </div>
         </div>
@@ -1816,8 +1817,16 @@
             } catch(err) {
                 btn.textContent = originalText;
                 btn.disabled = false;
-                alert('Something went wrong. Please call or email us directly.');
+                var errEl=document.getElementById('form-error');if(errEl){errEl.style.display='block';setTimeout(function(){errEl.style.display='none';},8000);}
             }
         }
 
-        // ── Product Carousel ───�
+        // ── Product Carousel ───
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+�
