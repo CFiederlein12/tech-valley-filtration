@@ -39,6 +39,8 @@
         font-family: 'DM Sans', sans-serif;
         color: var(--primary);
         background: var(--white);
+    }
+    .page-wrap {
         overflow-x: hidden;
     }
 
@@ -1100,6 +1102,7 @@
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
     <!-- Navigation -->
     <nav>
@@ -2005,12 +2008,10 @@
             }
         }
 
-        // ── Product Carousel ───
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
     }
-�
+
+    </script>
+
+</div><!-- /.page-wrap -->
+</body>
+</html>
