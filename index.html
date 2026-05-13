@@ -312,7 +312,8 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        pointer-events: none; /* let canvas handle its own events */
+        pointer-events: none;
+        z-index: 0; /* let canvas handle its own events */
     }
     #turntable-canvas {
         display: block;
@@ -1057,7 +1058,7 @@
             padding: 1rem 2rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             gap: 0.25rem;
-            z-index: 999;
+            z-index: 1001;
         }
         .nav-links.open { display: flex; }
         .nav-links a { color: rgba(255,255,255,0.7); padding: 0.6rem 0.5rem; }
