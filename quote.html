@@ -784,15 +784,20 @@
 
                         <!-- One-by-one entry (default) -->
                         <div id="lineItemsSection">
-                            <div id="quoteLineItems"></div>
-                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
-                                <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:140px;">+ Add Standard Size</button>
-                                <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:140px;background:#fff;border-color:#7c3aed;color:#7c3aed;">+ Add Custom Size</button>
+                            <!-- Saved filters list (appears once at least one is added) -->
+                            <div id="filterSummary" style="display:none;background:linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin-bottom:16px;">
+                                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                                    <p style="margin:0;font-size:0.72rem;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.1em;">Your Filter List</p>
+                                    <span id="filterSummaryCount" style="background:#059669;color:#fff;border-radius:999px;padding:2px 10px;font-size:0.7rem;font-weight:700;">0</span>
+                                </div>
+                                <div id="filterSummaryList" style="display:flex;flex-direction:column;gap:8px;"></div>
                             </div>
-                            <!-- Running filter summary -->
-                            <div id="filterSummary" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 14px;margin-bottom:4px;">
-                                <p style="margin:0 0 8px;font-size:0.72rem;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.08em;">&#10003; Filters Added</p>
-                                <div id="filterSummaryList" style="display:flex;flex-direction:column;gap:6px;"></div>
+                            <!-- Editable line cards -->
+                            <div id="quoteLineItems"></div>
+                            <!-- Add new line buttons -->
+                            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+                                <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:160px;background:#fff;border:1.5px dashed #059669;color:#059669;font-weight:600;padding:12px 14px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background='#f0fdf4';this.style.borderStyle='solid';" onmouseout="this.style.background='#fff';this.style.borderStyle='dashed';">+ Add Standard Size</button>
+                                <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:160px;background:#fff;border:1.5px dashed #7c3aed;color:#7c3aed;font-weight:600;padding:12px 14px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background='#faf5ff';this.style.borderStyle='solid';" onmouseout="this.style.background='#fff';this.style.borderStyle='dashed';">+ Add Custom Size</button>
                             </div>
                         </div>
 
@@ -1188,106 +1193,103 @@
             const container = document.getElementById('quoteLineItems');
             const wrapper = document.createElement('div');
             wrapper.id = 'filter-wrap-' + id;
-            wrapper.style.cssText = 'margin-bottom:10px;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;';
+            wrapper.style.cssText = 'margin-bottom:14px;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,0.04);';
+            wrapper.dataset.editing = 'true';
+            wrapper.dataset.everSaved = 'false';
+            wrapper.dataset.isCustom = isCustom ? 'true' : 'false';
 
-            if (isCustom) {
-                wrapper.innerHTML = `
-                <div style="background:#faf5ff;padding:6px 10px 4px 10px;font-size:0.72rem;font-weight:700;color:#7c3aed;letter-spacing:0.05em;text-transform:uppercase;">Custom Size</div>
-                <div id="filter-line-${id}" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 10px 4px 10px;">
-                    <div>
-                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">MERV Rating</label>
-                        <select name="filter_type_${id}" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">
-                            <option value="">Select</option>
-                            <option value="MERV 8/10">MERV 8/10</option>
-                            <option value="MERV 11">MERV 11</option>
-                            <option value="MERV 13">MERV 13</option>
-                        </select>
-                    </div>
-                    <div style="display:grid;grid-template-columns:1fr auto;gap:6px;align-items:end;">
-                        <div>
-                            <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Qty</label>
-                            <input type="number" min="1" placeholder="Qty" name="filter_qty_${id}" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;">
-                        </div>
-                        <button type="button" onclick="removeFilterLine(${id})" style="background:none;border:none;color:#ef4444;font-size:1.3rem;cursor:pointer;padding:4px 6px;line-height:1;" title="Remove">&times;</button>
-                    </div>
-                    <div>
-                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Length</label>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-                            <input type="number" min="1" placeholder="Inches" name="custom_length_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;width:100%;">
-                            <select name="custom_length_frac_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">${FRACTIONS_HTML}</select>
-                        </div>
-                    </div>
-                    <div>
-                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Width</label>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-                            <input type="number" min="1" placeholder="Inches" name="custom_width_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;width:100%;">
-                            <select name="custom_width_frac_${id}" style="padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">${FRACTIONS_HTML}</select>
-                        </div>
-                    </div>
-                    <div>
-                        <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Depth</label>
-                        <select name="custom_depth_${id}" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;">
-                            <option value="">Select</option>
-                            <option value="1">1"</option>
-                            <option value="2">2"</option>
-                            <option value="4">4"</option>
-                        </select>
-                    </div>
-                    <div style="display:flex;align-items:flex-end;">
-                        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.85rem;color:#374151;padding-bottom:10px;">
-                            <input type="checkbox" name="filter_tag_toggle_${id}" onchange="toggleTag(${id}, this.checked)" style="width:15px;height:15px;accent-color:#059669;">
-                            Add tag / unit label
-                        </label>
-                    </div>
-                </div>
-                <div id="tag-row-${id}" style="display:none;padding:0 10px 10px 10px;">
-                    <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Unit / Building / Location Tag</label>
-                    <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:8px 10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:0.9rem;box-sizing:border-box;">
+            const accentColor = isCustom ? '#7c3aed' : '#059669';
+            const accentBg    = isCustom ? '#faf5ff' : '#f0fdf4';
+            const accentBorder= isCustom ? '#e9d5ff' : '#bbf7d0';
+            const headerLabel = isCustom ? 'Custom size' : 'Standard size';
+
+            const headerHtml = `
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:${accentBg};border-bottom:1px solid ${accentBorder};">
+                    <span style="font-size:0.7rem;font-weight:700;color:${accentColor};letter-spacing:0.1em;text-transform:uppercase;">${headerLabel}</span>
+                    <button type="button" onclick="removeFilterLine(${id})" title="Remove this line" aria-label="Remove this line"
+                        style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;padding:0;line-height:1;width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:color 0.15s, background 0.15s;"
+                        onmouseover="this.style.color='#dc2626';this.style.background='#fee2e2';"
+                        onmouseout="this.style.color='#94a3b8';this.style.background='transparent';">&times;</button>
                 </div>`;
-            } else {
-                wrapper.innerHTML = `
-                <div id="filter-line-${id}" style="padding:10px 10px 6px 10px;">
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+
+            const sizeFieldsHtml = isCustom
+                ? `<div style="margin-bottom:14px;">
+                    <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Custom Dimensions</label>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
                         <div>
-                            <label style="font-size:0.72rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;">Filter Type</label>
-                            <select onchange="updateSizes(${id}, this.value)" style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;background:#fff;width:100%;-webkit-appearance:auto;" name="filter_type_${id}">
-                                <option value="">Select MERV</option>
-                                <option value="MERV 8/10">MERV 8/10</option>
-                                <option value="MERV 11">MERV 11</option>
-                                <option value="MERV 13">MERV 13</option>
+                            <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:4px;font-weight:500;">Length</div>
+                            <div style="display:flex;gap:4px;">
+                                <input type="number" min="1" placeholder="in" name="custom_length_${id}" style="flex:1;padding:9px 8px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.92rem;box-sizing:border-box;width:100%;min-width:0;">
+                                <select name="custom_length_frac_${id}" style="padding:9px 4px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.85rem;width:64px;flex-shrink:0;">${FRACTIONS_HTML}</select>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:4px;font-weight:500;">Width</div>
+                            <div style="display:flex;gap:4px;">
+                                <input type="number" min="1" placeholder="in" name="custom_width_${id}" style="flex:1;padding:9px 8px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.92rem;box-sizing:border-box;width:100%;min-width:0;">
+                                <select name="custom_width_frac_${id}" style="padding:9px 4px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.85rem;width:64px;flex-shrink:0;">${FRACTIONS_HTML}</select>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:4px;font-weight:500;">Depth</div>
+                            <select name="custom_depth_${id}" style="width:100%;padding:9px 8px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.92rem;background:#fff;">
+                                <option value="">Pick</option>
+                                <option value="1">1"</option>
+                                <option value="2">2"</option>
+                                <option value="4">4"</option>
                             </select>
                         </div>
+                    </div>
+                </div>`
+                : `<div style="margin-bottom:14px;">
+                    <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Size</label>
+                    <div id="size-wrap-${id}" style="position:relative;">
+                        <input type="text" id="size-input-${id}" name="filter_size_${id}"
+                            placeholder="Select a filter type first"
+                            disabled autocomplete="off"
+                            oninput="filterSizes(${id}, this.value)"
+                            onfocus="showSizeList(${id})"
+                            onblur="hideSizeList(${id})"
+                            style="padding:11px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
+                        <div id="size-list-${id}" style="display:none;position:fixed;z-index:9999;background:#fff;border:1.5px solid #d1d5db;border-radius:8px;max-height:260px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);"></div>
+                    </div>
+                </div>`;
+
+            const typeSelectAttrs = isCustom ? '' : `onchange="updateSizes(${id}, this.value)"`;
+            const typeOptions = isCustom
+                ? `<option value="">Select rating</option>
+                   <option value="MERV 8/10">MERV 8/10</option>
+                   <option value="MERV 11">MERV 11</option>
+                   <option value="MERV 13">MERV 13</option>`
+                : `<option value="">Select MERV</option>
+                   <option value="MERV 8/10">MERV 8/10</option>
+                   <option value="MERV 11">MERV 11</option>
+                   <option value="MERV 13">MERV 13</option>`;
+
+            wrapper.innerHTML = headerHtml + `
+                <div id="filter-line-${id}" style="padding:14px;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
                         <div>
-                            <label style="font-size:0.72rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;">Quantity</label>
-                            <input type="number" min="1" placeholder="Qty" style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;width:100%;box-sizing:border-box;" name="filter_qty_${id}">
+                            <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">${isCustom ? 'MERV Rating' : 'Filter Type'}</label>
+                            <select ${typeSelectAttrs} name="filter_type_${id}" style="width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;background:#fff;">${typeOptions}</select>
+                        </div>
+                        <div>
+                            <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Quantity</label>
+                            <input type="number" min="1" placeholder="e.g. 12" name="filter_qty_${id}" style="width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
                         </div>
                     </div>
-                    <div style="margin-bottom:6px;">
-                        <label style="font-size:0.72rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;">Size</label>
-                        <div id="size-wrap-${id}" style="position:relative;">
-                            <input type="text" id="size-input-${id}" name="filter_size_${id}"
-                                placeholder="Select filter type first"
-                                disabled autocomplete="off"
-                                oninput="filterSizes(${id}, this.value)"
-                                onfocus="showSizeList(${id})"
-                                onblur="hideSizeList(${id})"
-                                style="padding:10px;border:1.5px solid #d1d5db;border-radius:8px;font-size:1rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
-                            <div id="size-list-${id}" style="display:none;position:fixed;z-index:9999;background:#fff;border:1.5px solid #d1d5db;border-radius:8px;max-height:260px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);"></div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:4px;">
-                        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.88rem;color:#374151;">
-                            <input type="checkbox" name="filter_tag_toggle_${id}" onchange="toggleTag(${id}, this.checked)" style="width:16px;height:16px;accent-color:#059669;">
-                            Add location tag
-                        </label>
-                        <button type="button" onclick="removeFilterLine(${id})" style="background:none;border:1px solid #fca5a5;border-radius:6px;color:#ef4444;font-size:0.82rem;font-weight:600;cursor:pointer;padding:4px 10px;line-height:1.4;" title="Remove">Remove</button>
+                    ${sizeFieldsHtml}
+                    <div>
+                        <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Location Tag <span style="font-weight:400;color:#94a3b8;">(optional)</span></label>
+                        <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
                     </div>
                 </div>
-                <div id="tag-row-${id}" style="display:none;padding:0 10px 10px 10px;">
-                    <label style="font-size:0.75rem;color:#64748b;display:block;margin-bottom:3px;">Unit / Building / Location Tag</label>
-                    <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:10px;border:1.5px solid #d1d5db;border-radius:6px;font-size:1rem;box-sizing:border-box;">
+                <div id="save-row-${id}" style="padding:0 14px 14px;">
+                    <button type="button" id="save-btn-${id}" onclick="saveFilterLine(${id})"
+                        style="width:100%;background:#059669;color:#fff;border:none;border-radius:8px;padding:13px 16px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.01em;transition:background 0.18s, transform 0.08s, box-shadow 0.18s;box-shadow:0 1px 2px rgba(5,150,105,0.2);"
+                        onmouseover="this.style.background='#10b981';this.style.boxShadow='0 4px 12px rgba(5,150,105,0.35)';"
+                        onmouseout="this.style.background='#059669';this.style.boxShadow='0 1px 2px rgba(5,150,105,0.2)';">✓ Add to list</button>
                 </div>`;
-            }
             container.appendChild(wrapper);
             // Wire up change events so summary updates as user fills in fields
             wrapper.querySelectorAll('input, select, textarea').forEach(function(el) {
@@ -1427,21 +1429,24 @@
         function collapseFilterLine(id) {
             const wrap = document.getElementById('filter-wrap-' + id);
             if (!wrap) return;
-            const inner = document.getElementById('filter-line-' + id);
-            const tagRow = document.getElementById('tag-row-' + id);
-            if (inner) inner.style.display = 'none';
-            if (tagRow) tagRow.style.display = 'none';
+            // Hide the whole card — the saved entry is already shown in the summary list above.
+            wrap.style.display = 'none';
         }
 
         function expandFilterLine(id) {
             const wrap = document.getElementById('filter-wrap-' + id);
             if (!wrap) return;
+            // Restore card visibility and make sure inner sections are showing.
+            wrap.style.display = '';
             const inner = document.getElementById('filter-line-' + id);
-            const tagRow = document.getElementById('tag-row-' + id);
+            const saveRow = document.getElementById('save-row-' + id);
             if (inner) inner.style.display = '';
-            // show tag row only if checkbox was checked
-            const tagToggle = wrap.querySelector('[name="filter_tag_toggle_' + id + '"]');
-            if (tagRow && tagToggle && tagToggle.checked) tagRow.style.display = 'block';
+            if (saveRow) saveRow.style.display = '';
+            // Update save button label based on whether it's been saved before
+            const btn = document.getElementById('save-btn-' + id);
+            if (btn) {
+                btn.textContent = wrap.dataset.everSaved === 'true' ? '✓ Save changes' : '✓ Add to list';
+            }
         }
 
         function updateFilterSummary() {
@@ -1484,41 +1489,80 @@
                 }
                 if (label) {
                     const complete = isLineComplete(wrap, id);
-                    entries.push({ id: id, num: i + 1, label: label, qty: qty, tag: tag, complete: complete });
-                    // Collapse the input row if complete
-                    if (complete) {
+                    const saved = wrap.dataset.everSaved === 'true';
+                    // Only show this entry in the summary list if it has been saved at least once
+                    if (saved) {
+                        entries.push({ id: id, num: entries.length + 1, label: label, qty: qty, tag: tag, complete: complete });
+                    }
+                    // Only auto-collapse when the user is NOT actively editing.
+                    // The user must explicitly click "Add to list" to leave edit mode.
+                    if (wrap.dataset.editing === 'true') {
+                        expandFilterLine(id);
+                    } else if (complete) {
                         collapseFilterLine(id);
                     } else {
                         expandFilterLine(id);
                     }
+                } else {
+                    // No label yet → keep the row expanded so user can fill it in
+                    if (wrap.dataset.editing === 'true') expandFilterLine(id);
                 }
             });
+            const countBadge = document.getElementById('filterSummaryCount');
             if (entries.length === 0) {
                 summaryBox.style.display = 'none';
+                if (countBadge) countBadge.textContent = '0';
                 return;
             }
             summaryBox.style.display = 'block';
+            if (countBadge) countBadge.textContent = entries.length;
             summaryList.innerHTML = entries.map(function(e) {
                 const tagChip = e.tag
-                    ? ' <span style="background:#e0f2fe;color:#0369a1;border-radius:4px;padding:1px 6px;font-size:0.72rem;font-weight:600;">📌 ' + e.tag + '</span>'
+                    ? '<span style="display:inline-flex;align-items:center;gap:3px;background:#e0f2fe;color:#0369a1;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:600;margin-left:6px;white-space:nowrap;">📌 ' + e.tag + '</span>'
                     : '';
-                const editBtn = e.complete
-                    ? ' <button type="button" onclick="editFilterLine(' + e.id + ')" style="background:none;border:1px solid #bbf7d0;border-radius:4px;color:#059669;font-size:0.72rem;font-weight:600;cursor:pointer;padding:2px 8px;flex-shrink:0;">Edit</button>'
+                const qtyChip = e.qty
+                    ? '<span style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;border-radius:5px;padding:2px 8px;font-size:0.78rem;font-weight:700;flex-shrink:0;">×' + e.qty + '</span>'
                     : '';
-                return '<div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;flex-wrap:wrap;">'
-                     + '<span style="background:#059669;color:#fff;border-radius:4px;padding:1px 7px;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
-                     + '<span style="color:#065f46;flex:1;">' + e.label + tagChip + '</span>'
-                     + (e.qty ? '<span style="color:#059669;font-weight:700;font-size:0.82rem;">× ' + e.qty + '</span>' : '')
-                     + editBtn
+                return '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border:1px solid #d1fae5;border-radius:8px;box-shadow:0 1px 2px rgba(5,150,105,0.04);">'
+                     + '<span style="background:#059669;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
+                     + '<span style="color:#064e3b;flex:1;font-size:0.9rem;line-height:1.4;min-width:0;">' + e.label + tagChip + '</span>'
+                     + qtyChip
+                     + ' <button type="button" onclick="editFilterLine(' + e.id + ')" title="Edit" style="background:none;border:1px solid #bbf7d0;border-radius:6px;color:#059669;font-size:0.75rem;font-weight:600;cursor:pointer;padding:5px 10px;flex-shrink:0;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background=\'#f0fdf4\';this.style.borderColor=\'#86efac\';" onmouseout="this.style.background=\'none\';this.style.borderColor=\'#bbf7d0\';">Edit</button>'
+                     + ' <button type="button" onclick="removeFilterLine(' + e.id + ')" title="Remove" aria-label="Remove" style="background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;padding:0;line-height:1;width:24px;height:24px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:color 0.15s, background 0.15s;" onmouseover="this.style.color=\'#dc2626\';this.style.background=\'#fee2e2\';" onmouseout="this.style.color=\'#94a3b8\';this.style.background=\'transparent\';">&times;</button>'
                      + '</div>';
             }).join('');
         }
 
         function editFilterLine(id) {
-            expandFilterLine(id);
-            // Scroll the input into view
             const wrap = document.getElementById('filter-wrap-' + id);
+            if (wrap) wrap.dataset.editing = 'true';
+            expandFilterLine(id);
+            updateFilterSummary();
+            // Scroll the input into view
             if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function saveFilterLine(id) {
+            const wrap = document.getElementById('filter-wrap-' + id);
+            if (!wrap) return;
+            const btn = document.getElementById('save-btn-' + id);
+            if (!isLineComplete(wrap, id)) {
+                // Briefly flash the button red to show validation failed
+                if (btn) {
+                    const origBg = btn.style.background;
+                    const origText = btn.textContent;
+                    btn.style.background = '#dc2626';
+                    btn.textContent = 'Please fill in all fields';
+                    setTimeout(function() {
+                        btn.style.background = origBg || '#059669';
+                        btn.textContent = wrap.dataset.everSaved === 'true' ? '✓ Save changes' : '✓ Add to list';
+                    }, 1800);
+                }
+                return;
+            }
+            wrap.dataset.editing = 'false';
+            wrap.dataset.everSaved = 'true';
+            updateFilterSummary();
         }
 
         // Init first standard line on load
@@ -1592,8 +1636,33 @@
                 data.filter_details = pasteList.trim();
                 data.entry_method = 'Pasted List';
             } else {
+                // Safety check: warn if there are unsaved drafts with data filled in
+                const allWraps = document.querySelectorAll('[id^="filter-wrap-"]');
+                const unsavedDrafts = [];
+                allWraps.forEach(function(wrap) {
+                    if (wrap.dataset.everSaved === 'true') return;
+                    // Check if user filled in anything in this draft
+                    const inputs = wrap.querySelectorAll('input, select');
+                    let hasData = false;
+                    inputs.forEach(function(el) {
+                        if (el.type !== 'checkbox' && el.value && el.value.trim()) hasData = true;
+                    });
+                    if (hasData) unsavedDrafts.push(wrap);
+                });
+                if (unsavedDrafts.length > 0) {
+                    const msg = 'You have ' + unsavedDrafts.length + ' filter line(s) you started but did not click "Add to list" on. Those will NOT be included in your quote.\n\nClick OK to submit anyway, or Cancel to go back and add them to the list first.';
+                    if (!confirm(msg)) {
+                        btn.textContent = '→ Submit Quote Request';
+                        btn.disabled = false;
+                        unsavedDrafts[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+                }
+
+                // Only submit lines the user has explicitly added to the list
                 const wrappers = document.querySelectorAll('[id^="filter-wrap-"]');
                 wrappers.forEach(function(wrap, i) {
+                    if (wrap.dataset.everSaved !== 'true') return; // skip drafts
                     const id       = wrap.id.replace('filter-wrap-', '');
                     const type     = (raw['filter_type_'        + id] || '').trim();
                     const size     = (raw['filter_size_'        + id] || '').trim();
