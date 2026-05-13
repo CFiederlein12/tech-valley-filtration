@@ -103,6 +103,10 @@
         border-radius: 6px;
         padding: 0.3rem 0.6rem;
         line-height: 1;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(255,255,255,0.1);
+        position: relative;
+        z-index: 10001;
     }
 
     /* ═══════════════════════════════════════════════
@@ -1043,8 +1047,9 @@
     }
     @media (max-width: 900px) {
         .hero-inner { grid-template-columns: 1fr; min-height: auto; padding: 4rem 2rem 3rem; }
-        .hero-visual { display: none; }
+        .hero-visual { display: none; pointer-events: none; }
         .turntable-hint { display: none; }
+        #turntable-canvas { pointer-events: none !important; }
         .hero-text h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
     }
     @media (max-width: 768px) {
