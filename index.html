@@ -111,7 +111,6 @@
     .hero {
         position: relative;
         background: var(--primary);
-        min-height: 92vh;
         display: flex;
         align-items: center;
         overflow: hidden;
@@ -151,10 +150,11 @@
         margin: 0 auto;
         padding: 5rem 2rem;
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: center;
         width: 100%;
+        min-height: 92vh;
     }
 
     .hero-eyebrow {
@@ -290,60 +290,44 @@
         letter-spacing: 0.07em;
     }
 
-    /* Hero visual side */
-    .hero-visual { animation: fadeSlideUp 0.6s 0.2s ease both; }
-    .hero-img-card {
-        position: relative;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-    }
-    .hero-img-card img { width: 100%; height: 340px; object-fit: cover; display: block; }
-    .hero-img-card::after {
-        content: '';
+    /* ── Turntable Hero Visual ── */
+    .hero-visual {
         position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, transparent 50%, rgba(10,22,40,0.7) 100%);
-    }
-    .hero-img-card-badge {
-        position: absolute;
-        bottom: 1rem; left: 1rem;
-        z-index: 2;
-        background: rgba(10,22,40,0.85);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255,255,255,0.12);
-        color: rgba(255,255,255,0.85);
-        font-size: 0.78rem;
-        font-weight: 500;
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
-    }
-    .hero-mini-cards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-        margin-top: 0.75rem;
-    }
-    .hero-mini-card {
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 10px;
-        padding: 1rem 1.1rem;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 52%;
+        height: 100%;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        transition: background 0.2s, border-color 0.2s, transform 0.2s;
-        cursor: default;
+        justify-content: flex-end;
+        pointer-events: none; /* let canvas handle its own events */
     }
-    .hero-mini-card:hover {
-        background: rgba(5,150,105,0.1);
-        border-color: rgba(5,150,105,0.35);
-        transform: translateY(-2px);
+    #turntable-canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 95vh;
+        object-fit: contain;
+        cursor: grab;
+        pointer-events: all;
+        filter: drop-shadow(-30px 20px 60px rgba(5,150,105,0.18));
+        animation: fadeSlideUp 0.7s 0.15s ease both;
+        user-select: none;
     }
-    .hero-mini-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .hero-mini-card strong { display: block; font-size: 0.82rem; color: white; font-weight: 600; }
-    .hero-mini-card span { font-size: 0.72rem; color: rgba(255,255,255,0.45); line-height: 1.4; }
+    #turntable-canvas:active { cursor: grabbing; }
+    .turntable-hint {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 2rem;
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.3);
+        font-family: 'Space Mono', monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        pointer-events: none;
+        animation: fadeSlideUp 1s 1.2s ease both;
+    }
 
     @keyframes fadeSlideUp {
         from { opacity: 0; transform: translateY(20px); }
@@ -1045,8 +1029,9 @@
         .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
     @media (max-width: 900px) {
-        .hero-inner { grid-template-columns: 1fr; }
+        .hero-inner { grid-template-columns: 1fr; min-height: auto; padding: 4rem 2rem 3rem; }
         .hero-visual { display: none; }
+        .turntable-hint { display: none; }
         .hero-text h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
     }
     @media (max-width: 768px) {
@@ -1142,26 +1127,130 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-img-card">
-                    <img src="ImageAssets/warehouse1.jpeg" alt="Tech Valley Filtration warehouse">
-                    <div class="hero-img-card-badge">
-                        <strong>Albany, NY</strong> · Serving the Northeast
-                    </div>
-                </div>
-                <div class="hero-mini-cards">
-                    <div class="hero-mini-card">
-                        <div class="hero-mini-icon">⚡</div>
-                        <span>Same-day will-call pickup available</span>
-                    </div>
-                    <div class="hero-mini-card">
-                        <div class="hero-mini-icon">📦</div>
-                        <span>Direct ship from our Albany warehouse</span>
-                    </div>
-                </div>
+            <!-- Turntable Filter Animation -->
+            <div class="hero-visual" aria-hidden="true">
+                <canvas id="turntable-canvas" width="1200" height="1500" aria-label="Interactive 360° filter rotation"></canvas>
+                <div class="turntable-hint">drag or scroll to rotate</div>
             </div>
         </div>
     </section>
+
+    <script>
+    /* ── Turntable Engine ── */
+    (function() {
+        const FRAME_COUNT = 30;
+        const FRAME_PATH  = 'ImageAssets/frames/filter_frame_';
+        const AUTO_SPEED  = 90;   // ms per frame
+        const DRAG_SENS   = 0.18; // frames per pixel of drag
+
+        const canvas = document.getElementById('turntable-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        // Preload all frames
+        const frames = [];
+        let loaded = 0;
+        let currentFrame = 0;
+        let autoTimer = null;
+        let dragging = false;
+        let dragStartX = 0;
+        let dragStartFrame = 0;
+
+        function pad(n) { return String(n).padStart(3, '0'); }
+
+        function drawFrame(idx) {
+            const img = frames[idx];
+            if (!img || !img.complete) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+
+        function startAuto() {
+            if (autoTimer) return;
+            autoTimer = setInterval(function() {
+                if (!dragging) {
+                    currentFrame = (currentFrame + 1) % FRAME_COUNT;
+                    drawFrame(currentFrame);
+                }
+            }, AUTO_SPEED);
+        }
+
+        function stopAuto() {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+
+        function frameFromDelta(startFrame, dx) {
+            const delta = Math.round(dx * DRAG_SENS);
+            return ((startFrame - delta) % FRAME_COUNT + FRAME_COUNT) % FRAME_COUNT;
+        }
+
+        // Mouse drag
+        canvas.addEventListener('mousedown', function(e) {
+            dragging = true;
+            dragStartX = e.clientX;
+            dragStartFrame = currentFrame;
+            stopAuto();
+            e.preventDefault();
+        });
+        window.addEventListener('mousemove', function(e) {
+            if (!dragging) return;
+            currentFrame = frameFromDelta(dragStartFrame, e.clientX - dragStartX);
+            drawFrame(currentFrame);
+        });
+        window.addEventListener('mouseup', function() {
+            if (!dragging) return;
+            dragging = false;
+            startAuto();
+        });
+
+        // Touch drag
+        canvas.addEventListener('touchstart', function(e) {
+            dragging = true;
+            dragStartX = e.touches[0].clientX;
+            dragStartFrame = currentFrame;
+            stopAuto();
+        }, { passive: true });
+        canvas.addEventListener('touchmove', function(e) {
+            if (!dragging) return;
+            currentFrame = frameFromDelta(dragStartFrame, e.touches[0].clientX - dragStartX);
+            drawFrame(currentFrame);
+            e.preventDefault();
+        }, { passive: false });
+        canvas.addEventListener('touchend', function() {
+            dragging = false;
+            startAuto();
+        });
+
+        // Scroll-to-rotate (when hero is in viewport)
+        let scrollAccum = 0;
+        window.addEventListener('wheel', function(e) {
+            const rect = canvas.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight && rect.bottom > 0;
+            if (!inView) return;
+            scrollAccum += e.deltaY * 0.015;
+            const delta = Math.round(scrollAccum);
+            if (delta !== 0) {
+                scrollAccum -= delta;
+                currentFrame = ((currentFrame + delta) % FRAME_COUNT + FRAME_COUNT) % FRAME_COUNT;
+                drawFrame(currentFrame);
+            }
+        }, { passive: true });
+
+        // Load frames then start
+        for (let i = 1; i <= FRAME_COUNT; i++) {
+            const img = new Image();
+            img.onload = function() {
+                loaded++;
+                if (loaded === 1) drawFrame(0); // show first frame immediately
+                if (loaded === FRAME_COUNT) startAuto();
+            };
+            img.onerror = function() { loaded++; };
+            img.src = FRAME_PATH + pad(i) + '.png';
+            frames.push(img);
+        }
+    })();
+    </script>
 
     <!-- Product Carousel -->
     <section class="carousel-section" id="products-preview">
@@ -1731,65 +1820,4 @@
             }
         }
 
-        // ── Product Carousel ──────────────────────────────────────────────────
-        (function() {
-            const track = document.getElementById('carouselTrack');
-            const dotsContainer = document.getElementById('carouselDots');
-            const CARD_WIDTH = 300 + 24; // card width + gap
-            const CARDS_PER_VIEW = Math.floor((window.innerWidth > 1200 ? 1200 : window.innerWidth - 64) / CARD_WIDTH);
-            const totalCards = track.querySelectorAll('.product-card').length;
-            const totalDots = Math.max(1, totalCards - CARDS_PER_VIEW + 1);
-
-            // Build dots
-            for (let i = 0; i < totalDots; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-                dot.addEventListener('click', function() { scrollToIndex(i); });
-                dotsContainer.appendChild(dot);
-            }
-
-            function updateDots() {
-                const scrollLeft = track.scrollLeft;
-                const idx = Math.round(scrollLeft / CARD_WIDTH);
-                dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
-                    d.classList.toggle('active', i === idx);
-                });
-            }
-
-            function scrollToIndex(i) {
-                track.scrollTo({ left: i * CARD_WIDTH, behavior: 'smooth' });
-            }
-
-            document.getElementById('nextBtn').addEventListener('click', function() {
-                track.scrollBy({ left: CARD_WIDTH * 2, behavior: 'smooth' });
-            });
-
-            document.getElementById('prevBtn').addEventListener('click', function() {
-                track.scrollBy({ left: -CARD_WIDTH * 2, behavior: 'smooth' });
-            });
-
-            track.addEventListener('scroll', updateDots);
-        })();
-    </script>
-
-<!-- Floating SMS Button -->
-<a href="sms-optin.html" class="sms-float-btn" title="Text us to order">💬 <span>Text to Order</span></a>
-<style>
-.sms-float-btn {
-    position: fixed; bottom: 1.5rem; right: 1.5rem;
-    background: #059669; color: white; text-decoration: none;
-    padding: 0.85rem 1.4rem; border-radius: 50px;
-    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
-    display: flex; align-items: center; gap: 0.5rem;
-    box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.sms-float-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(5,150,105,0.55); }
-@media (max-width: 768px) {
-    .sms-float-btn span { display: none; }
-    .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
-}
-</style>
-</body>
-</html>
+        // ── Product Carousel ───�
