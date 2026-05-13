@@ -48,7 +48,7 @@
     nav {
         position: sticky;
         top: 0;
-        z-index: 1000;
+        z-index: 10000;
         background: rgba(10,22,40,0.97);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -146,6 +146,7 @@
 
     .hero-inner {
         position: relative;
+        z-index: 2;
         max-width: 1280px;
         margin: 0 auto;
         padding: 5rem 2rem;
@@ -1058,7 +1059,7 @@
             padding: 1rem 2rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             gap: 0.25rem;
-            z-index: 1001;
+            z-index: 9999;
         }
         .nav-links.open { display: flex; }
         .nav-links a { color: rgba(255,255,255,0.7); padding: 0.6rem 0.5rem; }
