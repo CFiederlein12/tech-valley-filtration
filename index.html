@@ -1258,7 +1258,7 @@
         }, { passive: true });
 
         // Load frames then start
-        for (let i = 1; i <= FRAME_COUNT; i++) {
+        for (let i = 0; i < FRAME_COUNT; i++) {
             const img = new Image();
             img.onload = function() {
                 loaded++;
