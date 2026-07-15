@@ -55,6 +55,7 @@
         transition: color 0.18s, background 0.18s; white-space: nowrap;
     }
     .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav-links a[aria-current="page"] { color: var(--white); font-weight: 600; background: rgba(255,255,255,0.09); }
     .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.07); }
     .nav-links li:last-child a {
         background: var(--accent); color: var(--white);
@@ -592,12 +593,12 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="industries.html">Industries</a></li>
+                <li><a href="industries.html" aria-current="page">Industries</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
                 <li><a href="quote.html">Quote &amp; Order</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="17" x2="20" y2="17"/></svg></button>
         </div>
     </nav>
 
@@ -1276,7 +1277,7 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="industries.html" aria-current="page">Industries</a></li>
                         <li><a href="products.html">Products</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
