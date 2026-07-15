@@ -84,6 +84,7 @@
         white-space: nowrap;
     }
     .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav-links a[aria-current="page"] { color: var(--white); font-weight: 600; background: rgba(255,255,255,0.09); }
     .nav-links li:last-child a {
         background: var(--accent);
         color: var(--white);
@@ -807,35 +808,7 @@
     .iaq-btn-secondary { padding: 0.85rem 1.75rem; background: transparent; color: rgba(255,255,255,0.75); text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 0.9rem; font-weight: 500; transition: border-color 0.2s, color 0.2s, transform 0.2s; white-space: nowrap; }
     .iaq-btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: #fff; transform: translateY(-2px); }
 
-    /* ═══════════════════════════════════════════════
-       TESTIMONIALS
-    ═══════════════════════════════════════════════ */
-    .testimonials-section {
-        background: var(--off-white);
-        padding: 5rem 2rem;
-    }
-    .testimonials-inner { max-width: 1280px; margin: 0 auto; }
-    .testimonials-header { text-align: center; margin-bottom: 3rem; }
-    .testimonials-header h2 { font-family: 'DM Serif Display', serif; font-size: 2.25rem; font-weight: 400; margin-bottom: 0.5rem; }
-    .testimonials-header p { color: var(--gray); font-size: 0.95rem; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
-    .testimonial-placeholder {
-        background: white;
-        border: 2px dashed var(--border);
-        border-radius: 14px;
-        padding: 2rem;
-        text-align: center;
-        transition: border-color 0.2s;
-    }
-    .testimonial-placeholder:hover { border-color: var(--accent); }
-    .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 0.75rem; letter-spacing: 0.1em; }
-    .testimonial-placeholder p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; font-weight: 300; font-style: italic; margin-bottom: 0.75rem; }
-    .placeholder-label { font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--border); }
-    .review-cta-row { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 2rem 2.5rem; background: white; border: 1px solid var(--border); border-radius: 14px; flex-wrap: wrap; }
-    .review-cta-text h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .review-cta-text p { font-size: 0.88rem; color: var(--gray); font-weight: 300; }
-    .review-btn { padding: 0.8rem 1.6rem; background: var(--gold); color: var(--primary); text-decoration: none; border-radius: 8px; font-size: 0.9rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
-    .review-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.35); }
+
 
     /* ═══════════════════════════════════════════════
        CONTACT CTA
@@ -1056,7 +1029,6 @@
         .iaq-who-visual { grid-template-columns: 1fr; }
         .iaq-cta-band-inner { flex-direction: column; text-align: center; }
         .iaq-cta-band-actions { justify-content: center; }
-        .testimonials-grid { grid-template-columns: 1fr; }
         .feature-strip-inner { grid-template-columns: 1fr; }
         .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
         .feature-item:last-child { border-bottom: none; }
@@ -1067,7 +1039,6 @@
         .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         .hero-trust { flex-wrap: wrap; gap: 1rem; }
         .hero-trust-item { border-right: none; }
-        .review-cta-row { flex-direction: column; text-align: center; }
     }
 </style>
 </head>
@@ -1079,14 +1050,14 @@
         <div class="nav-container">
             <img src="ImageAssets/logo-transparent.png" alt="Tech Valley Filtration Logo" class="logo-img">
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="industries.html">Industries</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="quote.html">Quote &amp; Order</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="17" x2="20" y2="17"/></svg></button>
         </div>
     </nav>
 
@@ -1791,39 +1762,6 @@
     </section>
     <!-- /IAQ Awareness Section -->
 
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="testimonials-inner">
-            <div class="testimonials-header">
-                <h2>What Our Clients Say</h2>
-                <p>Trusted by facilities managers across the Northeast</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-placeholder">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>Your review could be here. We'd love to hear about your experience with Tech Valley Filtration.</p>
-                    <span class="placeholder-label">Review coming soon</span>
-                </div>
-                <div class="testimonial-placeholder">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>Your review could be here. We'd love to hear about your experience with Tech Valley Filtration.</p>
-                    <span class="placeholder-label">Review coming soon</span>
-                </div>
-                <div class="testimonial-placeholder">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>Your review could be here. We'd love to hear about your experience with Tech Valley Filtration.</p>
-                    <span class="placeholder-label">Review coming soon</span>
-                </div>
-            </div>
-            <div class="review-cta-row">
-                <div class="review-cta-text">
-                    <h3>Happy with our service?</h3>
-                    <p>Let others know &mdash; your feedback helps facilities managers across the region find quality filtration solutions.</p>
-                </div>
-                <a href="#" class="review-btn">&#11088; Leave a Review</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact CTA -->
     <section class="cta-section" id="contact">
@@ -1896,7 +1834,7 @@
                 <div class="footer-col">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html" aria-current="page">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="industries.html">Industries</a></li>
                         <li><a href="products.html">Products</a></li>
