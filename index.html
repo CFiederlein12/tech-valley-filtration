@@ -838,15 +838,16 @@
     }
     .cta-inner {
         position: relative;
-        max-width: 1280px;
+        max-width: 640px;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
-    /* Left column — text + contact details */
+    /* Text above the centered contact form */
+    .cta-text { width: 100%; }
     .cta-text h2 {
         font-family: 'DM Serif Display', serif;
         font-size: clamp(2rem, 3vw, 2.75rem);
@@ -862,38 +863,10 @@
         line-height: 1.7;
         margin-bottom: 2.5rem;
     }
-    .cta-details { display: flex; flex-direction: column; gap: 1.5rem; }
-    .cta-detail-item {}
-    .cta-detail-item span {
-        display: block;
-        font-family: 'Space Mono', monospace;
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent-bright);
-        margin-bottom: 0.3rem;
-    }
-    .cta-detail-item a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.05rem;
-        font-weight: 600;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        padding-bottom: 2px;
-        transition: color 0.2s, border-color 0.2s;
-    }
-    .cta-detail-item a:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
-    .cta-detail-item p {
-        color: rgba(255,255,255,0.7);
-        font-size: 1rem;
-        font-weight: 400;
-        margin: 0;
-        opacity: 1;
-    }
-
-    /* Right column — quote form */
+    /* Centered quote form */
     .contact-form {
+        width: 100%;
+        text-align: left;
         background: rgba(255,255,255,0.04);
         border: 1px solid rgba(255,255,255,0.1);
         border-radius: 16px;
@@ -1819,21 +1792,7 @@
         <div class="cta-inner">
             <div class="cta-text">
                 <h2>Ready to Improve Your Indoor Air Quality?</h2>
-                <p>Get expert consultation and a filtration solution spec'd for your facility — not a generic quote from a catalog.</p>
-                <div class="cta-details">
-                    <div class="cta-detail-item">
-                        <span>Phone</span>
-                        <a href="tel:518-356-3943">(518) 356-3943</a>
-                    </div>
-                    <div class="cta-detail-item">
-                        <span>Email</span>
-                        <a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a>
-                    </div>
-                    <div class="cta-detail-item">
-                        <span>Address</span>
-                        <p>30 Kraft Ave, Suite 5 &middot; Albany, NY 12205</p>
-                    </div>
-                </div>
+                <p>Get expert consultation and a filtration solution customized for your facility.</p>
             </div>
             <div class="contact-form">
                 <h3>Request a Quote</h3>
@@ -1907,14 +1866,15 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><br>
+                    <p><strong>Albany, NY</strong><br>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p>
+                    <p style="margin-top:0.75rem;"><strong>Delaware</strong><br>1011 Talon Lane<br>Greenville, DE 19807</p><br>
                     <p><a href="tel:518-356-3943">(518) 356-3943</a></p>
                     <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 Tech Valley Filtration, LLC. All rights reserved.</span>
-                <span>Albany, NY &middot; Serving the Northeast</span>
+                <span>Serving the Northeast</span>
             </div>
         </div>
     </footer>
