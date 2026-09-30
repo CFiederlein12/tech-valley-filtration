@@ -339,8 +339,8 @@
         content: ''; position: absolute; width: 520px; height: 520px; right: -160px; top: -160px;
         background: radial-gradient(circle, rgba(16,185,129,0.14), transparent 65%); pointer-events: none;
     }
-    .bibo-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1fr 360px; gap: 3.5rem; align-items: center; }
-    .bibo-video { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--dark-border); box-shadow: 0 24px 60px rgba(0,0,0,0.45); aspect-ratio: 9 / 16; background: #000; }
+    .bibo-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.5rem; align-items: center; }
+    .bibo-video { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--dark-border); box-shadow: 0 24px 60px rgba(0,0,0,0.45); aspect-ratio: 9 / 16; background: #000; width: 100%; max-width: 340px; justify-self: center; }
     .bibo-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
     .bibo-video-tag { position: absolute; left: 0.85rem; bottom: 0.85rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: white; background: rgba(10,22,40,0.75); backdrop-filter: blur(6px); border: 1px solid var(--dark-border); padding: 0.35rem 0.65rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 0.4rem; }
     .bibo-video-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); }
@@ -368,7 +368,7 @@
     .bibo-steps li::before { content: counter(bibo, decimal-leading-zero); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); border: 2px solid var(--accent-bright); color: var(--accent-bright); font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
     .bibo-steps li h4 { color: white; font-size: 0.98rem; font-weight: 700; margin-bottom: 0.2rem; padding-top: 0.4rem; }
     .bibo-steps li p { color: rgba(255,255,255,0.6); font-size: 0.86rem; font-weight: 300; line-height: 1.65; }
-    @media (max-width: 1024px) { .bibo-inner { grid-template-columns: 1fr 300px; gap: 2.5rem; } .bibo-steps ol { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 1024px) { .bibo-inner { grid-template-columns: 1.2fr 1fr; gap: 2.5rem; } .bibo-steps ol { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 820px) { .bibo-inner { grid-template-columns: 1fr; } .bibo-video { max-width: 340px; width: 100%; margin: 0 auto; } .bibo-steps ol { grid-template-columns: 1fr; gap: 1.5rem; } }
     @media (max-width: 768px) { .bibo-inner { padding: 3.5rem 1.25rem; } .bibo-copy h2 { font-size: 1.9rem; } .bibo-steps { padding: 1.5rem; } }
 </style>
