@@ -325,6 +325,46 @@
         .sms-float-btn span { display: none; }
         .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
     }
+
+    /* ── BIBO HEPA changeout service ── */
+    .bibo-card-link { display: inline-block; margin: 0 1.25rem 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+    .bibo-card-link:hover { color: var(--primary); }
+    .bibo-section { background: var(--primary); position: relative; overflow: hidden; scroll-margin-top: 80px; }
+    .bibo-section::before {
+        content: ''; position: absolute; inset: 0;
+        background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 22px 22px; pointer-events: none;
+    }
+    .bibo-section::after {
+        content: ''; position: absolute; width: 520px; height: 520px; right: -160px; top: -160px;
+        background: radial-gradient(circle, rgba(16,185,129,0.14), transparent 65%); pointer-events: none;
+    }
+    .bibo-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 3.5rem; align-items: start; }
+    .bibo-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-bright); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .bibo-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--accent-bright); }
+    .bibo-copy h2 { font-family: 'DM Serif Display', serif; font-size: 2.4rem; font-weight: 400; line-height: 1.15; color: white; margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+    .bibo-copy h2 em { font-style: italic; color: var(--accent-bright); }
+    .bibo-lead { color: rgba(255,255,255,0.72); font-size: 1rem; font-weight: 300; line-height: 1.75; margin-bottom: 1rem; max-width: 560px; }
+    .bibo-included { list-style: none; margin: 1.75rem 0; display: grid; gap: 0.85rem; }
+    .bibo-included li { display: flex; gap: 0.85rem; align-items: flex-start; color: rgba(255,255,255,0.85); font-size: 0.92rem; line-height: 1.6; }
+    .bibo-included li strong { color: white; font-weight: 700; display: block; }
+    .bibo-included li span { color: rgba(255,255,255,0.6); font-weight: 300; }
+    .bibo-check { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: var(--accent-bright); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .bibo-apps-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); margin-bottom: 0.6rem; }
+    .bibo-apps { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .bibo-apps span { font-size: 0.78rem; color: rgba(255,255,255,0.8); border: 1px solid var(--dark-border); background: var(--dark-card); padding: 0.35rem 0.8rem; border-radius: 50px; }
+    .bibo-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .bibo-steps { background: rgba(255,255,255,0.035); border: 1px solid var(--dark-border); border-radius: 16px; padding: 2rem; backdrop-filter: blur(6px); }
+    .bibo-steps h3 { font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+    .bibo-steps ol { list-style: none; counter-reset: bibo; position: relative; }
+    .bibo-steps ol::before { content: ''; position: absolute; left: 17px; top: 18px; bottom: 18px; width: 2px; background: linear-gradient(var(--accent-bright), rgba(16,185,129,0.1)); }
+    .bibo-steps li { counter-increment: bibo; position: relative; padding: 0 0 1.5rem 3.25rem; }
+    .bibo-steps li:last-child { padding-bottom: 0; }
+    .bibo-steps li::before { content: counter(bibo, decimal-leading-zero); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); border: 2px solid var(--accent-bright); color: var(--accent-bright); font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .bibo-steps li h4 { color: white; font-size: 0.98rem; font-weight: 700; margin-bottom: 0.2rem; padding-top: 0.4rem; }
+    .bibo-steps li p { color: rgba(255,255,255,0.6); font-size: 0.86rem; font-weight: 300; line-height: 1.65; }
+    @media (max-width: 1024px) { .bibo-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+    @media (max-width: 768px) { .bibo-inner { padding: 3.5rem 1.25rem; } .bibo-copy h2 { font-size: 1.9rem; } .bibo-steps { padding: 1.5rem; } }
 </style>
 <link rel="canonical" href="https://techvalleyfiltration.com/products.html">
 <link rel="icon" type="image/png" href="ImageAssets/logo-transparent.png">
@@ -532,6 +572,7 @@
                     <span class="spec-badge">0.3 Microns</span>
                     <span class="spec-badge">Healthcare / Cleanrooms</span>
                 </div>
+                <a href="#bibo" class="bibo-card-link">Bag-in/bag-out changeout service →</a>
             </div>
 
             <!-- Link & Panel Filters -->
@@ -680,6 +721,48 @@
             </div>
         </div>
     </div>
+
+    <!-- ══════════════════════════════════════
+         BAG-IN/BAG-OUT HEPA CHANGEOUT SERVICE
+    ══════════════════════════════════════ -->
+    <section class="bibo-section" id="bibo" aria-labelledby="bibo-heading">
+        <div class="bibo-inner">
+            <div class="bibo-copy">
+                <div class="bibo-eyebrow">Field Service</div>
+                <h2 id="bibo-heading">Bag-In/Bag-Out HEPA Changeouts. <em>Sealed start to finish.</em></h2>
+                <p class="bibo-lead">When a HEPA filter has been capturing pathogens, lead dust, or hazardous particulate, the changeout is where exposure happens. Bag-in/bag-out (BIBO) housings keep the spent filter sealed inside a bag from the moment it leaves the housing.</p>
+                <p class="bibo-lead">Our team handles the full changeout on site, so your staff never handles a contaminated filter and your space stays protected.</p>
+                <ul class="bibo-included">
+                    <li><div class="bibo-check"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Replacement filters supplied</strong><span>HEPA and pre-filters matched to your BIBO housing, plus the bags and bands for the changeout.</span></div></li>
+                    <li><div class="bibo-check"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Sealed removal and disposal</strong><span>Spent filters are sealed, labeled, and removed for disposal in line with your site&rsquo;s waste-handling requirements.</span></div></li>
+                    <li><div class="bibo-check"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Changeout documentation</strong><span>A written record of every changeout for your maintenance and compliance files.</span></div></li>
+                </ul>
+                <div class="bibo-apps-label">Common applications</div>
+                <div class="bibo-apps">
+                    <span>Hospitals &amp; isolation rooms</span>
+                    <span>Labs &amp; biosafety</span>
+                    <span>Pharma &amp; biotech</span>
+                    <span>Indoor firing ranges</span>
+                    <span>Hazardous dust &amp; industrial exhaust</span>
+                    <span>Cleanrooms</span>
+                    <span>Data centers</span>
+                </div>
+                <div class="bibo-actions">
+                    <a href="quote.html" class="btn-order-primary">Schedule a Changeout →</a>
+                    <a href="tel:800-344-6214" class="btn-order-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg> (800) 344-6214</a>
+                </div>
+            </div>
+            <div class="bibo-steps">
+                <h3>How a BIBO changeout works</h3>
+                <ol>
+                    <li><h4>Isolate the housing</h4><p>The system is shut down and the housing is isolated so no air moves across the filter during the change.</p></li>
+                    <li><h4>Bag out the spent filter</h4><p>The old filter is drawn out through the access port directly into the attached bag, which is then sealed and cut free, so the filter is never exposed to the room.</p></li>
+                    <li><h4>Bag in the new filter</h4><p>A new filter is installed through a fresh bag and clamped into place, keeping the housing closed throughout.</p></li>
+                    <li><h4>Dispose &amp; document</h4><p>Sealed filters are labeled and removed, and you get a changeout record for your files.</p></li>
+                </ol>
+            </div>
+        </div>
+    </section>
 
     <!-- ══════════════════════════════════════
          OTHER SERVICES

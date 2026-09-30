@@ -1013,6 +1013,16 @@
         .hero-trust { flex-wrap: wrap; gap: 1rem; }
         .hero-trust-item { border-right: none; }
     }
+
+    /* ── BIBO teaser strip ── */
+    .bibo-teaser-wrap { max-width: 1280px; margin: 0 auto; padding: 0 2rem 1rem; }
+    .bibo-teaser { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; background: var(--primary); border-radius: 14px; padding: 1.75rem 2rem; position: relative; overflow: hidden; border-left: 4px solid var(--accent-bright); }
+    .bibo-teaser-tag { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-bright); margin-bottom: 0.3rem; }
+    .bibo-teaser h3 { font-family: 'DM Serif Display', serif; font-size: 1.45rem; font-weight: 400; color: white; margin-bottom: 0.25rem; }
+    .bibo-teaser p { font-size: 0.88rem; color: rgba(255,255,255,0.6); font-weight: 300; max-width: 640px; }
+    .bibo-teaser a { padding: 0.8rem 1.6rem; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .bibo-teaser a:hover { background: var(--accent-bright); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
+    @media (max-width: 768px) { .bibo-teaser-wrap { padding: 0 1.25rem 1rem; } .bibo-teaser { flex-direction: column; align-items: flex-start; padding: 1.5rem; } }
 </style>
 <link rel="canonical" href="https://techvalleyfiltration.com/">
 <link rel="icon" type="image/png" href="ImageAssets/logo-transparent.png">
@@ -1488,6 +1498,18 @@
         </div>
         <div class="carousel-dots" id="carouselDots"></div>
     </section>
+
+    <!-- BIBO service teaser -->
+    <div class="bibo-teaser-wrap">
+        <div class="bibo-teaser">
+            <div>
+                <div class="bibo-teaser-tag">Field Service</div>
+                <h3>Bag-In/Bag-Out HEPA Changeouts</h3>
+                <p>We supply the filters, handle the sealed changeout on site, remove the spent filters, and document every change.</p>
+            </div>
+            <a href="products.html#bibo">See How It Works →</a>
+        </div>
+    </div>
 
     <!-- Services -->
     <div class="section" id="services">
