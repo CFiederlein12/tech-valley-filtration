@@ -1045,23 +1045,64 @@
         padding: 0 1.25rem;
     }
     .brands-label span { color: var(--accent); }
-    .brands-marquee {
+    .brands-row {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding-left: 2rem;
+    }
+    /* Featured partner: Mann+Hummel */
+    .brand-featured {
+        flex: 0 0 auto;
         position: relative;
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-                mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 1.1rem 1.75rem 1rem;
+        background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+        border: 1px solid #a7f3d0;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px -12px var(--accent-glow);
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .brand-featured:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -12px var(--accent-glow); }
+    .brand-featured img { height: 54px; width: auto; display: block; }
+    .brand-featured-tag {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--accent);
+        padding: 0.28rem 0.65rem;
+        border-radius: 999px;
+        white-space: nowrap;
+    }
+    .brands-marquee {
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: hidden;
+        padding: 0.75rem 0;
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 92%, transparent);
+                mask-image: linear-gradient(to right, transparent, #000 7%, #000 92%, transparent);
     }
     .brands-track {
         display: flex;
         width: max-content;
-        animation: brands-scroll 38s linear infinite;
+        animation: brands-scroll 48s linear infinite;
     }
     .brands-marquee:hover .brands-track,
     .brands-marquee:focus-within .brands-track { animation-play-state: paused; }
     .brands-group {
         display: flex;
         align-items: center;
-        gap: 5rem;
-        padding-right: 5rem;
+        gap: 4.5rem;
+        padding-right: 4.5rem;
         list-style: none;
         margin: 0;
     }
@@ -1069,7 +1110,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 64px;
+        height: 72px;
     }
     .brand-logo img {
         display: block;
@@ -1084,22 +1125,55 @@
         opacity: 1;
         transform: scale(1.06);
     }
+    /* Rensa Filtration family — kept together in one tray */
+    .brand-family {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 2.75rem;
+        padding: 0.4rem 2rem;
+        border: 1px dashed #cbd5e1;
+        border-radius: 14px;
+        background: var(--off-white);
+    }
+    .brand-family-tag {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Space Mono', monospace;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gray);
+        background: var(--white);
+        padding: 0 0.6rem;
+        white-space: nowrap;
+    }
+    .brand-family .brand-logo { height: 64px; }
     @keyframes brands-scroll {
         from { transform: translateX(0); }
         to   { transform: translateX(-50%); }
     }
     @media (max-width: 768px) {
-        .brands-section { padding: 2rem 0 2.25rem; }
+        .brands-section { padding: 2rem 0 2.25rem; --brand-scale: 0.78; }
+        .brands-row { flex-direction: column; gap: 1.5rem; padding-left: 0; }
+        .brand-featured { padding: 0.9rem 1.4rem 0.85rem; }
+        .brand-featured img { height: 44px; }
+        .brands-marquee { width: 100%; }
         .brands-group { gap: 3rem; padding-right: 3rem; }
-        .brand-logo { height: 48px; }
-        .brands-section { --brand-scale: 0.78; }
-        .brands-track { animation-duration: 28s; }
+        .brand-family { gap: 2rem; padding: 0.4rem 1.4rem; }
+        .brand-logo { height: 56px; }
+        .brands-track { animation-duration: 36s; }
     }
     @media (prefers-reduced-motion: reduce) {
-        .brands-marquee { -webkit-mask-image: none; mask-image: none; }
+        .brands-row { flex-direction: column; padding-left: 0; }
+        .brands-marquee { -webkit-mask-image: none; mask-image: none; padding: 0.75rem 0; }
         .brands-track { animation: none; width: auto; justify-content: center; }
         .brands-group { flex-wrap: wrap; justify-content: center; gap: 2rem 3.5rem; padding: 0 1.25rem; }
         .brands-group[aria-hidden="true"] { display: none; }
+        .brand-family { flex-wrap: wrap; justify-content: center; }
     }
 </style>
 <link rel="canonical" href="https://techvalleyfiltration.com/">
@@ -1480,25 +1554,47 @@
     <!-- Brands We Represent -->
     <section class="brands-section" aria-labelledby="brands-heading">
         <h2 class="brands-label" id="brands-heading">Brands We <span>Represent</span></h2>
-        <div class="brands-marquee">
-          <div class="brands-track">
-            <ul class="brands-group">
-                <li class="brand-logo"><img src="ImageAssets/brands/mann-hummel.svg" alt="MANN+HUMMEL" style="--h:46px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/rensa.svg" alt="Rensa Filtration" style="--h:38px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/permatron.png" alt="Permatron" style="--h:46px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/d-mark.png" alt="D-Mark" style="--h:34px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/aaf.png" alt="AAF International (American Air Filter)" style="--h:58px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/glasfloss.png" alt="Glasfloss Industries" style="--h:40px" decoding="async"></li>
-            </ul>
-            <ul class="brands-group" aria-hidden="true">
-                <li class="brand-logo"><img src="ImageAssets/brands/mann-hummel.svg" alt="" style="--h:46px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/rensa.svg" alt="" style="--h:38px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/permatron.png" alt="" style="--h:46px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/d-mark.png" alt="" style="--h:34px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/aaf.png" alt="" style="--h:58px" decoding="async"></li>
-                <li class="brand-logo"><img src="ImageAssets/brands/glasfloss.png" alt="" style="--h:40px" decoding="async"></li>
-            </ul>
-          </div>
+        <div class="brands-row">
+            <a class="brand-featured" href="products.html" aria-label="MANN+HUMMEL — our primary manufacturer partner">
+                <img src="ImageAssets/brands/mann-hummel.svg" alt="MANN+HUMMEL">
+                <span class="brand-featured-tag">Primary Partner</span>
+            </a>
+            <div class="brands-marquee">
+              <div class="brands-track">
+                <ul class="brands-group">
+                    <li class="brand-family" aria-label="Rensa Filtration family of brands">
+                        <span class="brand-family-tag">Rensa Filtration Family</span>
+                        <ul class="brands-group" style="gap:inherit;padding:0">
+                            <li class="brand-logo"><img src="ImageAssets/brands/rensa.svg" alt="Rensa Filtration" style="--h:38px" decoding="async"></li>
+                            <li class="brand-logo"><img src="ImageAssets/brands/d-mark.png" alt="D-Mark" style="--h:34px" decoding="async"></li>
+                            <li class="brand-logo"><img src="ImageAssets/brands/smith-filter.png" alt="Smith Filter" style="--h:44px" decoding="async"></li>
+                            <li class="brand-logo"><img src="ImageAssets/brands/permatron.png" alt="Permatron" style="--h:46px" decoding="async"></li>
+                        </ul>
+                    </li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/aaf.png" alt="AAF International (American Air Filter)" style="--h:58px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/freudenberg.png" alt="Freudenberg Filtration Technologies" style="--h:38px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/glasfloss.png" alt="Glasfloss Industries" style="--h:40px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/american-ultraviolet.png" alt="American Ultraviolet" style="--h:54px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/mikropor.png" alt="Mikropor" style="--h:30px" decoding="async"></li>
+                </ul>
+                <ul class="brands-group" aria-hidden="true">
+                    <li class="brand-family">
+                        <span class="brand-family-tag">Rensa Filtration Family</span>
+                        <ul class="brands-group" style="gap:inherit;padding:0">
+                            <li class="brand-logo"><img src="ImageAssets/brands/rensa.svg" alt="" style="--h:38px" decoding="async"></li>
+                            <li class="brand-logo"><img src="ImageAssets/brands/d-mark.png" alt="" style="--h:34px" decoding="async"></li>
+                            <li class="brand-logo"><img src="ImageAssets/brands/smith-filter.png" alt="" style="--h:44px" decoding="async"></li>
+                            <li class="brand-logo"><img src="ImageAssets/brands/permatron.png" alt="" style="--h:46px" decoding="async"></li>
+                        </ul>
+                    </li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/aaf.png" alt="" style="--h:58px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/freudenberg.png" alt="" style="--h:38px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/glasfloss.png" alt="" style="--h:40px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/american-ultraviolet.png" alt="" style="--h:54px" decoding="async"></li>
+                    <li class="brand-logo"><img src="ImageAssets/brands/mikropor.png" alt="" style="--h:30px" decoding="async"></li>
+                </ul>
+              </div>
+            </div>
         </div>
     </section>
 
