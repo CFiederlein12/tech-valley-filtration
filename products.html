@@ -371,6 +371,63 @@
     @media (max-width: 1024px) { .bibo-inner { grid-template-columns: 1.2fr 1fr; gap: 2.5rem; } .bibo-steps ol { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 820px) { .bibo-inner { grid-template-columns: 1fr; } .bibo-video { max-width: 340px; width: 100%; margin: 0 auto; } .bibo-steps ol { grid-template-columns: 1fr; gap: 1.5rem; } }
     @media (max-width: 768px) { .bibo-inner { padding: 3.5rem 1.25rem; } .bibo-copy h2 { font-size: 1.9rem; } .bibo-steps { padding: 1.5rem; } }
+
+    /* Additional Services cards (matches homepage) */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+    .service-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 2rem 1.75rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--blue-bright));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 48px rgba(0,0,0,0.09);
+        border-color: var(--accent);
+    }
+    .service-icon {
+        font-size: 2.25rem;
+        margin-bottom: 1.25rem;
+        display: block;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--primary); }
+    .service-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; font-weight: 300; margin-bottom: 1rem; }
+    .service-card ul { list-style: none; }
+    .service-card li {
+        font-size: 0.83rem;
+        color: var(--gray);
+        font-weight: 300;
+        padding: 0.3rem 0 0.3rem 1.1rem;
+        position: relative;
+    }
+    .service-card li::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0.9rem;
+        width: 5px; height: 5px;
+        background: var(--accent);
+        border-radius: 50%;
+    }
+    @media (max-width: 1100px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px)  { .services-grid { grid-template-columns: 1fr; } }
 </style>
 <link rel="canonical" href="https://techvalleyfiltration.com/products.html">
 <link rel="icon" type="image/png" href="ImageAssets/logo-transparent.png">
@@ -980,6 +1037,47 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="ImageAssets/logo-transparent.png" alt="Tech Valley Filtration" style="height:48px;">
+                    <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="products.html" aria-current="page">Products</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#hepa">HEPA Filters</a></li>
+                        <li><a href="products.html#merv">MERV-Rated Filters</a></li>
+                        <li><a href="products.html#uvc">UV-C Systems</a></li>
+                        <li><a href="products.html#industrial">Industrial Components</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><strong>Albany, NY</strong><br>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p>
+                    <p style="margin-top:0.75rem;"><strong>Delaware</strong><br>1011 Talon Lane<br>Wilmington, DE 19807</p><br>
+                    <p><a href="tel:800-344-6214">(800) 344-6214</a></p>
+                    <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Tech Valley Filtration, LLC. All rights reserved.</span>
+                <span>Serving the Northeast</span>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('menuBtn').addEventListener('click', function() {
