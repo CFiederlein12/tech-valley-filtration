@@ -1061,7 +1061,7 @@
         flex-direction: column;
         align-items: center;
         gap: 0.7rem;
-        padding: 1.1rem 1.75rem 1rem;
+        padding: 1.25rem 1.75rem;
         background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
         border: 1px solid #a7f3d0;
         border-radius: 14px;
@@ -1071,18 +1071,6 @@
     }
     .brand-featured:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -12px var(--accent-glow); }
     .brand-featured img { height: 54px; width: auto; display: block; }
-    .brand-featured-tag {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--white);
-        background: var(--accent);
-        padding: 0.28rem 0.65rem;
-        border-radius: 999px;
-        white-space: nowrap;
-    }
     .brands-marquee {
         flex: 1 1 auto;
         min-width: 0;
@@ -1159,7 +1147,7 @@
     @media (max-width: 768px) {
         .brands-section { padding: 2rem 0 2.25rem; --brand-scale: 0.78; }
         .brands-row { flex-direction: column; gap: 1.5rem; padding-left: 0; }
-        .brand-featured { padding: 0.9rem 1.4rem 0.85rem; }
+        .brand-featured { padding: 1rem 1.4rem; }
         .brand-featured img { height: 44px; }
         .brands-marquee { width: 100%; }
         .brands-group { gap: 3rem; padding-right: 3rem; }
@@ -1555,9 +1543,8 @@
     <section class="brands-section" aria-labelledby="brands-heading">
         <h2 class="brands-label" id="brands-heading">Brands We <span>Represent</span></h2>
         <div class="brands-row">
-            <a class="brand-featured" href="products.html" aria-label="MANN+HUMMEL — our primary manufacturer partner">
+            <a class="brand-featured" href="products.html" aria-label="MANN+HUMMEL">
                 <img src="ImageAssets/brands/mann-hummel.svg" alt="MANN+HUMMEL">
-                <span class="brand-featured-tag">Primary Partner</span>
             </a>
             <div class="brands-marquee">
               <div class="brands-track">
