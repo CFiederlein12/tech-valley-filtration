@@ -1049,9 +1049,9 @@
         max-width: 1440px;
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 2rem;
-        padding-left: 2rem;
+        gap: 1.75rem;
     }
     /* Featured partner: Mann+Hummel */
     .brand-featured {
@@ -1072,7 +1072,7 @@
     .brand-featured:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -12px var(--accent-glow); }
     .brand-featured img { height: 54px; width: auto; display: block; }
     .brands-marquee {
-        flex: 1 1 auto;
+        width: 100%;
         min-width: 0;
         overflow: hidden;
         padding: 0.75rem 0;
@@ -1146,17 +1146,15 @@
     }
     @media (max-width: 768px) {
         .brands-section { padding: 2rem 0 2.25rem; --brand-scale: 0.78; }
-        .brands-row { flex-direction: column; gap: 1.5rem; padding-left: 0; }
+        .brands-row { gap: 1.5rem; }
         .brand-featured { padding: 1rem 1.4rem; }
         .brand-featured img { height: 44px; }
-        .brands-marquee { width: 100%; }
         .brands-group { gap: 3rem; padding-right: 3rem; }
         .brand-family { gap: 2rem; padding: 0.4rem 1.4rem; }
         .brand-logo { height: 56px; }
         .brands-track { animation-duration: 36s; }
     }
     @media (prefers-reduced-motion: reduce) {
-        .brands-row { flex-direction: column; padding-left: 0; }
         .brands-marquee { -webkit-mask-image: none; mask-image: none; padding: 0.75rem 0; }
         .brands-track { animation: none; width: auto; justify-content: center; }
         .brands-group { flex-wrap: wrap; justify-content: center; gap: 2rem 3.5rem; padding: 0 1.25rem; }
