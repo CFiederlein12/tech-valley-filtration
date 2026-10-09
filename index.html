@@ -1023,6 +1023,84 @@
     .bibo-teaser a { padding: 0.8rem 1.6rem; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
     .bibo-teaser a:hover { background: var(--accent-bright); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
     @media (max-width: 768px) { .bibo-teaser-wrap { padding: 0 1.25rem 1rem; } .bibo-teaser { flex-direction: column; align-items: flex-start; padding: 1.5rem; } }
+
+    /* ═══════════════════════════════════════════════
+       BRANDS MARQUEE
+    ═══════════════════════════════════════════════ */
+    .brands-section {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 2.75rem 0 3rem;
+        overflow: hidden;
+    }
+    .brands-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 0 1.25rem;
+    }
+    .brands-label span { color: var(--accent); }
+    .brands-marquee {
+        position: relative;
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+                mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    }
+    .brands-track {
+        display: flex;
+        width: max-content;
+        animation: brands-scroll 38s linear infinite;
+    }
+    .brands-marquee:hover .brands-track,
+    .brands-marquee:focus-within .brands-track { animation-play-state: paused; }
+    .brands-group {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        padding-right: 5rem;
+        list-style: none;
+        margin: 0;
+    }
+    .brand-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+    }
+    .brand-logo img {
+        display: block;
+        width: auto;
+        height: calc(var(--h, 40px) * var(--brand-scale, 1));
+        filter: grayscale(1);
+        opacity: 0.55;
+        transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+    .brand-logo:hover img {
+        filter: grayscale(0);
+        opacity: 1;
+        transform: scale(1.06);
+    }
+    @keyframes brands-scroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+    }
+    @media (max-width: 768px) {
+        .brands-section { padding: 2rem 0 2.25rem; }
+        .brands-group { gap: 3rem; padding-right: 3rem; }
+        .brand-logo { height: 48px; }
+        .brands-section { --brand-scale: 0.78; }
+        .brands-track { animation-duration: 28s; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .brands-marquee { -webkit-mask-image: none; mask-image: none; }
+        .brands-track { animation: none; width: auto; justify-content: center; }
+        .brands-group { flex-wrap: wrap; justify-content: center; gap: 2rem 3.5rem; padding: 0 1.25rem; }
+        .brands-group[aria-hidden="true"] { display: none; }
+    }
 </style>
 <link rel="canonical" href="https://techvalleyfiltration.com/">
 <link rel="icon" type="image/png" href="ImageAssets/logo-transparent.png">
@@ -1398,6 +1476,31 @@
         if(!mq || !mq.matches) tick();
     })();
     </script>
+
+    <!-- Brands We Represent -->
+    <section class="brands-section" aria-labelledby="brands-heading">
+        <h2 class="brands-label" id="brands-heading">Brands We <span>Represent</span></h2>
+        <div class="brands-marquee">
+          <div class="brands-track">
+            <ul class="brands-group">
+                <li class="brand-logo"><img src="ImageAssets/brands/mann-hummel.svg" alt="MANN+HUMMEL" style="--h:46px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/rensa.svg" alt="Rensa Filtration" style="--h:38px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/permatron.png" alt="Permatron" style="--h:46px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/d-mark.png" alt="D-Mark" style="--h:34px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/aaf.png" alt="AAF International (American Air Filter)" style="--h:58px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/glasfloss.png" alt="Glasfloss Industries" style="--h:40px" decoding="async"></li>
+            </ul>
+            <ul class="brands-group" aria-hidden="true">
+                <li class="brand-logo"><img src="ImageAssets/brands/mann-hummel.svg" alt="" style="--h:46px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/rensa.svg" alt="" style="--h:38px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/permatron.png" alt="" style="--h:46px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/d-mark.png" alt="" style="--h:34px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/aaf.png" alt="" style="--h:58px" decoding="async"></li>
+                <li class="brand-logo"><img src="ImageAssets/brands/glasfloss.png" alt="" style="--h:40px" decoding="async"></li>
+            </ul>
+          </div>
+        </div>
+    </section>
 
     <!-- Product Carousel -->
     <section class="carousel-section" id="products-preview">
