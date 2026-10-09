@@ -1,6 +1,6 @@
 # Tech Valley Filtration
 
-> Tech Valley Filtration, LLC is a commercial HVAC air filtration distributor and service provider based in Albany, NY (30 Kraft Ave, Suite 5, Albany, NY 12205), serving commercial, institutional, and industrial facilities across the Northeast since 2019. Phone: (800) 344-6214. Email: Service@techvalleyfiltration.com.
+> Tech Valley Filtration, LLC is a commercial HVAC air filtration distributor (MANN+HUMMEL, Rensa, D-Mark, Permatron, AAF, AMFCO, Freudenberg, Glasfloss, American Ultraviolet, Mikropor) and service provider based in Albany, NY (30 Kraft Ave, Suite 5, Albany, NY 12205), serving commercial, institutional, and industrial facilities across the Northeast since 2019. Phone: (800) 344-6214. Email: Service@techvalleyfiltration.com.
 
 Tech Valley Filtration supplies MERV-rated, HEPA, carbon, and specialty air filters, UV-C disinfection systems, and HVAC drive components, and specifies filtration to NAFA best practice and ASHRAE standards. Same-day will-call pickup is available from the Albany warehouse.
 
@@ -13,7 +13,23 @@ Tech Valley Filtration supplies MERV-rated, HEPA, carbon, and specialty air filt
 
 ## Products
 
-- [Product catalog](https://techvalleyfiltration.com/products.html): Pleated filters, pocket filters, carbon filters, rigid box / mini-pleat / V-bank filters, HEPA filters, link and panel filters, metal washable filters, cartridge filters, V-belts and power transmission, UV-C disinfection systems, and washable filter screens.
+- [Product catalog](https://techvalleyfiltration.com/products.html): Pleated filters, pocket filters, carbon filters, rigid box / mini-pleat / V-bank filters, HEPA filters, link and panel filters, metal washable filters, cartridge filters, V-belts and power transmission, UV-C disinfection systems, and filter screens / cottonwood filters.
+- [Filter screens and cottonwood filters](https://techvalleyfiltration.com/products.html#filter-screens): Washable, magnetically mounted intake filter screens (Permatron PreVent) that stop cottonwood, pollen, leaves, and debris before they clog condenser coils, cooling towers, chillers, and rooftop units. Reduces coil cleaning and extends primary filter life. Custom-made in the USA.
+
+## Brands We Represent
+
+Tech Valley Filtration represents and supplies the following manufacturers:
+
+- MANN+HUMMEL: commercial HVAC air filters, including pleated, pocket, rigid box / V-bank, HEPA, and link/panel filters
+- Rensa Filtration, and its companies D-Mark and Permatron
+- D-Mark (a Rensa company): commercial air filters
+- Permatron (a Rensa company): PreVent filter screens and cottonwood filters
+- AAF International (American Air Filter, a member of Daikin group): commercial air filters
+- American Metal Filter Company (AMFCO): metal washable filters
+- Freudenberg Filtration Technologies: commercial air filters
+- Glasfloss Industries: commercial air filters
+- American Ultraviolet: UV-C disinfection systems
+- Mikropor: air filters
 
 ## Industries
 
