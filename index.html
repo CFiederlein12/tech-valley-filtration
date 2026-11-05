@@ -352,6 +352,97 @@
         to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Hero Product Stills (replaces the turntable) ── */
+    .hero-still {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-position: right center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1.4s ease;
+        will-change: transform, opacity;
+        pointer-events: none;
+    }
+    .hero-still.on { opacity: 1; }
+    .hero-still.on.moving { animation: heroPush 14s ease-in-out infinite alternate; }
+    @keyframes heroPush {
+        from { transform: scale(1.02) translate3d(0,0,0); }
+        to   { transform: scale(1.14) translate3d(-1.4%, 0.8%, 0); }
+    }
+    .hero-shade {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, rgba(15,23,42,0.96) 0%, rgba(15,23,42,0.86) 30%, rgba(15,23,42,0.45) 52%, rgba(15,23,42,0.05) 72%, rgba(15,23,42,0) 100%),
+            linear-gradient(0deg, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0) 30%);
+    }
+    #hero-motes {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .hero-still-label {
+        position: absolute;
+        right: 2rem;
+        bottom: 1.5rem;
+        z-index: 3;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.85);
+        background: rgba(15,23,42,0.7);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 6px;
+        padding: 0.4rem 0.7rem;
+        backdrop-filter: blur(4px);
+        pointer-events: none;
+    }
+    .hero-still-dots {
+        position: absolute;
+        right: 2rem;
+        bottom: 4rem;
+        z-index: 3;
+        display: flex;
+        gap: 6px;
+    }
+    .hero-still-dots button {
+        width: 8px; height: 8px;
+        padding: 0;
+        border-radius: 50%;
+        border: 0;
+        background: rgba(255,255,255,0.35);
+        cursor: pointer;
+    }
+    .hero-still-dots button[aria-current="true"] { background: var(--accent); width: 22px; border-radius: 4px; }
+    .hero-still-dots button:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+    @media (max-width: 1180px) and (min-width: 901px) {
+        .hero-shade {
+            background:
+                linear-gradient(90deg, rgba(15,23,42,0.97) 0%, rgba(15,23,42,0.9) 36%, rgba(15,23,42,0.6) 54%, rgba(15,23,42,0.1) 72%, rgba(15,23,42,0) 100%),
+                linear-gradient(0deg, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0) 30%);
+        }
+    }
+    @media (max-width: 900px) {
+        .hero-still { background-position: 72% 18%; }
+        .hero-shade {
+            background: linear-gradient(180deg, rgba(15,23,42,0.04) 0%, rgba(15,23,42,0.25) 18%, rgba(15,23,42,0.9) 36%, rgba(15,23,42,0.98) 100%);
+        }
+        .hero .hero-inner { padding-top: 21rem; padding-bottom: 5.5rem; }
+        .hero-still-label { left: 2rem; right: auto; bottom: 1rem; }
+        .hero-still-dots { bottom: 1.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .hero-still.on.moving { animation: none; }
+    }
+
     /* ═══════════════════════════════════════════════
        PRODUCT CAROUSEL
     ═══════════════════════════════════════════════ */
@@ -1249,7 +1340,11 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-bg"></div>
-        <canvas id="airflow-canvas" aria-hidden="true"></canvas>
+        <div class="hero-still on moving" data-name="pleat" style="background-image:url('ImageAssets/hero/pleated-filter.jpg')" role="img" aria-label="Pleated air filter"></div>
+        <div class="hero-still" data-name="vcell" style="background-image:url('ImageAssets/hero/4v-rigid-cell.jpg')" role="img" aria-label="4V rigid cell air filter"></div>
+        <div class="hero-still" data-name="bag" style="background-image:url('ImageAssets/hero/bag-filter.jpg')" role="img" aria-label="Bag air filter"></div>
+        <canvas id="hero-motes" aria-hidden="true"></canvas>
+        <div class="hero-shade" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-text">
                 <div class="hero-eyebrow">Serving the Northeast</div>
@@ -1275,278 +1370,84 @@
                     </div>
                 </div>
             </div>
-            <!-- Turntable Filter Animation -->
-            <div class="hero-visual" aria-hidden="true">
-                <canvas id="turntable-canvas" width="1200" height="1500" aria-label="Interactive 360° filter rotation"></canvas>
-                <div class="turntable-hint">drag or scroll to rotate</div>
-            </div>
         </div>
+        <div class="hero-still-dots" role="tablist" aria-label="Featured filter">
+            <button type="button" role="tab" data-name="pleat" aria-current="true" aria-label="Pleated filter"></button>
+            <button type="button" role="tab" data-name="vcell" aria-current="false" aria-label="4V rigid cell"></button>
+            <button type="button" role="tab" data-name="bag" aria-current="false" aria-label="Bag filter"></button>
+        </div>
+        <div class="hero-still-label" id="hero-still-label">Pleated Filter</div>
     </section>
 
     <script>
-    /* ── Turntable Engine ── */
-    (function() {
-        const FRAME_COUNT = 61;
-        const FRAME_PATH  = 'ImageAssets/frames/filter_frame_';
-        const AUTO_SPEED  = 180;  // ms per frame
-        const DRAG_SENS   = 0.18; // frames per pixel of drag
+    /* ── Hero Product Stills: cycle + dust motes ── */
+    (function () {
+        var hero = document.querySelector('.hero');
+        if (!hero) return;
+        var order = ['pleat', 'vcell', 'bag'];
+        var names = { pleat: 'Pleated Filter', vcell: '4V Rigid Cell', bag: 'Bag Filter' };
+        var HOLD = 6000;
+        var stills = {}, dots = {};
+        Array.prototype.forEach.call(hero.querySelectorAll('.hero-still'), function (el) { stills[el.getAttribute('data-name')] = el; });
+        Array.prototype.forEach.call(hero.querySelectorAll('.hero-still-dots button'), function (b) { dots[b.getAttribute('data-name')] = b; });
+        var label = document.getElementById('hero-still-label');
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var current = 'pleat';
+        var timer = null;
 
-        const canvas = document.getElementById('turntable-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-
-        // Preload all frames
-        const frames = [];
-        let loaded = 0;
-        let currentFrame = 0;
-        let autoTimer = null;
-        let dragging = false;
-        let dragStartX = 0;
-        let dragStartFrame = 0;
-
-        function pad(n) { return String(n).padStart(3, '0'); }
-
-        function drawFrame(idx) {
-            const img = frames[idx];
-            if (!img || !img.complete) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        function show(name) {
+            order.forEach(function (k) {
+                var el = stills[k], on = k === name;
+                if (!el) return;
+                el.classList.toggle('on', on);
+                el.classList.remove('moving');
+                if (on && !reduce) { void el.offsetWidth; el.classList.add('moving'); }
+                if (dots[k]) dots[k].setAttribute('aria-current', String(on));
+            });
+            if (label) label.textContent = names[name];
+            current = name;
         }
-
-        function startAuto() {
-            if (autoTimer) return;
-            autoTimer = setInterval(function() {
-                if (!dragging) {
-                    currentFrame = (currentFrame + 1) % FRAME_COUNT;
-                    drawFrame(currentFrame);
-                }
-            }, AUTO_SPEED);
-        }
-
-        function stopAuto() {
-            clearInterval(autoTimer);
-            autoTimer = null;
-        }
-
-        function frameFromDelta(startFrame, dx) {
-            const delta = Math.round(dx * DRAG_SENS);
-            return ((startFrame - delta) % FRAME_COUNT + FRAME_COUNT) % FRAME_COUNT;
-        }
-
-        // Mouse drag
-        canvas.addEventListener('mousedown', function(e) {
-            dragging = true;
-            dragStartX = e.clientX;
-            dragStartFrame = currentFrame;
-            stopAuto();
-            e.preventDefault();
+        function next() { show(order[(order.indexOf(current) + 1) % order.length]); }
+        function start() { stop(); timer = setInterval(next, HOLD); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        order.forEach(function (k) {
+            if (dots[k]) dots[k].addEventListener('click', function () { show(k); start(); });
         });
-        window.addEventListener('mousemove', function(e) {
-            if (!dragging) return;
-            currentFrame = frameFromDelta(dragStartFrame, e.clientX - dragStartX);
-            drawFrame(currentFrame);
-        });
-        window.addEventListener('mouseup', function() {
-            if (!dragging) return;
-            dragging = false;
-            startAuto();
-        });
+        document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+        start();
 
-        // Touch drag
-        canvas.addEventListener('touchstart', function(e) {
-            dragging = true;
-            dragStartX = e.touches[0].clientX;
-            dragStartFrame = currentFrame;
-            stopAuto();
-        }, { passive: true });
-        canvas.addEventListener('touchmove', function(e) {
-            if (!dragging) return;
-            currentFrame = frameFromDelta(dragStartFrame, e.touches[0].clientX - dragStartX);
-            drawFrame(currentFrame);
-            e.preventDefault();
-        }, { passive: false });
-        canvas.addEventListener('touchend', function() {
-            dragging = false;
-            startAuto();
-        });
-
-        // Scroll-to-rotate (when hero is in viewport)
-        let scrollAccum = 0;
-        window.addEventListener('wheel', function(e) {
-            const rect = canvas.getBoundingClientRect();
-            const inView = rect.top < window.innerHeight && rect.bottom > 0;
-            if (!inView) return;
-            scrollAccum += e.deltaY * 0.015;
-            const delta = Math.round(scrollAccum);
-            if (delta !== 0) {
-                scrollAccum -= delta;
-                currentFrame = ((currentFrame + delta) % FRAME_COUNT + FRAME_COUNT) % FRAME_COUNT;
-                drawFrame(currentFrame);
-            }
-        }, { passive: true });
-
-        // Load frames then start
-        for (let i = 0; i < FRAME_COUNT; i++) {
-            const img = new Image();
-            img.onload = function() {
-                loaded++;
-                if (loaded === 1) drawFrame(0); // show first frame immediately
-                if (loaded === FRAME_COUNT) startAuto();
-            };
-            img.onerror = function() { loaded++; };
-            img.src = FRAME_PATH + pad(i) + '.png';
-            frames.push(img);
-        }
-    })();
-    </script>
-
-    <script>
-    /* ── Airflow Background Engine ── */
-    (function(){
-        var canvas = document.getElementById('airflow-canvas');
-        if(!canvas) return;
+        // Dust motes drifting toward the filter
+        var canvas = document.getElementById('hero-motes');
+        if (!canvas || reduce) return;
         var ctx = canvas.getContext('2d');
-
-        function resize(){
-            canvas.width  = canvas.offsetWidth  || window.innerWidth;
-            canvas.height = canvas.offsetHeight || window.innerHeight;
+        var motes = [], W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+        function spawn(anywhere) {
+            return { x: anywhere ? Math.random() * W : W + 8, y: Math.random() * H, r: 0.6 + Math.random() * 1.5,
+                     vx: -(6 + Math.random() * 14), vy: (Math.random() - 0.5) * 6, a: 0.15 + Math.random() * 0.45, ph: Math.random() * Math.PI * 2 };
         }
-        resize();
-        window.addEventListener('resize', resize);
-
-        var PARTICLE_COUNT = 110;
-        var STREAM_COUNT   = 20;
-
-        function rand(a,b){ return a + Math.random()*(b-a); }
-
-        // Particles
-        var particles = [];
-        for(var i=0; i<PARTICLE_COUNT; i++){
-            var dirty = Math.random() > 0.45;
-            particles.push({
-                x:       rand(0,1),
-                y:       rand(0,1),
-                speed:   rand(0.25, 0.85),
-                size:    rand(1.0, 2.8),
-                opacity: rand(0.12, 0.38),
-                dirty:   dirty,
-                blocked: false,
-                fadeOut: false,
-                alpha:   1
-            });
+        function resize() {
+            var r = canvas.getBoundingClientRect(); W = r.width; H = r.height;
+            canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            motes = []; for (var i = 0, n = Math.round(W / 16); i < n; i++) motes.push(spawn(true));
         }
-
-        // Horizontal glow streams
-        var streams = [];
-        for(var j=0; j<STREAM_COUNT; j++){
-            var clean = Math.random() > 0.5;
-            streams.push({
-                y:       (j + 0.5) / STREAM_COUNT,
-                opacity: rand(0.025, 0.08),
-                width:   rand(50, 140),
-                x:       rand(-0.2, 1.2),
-                speed:   rand(0.12, 0.42),
-                clean:   clean
-            });
-        }
-
-        function spawnParticle(p, W, FX){
-            p.dirty   = Math.random() > 0.42;
-            p.x       = p.dirty ? rand(0, FX * 0.88) / W : (FX + rand(4, 28)) / W;
-            p.y       = rand(0.02, 0.98);
-            p.speed   = rand(0.25, 0.85);
-            p.size    = rand(1.0, 2.8);
-            p.opacity = rand(0.12, 0.38);
-            p.blocked = false;
-            p.fadeOut = false;
-            p.alpha   = 1;
-        }
-
-        function tick(){
-            var W  = canvas.width;
-            var H  = canvas.height;
-            var FX = W * 0.52;   // filter plane at 52% — matches turntable position
-
+        var last = 0;
+        function frame(t) {
+            var dt = Math.min(0.05, (t - last) / 1000 || 0); last = t;
             ctx.clearRect(0, 0, W, H);
-
-            // Filter glow plane
-            var glowGrad = ctx.createLinearGradient(FX-22, 0, FX+22, 0);
-            glowGrad.addColorStop(0,   'rgba(5,150,105,0)');
-            glowGrad.addColorStop(0.5, 'rgba(5,150,105,0.14)');
-            glowGrad.addColorStop(1,   'rgba(5,150,105,0)');
-            ctx.fillStyle = glowGrad;
-            ctx.fillRect(FX-22, 0, 44, H);
-
-            // Subtle pleated lines
-            ctx.lineWidth = 0.5;
-            for(var p=0; p<8; p++){
-                var lx = FX - 12 + p*3.5;
-                ctx.strokeStyle = 'rgba(5,150,105,0.09)';
-                ctx.beginPath();
-                ctx.moveTo(lx, 0);
-                ctx.lineTo(lx, H);
-                ctx.stroke();
+            for (var i = 0; i < motes.length; i++) {
+                var m = motes[i];
+                m.x += m.vx * dt; m.y += m.vy * dt + Math.sin(t / 1400 + m.ph) * 0.08;
+                var fade = Math.max(0, Math.min(1, (m.x - W * 0.45) / (W * 0.2)));
+                if (m.x < W * 0.45 || m.y < -5 || m.y > H + 5) { motes[i] = spawn(false); continue; }
+                var tw = 0.6 + 0.4 * Math.sin(t / 900 + m.ph * 3);
+                ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(226,232,240,' + (m.a * tw * fade).toFixed(3) + ')'; ctx.fill();
             }
-
-            // Flow streams
-            for(var s=0; s<streams.length; s++){
-                var st = streams[s];
-                st.x += st.speed * 0.0025;
-                if(st.x > 1.3) st.x = -0.3;
-                var sx = st.x * W;
-                var sy = st.y * H;
-                var isRightSide = sx > FX;
-                var col = isRightSide
-                    ? 'rgba(16,185,129,' + st.opacity + ')'
-                    : 'rgba(148,163,184,' + st.opacity + ')';
-                var sg = ctx.createLinearGradient(sx - st.width/2, 0, sx + st.width/2, 0);
-                sg.addColorStop(0,   'rgba(0,0,0,0)');
-                sg.addColorStop(0.5, col);
-                sg.addColorStop(1,   'rgba(0,0,0,0)');
-                ctx.fillStyle = sg;
-                ctx.fillRect(sx - st.width/2, sy - 1.2, st.width, 2.4);
-            }
-
-            // Particles
-            for(var k=0; k<particles.length; k++){
-                var pt = particles[k];
-                var px = pt.x * W;
-                var py = pt.y * H;
-
-                // Move
-                pt.x += (pt.speed * 0.5) / W;
-
-                // Dirty particle hits filter
-                if(pt.dirty && !pt.blocked && px >= FX - 3){
-                    pt.blocked = true;
-                    pt.speed   = 0;
-                    (function(p){ setTimeout(function(){ p.fadeOut = true; }, rand(400,2200)); })(pt);
-                }
-
-                // Fade out blocked particles
-                if(pt.fadeOut) pt.alpha = Math.max(0, pt.alpha - 0.008);
-
-                // Respawn off-screen or fully faded
-                if(pt.alpha <= 0 || px > W + 10){
-                    spawnParticle(pt, W, FX);
-                    continue;
-                }
-
-                var pCol = pt.dirty
-                    ? 'rgba(148,163,184,' + (pt.opacity * pt.alpha) + ')'
-                    : 'rgba(16,185,129,'  + (pt.opacity * pt.alpha) + ')';
-                ctx.beginPath();
-                ctx.arc(px, py, pt.size, 0, Math.PI*2);
-                ctx.fillStyle = pCol;
-                ctx.fill();
-            }
-
-            requestAnimationFrame(tick);
+            requestAnimationFrame(frame);
         }
-
-        // Respect prefers-reduced-motion
-        var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if(!mq || !mq.matches) tick();
+        window.addEventListener('resize', resize);
+        resize(); requestAnimationFrame(frame);
     })();
     </script>
 
