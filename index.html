@@ -358,18 +358,27 @@
         inset: 0;
         z-index: 1;
         background-position: right center;
-        background-size: cover;
+        background-size: auto 86%; /* zoomed out from cover so the product sits smaller in frame */
         background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 1.4s ease;
         will-change: transform, opacity;
         pointer-events: none;
+        /* soften the still's top/bottom/right edges into the navy hero so the smaller image has no hard border */
+        -webkit-mask-image:
+            linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+            linear-gradient(90deg, #000 0%, #000 90%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+            linear-gradient(90deg, #000 0%, #000 90%, transparent 100%);
+        mask-composite: intersect;
     }
     .hero-still.on { opacity: 1; }
     .hero-still.on.moving { animation: heroPush 14s ease-in-out infinite alternate; }
     @keyframes heroPush {
-        from { transform: scale(1.02) translate3d(0,0,0); }
-        to   { transform: scale(1.14) translate3d(-1.4%, 0.8%, 0); }
+        from { transform: scale(1.0) translate3d(0,0,0); }
+        to   { transform: scale(1.10) translate3d(-1.2%, 0.6%, 0); }
     }
     .hero-shade {
         position: absolute;
@@ -431,7 +440,7 @@
         }
     }
     @media (max-width: 900px) {
-        .hero-still { background-position: 72% 18%; }
+        .hero-still { background-position: 72% 18%; background-size: cover; -webkit-mask-image: none; mask-image: none; }
         .hero-shade {
             background: linear-gradient(180deg, rgba(15,23,42,0.04) 0%, rgba(15,23,42,0.25) 18%, rgba(15,23,42,0.9) 36%, rgba(15,23,42,0.98) 100%);
         }
