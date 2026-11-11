@@ -39,7 +39,7 @@
     if(pv)pv.addEventListener('click',function(){go(-1)});if(nx)nx.addEventListener('click',function(){go(1)});
     if(still){var st=function(){var max=t.scrollWidth-t.clientWidth-2;if(pv)pv.disabled=t.scrollLeft<=2;if(nx)nx.disabled=t.scrollLeft>=max};t.addEventListener('scroll',st,{passive:true});st()}
     t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}});
-    var down=false,sx=0,sl=0,hover=false,focus=false,until=0,pos=null,last=0,seen=false;
+    var down=false,sx=0,sl=0,hover=false,focus=false,until=0,pos=null,last=0,seen=false,started=false;
     function hold(ms){until=Math.max(until,performance.now()+ms);pos=null}
     t.addEventListener('mousedown',function(e){down=true;sx=e.pageX;sl=t.scrollLeft;wrap();sl=t.scrollLeft});
     window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)t.classList.add('drag');t.scrollLeft=sl-dx});
@@ -49,9 +49,9 @@
     g.addEventListener('focusin',function(){focus=true});g.addEventListener('focusout',function(){focus=false;hold(400)});
     t.addEventListener('touchstart',function(){hold(4000)},{passive:true});t.addEventListener('touchmove',function(){hold(4000)},{passive:true});t.addEventListener('wheel',function(){hold(1500)},{passive:true});
     if(still)return;
-    if('IntersectionObserver' in window)new IntersectionObserver(function(e){seen=e[0].isIntersecting;pos=null}).observe(g);else seen=true;
+    if('IntersectionObserver' in window){new IntersectionObserver(function(e){seen=e[0].isIntersecting;pos=null}).observe(g);var so=new IntersectionObserver(function(e){if(e[0].isIntersecting){started=true;so.disconnect()}},{threshold:.7});so.observe(t)}else{seen=true;started=true}
     function tick(now){var dt=Math.min(.05,(now-last)/1000||0);last=now;
-      if(seen&&!down&&!hover&&!focus&&now>until&&!document.hidden){if(pos===null)pos=t.scrollLeft;pos+=38*dt;var h=half();if(h>0&&pos>=h)pos-=h;t.scrollLeft=pos}else pos=null;
+      if(seen&&started&&!down&&!hover&&!focus&&now>until&&!document.hidden){if(pos===null)pos=t.scrollLeft;pos+=38*dt;var h=half();if(h>0&&pos>=h)pos-=h;t.scrollLeft=pos}else pos=null;
       requestAnimationFrame(tick)}
     requestAnimationFrame(tick)});
 
