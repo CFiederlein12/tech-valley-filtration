@@ -364,6 +364,38 @@ body{overflow-x:clip}
   "knowsAbout": ["Commercial HVAC air filters", "MERV-rated pleated filters", "Pocket and bag filters", "Rigid box and V-bank filters", "HEPA filters", "Carbon and molecular filters", "Metal washable filters", "Filter screens", "Cottonwood filters", "Condenser coil and intake filter screens", "UV-C disinfection", "Bag-in/bag-out (BIBO) HEPA filter changeouts", "NAFA best practices", "ASHRAE 62.1"]
 }
 </script>
+<style id="shelf-fade">
+.prod .tiles{grid-template-columns:repeat(6,1fr);gap:12px}
+.prod .tiles .tile{grid-column:span 1;border-radius:14px}
+.prod .tiles .tile .ph{aspect-ratio:4/3}
+.prod .tiles .tile .tx{padding:12px 14px 14px;align-items:center}
+.prod .tiles .tile h3{font-size:15px;line-height:1.3;letter-spacing:-.01em}
+.prod .tiles .tile p{display:none}
+.prod .tiles .tile .tx .arr{display:none}
+.prod .tiles .tile.all{justify-content:center;align-items:flex-start;gap:14px;padding:18px;background:none;border-style:dashed;border-color:var(--line-2)}
+.prod .tiles .tile.all h3{font-size:17px}
+.prod .tiles .tile.all .go{width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--green-ink);display:grid;place-items:center}
+.prod .tiles .tile.all:hover h3{color:var(--green)}
+.prod .svc{padding:20px 24px}.prod .svc h3{font-size:20px}.prod .svc p{font-size:15px}
+@media (max-width:1100px){.prod .tiles{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:700px){.prod .tiles{grid-template-columns:repeat(2,1fr);gap:10px}.prod .tiles .tile .ph{aspect-ratio:4/3}.prod .tiles .tile h3{font-size:14px}.prod .tiles .tile.all{padding:16px}}
+
+/* with script: a few slots, products fade through them */
+.prod .tiles.rot{grid-template-columns:repeat(4,1fr);gap:14px}
+.prod .tiles.rot .slot{display:grid;min-width:0;opacity:0;transform:translateY(14px) scale(.97);transition:opacity .7s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.prod .tiles.rot.shown .slot{opacity:1;transform:none}
+.prod .tiles.rot .slot>.tile{grid-area:1/1;border-radius:16px;transition:opacity .9s ease,border-color .3s,transform .4s cubic-bezier(.16,1,.3,1)}
+.prod .tiles.rot .slot>.tile.out{opacity:0;pointer-events:none}
+.prod .tiles.rot .tile .ph{aspect-ratio:3/2}
+.prod .tiles.rot .tile .tx{padding:14px 18px 16px}
+.prod .tiles.rot .tile h3{font-size:17px}
+.prod .tiles.rot .tile .tx .arr{display:block}
+.prod .shelf-pool{display:none}
+.prod .tiles:not(.rot)~.shelf-foot{display:none}
+.prod .shelf-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px;color:var(--ink-3);font-size:15px}
+@media (max-width:980px){.prod .tiles.rot{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.prod .tiles.rot{grid-template-columns:repeat(2,1fr);gap:10px}.prod .tiles.rot .tile h3{font-size:14px}.prod .tiles.rot .tile .tx{padding:12px 14px}.prod .tiles.rot .tile .tx .arr{display:none}.prod .shelf-foot .btn{width:100%;justify-content:center}}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol></svg>
@@ -448,18 +480,20 @@ body{overflow-x:clip}
       <p>Commercial-grade MERV, HEPA, and UV-C filtration for every application and HVAC system.</p>
     </div>
     <div class="tiles">
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-pleated.jpg" alt="White pleated air filter with diagonal support strips" loading="lazy" width="960" height="720" srcset="assets/t-pleated-480.jpg 480w, assets/t-pleated.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Pleated MERV filters</h3><p>MERV 8, 10, 11, and 13 in 60+ standard sizes</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-rigid.jpg" alt="4V rigid cell filter with black frame and white pleated media" loading="lazy" width="960" height="720" srcset="assets/t-rigid-480.jpg 480w, assets/t-rigid.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Rigid box &amp; V-bank</h3><p>V-bank and rigid box filters for healthcare, cleanrooms, and data centers</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-hepa.jpg" alt="HEPA filter with a galvanized steel frame and white mini-pleat media" loading="lazy" width="960" height="720" srcset="assets/t-hepa-480.jpg 480w, assets/t-hepa.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>HEPA filters</h3><p>99.97 to 99.99% at 0.3 microns, factory tested</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-minipleat.jpg" alt="Mini-pleat filter with fine white pleats in a black frame" loading="lazy" width="960" height="720" srcset="assets/t-minipleat-480.jpg 480w, assets/t-minipleat.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Mini-pleat filters</h3><p>Extended surface area for MERV 13 to 16</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-bag.jpg" alt="Multi-pocket bag filter with green header frame" loading="lazy" width="960" height="720" srcset="assets/t-bag-480.jpg 480w, assets/t-bag.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Bag filters</h3><p>Multi-pocket filters for high-airflow air handlers</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-carbon.jpg" alt="Pleated filter with black activated carbon media" loading="lazy" width="960" height="720" srcset="assets/t-carbon-480.jpg 480w, assets/t-carbon.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Carbon &amp; molecular filters</h3><p>VOC, odor, and chemical contaminant removal</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-link.jpg" alt="Link-style panel pre-filters joined edge to edge" loading="lazy" width="960" height="720" srcset="assets/t-link-480.jpg 480w, assets/t-link.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Link &amp; panel filters</h3><p>MERV 8 to 10 pre-filtration that protects your downstream filters</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-metal.jpg" alt="Aluminum mesh washable filter" loading="lazy" width="960" height="720" srcset="assets/t-metal-480.jpg 480w, assets/t-metal.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Washable metal filters</h3><p>Permanent aluminum mesh pre-filtration</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-uvc.jpg" alt="Stainless UV-C fixture with two lit lamps" loading="lazy" width="960" height="720" srcset="assets/t-uvc-480.jpg 480w, assets/t-uvc.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>UV-C disinfection</h3><p>In-duct and upper-air systems, lamps, assemblies</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-screen.jpg" alt="Black mesh intake screen with grommets" loading="lazy" width="960" height="720" srcset="assets/t-screen-480.jpg 480w, assets/t-screen.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>Filter screens &amp; cottonwood filters</h3><p>Washable intake screens that protect condenser coils</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
-      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-belts.jpg" alt="Coiled black cogged V-belt" loading="lazy" width="960" height="720" srcset="assets/t-belts-480.jpg 480w, assets/t-belts.jpg 960w" sizes="(max-width:700px) 92vw, (max-width:980px) 46vw, 600px"></span><span class="tx"><span><h3>HVAC belts &amp; drive parts</h3><p>V-belts, cogged belts, and motor drive components</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-pleated.jpg" alt="White pleated air filter with diagonal support strips" loading="lazy" width="960" height="720" srcset="assets/t-pleated-480.jpg 480w, assets/t-pleated.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Pleated MERV filters</h3><p>MERV 8, 10, 11, and 13 in 60+ standard sizes</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-rigid.jpg" alt="4V rigid cell filter with black frame and white pleated media" loading="lazy" width="960" height="720" srcset="assets/t-rigid-480.jpg 480w, assets/t-rigid.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Rigid box &amp; V-bank</h3><p>V-bank and rigid box filters for healthcare, cleanrooms, and data centers</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-hepa.jpg" alt="HEPA filter with a galvanized steel frame and white mini-pleat media" loading="lazy" width="960" height="720" srcset="assets/t-hepa-480.jpg 480w, assets/t-hepa.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>HEPA filters</h3><p>99.97 to 99.99% at 0.3 microns, factory tested</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-minipleat.jpg" alt="Mini-pleat filter with fine white pleats in a black frame" loading="lazy" width="960" height="720" srcset="assets/t-minipleat-480.jpg 480w, assets/t-minipleat.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Mini-pleat filters</h3><p>Extended surface area for MERV 13 to 16</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-bag.jpg" alt="Multi-pocket bag filter with green header frame" loading="lazy" width="960" height="720" srcset="assets/t-bag-480.jpg 480w, assets/t-bag.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Bag filters</h3><p>Multi-pocket filters for high-airflow air handlers</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-carbon.jpg" alt="Pleated filter with black activated carbon media" loading="lazy" width="960" height="720" srcset="assets/t-carbon-480.jpg 480w, assets/t-carbon.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Carbon &amp; molecular filters</h3><p>VOC, odor, and chemical contaminant removal</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-link.jpg" alt="Link-style panel pre-filters joined edge to edge" loading="lazy" width="960" height="720" srcset="assets/t-link-480.jpg 480w, assets/t-link.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Link &amp; panel filters</h3><p>MERV 8 to 10 pre-filtration that protects your downstream filters</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-metal.jpg" alt="Aluminum mesh washable filter" loading="lazy" width="960" height="720" srcset="assets/t-metal-480.jpg 480w, assets/t-metal.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Washable metal filters</h3><p>Permanent aluminum mesh pre-filtration</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-uvc.jpg" alt="Stainless UV-C fixture with two lit lamps" loading="lazy" width="960" height="720" srcset="assets/t-uvc-480.jpg 480w, assets/t-uvc.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>UV-C disinfection</h3><p>In-duct and upper-air systems, lamps, assemblies</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-screen.jpg" alt="Black mesh intake screen with grommets" loading="lazy" width="960" height="720" srcset="assets/t-screen-480.jpg 480w, assets/t-screen.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>Filter screens &amp; cottonwood filters</h3><p>Washable intake screens that protect condenser coils</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile" href="products.html"><span class="ph"><img src="assets/t-belts.jpg" alt="Coiled black cogged V-belt" loading="lazy" width="960" height="720" srcset="assets/t-belts-480.jpg 480w, assets/t-belts.jpg 960w" sizes="(max-width:700px) 46vw, (max-width:980px) 31vw, 300px"></span><span class="tx"><span><h3>HVAC belts &amp; drive parts</h3><p>V-belts, cogged belts, and motor drive components</p></span><svg class="arr"><use href="#arr"/></svg></span></a>
+      <a class="tile all" href="products.html"><h3>View all products</h3><span class="go"><svg class="arr"><use href="#arr"/></svg></span></a>
     </div>
+    <div class="shelf-foot"><span>11 product lines. A few at a time, all on the products page.</span><a class="btn btn-g" href="products.html">View all products <svg class="arr"><use href="#arr"/></svg></a></div>
     <a class="svc" href="products.html"><span><h3>Bag-In/Bag-Out HEPA changeouts</h3><p>Field service: we supply the filters, handle the sealed changeout on site, remove the spent filters, and document every change.</p></span><span class="btn btn-g">See how it works <svg class="arr"><use href="#arr"/></svg></span></a>
   </div>
 </section>
@@ -623,5 +657,25 @@ document.getElementById('f').addEventListener('submit',async e=>{e.preventDefaul
   btn.disabled=false;btn.innerHTML=label});
 </script>
 <script src="tvf.js"></script>
+<script>(function(){var box=document.querySelector('.prod .tiles'),sec=document.querySelector('.prod');if(!box||!sec)return;
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return; // still version: the compact grid of all lines
+var all=[].slice.call(box.querySelectorAll('.tile:not(.all)')),extra=box.querySelector('.tile.all');if(extra)extra.remove();
+var pool=document.createElement('div');pool.className='shelf-pool';box.after(pool);
+var slots=[],queue=[],n=0,last=-1,seen=false,hover=false,focus=false,timer=null;
+function count(){return innerWidth<=700?4:innerWidth<=980?6:8}
+function build(){var k=count();if(k===n)return;n=k;all.forEach(function(t){t.classList.remove('out');pool.appendChild(t)});box.innerHTML='';slots=[];
+  all.slice(0,n).forEach(function(t,i){var s=document.createElement('div');s.className='slot';s.style.transitionDelay=(Math.random()*.55).toFixed(2)+'s';s.appendChild(t);box.appendChild(s);slots.push(s)});
+  queue=all.slice(n);box.classList.add('rot')}
+function swap(){if(!seen||hover||focus||document.hidden||!queue.length)return;
+  var i;do{i=Math.floor(Math.random()*slots.length)}while(i===last&&slots.length>1);last=i;
+  var s=slots[i],old=s.querySelector('.tile:not(.out)'),nw=queue.shift();if(!old||!nw)return;
+  [].forEach.call(nw.querySelectorAll('img'),function(im){im.loading='eager'});
+  nw.classList.add('out');s.appendChild(nw);nw.offsetWidth;nw.classList.remove('out');old.classList.add('out');
+  setTimeout(function(){if(old.parentNode===s&&old.classList.contains('out')){pool.appendChild(old);old.classList.remove('out')}},950);queue.push(old)}
+build();window.addEventListener('resize',build);
+if(window.matchMedia('(hover:hover)').matches){box.addEventListener('mouseenter',function(){hover=true});box.addEventListener('mouseleave',function(){hover=false})}
+box.addEventListener('focusin',function(){focus=true});box.addEventListener('focusout',function(){focus=false});
+if('IntersectionObserver' in window)new IntersectionObserver(function(e){seen=e[0].isIntersecting;if(seen)box.classList.add('shown')},{threshold:.25}).observe(box);else{seen=true;box.classList.add('shown')}
+timer=setInterval(swap,1500)})();</script>
 </body>
 </html>
