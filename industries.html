@@ -6,12 +6,12 @@
     <title>Industries We Serve | Tech Valley Filtration</title>
     <meta name="description" content="Specialized air filtration solutions for education, healthcare, government, and manufacturing facilities following NAFA best practices.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
     /* ═══════════════════════════════════════════════
        DESIGN TOKENS — matches homepage
     ═══════════════════════════════════════════════ */
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Space+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 
     :root {
         --primary:      #0a1628;
@@ -33,7 +33,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; color: var(--primary); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    body { font-family:'Hanken Grotesk',system-ui,sans-serif; color: var(--t-ink); background: var(--t-surface); overflow-x: hidden; line-height: 1.7; }
 
     /* ── Nav (identical to homepage) ── */
     nav {
@@ -54,14 +54,14 @@
         letter-spacing: 0.02em; border-radius: 6px;
         transition: color 0.18s, background 0.18s; white-space: nowrap;
     }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav-links a[aria-current="page"] { color: var(--white); font-weight: 600; background: rgba(255,255,255,0.09); }
-    .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav-links a:hover { color: var(--t-ink); background: rgba(255,255,255,0.07); }
+    .nav-links a[aria-current="page"] { color: var(--t-ink); font-weight: 600; background: rgba(255,255,255,0.09); }
+    .nav-links a.active { color: var(--t-ink); background: rgba(255,255,255,0.07); }
     .nav-links li:last-child a {
-        background: var(--accent); color: var(--white);
+        background: var(--t-green); color: var(--t-green-ink);
         font-weight: 600; padding: 0.45rem 1.1rem; letter-spacing: 0;
     }
-    .nav-links li:last-child a:hover { background: var(--accent-bright); }
+    .nav-links li:last-child a:hover { background: var(--t-green-hi); }
     .mobile-menu-btn {
         display: none; background: none;
         border: 1px solid rgba(255,255,255,0.2); color: white;
@@ -70,7 +70,7 @@
 
     /* ── Page Hero ── */
     .page-hero {
-        background: var(--primary);
+        background: var(--t-bg);
         padding: 5rem 2rem 4.5rem;
         position: relative; overflow: hidden;
     }
@@ -93,18 +93,18 @@
     }
     .page-hero-eyebrow {
         display: inline-flex; align-items: center; gap: 0.5rem;
-        font-family: 'Space Mono', monospace;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--accent-bright);
+        color: var(--t-green-hi);
         background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
         border-radius: 999px; padding: 0.35rem 1rem; margin-bottom: 1.5rem;
     }
     .page-hero h1 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: clamp(2.25rem, 4vw, 3.5rem); font-weight: 400;
-        color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem;
+        color: var(--t-ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem;
     }
-    .page-hero h1 em { font-style: italic; color: var(--accent-bright); }
+    .page-hero h1 em { font-style: italic; color: var(--t-green-hi); }
     .page-hero p {
         font-size: 1.05rem; color: rgba(255,255,255,0.55); font-weight: 300;
         line-height: 1.75; max-width: 600px;
@@ -112,28 +112,28 @@
 
     /* ── Section layout ── */
     .section { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
-    .section-alt { background: var(--off-white); }
+    .section-alt { background: var(--t-bg2); }
 
     .section-header {
         margin-bottom: 3rem; padding-bottom: 1rem;
-        border-bottom: 3px solid var(--accent);
+        border-bottom: 3px solid var(--t-green);
     }
     .section-header h2 {
-        font-family: 'DM Serif Display', serif;
-        font-size: 2.25rem; font-weight: 400; color: var(--primary); margin-bottom: 0.35rem;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
+        font-size: 2.25rem; font-weight: 400; color: var(--t-ink); margin-bottom: 0.35rem;
     }
-    .section-header p { color: var(--gray); font-size: 0.95rem; font-weight: 300; }
+    .section-header p { color: var(--t-ink2); font-size: 0.95rem; font-weight: 300; }
 
     .section-header-center { text-align: center; margin-bottom: 3rem; }
     .section-header-center h2 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 2.25rem; font-weight: 400; margin-bottom: 0.5rem;
     }
-    .section-header-center p { color: var(--gray); font-size: 0.95rem; font-weight: 300; }
+    .section-header-center p { color: var(--t-ink2); font-size: 0.95rem; font-weight: 300; }
 
     /* ── CTA section (simple — for pages without the full contact form) ── */
     .cta-section {
-        background: var(--primary); color: white;
+        background: var(--t-bg); color: white;
         padding: 5rem 2rem; text-align: center;
         position: relative; overflow: hidden;
     }
@@ -151,25 +151,25 @@
     }
     .cta-section > * { position: relative; }
     .cta-section h2 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; margin-bottom: 1rem;
     }
     .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: 300; margin-bottom: 2.5rem; }
     .cta-contact { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
     .cta-contact-item { display: flex; flex-direction: column; gap: 0.3rem; }
     .cta-contact-item span {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-bright);
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
+        font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-green-hi);
     }
     .cta-contact-item a {
         color: white; text-decoration: none; font-weight: 600; font-size: 1.05rem;
         border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px;
         transition: color 0.2s, border-color 0.2s;
     }
-    .cta-contact-item a:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+    .cta-contact-item a:hover { color: var(--t-green-hi); border-color: var(--t-green-hi); }
 
     /* ── Footer (identical to homepage) ── */
-    footer { background: #060d1a; color: white; padding: 4.5rem 2rem 2rem; }
+    footer { background: var(--t-bg); color: white; padding: 4.5rem 2rem 2rem; }
     .footer-inner { max-width: 1280px; margin: 0 auto; }
     .footer-grid {
         display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
@@ -178,8 +178,8 @@
     .footer-brand p { color: rgba(255,255,255,0.4); font-size: 0.88rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
     .footer-brand img { height: 44px; }
     .footer-col h4 {
-        font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase;
-        letter-spacing: 0.12em; color: var(--accent-bright); margin-bottom: 1.25rem;
+        font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 0.68rem; text-transform: uppercase;
+        letter-spacing: 0.12em; color: var(--t-green-hi); margin-bottom: 1.25rem;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
@@ -204,7 +204,7 @@
         .nav-links.open { display: flex; }
             .nav-links a { color: rgba(255,255,255,0.8); padding: 0.6rem 0.5rem; }
         .nav-links a { color: rgba(255,255,255,0.7); padding: 0.6rem 0.5rem; }
-        .nav-links li:last-child a { background: var(--accent); border-radius: 6px; text-align: center; }
+        .nav-links li:last-child a { background: var(--t-green); border-radius: 6px; text-align: center; }
         .footer-grid { grid-template-columns: 1fr; }
         .preview-grid { grid-template-columns: 1fr; }
         .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -215,8 +215,8 @@
        INDUSTRIES — PREVIEW CARDS
     ═══════════════════════════════════════════════ */
     .preview-header { margin-bottom: 2rem; }
-    .preview-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.35rem; }
-    .preview-header p { color: var(--gray); font-size: 0.9rem; font-weight: 300; }
+    .preview-header h2 { font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.35rem; }
+    .preview-header p { color: var(--t-ink2); font-size: 0.9rem; font-weight: 300; }
 
     /* Image-card grid — matches actual HTML structure */
     .preview-grid {
@@ -226,13 +226,13 @@
         margin-bottom: 0;
     }
     .preview-card {
-        background: white; border: 1px solid var(--border); border-radius: 12px;
+        background: var(--t-surface); border: 1px solid var(--t-line); border-radius: 12px;
         overflow: hidden; cursor: pointer;
         transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
         text-decoration: none; color: inherit; display: block;
     }
     .preview-card:hover {
-        border-color: var(--accent);
+        border-color: var(--t-green);
         transform: translateY(-4px);
         box-shadow: 0 16px 40px rgba(0,0,0,0.1);
     }
@@ -243,8 +243,8 @@
     }
     .preview-card:hover .preview-card-img { transform: scale(1.04); }
     .preview-card-body { padding: 1.25rem; }
-    .preview-card-body h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem; }
-    .preview-card-body p { font-size: 0.82rem; color: var(--gray); font-weight: 300; line-height: 1.6; }
+    .preview-card-body h3 { font-size: 0.95rem; font-weight: 700; color: var(--t-ink); margin-bottom: 0.35rem; }
+    .preview-card-body p { font-size: 0.82rem; color: var(--t-ink2); font-weight: 300; line-height: 1.6; }
 
     /* ═══════════════════════════════════════════════
        INDUSTRIES — TABS (preserved)
@@ -255,7 +255,7 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        border-bottom: 2px solid var(--border);
+        border-bottom: 2px solid var(--t-line);
         margin-bottom: 2rem;
     }
     .tabs-wrap::-webkit-scrollbar { display: none; }
@@ -270,8 +270,8 @@
         padding: 1rem 1.5rem;
         border: none;
         background: none;
-        color: var(--gray);
-        font-family: 'DM Sans', sans-serif;
+        color: var(--t-ink2);
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 0.9rem;
         font-weight: 500;
         cursor: pointer;
@@ -281,11 +281,11 @@
         transition: all 0.2s;
     }
 
-    .tab-btn:hover { color: var(--primary); }
+    .tab-btn:hover { color: var(--t-ink); }
 
     .tab-btn.active {
-        color: var(--accent);
-        border-bottom-color: var(--accent);
+        color: var(--t-green);
+        border-bottom-color: var(--t-green);
     }
 
     .tab-content { display: none; }
@@ -308,7 +308,7 @@
         gap: 2rem;
         margin-bottom: 3rem;
         padding-bottom: 2rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--t-line);
     }
 
     .industry-title-img {
@@ -316,19 +316,19 @@
         height: 110px;
         object-fit: cover;
         border-radius: 6px;
-        border: 1px solid var(--border);
+        border: 1px solid var(--t-line);
         flex-shrink: 0;
     }
 
     .industry-title h2 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 2.25rem;
         font-weight: 400;
         margin-bottom: 0.35rem;
     }
 
     .industry-title p {
-        color: var(--gray);
+        color: var(--t-ink2);
         font-size: 1rem;
         font-weight: 300;
     }
@@ -350,7 +350,7 @@
     .industry-main h3:first-child { margin-top: 0; }
 
     .industry-main p {
-        color: var(--gray);
+        color: var(--t-ink2);
         font-size: 0.95rem;
         font-weight: 300;
         margin-bottom: 1rem;
@@ -362,7 +362,7 @@
     .industry-main li {
         padding: 0.5rem 0 0.5rem 1.5rem;
         position: relative;
-        color: var(--gray);
+        color: var(--t-ink2);
         font-size: 0.95rem;
         font-weight: 300;
     }
@@ -374,14 +374,14 @@
         top: 1.05rem;
         width: 6px;
         height: 6px;
-        background: var(--accent);
+        background: var(--t-green);
         border-radius: 50%;
     }
 
     /* Highlights sidebar */
     .highlights-box {
-        background: var(--light-gray);
-        border: 1px solid var(--border);
+        background: var(--t-bg2);
+        border: 1px solid var(--t-line);
         border-radius: 6px;
         padding: 2rem;
         height: fit-content;
@@ -391,14 +391,14 @@
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        color: var(--accent);
+        color: var(--t-green);
         margin-bottom: 1.5rem;
     }
 
     .highlight-item {
         padding-bottom: 1.25rem;
         margin-bottom: 1.25rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--t-line);
     }
 
     .highlight-item:last-child {
@@ -410,19 +410,19 @@
     .highlight-label {
         font-size: 0.8rem;
         font-weight: 600;
-        color: var(--primary);
+        color: var(--t-ink);
         margin-bottom: 0.2rem;
     }
 
     .highlight-value {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 1.5rem;
         font-weight: 400;
-        color: var(--accent);
+        color: var(--t-green);
     }
 
     .highlight-desc {
-        color: var(--gray);
+        color: var(--t-ink2);
         font-size: 0.8rem;
         font-weight: 300;
         margin-top: 0.2rem;
@@ -430,8 +430,8 @@
 
     /* Gallery */
     .gallery-section {
-        background: var(--light-gray);
-        border: 1px solid var(--border);
+        background: var(--t-bg2);
+        border: 1px solid var(--t-line);
         border-radius: 6px;
         padding: 2rem;
     }
@@ -453,7 +453,7 @@
         border-radius: 4px;
         overflow: hidden;
         aspect-ratio: 16/10;
-        border: 1px solid var(--border);
+        border: 1px solid var(--t-line);
     }
 
     .gallery-item img {
@@ -480,14 +480,14 @@
 
     /* ── CTA ── */
     .cta-section {
-        background: var(--primary);
+        background: var(--t-bg);
         color: white;
         padding: 5rem 2rem;
         text-align: center;
     }
 
     .cta-section h2 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 2.5rem;
         font-weight: 400;
         margin-bottom: 1rem;
@@ -521,10 +521,10 @@
         transition: color 0.2s, border-color 0.2s;
     }
 
-    .cta-contact-item a:hover { color: #6ee7b7; border-color: var(--accent); }
+    .cta-contact-item a:hover { color: #6ee7b7; border-color: var(--t-green); }
 
     /* ── Footer ── */
-    footer { background: #080f1e; color: white; padding: 4rem 2rem 2rem; }
+    footer { background: var(--t-bg); color: white; padding: 4rem 2rem 2rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
 
     .footer-grid {
@@ -538,7 +538,7 @@
 
     .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
 
-    .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.25rem; }
+    .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-green); margin-bottom: 1.25rem; }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
     .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem; font-weight: 300; transition: color 0.2s; }
@@ -569,15 +569,15 @@
     /* SMS float button */
     .sms-float-btn {
         position: fixed; bottom: 1.5rem; right: 1.5rem;
-        background: var(--accent); color: white; text-decoration: none;
+        background: var(--t-green); color: var(--t-green-ink); text-decoration: none;
         padding: 0.85rem 1.4rem; border-radius: 50px;
-        font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.9rem;
+        font-family:'Hanken Grotesk',system-ui,sans-serif; font-weight: 700; font-size: 0.9rem;
         display: flex; align-items: center; gap: 0.5rem;
         box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
         transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
         letter-spacing: 0.01em;
     }
-    .sms-float-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(5,150,105,0.6); background: var(--accent-bright); }
+    .sms-float-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(5,150,105,0.6); background: var(--t-green-hi); }
     @media (max-width: 768px) {
         .sms-float-btn span { display: none; }
         .sms-float-btn { width: 56px; height: 56px; border-radius: 50%; justify-content: center; font-size: 1.4rem; padding: 0; }
@@ -634,24 +634,24 @@
 }
 </script>
 
+<link rel="stylesheet" href="tvf-theme.css">
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <img src="ImageAssets/logo-transparent.png" alt="Tech Valley Filtration Logo" class="logo-img">
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="industries.html" aria-current="page">Industries</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="quote.html">Quote &amp; Order</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="17" x2="20" y2="17"/></svg></button>
-        </div>
-    </nav>
+    <a class="tvf-skip" href="#main">Skip to content</a>
+<header class="tvf-nav" id="tvfNav"><div class="tvf-wrap">
+    <a class="tvf-logo" href="index.html" aria-label="Tech Valley Filtration home"><img src="assets/logo.png" alt="Tech Valley Filtration" width="640" height="133" loading="lazy" decoding="async"></a>
+    <button class="tvf-menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="industries.html" aria-current="page">Industries</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="index.html#quote">Contact</a></li>
+      <li><a class="tvf-cta" href="quote.html">Quote &amp; Order</a></li>
+    </ul></div></header>
+<main id="main">
 
     <!-- Hero -->
     <section class="page-hero">
@@ -670,70 +670,70 @@
         </div>
         <div class="preview-grid">
             <div class="preview-card" onclick="openTab('education')">
-                <img class="preview-card-img" src="ImageAssets/College-Univeristy-classroom.jpg" alt="Higher Education">
+                <img class="preview-card-img" src="ImageAssets/College-Univeristy-classroom.jpg" alt="Higher Education" loading="lazy" decoding="async" width="1400" height="788">
                 <div class="preview-card-body">
                     <h3>Higher Education</h3>
                     <p>Universities and colleges requiring MERV 13+ filtration for classrooms, labs, and dormitories</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('schools')">
-                <img class="preview-card-img" src="ImageAssets/elementaryhall.jpg" alt="K-12 Schools">
+                <img class="preview-card-img" src="ImageAssets/elementaryhall.jpg" alt="K-12 Schools" loading="lazy" decoding="async" width="1400" height="933">
                 <div class="preview-card-body">
                     <h3>K-12 Schools</h3>
                     <p>Air filtration for elementary through high schools, supporting student health and performance through superior indoor air quality</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('healthcare')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80&fit=crop" alt="Healthcare">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1538108149393-fbbd81895907-800.jpg" alt="Healthcare" loading="lazy" decoding="async" width="800" height="500">
                 <div class="preview-card-body">
                     <h3>Healthcare &amp; Senior Living</h3>
                     <p>Hospitals and care facilities requiring HEPA and MERV 14+ for infection control</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('government')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&fit=crop" alt="Government & Commercial">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1497366216548-37526070297c-800.jpg" alt="Government & Commercial" loading="lazy" decoding="async" width="800" height="534">
                 <div class="preview-card-body">
                     <h3>Government &amp; Commercial</h3>
                     <p>Office buildings and public facilities meeting ASHRAE standards for occupant health</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('libraries')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80&fit=crop" alt="Libraries & Museums">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1481627834876-b7833e8f5570-800.jpg" alt="Libraries & Museums" loading="lazy" decoding="async" width="800" height="740">
                 <div class="preview-card-body">
                     <h3>Libraries &amp; Museums</h3>
                     <p>Cultural institutions protecting collections with specialized filtration systems</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('manufacturing')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&fit=crop" alt="Manufacturing">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1504328345606-18bbc8c9d7d1-800.jpg" alt="Manufacturing" loading="lazy" decoding="async" width="800" height="533">
                 <div class="preview-card-body">
                     <h3>Manufacturing</h3>
                     <p>Industrial facilities requiring process filtration and worker protection</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('firing-ranges')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800&q=80&fit=crop" alt="Indoor Firing Ranges">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1595590424283-b8f17842773f-800.jpg" alt="Indoor Firing Ranges" loading="lazy" decoding="async" width="800" height="533">
                 <div class="preview-card-body">
                     <h3>Indoor Firing Ranges</h3>
                     <p>HEPA exhaust filtration and lead containment — OSHA compliance isn't optional here</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('infection-control')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80&fit=crop" alt="Infection Control">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1584036561566-baf8f5f1b144-800.jpg" alt="Infection Control" loading="lazy" decoding="async" width="800" height="450">
                 <div class="preview-card-body">
                     <h3>Infection Control</h3>
                     <p>MERV 13+ and UV-C layered systems for airborne transmission risk reduction</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('cannabis')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1536819114556-1e10f967fb61?w=800&q=80&fit=crop" alt="Cannabis Cultivation">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1536819114556-1e10f967fb61-800.jpg" alt="Cannabis Cultivation" loading="lazy" decoding="async" width="800" height="533">
                 <div class="preview-card-body">
                     <h3>Cannabis Cultivation</h3>
                     <p>Carbon filtration and negative pressure systems for odor control and licensing compliance</p>
                 </div>
             </div>
             <div class="preview-card" onclick="openTab('data-centers')">
-                <img class="preview-card-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&fit=crop" alt="Computer Data Centers">
+                <img class="preview-card-img" src="ImageAssets/industries/photo-1558494949-ef010cbdcc31-800.jpg" alt="Computer Data Centers" loading="lazy" decoding="async" width="800" height="449">
                 <div class="preview-card-body">
                     <h3>Computer Data Centers</h3>
                     <p>Mission-critical IT infrastructure requiring precision filtration and molecular contamination control</p>
@@ -763,7 +763,7 @@
             <!-- Education -->
             <div id="education" class="tab-content active">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="ImageAssets/College-Univeristy-classroom.jpg" alt="Higher Education">
+                    <img class="industry-title-img" src="ImageAssets/College-Univeristy-classroom.jpg" alt="Higher Education" loading="lazy" decoding="async" width="1400" height="788">
                     <div class="industry-title">
                         <h2>Higher Education Facilities</h2>
                         <p>MERV 13+ filtration for classrooms, labs, and dormitories — built to NAFA best practice.</p>
@@ -812,7 +812,7 @@
             <!-- K-12 Schools -->
             <div id="schools" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="ImageAssets/elementaryhall.jpg" alt="K-12 Schools">
+                    <img class="industry-title-img" src="ImageAssets/elementaryhall.jpg" alt="K-12 Schools" loading="lazy" decoding="async" width="1400" height="933">
                     <div class="industry-title">
                         <h2>K-12 Schools &amp; Districts</h2>
                         <p>Children breathe faster than adults — pound for pound, they inhale more of whatever's in the air. The filtration standard in their classrooms matters.</p>
@@ -865,7 +865,7 @@
             <!-- Healthcare -->
             <div id="healthcare" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=300&q=80&fit=crop" alt="Healthcare">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1538108149393-fbbd81895907-300.jpg" alt="Healthcare" loading="lazy" decoding="async" width="300" height="188">
                     <div class="industry-title">
                         <h2>Healthcare &amp; Senior Living</h2>
                         <p>HEPA and MERV 14+ for infection control. Your patients and residents are often immunocompromised — the air quality standard has to reflect that.</p>
@@ -916,7 +916,7 @@
             <!-- Government -->
             <div id="government" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80&fit=crop" alt="Government & Commercial">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1497366216548-37526070297c-300.jpg" alt="Government & Commercial" loading="lazy" decoding="async" width="300" height="200">
                     <div class="industry-title">
                         <h2>Government &amp; Commercial Buildings</h2>
                         <p>MERV 8 is the ASHRAE 62.1 minimum. MERV 13 is the standard that actually protects your occupants — and your liability exposure.</p>
@@ -969,7 +969,7 @@
             <!-- Libraries -->
             <div id="libraries" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&q=80&fit=crop" alt="Libraries & Museums">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1481627834876-b7833e8f5570-300.jpg" alt="Libraries & Museums" loading="lazy" decoding="async" width="300" height="277">
                     <div class="industry-title">
                         <h2>Libraries, Archives &amp; Museums</h2>
                         <p>Particulates don't just affect air quality — they degrade paper, textiles, and artifacts. Filtration is a preservation tool, not just an occupant comfort measure.</p>
@@ -1022,7 +1022,7 @@
             <!-- Manufacturing -->
             <div id="manufacturing" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=300&q=80&fit=crop" alt="Manufacturing">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1504328345606-18bbc8c9d7d1-300.jpg" alt="Manufacturing" loading="lazy" decoding="async" width="300" height="200">
                     <div class="industry-title">
                         <h2>Manufacturing &amp; Industrial</h2>
                         <p>Worker protection starts with source capture and the right filtration approach for your process. One-size-fits-all doesn't work here.</p>
@@ -1076,7 +1076,7 @@
             <!-- Firing Ranges -->
             <div id="firing-ranges" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=300&q=80&fit=crop" alt="Indoor Firing Ranges">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1595590424283-b8f17842773f-300.jpg" alt="Indoor Firing Ranges" loading="lazy" decoding="async" width="300" height="200">
                     <div class="industry-title">
                         <h2>Indoor Firing Ranges</h2>
                         <p>HEPA filtration isn't optional in firing ranges — it's what protects your staff, your shooters, and your license. OSHA's lead exposure limits leave no room for an inadequate system.</p>
@@ -1127,7 +1127,7 @@
             <!-- Infection Control -->
             <div id="infection-control" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300&q=80&fit=crop" alt="Infection Control">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1584036561566-baf8f5f1b144-300.jpg" alt="Infection Control" loading="lazy" decoding="async" width="300" height="169">
                     <div class="industry-title">
                         <h2>Airborne Infection Control</h2>
                         <p>Airborne transmission is a building infrastructure problem. Proper filtration — the right MERV rating, the right ACH, layered with UV-C where appropriate — is the solution.</p>
@@ -1178,7 +1178,7 @@
             <!-- Cannabis -->
             <div id="cannabis" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1536819114556-1e10f967fb61?w=300&q=80&fit=crop" alt="Cannabis Cultivation">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1536819114556-1e10f967fb61-300.jpg" alt="Cannabis Cultivation" loading="lazy" decoding="async" width="300" height="200">
                     <div class="industry-title">
                         <h2>Cannabis Cultivation Facilities</h2>
                         <p>Carbon filtration and negative building pressure aren't optional — they're what keeps your facility in compliance with state and local odor control requirements.</p>
@@ -1229,7 +1229,7 @@
             <!-- Computer Data Centers -->
             <div id="data-centers" class="tab-content">
                 <div class="industry-title-row">
-                    <img class="industry-title-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&q=80&fit=crop" alt="Computer Data Centers">
+                    <img class="industry-title-img" src="ImageAssets/industries/photo-1558494949-ef010cbdcc31-300.jpg" alt="Computer Data Centers" loading="lazy" decoding="async" width="300" height="168">
                     <div class="industry-title">
                         <h2>Computer Data Centers</h2>
                         <p>Particulate contamination is an equipment reliability issue. We treat it that way — with NAFA-based specifications for every cooling configuration and site condition.</p>
@@ -1316,51 +1316,19 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="ImageAssets/logo-transparent.png" alt="Tech Valley Filtration" style="height:48px;">
-                    <p>The Northeast's certified air filtration partner — consultants first, distributors second. Every standard size and MERV rating in stock in Albany, NY.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="industries.html" aria-current="page">Industries</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Products</h4>
-                    <ul>
-                        <li><a href="products.html#hepa">HEPA Filters</a></li>
-                        <li><a href="products.html#merv">MERV-Rated Filters</a></li>
-                        <li><a href="products.html#uvc">UV-C Systems</a></li>
-                        <li><a href="products.html#industrial">Industrial Components</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p><strong>Albany, NY</strong><br>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p>
-                    <p style="margin-top:0.75rem;"><strong>Delaware</strong><br>1011 Talon Lane<br>Wilmington, DE 19807</p><br>
-                    <p><a href="tel:800-344-6214">(800) 344-6214</a></p>
-                    <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 Tech Valley Filtration, LLC. All rights reserved.</span>
-                <span>Serving the Northeast</span>
-            </div>
-        </div>
-    </footer>
+    </main>
+<footer class="tvf-foot"><div class="tvf-wrap">
+    <div class="tvf-cols">
+      <div><img src="assets/logo.png" alt="Tech Valley Filtration" width="640" height="133" loading="lazy" decoding="async"><p>Commercial air filtration and indoor air quality, serving the Northeast since 2019.</p></div>
+      <div><h3>Site</h3><ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="products.html">Products</a></li><li><a href="quote.html">Quote &amp; Order</a></li></ul></div>
+      <div><h3>Albany, NY</h3><p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><p><a href="tel:+18003446214">(800) 344-6214</a><br><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p></div>
+      <div><h3>Delaware</h3><p>1011 Talon Lane<br>Wilmington, DE 19807</p></div>
+    </div>
+    <p class="tvf-base">© 2026 Tech Valley Filtration, LLC. All rights reserved.</p>
+  </div></footer>
 
     <script>
-        document.getElementById('menuBtn').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
+        
 
         function openTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -1375,12 +1343,21 @@
             });
 
             // If triggered from preview card, scroll to tab section
-            const tabsSection = document.querySelector('.section-alt');
-            if (tabsSection) {
-                tabsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const bar = document.querySelector('.tabs-wrap') || document.querySelector('.section-alt');
+            if (bar) {
+                const head = document.querySelector('.tvf-nav');
+                const clear = (head ? head.offsetHeight : 0) + 16;
+                const r = bar.getBoundingClientRect();
+                // only move the page if the tab bar is hidden under the header or off screen
+                if (r.top < clear || r.bottom > window.innerHeight) {
+                    window.scrollTo({ top: window.scrollY + r.top - clear, behavior: 'smooth' });
+                }
+                const on = bar.querySelector('.tab-btn.active');
+                if (on && bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: on.offsetLeft - (bar.clientWidth - on.offsetWidth) / 2, behavior: 'smooth' });
             }
         }
     </script>
 
+<script src="tvf.js"></script>
 </body>
 </html>

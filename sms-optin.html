@@ -6,69 +6,69 @@
     <title>SMS Text Updates | Tech Valley Filtration</title>
     <meta name="description" content="Opt in to receive order updates, quotes, and product information from Tech Valley Filtration via text message.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #0f172a; --accent: #059669; --blue: #1e40af;
             --gray: #64748b; --light-gray: #f1f5f9; --border: #e2e8f0; --white: #ffffff;
         }
-        body { font-family: 'DM Sans', sans-serif; color: var(--primary); background: var(--white); line-height: 1.7; }
-        nav { background: white; box-shadow: 0 1px 0 var(--border); position: sticky; top: 0; z-index: 1000; }
+        body { font-family:'Hanken Grotesk',system-ui,sans-serif; color: var(--t-ink); background: var(--t-surface); line-height: 1.7; }
+        nav { background: var(--t-surface); box-shadow: 0 1px 0 var(--border); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .logo-img { height: 56px; width: auto; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
-        .page-hero { background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%); color: white; padding: 5rem 2rem; text-align: center; }
+        .nav-links a { text-decoration: none; color: var(--t-ink); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--t-green); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--t-ink); }
+        .page-hero { background: linear-gradient(135deg, var(--t-bg) 0%, var(--t-green) 100%); color: white; padding: 5rem 2rem; text-align: center; }
         .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
-        .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 1rem; }
+        .page-hero h1 { font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 1rem; }
         .page-hero p { font-size: 1.15rem; opacity: 0.75; font-weight: 300; max-width: 560px; margin: 0 auto; }
         .main-wrap { max-width: 800px; margin: 0 auto; padding: 5rem 2rem; }
-        .optin-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
-        .optin-card h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; }
-        .optin-card .subtitle { color: var(--gray); font-weight: 300; margin-bottom: 2rem; }
-        .phone-display { display: flex; align-items: center; gap: 1.25rem; background: var(--light-gray); border: 2px solid var(--accent); border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; }
+        .optin-card { background: var(--t-surface); border: 1px solid var(--t-line); border-radius: 8px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+        .optin-card h2 { font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; }
+        .optin-card .subtitle { color: var(--t-ink2); font-weight: 300; margin-bottom: 2rem; }
+        .phone-display { display: flex; align-items: center; gap: 1.25rem; background: var(--t-bg2); border: 2px solid var(--t-green); border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; }
         .phone-icon { font-size: 2.5rem; flex-shrink: 0; }
-        .phone-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 0.25rem; }
-        .phone-number { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--primary); }
-        .phone-sub { color: var(--gray); font-size: 0.875rem; font-weight: 300; margin-top: 0.2rem; }
+        .phone-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-green); font-weight: 600; margin-bottom: 0.25rem; }
+        .phone-number { font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 2rem; color: var(--t-ink); }
+        .phone-sub { color: var(--t-ink2); font-size: 0.875rem; font-weight: 300; margin-top: 0.2rem; }
         .how-to-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
         .step { display: flex; align-items: flex-start; gap: 1.25rem; }
-        .step-num { width: 32px; height: 32px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+        .step-num { width: 32px; height: 32px; background: var(--t-green); color: var(--t-green-ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
         .step-text strong { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
-        .step-text span { color: var(--gray); font-size: 0.9rem; font-weight: 300; }
-        .sms-cta-btn { display: block; width: 100%; background: var(--accent); color: white; text-align: center; padding: 1.1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: background 0.2s, transform 0.1s; }
-        .sms-cta-btn:hover { background: #047857; transform: translateY(-1px); }
+        .step-text span { color: var(--t-ink2); font-size: 0.9rem; font-weight: 300; }
+        .sms-cta-btn { display: block; width: 100%; background: var(--t-green); color: var(--t-green-ink); text-align: center; padding: 1.1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: background 0.2s, transform 0.1s; }
+        .sms-cta-btn:hover { background: var(--t-green); transform: translateY(-1px); }
         .examples-section { margin-bottom: 3rem; }
         .examples-section h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
         .example-bubbles { display: flex; flex-direction: column; gap: 0.75rem; }
-        .bubble { background: var(--light-gray); border: 1px solid var(--border); border-radius: 18px 18px 18px 4px; padding: 0.85rem 1.25rem; font-size: 0.95rem; max-width: 85%; }
-        .bubble::before { content: attr(data-label); display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; margin-bottom: 0.25rem; }
-        .compliance-card { background: var(--light-gray); border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; margin-bottom: 3rem; }
-        .compliance-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--accent); display: inline-block; }
+        .bubble { background: var(--t-bg2); border: 1px solid var(--t-line); border-radius: 18px 18px 18px 4px; padding: 0.85rem 1.25rem; font-size: 0.95rem; max-width: 85%; }
+        .bubble::before { content: attr(data-label); display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t-green); font-weight: 600; margin-bottom: 0.25rem; }
+        .compliance-card { background: var(--t-bg2); border: 1px solid var(--t-line); border-radius: 8px; padding: 2.5rem; margin-bottom: 3rem; }
+        .compliance-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--t-green); display: inline-block; }
         .compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-        .ci-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
-        .compliance-item p { font-size: 0.9rem; color: var(--gray); font-weight: 300; line-height: 1.6; }
-        .compliance-disclaimer { font-size: 0.825rem; color: var(--gray); font-weight: 300; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 1.25rem; }
-        .compliance-disclaimer a { color: var(--accent); text-decoration: none; }
+        .ci-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t-green); font-weight: 600; margin-bottom: 0.3rem; }
+        .compliance-item p { font-size: 0.9rem; color: var(--t-ink2); font-weight: 300; line-height: 1.6; }
+        .compliance-disclaimer { font-size: 0.825rem; color: var(--t-ink2); font-weight: 300; line-height: 1.7; border-top: 1px solid var(--t-line); padding-top: 1.25rem; }
+        .compliance-disclaimer a { color: var(--t-green); text-decoration: none; }
         .privacy-section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
-        .privacy-section p { color: var(--gray); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
-        .privacy-section a { color: var(--accent); }
-        .cta-section { background: var(--primary); color: white; padding: 4rem 2rem; text-align: center; }
-        .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
+        .privacy-section p { color: var(--t-ink2); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
+        .privacy-section a { color: var(--t-green); }
+        .cta-section { background: var(--t-bg); color: white; padding: 4rem 2rem; text-align: center; }
+        .cta-section h2 { font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
         .cta-section p { font-size: 1rem; opacity: 0.7; font-weight: 300; margin-bottom: 2rem; }
         .cta-contact { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
         .cta-contact-item { display: flex; flex-direction: column; gap: 0.25rem; }
         .cta-contact-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.5; }
         .cta-contact-item a { color: white; text-decoration: none; font-weight: 500; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
         .cta-contact-item a:hover { color: #6ee7b7; }
-        footer { background: #080f1e; color: white; padding: 4rem 2rem 2rem; }
+        footer { background: var(--t-bg); color: white; padding: 4rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
-        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.25rem; }
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-green); margin-bottom: 1.25rem; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.6rem; }
         .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem; font-weight: 300; transition: color 0.2s; }
@@ -77,7 +77,7 @@
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--t-surface); padding: 1rem 2rem; border-bottom: 1px solid var(--t-line); gap: 1rem; }
             .nav-links.open { display: flex; }
             .page-hero h1 { font-size: 2.25rem; }
             .optin-card { padding: 2rem 1.5rem; }
@@ -91,25 +91,26 @@
 <link rel="canonical" href="https://techvalleyfiltration.com/sms-optin.html">
 <link rel="icon" type="image/png" href="ImageAssets/logo-transparent.png">
 
+<link rel="stylesheet" href="tvf-theme.css">
 </head>
 <body>
 
-<nav>
-    <div class="nav-container">
-        <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration Logo" class="logo-img">
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="industries.html">Industries</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <button class="mobile-menu-btn" id="menuBtn">☰</button>
-    </div>
-</nav>
+<a class="tvf-skip" href="#main">Skip to content</a>
+<header class="tvf-nav" id="tvfNav"><div class="tvf-wrap">
+    <a class="tvf-logo" href="index.html" aria-label="Tech Valley Filtration home"><img src="assets/logo.png" alt="Tech Valley Filtration" width="640" height="133" loading="lazy" decoding="async"></a>
+    <button class="tvf-menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="index.html#quote">Contact</a></li>
+      <li><a class="tvf-cta" href="quote.html">Quote &amp; Order</a></li>
+    </ul></div></header>
+<main id="main">
 
 <section class="page-hero">
-    <span class="hero-icon">💬</span>
+    <span class="hero-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-8l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 10h8M8 13h5"/></svg></span>
     <h1>Text Us to Order</h1>
     <p>The fastest way to place orders, request quotes, and get support from Tech Valley Filtration</p>
 </section>
@@ -120,7 +121,7 @@
         <h2>Get Started in Seconds</h2>
         <p class="subtitle">Text us directly from your phone — no account or app needed.</p>
         <div class="phone-display">
-            <div class="phone-icon">📱</div>
+            <div class="phone-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></div>
             <div>
                 <div class="phone-label">Our SMS Number</div>
                 <div class="phone-number">(844) 523-3240</div>
@@ -150,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <a href="sms:+18445233240?body=START" class="sms-cta-btn">💬 &nbsp; Tap to Text Us Now</a>
+        <a href="sms:+18445233240?body=START" class="sms-cta-btn"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-8l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 10h8M8 13h5"/></svg> &nbsp; Tap to Text Us Now</a>
     </div>
 
     <div class="examples-section">
@@ -216,51 +217,21 @@
     </div>
 </section>
 
-<footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="https://i.ibb.co/DPCBSQ3H/Tech-Valley-Filtration-logo.jpg" alt="Tech Valley Filtration" style="height:48px;filter:brightness(0) invert(1);opacity:0.8;">
-                <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="industries.html">Industries</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="sms-optin.html">Text Us to Order</a></li>
-                    <li><a href="sms-optin.html#privacy">SMS Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p><strong>Albany, NY</strong><br>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p>
-                <p style="margin-top:0.75rem;"><strong>Delaware</strong><br>1011 Talon Lane<br>Wilmington, DE 19807</p><br>
-                <p><a href="tel:800-344-6214">(800) 344-6214</a></p>
-                <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Tech Valley Filtration, LLC. All rights reserved.</span>
-            <span>Serving the Northeast</span>
-        </div>
+</main>
+<footer class="tvf-foot"><div class="tvf-wrap">
+    <div class="tvf-cols">
+      <div><img src="assets/logo.png" alt="Tech Valley Filtration" width="640" height="133" loading="lazy" decoding="async"><p>Commercial air filtration and indoor air quality, serving the Northeast since 2019.</p></div>
+      <div><h3>Site</h3><ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="products.html">Products</a></li><li><a href="quote.html">Quote &amp; Order</a></li></ul></div>
+      <div><h3>Albany, NY</h3><p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><p><a href="tel:+18003446214">(800) 344-6214</a><br><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p></div>
+      <div><h3>Delaware</h3><p>1011 Talon Lane<br>Wilmington, DE 19807</p></div>
     </div>
-</footer>
+    <p class="tvf-base">© 2026 Tech Valley Filtration, LLC. All rights reserved.</p>
+  </div></footer>
 
 <script>
-    document.getElementById('menuBtn').addEventListener('click', function() {
-        document.getElementById('navLinks').classList.toggle('open');
-    });
+    
 </script>
 
+<script src="tvf.js"></script>
 </body>
 </html>

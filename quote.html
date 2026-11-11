@@ -6,12 +6,12 @@
     <title>Quick Quote & Order | Tech Valley Filtration</title>
     <meta name="description" content="Get a fast quote or place an order for commercial air filtration products. Tech Valley Filtration serves the Northeast.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
     /* ═══════════════════════════════════════════════
        DESIGN TOKENS — matches homepage
     ═══════════════════════════════════════════════ */
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Space+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 
     :root {
         --primary:      #0a1628;
@@ -33,7 +33,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; color: var(--primary); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    body { font-family:'Hanken Grotesk',system-ui,sans-serif; color: var(--t-ink); background: var(--t-surface); overflow-x: hidden; line-height: 1.7; }
 
     /* ── Nav (identical to homepage) ── */
     nav {
@@ -54,13 +54,13 @@
         letter-spacing: 0.02em; border-radius: 6px;
         transition: color 0.18s, background 0.18s; white-space: nowrap;
     }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--white); font-weight: 600; background: rgba(255,255,255,0.09); }
+    .nav-links a:hover { color: var(--t-ink); background: rgba(255,255,255,0.07); }
+    .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--t-ink); font-weight: 600; background: rgba(255,255,255,0.09); }
     .nav-links li:last-child a {
-        background: var(--accent); color: var(--white);
+        background: var(--t-green); color: var(--t-green-ink);
         font-weight: 600; padding: 0.45rem 1.1rem; letter-spacing: 0;
     }
-    .nav-links li:last-child a:hover { background: var(--accent-bright); }
+    .nav-links li:last-child a:hover { background: var(--t-green-hi); }
     .mobile-menu-btn {
         display: none; background: none;
         border: 1px solid rgba(255,255,255,0.2); color: white;
@@ -69,7 +69,7 @@
 
     /* ── Page Hero ── */
     .page-hero {
-        background: var(--primary);
+        background: var(--t-bg);
         padding: 5rem 2rem 4.5rem;
         position: relative; overflow: hidden;
     }
@@ -92,18 +92,18 @@
     }
     .page-hero-eyebrow {
         display: inline-flex; align-items: center; gap: 0.5rem;
-        font-family: 'Space Mono', monospace;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--accent-bright);
+        color: var(--t-green-hi);
         background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
         border-radius: 999px; padding: 0.35rem 1rem; margin-bottom: 1.5rem;
     }
     .page-hero h1 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: clamp(2.25rem, 4vw, 3.5rem); font-weight: 400;
-        color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem;
+        color: var(--t-ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem;
     }
-    .page-hero h1 em { font-style: italic; color: var(--accent-bright); }
+    .page-hero h1 em { font-style: italic; color: var(--t-green-hi); }
     .page-hero p {
         font-size: 1.05rem; color: rgba(255,255,255,0.55); font-weight: 300;
         line-height: 1.75; max-width: 600px;
@@ -111,28 +111,28 @@
 
     /* ── Section layout ── */
     .section { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
-    .section-alt { background: var(--off-white); }
+    .section-alt { background: var(--t-bg2); }
 
     .section-header {
         margin-bottom: 3rem; padding-bottom: 1rem;
-        border-bottom: 3px solid var(--accent);
+        border-bottom: 3px solid var(--t-green);
     }
     .section-header h2 {
-        font-family: 'DM Serif Display', serif;
-        font-size: 2.25rem; font-weight: 400; color: var(--primary); margin-bottom: 0.35rem;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
+        font-size: 2.25rem; font-weight: 400; color: var(--t-ink); margin-bottom: 0.35rem;
     }
-    .section-header p { color: var(--gray); font-size: 0.95rem; font-weight: 300; }
+    .section-header p { color: var(--t-ink2); font-size: 0.95rem; font-weight: 300; }
 
     .section-header-center { text-align: center; margin-bottom: 3rem; }
     .section-header-center h2 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 2.25rem; font-weight: 400; margin-bottom: 0.5rem;
     }
-    .section-header-center p { color: var(--gray); font-size: 0.95rem; font-weight: 300; }
+    .section-header-center p { color: var(--t-ink2); font-size: 0.95rem; font-weight: 300; }
 
     /* ── CTA section (simple — for pages without the full contact form) ── */
     .cta-section {
-        background: var(--primary); color: white;
+        background: var(--t-bg); color: white;
         padding: 5rem 2rem; text-align: center;
         position: relative; overflow: hidden;
     }
@@ -150,25 +150,25 @@
     }
     .cta-section > * { position: relative; }
     .cta-section h2 {
-        font-family: 'DM Serif Display', serif;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; margin-bottom: 1rem;
     }
     .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: 300; margin-bottom: 2.5rem; }
     .cta-contact { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
     .cta-contact-item { display: flex; flex-direction: column; gap: 0.3rem; }
     .cta-contact-item span {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-bright);
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
+        font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-green-hi);
     }
     .cta-contact-item a {
         color: white; text-decoration: none; font-weight: 600; font-size: 1.05rem;
         border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px;
         transition: color 0.2s, border-color 0.2s;
     }
-    .cta-contact-item a:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+    .cta-contact-item a:hover { color: var(--t-green-hi); border-color: var(--t-green-hi); }
 
     /* ── Footer (identical to homepage) ── */
-    footer { background: #060d1a; color: white; padding: 4.5rem 2rem 2rem; }
+    footer { background: var(--t-bg); color: white; padding: 4.5rem 2rem 2rem; }
     .footer-inner { max-width: 1280px; margin: 0 auto; }
     .footer-grid {
         display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
@@ -177,8 +177,8 @@
     .footer-brand p { color: rgba(255,255,255,0.4); font-size: 0.88rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
     .footer-brand img { height: 44px; }
     .footer-col h4 {
-        font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase;
-        letter-spacing: 0.12em; color: var(--accent-bright); margin-bottom: 1.25rem;
+        font-family:'Hanken Grotesk',system-ui,sans-serif; font-size: 0.68rem; text-transform: uppercase;
+        letter-spacing: 0.12em; color: var(--t-green-hi); margin-bottom: 1.25rem;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
@@ -203,7 +203,7 @@
         .nav-links.open { display: flex; }
             .nav-links a { color: rgba(255,255,255,0.8); padding: 0.6rem 0.5rem; }
         .nav-links a { color: rgba(255,255,255,0.7); padding: 0.6rem 0.5rem; }
-        .nav-links li:last-child a { background: var(--accent); border-radius: 6px; text-align: center; }
+        .nav-links li:last-child a { background: var(--t-green); border-radius: 6px; text-align: center; }
         .footer-grid { grid-template-columns: 1fr; }
         .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         .cta-contact { gap: 1.5rem; }
@@ -218,16 +218,16 @@
     }
     .hero-badge {
         display: inline-flex; align-items: center; gap: 0.35rem;
-        font-family: 'Space Mono', monospace;
+        font-family:'Hanken Grotesk',system-ui,sans-serif;
         font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
-        color: var(--accent-bright);
+        color: var(--t-green-hi);
         background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
         border-radius: 6px; padding: 0.35rem 0.75rem;
     }
 
 .form-switcher-wrap {
-            background: var(--light-gray);
-            border-bottom: 1px solid var(--border);
+            background: var(--t-bg2);
+            border-bottom: 1px solid var(--t-line);
             position: sticky;
             top: 73px;
             z-index: 100;
@@ -245,10 +245,10 @@
             padding: 1.1rem 2rem;
             border: none;
             background: none;
-            font-family: 'DM Sans', sans-serif;
+            font-family:'Hanken Grotesk',system-ui,sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--gray);
+            color: var(--t-ink2);
             cursor: pointer;
             border-bottom: 3px solid transparent;
             margin-bottom: -1px;
@@ -258,11 +258,11 @@
             gap: 0.5rem;
         }
 
-        .switcher-btn:hover { color: var(--primary); }
+        .switcher-btn:hover { color: var(--t-ink); }
 
         .switcher-btn.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
+            color: var(--t-green);
+            border-bottom-color: var(--t-green);
         }
 
         .switcher-btn .btn-icon { font-size: 1.1rem; }
@@ -279,7 +279,7 @@
         .filter-col-label {
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--gray);
+            color: var(--t-ink2);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -305,9 +305,9 @@
 
         .remove-filter-line {
             background: none;
-            border: 1px solid var(--border);
+            border: 1px solid var(--t-line);
             border-radius: 4px;
-            color: var(--gray);
+            color: var(--t-ink2);
             cursor: pointer;
             font-size: 1rem;
             height: 36px;
@@ -320,7 +320,7 @@
             flex-shrink: 0;
         }
 
-        .remove-filter-line:hover { border-color: #ef4444; color: #ef4444; }
+        .remove-filter-line:hover { border-color: #ef4444; color: #f87171; }
 
         @media (max-width: 640px) {
             .filter-line-header { display: none; }
@@ -349,27 +349,27 @@
 
         /* ── Form Card ── */
         .form-card {
-            background: white;
-            border: 1px solid var(--border);
+            background: var(--t-surface);
+            border: 1px solid var(--t-line);
             border-radius: 8px;
             padding: 2.5rem;
             box-shadow: 0 4px 24px rgba(15,23,42,0.06);
         }
 
         .form-card h2 {
-            font-family: 'DM Serif Display', serif;
+            font-family:'Hanken Grotesk',system-ui,sans-serif;
             font-size: 1.75rem;
             font-weight: 400;
             margin-bottom: 0.4rem;
         }
 
         .form-card .form-subtitle {
-            color: var(--gray);
+            color: var(--t-ink2);
             font-size: 0.95rem;
             font-weight: 300;
             margin-bottom: 2rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--t-line);
         }
 
         .form-row {
@@ -390,17 +390,17 @@
         label {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--t-ink);
         }
 
-        label .required { color: var(--accent); margin-left: 2px; }
+        label .required { color: var(--t-green); margin-left: 2px; }
 
         input, select, textarea {
-            font-family: 'DM Sans', sans-serif;
+            font-family:'Hanken Grotesk',system-ui,sans-serif;
             font-size: 0.95rem;
-            color: var(--primary);
-            background: var(--light-gray);
-            border: 1px solid var(--border);
+            color: var(--t-ink);
+            background: var(--t-bg2);
+            border: 1px solid var(--t-line);
             border-radius: 4px;
             padding: 0.65rem 0.85rem;
             transition: border-color 0.2s, box-shadow 0.2s;
@@ -409,9 +409,9 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--t-green);
             box-shadow: 0 0 0 3px rgba(5,150,105,0.1);
-            background: white;
+            background: var(--t-surface);
         }
 
         textarea { resize: vertical; min-height: 100px; }
@@ -420,7 +420,7 @@
 
         .form-divider {
             border: none;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--t-line);
             margin: 1.75rem 0;
         }
 
@@ -429,7 +429,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--accent);
+            color: var(--t-green);
             margin-bottom: 1.25rem;
         }
 
@@ -447,9 +447,9 @@
 
         .remove-line {
             background: none;
-            border: 1px solid var(--border);
+            border: 1px solid var(--t-line);
             border-radius: 4px;
-            color: var(--gray);
+            color: var(--t-ink2);
             cursor: pointer;
             font-size: 1rem;
             height: 36px;
@@ -461,14 +461,14 @@
             flex-shrink: 0;
         }
 
-        .remove-line:hover { border-color: #ef4444; color: #ef4444; }
+        .remove-line:hover { border-color: #ef4444; color: #f87171; }
 
         .add-line-btn {
             background: none;
-            border: 1px dashed var(--border);
+            border: 1px dashed var(--t-line);
             border-radius: 4px;
-            color: var(--accent);
-            font-family: 'DM Sans', sans-serif;
+            color: var(--t-green);
+            font-family:'Hanken Grotesk',system-ui,sans-serif;
             font-size: 0.875rem;
             font-weight: 500;
             padding: 0.5rem 1rem;
@@ -477,17 +477,17 @@
             transition: all 0.2s;
         }
 
-        .add-line-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+        .add-line-btn:hover { border-color: var(--t-green); background: var(--t-green-tint); }
 
         /* Submit button */
         .submit-btn {
             width: 100%;
-            background: var(--accent);
-            color: white;
+            background: var(--t-green);
+            color: var(--t-green-ink);
             border: none;
             border-radius: 4px;
             padding: 0.9rem 2rem;
-            font-family: 'DM Sans', sans-serif;
+            font-family:'Hanken Grotesk',system-ui,sans-serif;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -499,12 +499,12 @@
             gap: 0.5rem;
         }
 
-        .submit-btn:hover { background: #047857; transform: translateY(-1px); }
+        .submit-btn:hover { background: var(--t-green); transform: translateY(-1px); }
         .submit-btn:active { transform: translateY(0); }
 
         .form-note {
             font-size: 0.8rem;
-            color: var(--gray);
+            color: var(--t-ink2);
             font-weight: 300;
             text-align: center;
             margin-top: 0.75rem;
@@ -513,8 +513,8 @@
         /* ── Success State ── */
         .success-msg {
             display: none;
-            background: var(--accent-light);
-            border: 1px solid var(--accent);
+            background: var(--t-green-tint);
+            border: 1px solid var(--t-green);
             border-radius: 6px;
             padding: 1.5rem;
             text-align: center;
@@ -522,13 +522,13 @@
         }
 
         .success-msg h3 {
-            color: var(--accent);
+            color: var(--t-green);
             font-size: 1.1rem;
             margin-bottom: 0.4rem;
         }
 
         .success-msg p {
-            color: var(--gray);
+            color: var(--t-ink2);
             font-size: 0.9rem;
             font-weight: 300;
         }
@@ -537,8 +537,8 @@
         .form-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
 
         .sidebar-card {
-            background: white;
-            border: 1px solid var(--border);
+            background: var(--t-surface);
+            border: 1px solid var(--t-line);
             border-radius: 8px;
             padding: 1.75rem;
         }
@@ -548,12 +548,12 @@
             font-weight: 600;
             margin-bottom: 1.25rem;
             padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 2px solid var(--t-green);
             display: inline-block;
         }
 
         .sidebar-card h3 { display: block; border-bottom: none; padding-bottom: 0; }
-        .sidebar-card h3::after { content: ''; display: block; width: 2rem; height: 2px; background: var(--accent); margin-top: 0.4rem; }
+        .sidebar-card h3::after { content: ''; display: block; width: 2rem; height: 2px; background: var(--t-green); margin-top: 0.4rem; }
 
         .why-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
 
@@ -562,12 +562,12 @@
             align-items: flex-start;
             gap: 0.75rem;
             font-size: 0.9rem;
-            color: var(--gray);
+            color: var(--t-ink2);
             font-weight: 300;
         }
 
         .why-list li .check {
-            color: var(--accent);
+            color: var(--t-green);
             font-size: 1rem;
             flex-shrink: 0;
             margin-top: 0.1rem;
@@ -584,7 +584,7 @@
         .contact-line-icon {
             width: 36px;
             height: 36px;
-            background: var(--accent-light);
+            background: var(--t-green-tint);
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -594,12 +594,12 @@
         }
 
         .contact-line-text { font-size: 0.85rem; }
-        .contact-line-text span { display: block; color: var(--gray); font-size: 0.75rem; font-weight: 300; }
-        .contact-line-text a { color: var(--primary); text-decoration: none; font-weight: 500; }
-        .contact-line-text a:hover { color: var(--accent); }
+        .contact-line-text span { display: block; color: var(--t-ink2); font-size: 0.75rem; font-weight: 300; }
+        .contact-line-text a { color: var(--t-ink); text-decoration: none; font-weight: 500; }
+        .contact-line-text a:hover { color: var(--t-green); }
 
         .turnaround-box {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
+            background: linear-gradient(135deg, var(--t-bg) 0%, var(--t-green) 100%);
             color: white;
             border-radius: 8px;
             padding: 1.75rem;
@@ -607,7 +607,7 @@
         }
 
         .turnaround-box .big-num {
-            font-family: 'DM Serif Display', serif;
+            font-family:'Hanken Grotesk',system-ui,sans-serif;
             font-size: 3rem;
             font-weight: 400;
             color: #6ee7b7;
@@ -630,7 +630,7 @@
         }
 
         /* ── Footer ── */
-        footer { background: #080f1e; color: white; padding: 4rem 2rem 2rem; }
+        footer { background: var(--t-bg); color: white; padding: 4rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
 
         .footer-grid {
@@ -644,7 +644,7 @@
 
         .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-top: 1rem; }
 
-        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.25rem; }
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-green); margin-bottom: 1.25rem; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.6rem; }
         .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem; font-weight: 300; transition: color 0.2s; }
@@ -727,24 +727,24 @@
 }
 </script>
 
+<link rel="stylesheet" href="tvf-theme.css">
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <img src="ImageAssets/logo-transparent.png" alt="Tech Valley Filtration Logo" class="logo-img">
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="industries.html">Industries</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="quote.html" class="active" aria-current="page">Quote &amp; Order</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="17" x2="20" y2="17"/></svg></button>
-        </div>
-    </nav>
+    <a class="tvf-skip" href="#main">Skip to content</a>
+<header class="tvf-nav" id="tvfNav"><div class="tvf-wrap">
+    <a class="tvf-logo" href="index.html" aria-label="Tech Valley Filtration home"><img src="assets/logo.png" alt="Tech Valley Filtration" width="640" height="133" loading="lazy" decoding="async"></a>
+    <button class="tvf-menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="index.html#quote">Contact</a></li>
+      <li><a class="tvf-cta" href="quote.html" aria-current="page">Quote &amp; Order</a></li>
+    </ul></div></header>
+<main id="main">
 
     <!-- Hero -->
     <section class="page-hero">
@@ -764,10 +764,10 @@
     <div class="form-switcher-wrap">
         <div class="form-switcher">
             <button class="switcher-btn active" onclick="switchForm('quote')" id="btn-quote">
-                <span class="btn-icon">📋</span> Quick Quote
+                <span class="btn-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><path d="M8 5H6a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2"/><path d="M9 11h6M9 15h4"/></svg></span> Quick Quote
             </button>
             <button class="switcher-btn" onclick="switchForm('order')" id="btn-order">
-                <span class="btn-icon">📦</span> Place an Order
+                <span class="btn-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span> Place an Order
             </button>
         </div>
     </div>
@@ -786,27 +786,27 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>First Name <span class="required">*</span></label>
-                                <input type="text" name="first_name" placeholder="Jane" required>
+                                <input type="text" name="first_name" autocomplete="given-name" placeholder="Jane" required>
                             </div>
                             <div class="form-group">
                                 <label>Last Name <span class="required">*</span></label>
-                                <input type="text" name="last_name" placeholder="Smith" required>
+                                <input type="text" name="last_name" autocomplete="family-name" placeholder="Smith" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Email <span class="required">*</span></label>
-                                <input type="email" name="email" placeholder="jane@yourorg.com" required>
+                                <input type="email" name="email" autocomplete="email" placeholder="jane@yourorg.com" required>
                             </div>
                             <div class="form-group">
                                 <label>Phone <span class="required">*</span></label>
-                                <input type="tel" name="phone" placeholder="(518) 555-0100" required>
+                                <input type="tel" name="phone" autocomplete="tel" placeholder="(518) 555-0100" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Organization <span class="required">*</span></label>
-                                <input type="text" name="organization" placeholder="Your Organization" required>
+                                <input type="text" name="organization" autocomplete="organization" placeholder="Your Organization" required>
                             </div>
                             <div class="form-group">
                                 <label>Industry</label>
@@ -828,21 +828,21 @@
 
                         <hr class="form-divider">
                         <p class="form-section-label">Filtration Needs</p>
-                        <p style="font-size:0.82rem; color:var(--gray); margin-bottom:1.25rem; line-height:1.55;">Currently supports pleated filters. For anything else &mdash; bag filters, carbon media, specialty items &mdash; just include it in the <strong style="color:var(--primary);">Notes</strong> field below. More filter types coming soon.</p>
+                        <p style="font-size:0.82rem; color:var(--t-ink2); margin-bottom:1.25rem; line-height:1.55;">Currently supports pleated filters. For anything else &mdash; bag filters, carbon media, specialty items &mdash; just include it in the <strong style="color:var(--t-ink);">Notes</strong> field below. More filter types coming soon.</p>
 
                         <!-- Toggle: enter one-by-one vs paste a list -->
-                        <div style="margin-bottom:1.25rem; padding:0.85rem 1rem; background:var(--off-white); border:1px solid var(--border); border-radius:6px; display:flex; align-items:flex-start; gap:0.75rem;">
+                        <div style="margin-bottom:1.25rem; padding:0.85rem 1rem; background:var(--t-bg2); border:1px solid var(--t-line); border-radius:6px; display:flex; align-items:flex-start; gap:0.75rem;">
                             <input type="checkbox" id="pasteListToggle" name="use_paste_list" style="margin-top:3px; accent-color:var(--accent); width:16px; height:16px; flex-shrink:0; cursor:pointer;" onchange="togglePasteList(this.checked)">
-                            <label for="pasteListToggle" style="font-size:0.9rem; color:var(--primary); font-weight:500; cursor:pointer; line-height:1.5;">I already have my filter list saved — let me paste it instead of entering items one by one.</label>
+                            <label for="pasteListToggle" style="font-size:0.9rem; color:var(--t-ink); font-weight:500; cursor:pointer; line-height:1.5;">I already have my filter list saved — let me paste it instead of entering items one by one.</label>
                         </div>
 
                         <!-- One-by-one entry (default) -->
                         <div id="lineItemsSection">
                             <!-- Saved filters list (appears once at least one is added) -->
-                            <div id="filterSummary" style="display:none;background:linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin-bottom:16px;">
+                            <div id="filterSummary" style="display:none;background:linear-gradient(180deg, var(--t-green-tint) 0%, var(--t-green-tint) 100%);border:1px solid rgba(25,196,138,.4);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
                                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-                                    <p style="margin:0;font-size:0.72rem;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.1em;">Your Filter List</p>
-                                    <span id="filterSummaryCount" style="background:#059669;color:#fff;border-radius:999px;padding:2px 10px;font-size:0.7rem;font-weight:700;">0</span>
+                                    <p style="margin:0;font-size:0.72rem;font-weight:700;color:var(--t-green);text-transform:uppercase;letter-spacing:0.1em;">Your Filter List</p>
+                                    <span id="filterSummaryCount" style="background:var(--t-green);color:var(--t-green-ink);border-radius:999px;padding:2px 10px;font-size:0.7rem;font-weight:700;">0</span>
                                 </div>
                                 <div id="filterSummaryList" style="display:flex;flex-direction:column;gap:8px;"></div>
                             </div>
@@ -850,8 +850,8 @@
                             <div id="quoteLineItems"></div>
                             <!-- Add new line buttons -->
                             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
-                                <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:160px;background:#fff;border:1.5px dashed #059669;color:#059669;font-weight:600;padding:12px 14px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background='#f0fdf4';this.style.borderStyle='solid';" onmouseout="this.style.background='#fff';this.style.borderStyle='dashed';">+ Add Standard Size</button>
-                                <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:160px;background:#fff;border:1.5px dashed #7c3aed;color:#7c3aed;font-weight:600;padding:12px 14px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background='#faf5ff';this.style.borderStyle='solid';" onmouseout="this.style.background='#fff';this.style.borderStyle='dashed';">+ Add Custom Size</button>
+                                <button type="button" class="add-line-btn" onclick="addFilterLine(false)" style="flex:1;min-width:160px;background:var(--t-surface);border:1.5px dashed var(--t-green);color:var(--t-green);font-weight:600;padding:12px 14px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background='var(--t-green-tint)';this.style.borderStyle='solid';" onmouseout="this.style.background='var(--t-surface)';this.style.borderStyle='dashed';">+ Add Standard Size</button>
+                                <button type="button" class="add-line-btn" onclick="addFilterLine(true)" style="flex:1;min-width:160px;background:var(--t-surface);border:1.5px dashed #8b7cf6;color:#a99bff;font-weight:600;padding:12px 14px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background='rgba(139,124,246,.14)';this.style.borderStyle='solid';" onmouseout="this.style.background='var(--t-surface)';this.style.borderStyle='dashed';">+ Add Custom Size</button>
                             </div>
                         </div>
 
@@ -902,24 +902,24 @@
                         <h3>Prefer to Call?</h3>
                         <div class="contact-lines">
                             <div class="contact-line">
-                                <div class="contact-line-icon">📞</div>
+                                <div class="contact-line-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div>
                                 <div class="contact-line-text">
                                     <span>Phone</span>
                                     <a href="tel:800-344-6214">(800) 344-6214</a>
                                 </div>
                             </div>
                             <div class="contact-line">
-                                <div class="contact-line-icon">✉️</div>
+                                <div class="contact-line-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
                                 <div class="contact-line-text">
                                     <span>Email</span>
                                     <a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a>
                                 </div>
                             </div>
                             <div class="contact-line">
-                                <div class="contact-line-icon">💬</div>
+                                <div class="contact-line-icon"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-8l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 10h8M8 13h5"/></svg></div>
                                 <div class="contact-line-text">
                 </div>
-                <p style="color: var(--gray); font-size: 0.8rem; margin-top: 1.5rem; font-weight: 300;">Or use the <strong>Quick Quote</strong> tab — we'll respond with pricing and confirm your order from there.</p>
+                <p style="color: var(--t-ink2); font-size: 0.8rem; margin-top: 1.5rem; font-weight: 300;">Or use the <strong>Quick Quote</strong> tab — we'll respond with pricing and confirm your order from there.</p>
             </div>
         </div>
     </div>
@@ -931,67 +931,36 @@
     <!-- Order Form Panel -->
     <div id="panel-order" class="form-panel">
         <div class="form-section">
-            <div style="max-width: 600px; margin: 3rem auto; text-align: center; padding: 3rem 2rem; background: white; border: 1px solid var(--border); border-radius: 12px;">
+            <div style="max-width: 600px; margin: 3rem auto; text-align: center; padding: 3rem 2rem; background: var(--t-surface); border: 1px solid var(--t-line); border-radius: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 1.25rem;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                <h2 style="font-family: 'DM Serif Display', serif; font-size: 1.75rem; font-weight: 400; margin-bottom: 1rem; color: var(--primary);">Online Ordering Coming Soon</h2>
-                <p style="color: var(--gray); font-size: 0.95rem; font-weight: 300; line-height: 1.7; margin-bottom: 2rem;">We're building out our online ordering system. In the meantime, the fastest way to place an order is by phone or email — we typically confirm same day.</p>
+                <h2 style="font-family: 'Hanken Grotesk',system-ui,sans-serif; font-size: 1.75rem; font-weight: 400; margin-bottom: 1rem; color: var(--t-ink);">Online Ordering Coming Soon</h2>
+                <p style="color: var(--t-ink2); font-size: 0.95rem; font-weight: 300; line-height: 1.7; margin-bottom: 2rem;">We're building out our online ordering system. In the meantime, the fastest way to place an order is by phone or email — we typically confirm same day.</p>
                 <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-                    <a href="tel:800-344-6214" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: white; text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg> Call (800) 344-6214</a>
-                    <a href="mailto:Service@techvalleyfiltration.com" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); color: var(--primary); text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email Us</a>
+                    <a href="tel:800-344-6214" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--t-green); color: var(--t-green-ink); text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg> Call (800) 344-6214</a>
+                    <a href="mailto:Service@techvalleyfiltration.com" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--t-line); color: var(--t-ink); text-decoration: none; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem; width: 100%; max-width: 280px; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email Us</a>
                 </div>
-                <p style="color: var(--gray); font-size: 0.8rem; margin-top: 1.5rem; font-weight: 300;">Or use the <strong>Quick Quote</strong> tab &mdash; we'll respond with pricing and confirm your order from there.</p>
+                <p style="color: var(--t-ink2); font-size: 0.8rem; margin-top: 1.5rem; font-weight: 300;">Or use the <strong>Quick Quote</strong> tab &mdash; we'll respond with pricing and confirm your order from there.</p>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="ImageAssets/logo-transparent.png" alt="Tech Valley Filtration" style="height:48px;">
-                    <p>Expert commercial air filtration and indoor air quality solutions serving the Northeast since 2019.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="industries.html">Industries</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="quote.html">Quote &amp; Order</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Products</h4>
-                    <ul>
-                        <li><a href="products.html#hepa">HEPA Filters</a></li>
-                        <li><a href="products.html#merv">MERV-Rated Filters</a></li>
-                        <li><a href="products.html#uvc">UV-C Systems</a></li>
-                        <li><a href="products.html#industrial">Industrial Components</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p><strong>Albany, NY</strong><br>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p>
-                    <p style="margin-top:0.75rem;"><strong>Delaware</strong><br>1011 Talon Lane<br>Wilmington, DE 19807</p><br>
-                    <p><a href="tel:800-344-6214">(800) 344-6214</a></p>
-                    <p><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 Tech Valley Filtration, LLC. All rights reserved.</span>
-                <span>Serving the Northeast</span>
-            </div>
-        </div>
-    </footer>
+    </main>
+<footer class="tvf-foot"><div class="tvf-wrap">
+    <div class="tvf-cols">
+      <div><img src="assets/logo.png" alt="Tech Valley Filtration" width="640" height="133" loading="lazy" decoding="async"><p>Commercial air filtration and indoor air quality, serving the Northeast since 2019.</p></div>
+      <div><h3>Site</h3><ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="products.html">Products</a></li><li><a href="quote.html">Quote &amp; Order</a></li></ul></div>
+      <div><h3>Albany, NY</h3><p>30 Kraft Ave, Suite 5<br>Albany, NY 12205</p><p><a href="tel:+18003446214">(800) 344-6214</a><br><a href="mailto:Service@techvalleyfiltration.com">Service@techvalleyfiltration.com</a></p></div>
+      <div><h3>Delaware</h3><p>1011 Talon Lane<br>Wilmington, DE 19807</p></div>
+    </div>
+    <p class="tvf-base">© 2026 Tech Valley Filtration, LLC. All rights reserved.</p>
+  </div></footer>
     <style>
     .sms-float-btn {
         position: fixed; bottom: 1.5rem; right: 1.5rem;
-        background: #059669; color: white; text-decoration: none;
+        background: var(--t-green); color: var(--t-green-ink); text-decoration: none;
         padding: 0.85rem 1.4rem; border-radius: 50px;
-        font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
+        font-family:'Hanken Grotesk',system-ui,sans-serif; font-weight: 600; font-size: 0.95rem;
         display: flex; align-items: center; gap: 0.5rem;
         box-shadow: 0 4px 20px rgba(5,150,105,0.45); z-index: 9999;
         transition: transform 0.2s, box-shadow 0.2s;
@@ -1005,9 +974,7 @@
 
     <script>
         // Mobile nav
-        document.getElementById('menuBtn').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
+        
 
         // Tab switcher
         function switchForm(tab) {
@@ -1242,46 +1209,46 @@
             const container = document.getElementById('quoteLineItems');
             const wrapper = document.createElement('div');
             wrapper.id = 'filter-wrap-' + id;
-            wrapper.style.cssText = 'margin-bottom:14px;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,0.04);';
+            wrapper.style.cssText = 'margin-bottom:14px;border:1px solid var(--t-line);border-radius:12px;overflow:hidden;background:var(--t-surface);box-shadow:0 1px 3px rgba(15,23,42,0.04);';
             wrapper.dataset.editing = 'true';
             wrapper.dataset.everSaved = 'false';
             wrapper.dataset.isCustom = isCustom ? 'true' : 'false';
 
-            const accentColor = isCustom ? '#7c3aed' : '#059669';
-            const accentBg    = isCustom ? '#faf5ff' : '#f0fdf4';
-            const accentBorder= isCustom ? '#e9d5ff' : '#bbf7d0';
+            const accentColor = isCustom ? '#a99bff' : 'var(--t-green)';
+            const accentBg    = isCustom ? 'rgba(139,124,246,.14)' : 'var(--t-green-tint)';
+            const accentBorder= isCustom ? 'rgba(139,124,246,.45)' : 'rgba(25,196,138,.4)';
             const headerLabel = isCustom ? 'Custom size' : 'Standard size';
 
             const headerHtml = `
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:${accentBg};border-bottom:1px solid ${accentBorder};">
                     <span style="font-size:0.7rem;font-weight:700;color:${accentColor};letter-spacing:0.1em;text-transform:uppercase;">${headerLabel}</span>
                     <button type="button" onclick="removeFilterLine(${id})" title="Remove this line" aria-label="Remove this line"
-                        style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;padding:0;line-height:1;width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:color 0.15s, background 0.15s;"
-                        onmouseover="this.style.color='#dc2626';this.style.background='#fee2e2';"
-                        onmouseout="this.style.color='#94a3b8';this.style.background='transparent';">&times;</button>
+                        style="background:none;border:none;color:var(--t-ink3);font-size:1.4rem;cursor:pointer;padding:0;line-height:1;width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:color 0.15s, background 0.15s;"
+                        onmouseover="this.style.color='#f87171';this.style.background='rgba(239,68,68,.16)';"
+                        onmouseout="this.style.color='var(--t-ink3)';this.style.background='transparent';">&times;</button>
                 </div>`;
 
             const sizeFieldsHtml = isCustom
                 ? `<div style="margin-bottom:14px;">
-                    <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Custom Dimensions</label>
+                    <label style="font-size:0.78rem;font-weight:600;color:var(--t-ink2);display:block;margin-bottom:6px;">Custom Dimensions</label>
                     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
                         <div>
-                            <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:4px;font-weight:500;">Length</div>
+                            <div style="font-size:0.7rem;color:var(--t-ink3);margin-bottom:4px;font-weight:500;">Length</div>
                             <div style="display:flex;gap:4px;">
-                                <input type="number" min="1" placeholder="in" name="custom_length_${id}" style="flex:1;padding:9px 8px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.92rem;box-sizing:border-box;width:100%;min-width:0;">
-                                <select name="custom_length_frac_${id}" style="padding:9px 4px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.85rem;width:64px;flex-shrink:0;">${FRACTIONS_HTML}</select>
+                                <input type="number" min="1" placeholder="in" name="custom_length_${id}" style="flex:1;padding:9px 8px;border:1.5px solid var(--t-line2);border-radius:7px;font-size:0.92rem;box-sizing:border-box;width:100%;min-width:0;">
+                                <select name="custom_length_frac_${id}" style="padding:9px 4px;border:1.5px solid var(--t-line2);border-radius:7px;font-size:0.85rem;width:64px;flex-shrink:0;">${FRACTIONS_HTML}</select>
                             </div>
                         </div>
                         <div>
-                            <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:4px;font-weight:500;">Width</div>
+                            <div style="font-size:0.7rem;color:var(--t-ink3);margin-bottom:4px;font-weight:500;">Width</div>
                             <div style="display:flex;gap:4px;">
-                                <input type="number" min="1" placeholder="in" name="custom_width_${id}" style="flex:1;padding:9px 8px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.92rem;box-sizing:border-box;width:100%;min-width:0;">
-                                <select name="custom_width_frac_${id}" style="padding:9px 4px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.85rem;width:64px;flex-shrink:0;">${FRACTIONS_HTML}</select>
+                                <input type="number" min="1" placeholder="in" name="custom_width_${id}" style="flex:1;padding:9px 8px;border:1.5px solid var(--t-line2);border-radius:7px;font-size:0.92rem;box-sizing:border-box;width:100%;min-width:0;">
+                                <select name="custom_width_frac_${id}" style="padding:9px 4px;border:1.5px solid var(--t-line2);border-radius:7px;font-size:0.85rem;width:64px;flex-shrink:0;">${FRACTIONS_HTML}</select>
                             </div>
                         </div>
                         <div>
-                            <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:4px;font-weight:500;">Depth</div>
-                            <select name="custom_depth_${id}" style="width:100%;padding:9px 8px;border:1.5px solid #d1d5db;border-radius:7px;font-size:0.92rem;background:#fff;">
+                            <div style="font-size:0.7rem;color:var(--t-ink3);margin-bottom:4px;font-weight:500;">Depth</div>
+                            <select name="custom_depth_${id}" style="width:100%;padding:9px 8px;border:1.5px solid var(--t-line2);border-radius:7px;font-size:0.92rem;background:var(--t-surface);">
                                 <option value="">Pick</option>
                                 <option value="1">1"</option>
                                 <option value="2">2"</option>
@@ -1291,7 +1258,7 @@
                     </div>
                 </div>`
                 : `<div style="margin-bottom:14px;">
-                    <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Size</label>
+                    <label style="font-size:0.78rem;font-weight:600;color:var(--t-ink2);display:block;margin-bottom:6px;">Size</label>
                     <div id="size-wrap-${id}" style="position:relative;">
                         <input type="text" id="size-input-${id}" name="filter_size_${id}"
                             placeholder="Select a filter type first"
@@ -1299,8 +1266,8 @@
                             oninput="filterSizes(${id}, this.value)"
                             onfocus="showSizeList(${id})"
                             onblur="hideSizeList(${id})"
-                            style="padding:11px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;background:#f9fafb;color:#9ca3af;width:100%;box-sizing:border-box;">
-                        <div id="size-list-${id}" style="display:none;position:fixed;z-index:9999;background:#fff;border:1.5px solid #d1d5db;border-radius:8px;max-height:260px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);"></div>
+                            style="padding:11px 12px;border:1.5px solid var(--t-line2);border-radius:8px;font-size:0.95rem;background:var(--t-bg2);color:var(--t-ink3);width:100%;box-sizing:border-box;">
+                        <div id="size-list-${id}" style="display:none;position:fixed;z-index:9999;background:var(--t-surface);border:1.5px solid var(--t-line2);border-radius:8px;max-height:260px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);"></div>
                     </div>
                 </div>`;
 
@@ -1319,25 +1286,25 @@
                 <div id="filter-line-${id}" style="padding:14px;">
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
                         <div>
-                            <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">${isCustom ? 'MERV Rating' : 'Filter Type'}</label>
-                            <select ${typeSelectAttrs} name="filter_type_${id}" style="width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;background:#fff;">${typeOptions}</select>
+                            <label style="font-size:0.78rem;font-weight:600;color:var(--t-ink2);display:block;margin-bottom:6px;">${isCustom ? 'MERV Rating' : 'Filter Type'}</label>
+                            <select ${typeSelectAttrs} name="filter_type_${id}" style="width:100%;padding:10px 12px;border:1.5px solid var(--t-line2);border-radius:8px;font-size:0.95rem;background:var(--t-surface);">${typeOptions}</select>
                         </div>
                         <div>
-                            <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Quantity</label>
-                            <input type="number" min="1" placeholder="e.g. 12" name="filter_qty_${id}" style="width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
+                            <label style="font-size:0.78rem;font-weight:600;color:var(--t-ink2);display:block;margin-bottom:6px;">Quantity</label>
+                            <input type="number" min="1" placeholder="e.g. 12" name="filter_qty_${id}" style="width:100%;padding:10px 12px;border:1.5px solid var(--t-line2);border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
                         </div>
                     </div>
                     ${sizeFieldsHtml}
                     <div>
-                        <label style="font-size:0.78rem;font-weight:600;color:#475569;display:block;margin-bottom:6px;">Location Tag <span style="font-weight:400;color:#94a3b8;">(optional)</span></label>
-                        <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
+                        <label style="font-size:0.78rem;font-weight:600;color:var(--t-ink2);display:block;margin-bottom:6px;">Location Tag <span style="font-weight:400;color:var(--t-ink3);">(optional)</span></label>
+                        <input type="text" name="filter_tag_${id}" placeholder="e.g. Unit 3B, Gym, Boiler Room" style="width:100%;padding:10px 12px;border:1.5px solid var(--t-line2);border-radius:8px;font-size:0.95rem;box-sizing:border-box;">
                     </div>
                 </div>
                 <div id="save-row-${id}" style="padding:0 14px 14px;">
                     <button type="button" id="save-btn-${id}" onclick="saveFilterLine(${id})"
-                        style="width:100%;background:#059669;color:#fff;border:none;border-radius:8px;padding:13px 16px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.01em;transition:background 0.18s, transform 0.08s, box-shadow 0.18s;box-shadow:0 1px 2px rgba(5,150,105,0.2);"
-                        onmouseover="this.style.background='#10b981';this.style.boxShadow='0 4px 12px rgba(5,150,105,0.35)';"
-                        onmouseout="this.style.background='#059669';this.style.boxShadow='0 1px 2px rgba(5,150,105,0.2)';">✓ Add to list</button>
+                        style="width:100%;background:var(--t-green);color:var(--t-green-ink);border:none;border-radius:8px;padding:13px 16px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.01em;transition:background 0.18s, transform 0.08s, box-shadow 0.18s;box-shadow:0 1px 2px rgba(5,150,105,0.2);"
+                        onmouseover="this.style.background='var(--t-green-hi)';this.style.boxShadow='0 4px 12px rgba(5,150,105,0.35)';"
+                        onmouseout="this.style.background='var(--t-green)';this.style.boxShadow='0 1px 2px rgba(5,150,105,0.2)';">✓ Add to list</button>
                 </div>`;
             container.appendChild(wrapper);
             // Wire up change events so summary updates as user fills in fields
@@ -1355,8 +1322,8 @@
                 input.disabled = true;
                 input.placeholder = 'Select type first';
                 input.value = '';
-                input.style.background = '#f9fafb';
-                input.style.color = '#9ca3af';
+                input.style.background = 'var(--t-bg2)';
+                input.style.color = 'var(--t-ink3)';
                 input.dataset.sku = '';
                 list.innerHTML = '';
                 list.style.display = 'none';
@@ -1364,8 +1331,8 @@
             }
             input.disabled = false;
             input.placeholder = 'Type or select a size…';
-            input.style.background = '#fff';
-            input.style.color = '#111827';
+            input.style.background = 'var(--t-surface)';
+            input.style.color = 'var(--t-ink)';
             input.dataset.merv = merv;
             input.dataset.sku = '';
             input.value = '';
@@ -1376,13 +1343,13 @@
             const list = document.getElementById('size-list-' + id);
             list.innerHTML = '';
             if (!items || items.length === 0) {
-                list.innerHTML = '<div style="padding:10px 12px;color:#9ca3af;font-size:0.88rem;">No matches</div>';
+                list.innerHTML = '<div style="padding:10px 12px;color:var(--t-ink3);font-size:0.88rem;">No matches</div>';
                 return;
             }
             items.forEach(function(item) {
                 const div = document.createElement('div');
                 div.textContent = item.label;
-                div.style.cssText = 'padding:9px 12px;cursor:pointer;font-size:0.9rem;border-bottom:1px solid #f1f5f9;';
+                div.style.cssText = 'padding:9px 12px;cursor:pointer;font-size:0.9rem;border-bottom:1px solid var(--t-line);';
                 div.onmousedown = function(e) {
                     e.preventDefault();
                     const input = document.getElementById('size-input-' + id);
@@ -1391,8 +1358,8 @@
                     list.style.display = 'none';
                     updateFilterSummary();
                 };
-                div.onmouseover = function() { this.style.background = '#f0fdf4'; };
-                div.onmouseout  = function() { this.style.background = '#fff'; };
+                div.onmouseover = function() { this.style.background = 'var(--t-green-tint)'; };
+                div.onmouseout  = function() { this.style.background = 'var(--t-surface)'; };
                 list.appendChild(div);
             });
         }
@@ -1567,17 +1534,17 @@
             if (countBadge) countBadge.textContent = entries.length;
             summaryList.innerHTML = entries.map(function(e) {
                 const tagChip = e.tag
-                    ? '<span style="display:inline-flex;align-items:center;gap:3px;background:#e0f2fe;color:#0369a1;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:600;margin-left:6px;white-space:nowrap;">📌 ' + e.tag + '</span>'
+                    ? '<span style="display:inline-flex;align-items:center;gap:3px;background:rgba(56,189,248,.16);color:#7dd3fc;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:600;margin-left:6px;white-space:nowrap;"><svg class="tvf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6-5.2 6-10a6 6 0 0 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="2"/></svg> ' + e.tag + '</span>'
                     : '';
                 const qtyChip = e.qty
-                    ? '<span style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;border-radius:5px;padding:2px 8px;font-size:0.78rem;font-weight:700;flex-shrink:0;">×' + e.qty + '</span>'
+                    ? '<span style="background:var(--t-green-tint);color:var(--t-green);border:1px solid rgba(25,196,138,.4);border-radius:5px;padding:2px 8px;font-size:0.78rem;font-weight:700;flex-shrink:0;">×' + e.qty + '</span>'
                     : '';
-                return '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border:1px solid #d1fae5;border-radius:8px;box-shadow:0 1px 2px rgba(5,150,105,0.04);">'
-                     + '<span style="background:#059669;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
-                     + '<span style="color:#064e3b;flex:1;font-size:0.9rem;line-height:1.4;min-width:0;">' + e.label + tagChip + '</span>'
+                return '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--t-surface);border:1px solid rgba(25,196,138,.3);border-radius:8px;box-shadow:0 1px 2px rgba(5,150,105,0.04);">'
+                     + '<span style="background:var(--t-green);color:var(--t-green-ink);border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;flex-shrink:0;">' + e.num + '</span>'
+                     + '<span style="color:var(--t-green-hi);flex:1;font-size:0.9rem;line-height:1.4;min-width:0;">' + e.label + tagChip + '</span>'
                      + qtyChip
-                     + ' <button type="button" onclick="editFilterLine(' + e.id + ')" title="Edit" style="background:none;border:1px solid #bbf7d0;border-radius:6px;color:#059669;font-size:0.75rem;font-weight:600;cursor:pointer;padding:5px 10px;flex-shrink:0;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background=\'#f0fdf4\';this.style.borderColor=\'#86efac\';" onmouseout="this.style.background=\'none\';this.style.borderColor=\'#bbf7d0\';">Edit</button>'
-                     + ' <button type="button" onclick="removeFilterLine(' + e.id + ')" title="Remove" aria-label="Remove" style="background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;padding:0;line-height:1;width:24px;height:24px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:color 0.15s, background 0.15s;" onmouseover="this.style.color=\'#dc2626\';this.style.background=\'#fee2e2\';" onmouseout="this.style.color=\'#94a3b8\';this.style.background=\'transparent\';">&times;</button>'
+                     + ' <button type="button" onclick="editFilterLine(' + e.id + ')" title="Edit" style="background:none;border:1px solid rgba(25,196,138,.4);border-radius:6px;color:var(--t-green);font-size:0.75rem;font-weight:600;cursor:pointer;padding:5px 10px;flex-shrink:0;transition:background 0.15s, border-color 0.15s;" onmouseover="this.style.background=\'var(--t-green-tint)\';this.style.borderColor=\'rgba(25,196,138,.6)\';" onmouseout="this.style.background=\'none\';this.style.borderColor=\'rgba(25,196,138,.4)\';">Edit</button>'
+                     + ' <button type="button" onclick="removeFilterLine(' + e.id + ')" title="Remove" aria-label="Remove" style="background:none;border:none;color:var(--t-ink3);font-size:1.2rem;cursor:pointer;padding:0;line-height:1;width:24px;height:24px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:color 0.15s, background 0.15s;" onmouseover="this.style.color=\'#f87171\';this.style.background=\'rgba(239,68,68,.16)\';" onmouseout="this.style.color=\'var(--t-ink3)\';this.style.background=\'transparent\';">&times;</button>'
                      + '</div>';
             }).join('');
         }
@@ -1865,6 +1832,7 @@
         }
     </script>
 
+<script src="tvf.js"></script>
 </body>
 </html>
   
